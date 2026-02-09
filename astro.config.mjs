@@ -5,5 +5,12 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+    routing: {
+      prefixDefaultLocale: false  // ES won't have /es/ prefix
+    }
+  },
   integrations: [mdx(), sitemap(), tailwind()],
 });

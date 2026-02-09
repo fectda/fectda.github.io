@@ -20,21 +20,28 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
-export function dateRange(startDate: Date, endDate?: Date | string): string {
-  const startMonth = startDate.toLocaleString("default", { month: "short" });
-  const startYear = startDate.getFullYear().toString();
-  let endMonth;
-  let endYear;
+export function dateRange(startDate: Date, endDate?: Date | string, locale: string = 'es'): string {
+  const localeCode = locale === 'es' ? 'es-MX' : 'en-US';
+  const timeZone = 'America/Mexico_City';
+
+  // Adjust dates to avoid UTC offset issues (add 12 hours to ensure correct day)
+  const adjustedStart = new Date(startDate.getTime() + 12 * 60 * 60 * 1000);
+
+  const startMonth = adjustedStart.toLocaleString(localeCode, { month: "short", timeZone });
+  const startYear = adjustedStart.toLocaleString(localeCode, { year: "numeric", timeZone });
+  let endMonth = "";
+  let endYear = "";
 
   if (endDate) {
     if (typeof endDate === "string") {
       endMonth = "";
-      endYear = endDate;
+      endYear = locale === 'es' ? 'Actualidad' : 'Present';
     } else {
-      endMonth = endDate.toLocaleString("default", { month: "short" });
-      endYear = endDate.getFullYear().toString();
+      const adjustedEnd = new Date(endDate.getTime() + 12 * 60 * 60 * 1000);
+      endMonth = adjustedEnd.toLocaleString(localeCode, { month: "short", timeZone });
+      endYear = adjustedEnd.toLocaleString(localeCode, { year: "numeric", timeZone });
     }
   }
 
-  return `${startMonth}${startYear} - ${endMonth}${endYear}`;
+  return `${startMonth} ${startYear} - ${endMonth} ${endYear}`.trim();
 }
