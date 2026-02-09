@@ -11,6 +11,7 @@ const bits = defineCollection({
     stack: z.array(z.string()), // Tecnologías: ["React", "TypeScript", "Node.js"]
     status: z.enum(["poc", "wip", "done"]), // poc = Proof of Concept, wip = Work in Progress, done = Completado
     repository_url: z.string().url().optional(),
+    demo_url: z.string().url().optional(),
   }),
 });
 
@@ -25,6 +26,7 @@ const atoms = defineCollection({
     stack: z.array(z.string()), // Componentes/herramientas: ["Arduino", "ESP32", "3D Printing"]
     status: z.enum(["poc", "wip", "done"]),
     repository_url: z.string().url().optional(),
+    demo_url: z.string().url().optional(),
   }),
 });
 
@@ -63,4 +65,25 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { bits, atoms, mind, work, projects };
+// Colección: education (Formación Académica)
+const education = defineCollection({
+  type: "content",
+  schema: z.object({
+    institution: z.string(),
+    degree: z.string(),
+    dateStart: z.coerce.date(),
+    dateEnd: z.union([z.coerce.date(), z.string()]),
+  }),
+});
+
+// Colección: about (Sobre Mí)
+const about = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    interests: z.array(z.string()).optional(), // ADN/Intereses: ["F1", "Fútbol", "Maker"]
+  }),
+});
+
+export const collections = { bits, atoms, mind, work, projects, education, about };
