@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eduardo González - Obsidian Telemetry</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f90606",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#0A0A0A",
+                        "surface-dark": "#111111",
+                        "border-dark": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", // 2px
+                        "lg": "0.25rem", 
+                        "xl": "0.5rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f90606; 
+        }
+
+        /* Blinking cursor effect */
+        .blink-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scanline effect overlay */
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            position: fixed;
+            pointer-events: none;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 9999;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-mono antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col overflow-x-hidden">
+<!-- Scanline Overlay for retro terminal feel -->
+<div class="scanlines"></div>
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-white/10">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">terminal</span>
+<h1 class="font-display font-bold tracking-tight text-lg sm:text-xl uppercase">
+                    Eduardo.González
+                </h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+<a class="hover:text-primary transition-colors duration-200 group" href="#">
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">[</span>BITS<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+</a>
+<span class="text-white/20">/</span>
+<a class="hover:text-primary transition-colors duration-200 group" href="#">
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">[</span>ATOMS<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+</a>
+<span class="text-white/20">/</span>
+<a class="hover:text-primary transition-colors duration-200 group" href="#">
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">[</span>MIND<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+</a>
+<span class="text-white/20">/</span>
+<a class="hover:text-primary transition-colors duration-200 group" href="#">
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">[</span>CV<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+</a>
+<span class="text-white/20">/</span>
+<a class="hover:text-primary transition-colors duration-200 group" href="#">
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">[</span>ABOUT<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+</a>
+</nav>
+<!-- Language Toggle -->
+<div class="flex items-center gap-2 text-xs font-bold tracking-wider">
+<button class="text-primary hover:bg-white/5 px-2 py-1 rounded transition-colors">[ES]</button>
+<button class="text-gray-500 hover:text-white hover:bg-white/5 px-2 py-1 rounded transition-colors">[EN]</button>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16">
+<!-- Hero Panel -->
+<section class="border border-white/20 bg-surface-dark relative p-6 md:p-10 grid gap-8 overflow-hidden">
+<!-- Decorative corner markers -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
+<!-- Status Indicator -->
+<div class="flex items-center gap-3 mb-4">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</div>
+<h2 class="text-primary font-bold tracking-widest text-sm">SYSTEM_STATUS: ONLINE</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+<!-- Left: Name & Title -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] tracking-tight">
+                        Eduardo<br/>González
+                    </h1>
+<div class="h-px w-full bg-white/20 my-2"></div>
+<p class="text-primary text-xl md:text-2xl font-mono tracking-widest uppercase">
+                        Architect-Executive
+                    </p>
+<p class="text-gray-400 max-w-xl text-sm md:text-base mt-4 leading-relaxed font-light">
+                        Bridging the gap between theoretical physics and enterprise architecture. Building systems that scale from quantum bits to organizational structures.
+                    </p>
+</div>
+<!-- Right: Metadata Grid -->
+<div class="lg:col-span-5 w-full">
+<div class="border border-white/10 bg-[#0F0F0F]">
+<!-- Row 1 -->
+<div class="grid grid-cols-2 border-b border-white/10">
+<div class="p-4 border-r border-white/10">
+<span class="block text-xs text-gray-500 mb-1">ID_ROLE</span>
+<div class="flex items-center gap-2 text-white font-bold">
+<span class="material-symbols-outlined text-sm text-primary">terminal</span>
+                                    CIO
+                                </div>
+</div>
+<div class="p-4">
+<span class="block text-xs text-gray-500 mb-1">COORDINATES</span>
+<div class="flex items-center gap-2 text-white font-bold">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                                    MADRID_ES
+                                </div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-4 border-b border-white/10">
+<span class="block text-xs text-gray-500 mb-1">FOCUS_AREA</span>
+<div class="flex items-center gap-2 text-white font-bold">
+<span class="material-symbols-outlined text-sm text-primary">hub</span>
+                                PHYSICS &amp; CODE
+                            </div>
+</div>
+<!-- Row 3 (Stats) -->
+<div class="grid grid-cols-3 p-4 bg-white/5">
+<div>
+<span class="block text-[10px] text-gray-500">UPTIME</span>
+<span class="text-primary font-mono">99.9%</span>
+</div>
+<div>
+<span class="block text-[10px] text-gray-500">PROJECTS</span>
+<span class="text-white font-mono">42+</span>
+</div>
+<div>
+<span class="block text-[10px] text-gray-500">VERSION</span>
+<span class="text-white font-mono">v4.2.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: [BITS] -->
+<section class="space-y-6" id="bits">
+<div class="flex items-center justify-between border-b border-white/10 pb-2">
+<h3 class="text-2xl md:text-3xl font-display font-bold">
+<span class="text-primary">[</span>BITS<span class="text-primary">]</span>
+</h3>
+<span class="text-xs text-gray-500 font-mono hidden sm:block">/// SOFTWARE_ENGINEERING_PROJECTS</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="group relative border border-white/10 bg-surface-dark hover:border-primary/50 transition-colors duration-300">
+<div class="absolute top-2 right-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+<div class="h-48 w-full overflow-hidden border-b border-white/10 bg-black relative">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<img class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Abstract server racks with blue led lights in a dark room representing neural network infrastructure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjBuR_cS5ncZXOYd4ccLeB1ZTUuKjOfGQkaYiguGt-zOVSea72rBzUsko23x_5GxxXcNEYNSO5xbk3DCwFVkCmgdVgH6E9P7Dkr_CfjVIJw-UhUT4E8ymCrl-oukW646r2sScTXyROcNn6EVggDEhB3s1UOG1eF4cIp7nKGsYY-_i1tX0MO9e44MVJHfB7yaFCwXwhHOGwD4hBbtNka3h4G2aTJ6HmUcfb6WeNyM28CSjB2fniW7lD23mBePjotTtZaQ4t2DxBVQ0r"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-lg leading-tight group-hover:text-primary transition-colors">PROJECT_NEURAL_NET</h4>
+<span class="text-xs border border-primary text-primary px-1.5 py-0.5 rounded-[1px]">DEPLOYED</span>
+</div>
+<p class="text-sm text-gray-400 line-clamp-2">Machine learning implementation for predictive analytics using TensorFlow and custom hardware acceleration.</p>
+<div class="mt-2 pt-3 border-t border-white/5 flex items-center text-xs text-gray-500 font-mono gap-4">
+<span>ID: #8821</span>
+<span>LANG: PYTHON</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group relative border border-white/10 bg-surface-dark hover:border-primary/50 transition-colors duration-300">
+<div class="absolute top-2 right-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+<div class="h-48 w-full overflow-hidden border-b border-white/10 bg-black relative">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<img class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Data visualization dashboard screen with graphs and charts representing server infrastructure status" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwaFsJhDzpz0zggMBc_4h8HElVHjItfV89IAXNlivljXpBvqAEBFH-1_3mGrKryE5f-dLEuarn7Z0ojr01hDIIN2PMnmCfRNMh4xE6ISe8WRljUFSoSbCH2XXqErd7LgyXmmn0yv_mCHJHkEU0w7xufXSZ1bWJ4_aAOIJ4PXlfF8_FVlVN8nM3GQs0RBAxZfsPbF9KmaSP0PBigq-jRy2Aml6kPyhioozkRBgRnd8eYOtQUdK4saTG-yb1IGd2VLrTmKvx4ISKKMdP"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-lg leading-tight group-hover:text-primary transition-colors">SERVER_INFRA_V2</h4>
+<span class="text-xs border border-yellow-600 text-yellow-600 px-1.5 py-0.5 rounded-[1px]">OPTIMIZING</span>
+</div>
+<p class="text-sm text-gray-400 line-clamp-2">High-availability cluster orchestration using Kubernetes with automated failover protocols.</p>
+<div class="mt-2 pt-3 border-t border-white/5 flex items-center text-xs text-gray-500 font-mono gap-4">
+<span>ID: #9942</span>
+<span>LANG: GO</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group relative border border-white/10 bg-surface-dark hover:border-primary/50 transition-colors duration-300">
+<div class="absolute top-2 right-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+<div class="h-48 w-full overflow-hidden border-b border-white/10 bg-black relative">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<div class="w-full h-full bg-[#111] flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-gray-700 group-hover:text-primary transition-colors">code_blocks</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-lg leading-tight group-hover:text-primary transition-colors">QUANTUM_SIM</h4>
+<span class="text-xs border border-white/30 text-white/50 px-1.5 py-0.5 rounded-[1px]">ARCHIVED</span>
+</div>
+<p class="text-sm text-gray-400 line-clamp-2">Simulation of quantum gates using classical computing resources for educational purposes.</p>
+<div class="mt-2 pt-3 border-t border-white/5 flex items-center text-xs text-gray-500 font-mono gap-4">
+<span>ID: #1002</span>
+<span>LANG: RUST</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section: [ATOMS] -->
+<section class="space-y-6" id="atoms">
+<div class="flex items-center justify-between border-b border-white/10 pb-2">
+<h3 class="text-2xl md:text-3xl font-display font-bold">
+<span class="text-primary">[</span>ATOMS<span class="text-primary">]</span>
+</h3>
+<span class="text-xs text-gray-500 font-mono hidden sm:block">/// HARDWARE_&amp;_PHYSICS</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Wide Card 1 -->
+<article class="group border border-white/10 bg-surface-dark flex flex-col md:flex-row hover:border-primary/50 transition-colors duration-300 h-full">
+<div class="w-full md:w-2/5 h-48 md:h-auto border-b md:border-b-0 md:border-r border-white/10 overflow-hidden bg-black">
+<img class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close up of soldering iron working on a green circuit board with electronic components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8l6G0G_BSrY9sTkGtZ9KgOawyxbbfDYh60WqfrVPgSfP8pTHnmAoXfLJBGWHL0O5J8o0eO3IyRKp9YnRMD-mRKpVndya3AD-QQ0xFqWKgiEqVX0oLICtnaCzCBZS4JhqxMDbG3fR-uv2tV2ZSTEkAtnHJCqbr7M8gydAKrylEOWvsDhbDNgmdSFfdx5Ieuy82jXCNnFnti44etlMnE2gdKA0wxDD8N_ZkU2fXNcIvRFi5nA0Am1hVP792fVIMSFBeeB1FNUs2M0AA"/>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-xl group-hover:text-primary transition-colors">CUSTOM_PCB_FAB</h4>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-primary">memory</span>
+</div>
+<p class="text-gray-400 text-sm mb-4">Design and fabrication of custom printed circuit boards for IoT home automation sensors.</p>
+</div>
+<div class="flex items-center justify-between mt-4 text-xs font-mono text-primary">
+<span>&gt; VIEW_SCHEMATICS</span>
+<span>REV_2.1</span>
+</div>
+</div>
+</article>
+<!-- Wide Card 2 -->
+<article class="group border border-white/10 bg-surface-dark flex flex-col md:flex-row hover:border-primary/50 transition-colors duration-300 h-full">
+<div class="w-full md:w-2/5 h-48 md:h-auto border-b md:border-b-0 md:border-r border-white/10 overflow-hidden bg-black">
+<img class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="3D printer nozzle extruding blue filament creating a plastic object" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCwTWazRftvKheggd-i5pccSG17h-gqfN4XRLTjRriqRv8aSk1L6ap55hX218GJhQNWcJBk3Sys2nh4OJ0Xzz8rKuXngYV1snK_RmN96AjCIlYaUAqezwjqqkfzgYtsWOZ6RRtR9QJG_5osq9OlBHL9CNb68qukQ0iWXVm5mhdBt0gpD3GT7p2bvdQyNdT0RoshMPVCykz4w2eFbVEFtGVVmHQXqfEoCKq-Iw9M_ZCXNK0V2OAo7MshfrKa6wRFrMELFFoSBRJZuZ3"/>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-xl group-hover:text-primary transition-colors">ADDITIVE_MFG</h4>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-primary">print</span>
+</div>
+<p class="text-gray-400 text-sm mb-4">Rapid prototyping of enclosure designs using FDM and SLA 3D printing technologies.</p>
+</div>
+<div class="flex items-center justify-between mt-4 text-xs font-mono text-primary">
+<span>&gt; VIEW_MODELS</span>
+<span>MAT: PLA+</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section: [MIND] -->
+<section class="space-y-6" id="mind">
+<div class="flex items-center justify-between border-b border-white/10 pb-2">
+<h3 class="text-2xl md:text-3xl font-display font-bold">
+<span class="text-primary">[</span>MIND<span class="text-primary">]</span>
+</h3>
+<span class="text-xs text-gray-500 font-mono hidden sm:block">/// THOUGHTS_&amp;_PUBLICATIONS</span>
+</div>
+<div class="border border-white/10 bg-surface-dark divide-y divide-white/10">
+<a class="block p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">The Entropy of Digital Systems</h4>
+<span class="text-xs text-gray-500 font-mono">2023-11-04</span>
+</div>
+<p class="text-sm text-gray-400 max-w-3xl">Exploring the parallels between thermodynamic entropy and software technical debt in large scale enterprise systems.</p>
+</a>
+<a class="block p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Physics for CIOs: First Principles</h4>
+<span class="text-xs text-gray-500 font-mono">2023-08-15</span>
+</div>
+<p class="text-sm text-gray-400 max-w-3xl">Applying first principles thinking to budget allocation and strategic technology roadmapping.</p>
+</a>
+<a class="block p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Observability as a Quantum Measurement</h4>
+<span class="text-xs text-gray-500 font-mono">2023-05-22</span>
+</div>
+<p class="text-sm text-gray-400 max-w-3xl">Does measuring a system change its state? A deep dive into the observer effect in modern APM tools.</p>
+</a>
+</div>
+</section>
+<!-- Contact Terminal -->
+<section class="pb-10" id="contact">
+<div class="border border-white/20 bg-black p-1">
+<div class="bg-surface-dark border border-white/5 p-6 md:p-10">
+<h3 class="text-primary text-sm font-bold tracking-widest mb-6 border-b border-primary/20 pb-2 w-max pr-10">COMMS_CHANNEL</h3>
+<div class="grid md:grid-cols-2 gap-10">
+<div class="space-y-6">
+<p class="font-mono text-gray-400 leading-relaxed">
+                                Initiating handshake protocol... <br/>
+                                Secure line available. Leave a message or connect via standard protocols.
+                            </p>
+<div class="flex flex-col gap-3 font-mono text-sm">
+<a class="flex items-center gap-3 hover:text-primary transition-colors w-max group" href="#">
+<span class="text-primary group-hover:animate-pulse">&gt;</span> EMAIL: eduardo@system.net
+                                </a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors w-max group" href="#">
+<span class="text-primary group-hover:animate-pulse">&gt;</span> TWITTER: @edu_phys_dev
+                                </a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors w-max group" href="#">
+<span class="text-primary group-hover:animate-pulse">&gt;</span> GITHUB: github.com/eduardo
+                                </a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors w-max group" href="#">
+<span class="text-primary group-hover:animate-pulse">&gt;</span> LINKEDIN: /in/eduardogonzalez
+                                </a>
+</div>
+</div>
+<form class="space-y-4 font-mono">
+<div class="flex flex-col gap-1">
+<label class="text-xs text-gray-500 ml-1">USER_ID</label>
+<input class="bg-black border border-white/20 text-white px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-700" placeholder="Enter name..." type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs text-gray-500 ml-1">PAYLOAD</label>
+<textarea class="bg-black border border-white/20 text-white px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-700" placeholder="Enter message..." rows="4"></textarea>
+</div>
+<button class="group relative w-full bg-white/5 border border-primary/50 text-primary py-3 px-6 hover:bg-primary hover:text-white transition-all font-bold tracking-wider flex items-center justify-between mt-2" type="button">
+<span class="blink-cursor">&gt; EXECUTE_SEND</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-white/10 bg-[#050505] py-12 mt-auto">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-white font-bold tracking-tight">
+<span class="text-primary">©</span> 2024 SYSTEM_CORE
+                    </div>
+<p class="text-xs text-gray-500 font-mono">
+                        Designed &amp; Built by Eduardo González.<br/>
+                        All systems nominal.
+                    </p>
+</div>
+<div class="flex items-center gap-6 text-gray-500">
+<span class="material-symbols-outlined text-2xl hover:text-white transition-colors cursor-pointer">terminal</span>
+<span class="material-symbols-outlined text-2xl hover:text-white transition-colors cursor-pointer">memory</span>
+<span class="material-symbols-outlined text-2xl hover:text-white transition-colors cursor-pointer">wifi</span>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<span class="text-xs font-mono">v.1.0.4-beta</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Obsidian Telemetry Header</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b31919",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0A0A0A", // Deep black as requested
+                        "surface-dark": "#121212",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "monospace"], // Fallback to monospace for the aesthetic
+                        "mono": ["Space Grotesk", "monospace"], // Explicit mono utility if needed
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "0px"}, // Overriding for brutalist sharp edges where possible, though theme config says otherwise, I will use rounded-none in classes to enforce sharpness.
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar to match the technical aesthetic */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b31919;
+        }
+        
+        /* Scanline effect for background */
+        .scanline-bg {
+            background-image: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.2)
+            );
+            background-size: 100% 4px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white min-h-screen flex flex-col antialiased">
+<!-- Header Container -->
+<header class="w-full bg-[#0A0A0A] border-b border-white/10 relative z-50">
+<!-- Telemetry Top Bar: System Status -->
+<div class="w-full border-b border-white/5 bg-black/50 px-6 py-1 flex justify-between items-center text-[10px] tracking-widest text-white/40 uppercase font-mono">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-primary animate-pulse rounded-full"></span>
+                    SYS.ONLINE
+                </span>
+<span>LAT: 40.4168 N</span>
+<span>LON: 3.7038 W</span>
+</div>
+<div class="flex items-center gap-4">
+<span>MEM: 64%</span>
+<span>UPTIME: 420:19:02</span>
+<span class="text-primary">V.2.0.24</span>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<div class="px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 relative overflow-hidden group">
+<!-- Background Elements -->
+<div class="absolute top-0 right-0 w-[300px] h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+<!-- Left: Identity -->
+<div class="flex items-center gap-3 z-10">
+<div class="flex items-center justify-center w-8 h-8 bg-white text-black font-bold text-xs tracking-tighter">
+                    EG
+                </div>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold tracking-tight leading-none text-white uppercase">
+                        Eduardo<span class="text-white/40">.</span>González
+                    </h1>
+<span class="text-[10px] text-primary tracking-[0.2em] font-medium uppercase mt-0.5">Full Stack Engineer</span>
+</div>
+</div>
+<!-- Center-Right: Navigation Array -->
+<nav class="flex items-center z-10">
+<ul class="flex flex-wrap justify-center items-center gap-y-2 text-sm font-medium tracking-wide">
+<!-- Item: BITS -->
+<li class="flex items-center group/link">
+<a class="relative px-3 py-1 text-white/60 hover:text-white transition-colors duration-0 flex items-center gap-1" href="#">
+<span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">[</span>
+                            BITS
+                            <span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">]</span>
+<!-- Active/Hover Indicator -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-0 origin-left"></div>
+</a>
+<span class="text-white/10 select-none mx-1">/</span>
+</li>
+<!-- Item: ATOMS -->
+<li class="flex items-center group/link">
+<a class="relative px-3 py-1 text-white/60 hover:text-white transition-colors duration-0 flex items-center gap-1" href="#">
+<span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">[</span>
+                            ATOMS
+                            <span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">]</span>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-0 origin-left"></div>
+</a>
+<span class="text-white/10 select-none mx-1">/</span>
+</li>
+<!-- Item: MIND (Active State Example) -->
+<li class="flex items-center group/link">
+<a class="relative px-3 py-1 text-white flex items-center gap-1 bg-white/5 border border-white/10" href="#">
+<span class="text-primary text-xs font-bold">[</span>
+<span class="text-primary font-bold">MIND</span>
+<span class="text-primary text-xs font-bold">]</span>
+<!-- Active Indicator fixed -->
+<div class="absolute bottom-[-1px] left-0 w-full h-[2px] bg-primary"></div>
+</a>
+<span class="text-white/10 select-none mx-1">/</span>
+</li>
+<!-- Item: CV -->
+<li class="flex items-center group/link">
+<a class="relative px-3 py-1 text-white/60 hover:text-white transition-colors duration-0 flex items-center gap-1" href="#">
+<span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">[</span>
+                            CV
+                            <span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">]</span>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-0 origin-left"></div>
+</a>
+<span class="text-white/10 select-none mx-1">/</span>
+</li>
+<!-- Item: ABOUT -->
+<li class="flex items-center group/link">
+<a class="relative px-3 py-1 text-white/60 hover:text-white transition-colors duration-0 flex items-center gap-1" href="#">
+<span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">[</span>
+                            ABOUT
+                            <span class="text-white/30 text-xs group-hover/link:text-primary transition-colors">]</span>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-0 origin-left"></div>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Far Right: Language & Action -->
+<div class="flex items-center gap-6 z-10">
+<!-- Language Toggle -->
+<div class="flex text-xs font-bold tracking-wider">
+<button class="px-2 py-1 text-white/40 hover:text-white transition-colors">[ES]</button>
+<span class="text-white/20 py-1">|</span>
+<button class="px-2 py-1 text-primary bg-primary/10 border border-primary/30">[EN]</button>
+</div>
+<!-- Action Button -->
+<button class="hidden md:flex items-center justify-center w-10 h-10 border border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-0">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area (Placeholder for context) -->
+<main class="flex-grow relative w-full flex flex-col items-center justify-start pt-20 pb-40 scanline-bg overflow-hidden">
+<!-- Decorative Background Grid -->
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+<div class="layout-content-container flex flex-col max-w-[960px] w-full px-6 md:px-0 relative z-10">
+<!-- Breadcrumbs / Path -->
+<div class="flex items-center gap-2 text-xs text-white/40 font-mono mb-12">
+<span>HOME</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span>NAVIGATION</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary">HEADER_COMPONENT</span>
+</div>
+<!-- Hero Text -->
+<div class="border-l-2 border-primary pl-8 py-2 mb-16">
+<h2 class="text-5xl md:text-7xl font-bold uppercase tracking-tight text-white mb-4">
+                    Obsidian<br/><span class="text-white/20">Telemetry</span>
+</h2>
+<p class="text-white/60 max-w-lg text-lg leading-relaxed">
+                    System functionality prioritized. Data visualization active. 
+                    Navigation protocols engaged for optimal user trajectory.
+                </p>
+</div>
+<!-- Cards Grid Example -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-dark border border-white/10 p-6 flex flex-col gap-4 group hover:border-primary/50 transition-colors duration-0">
+<div class="flex justify-between items-start">
+<span class="text-primary font-mono text-xs border border-primary/30 px-2 py-0.5 bg-primary/10">01</span>
+<span class="material-symbols-outlined text-white/40 group-hover:text-primary transition-colors">memory</span>
+</div>
+<h3 class="text-xl font-bold text-white mt-2">Neural Processing</h3>
+<p class="text-sm text-white/50">Algorithm efficiency analysis complete. Optimization required for sector 7G.</p>
+<div class="h-[150px] w-full bg-black/40 mt-2 relative overflow-hidden">
+<img alt="Abstract circuit board pattern in dark lighting" class="w-full h-full object-cover opacity-60 mix-blend-screen grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlzpW6iFdxyJvmUi_txyF7bRF1GXgIo_1qgj3K4h2jJ_B2n4K7bJGSwoT5kfsyk2DvAiSgSMTNA22S8Vg31mLdPe5e6XRKxamtnrsC4kVsyXxqs33ApCFJjM6luMxOmrEByZOURb9P23p7eg_MOt65RH1A7mCUoQT9oD6VT64EabxenpfLVQyRUb_hKKVa3Rpz3E9iI4G3EDZ_dwqMnfdqKH6ANFTAXXwhvu133bwB7oShMCBIoZrxc5lpq1EesJTGfJ5yLFbk4Xqf"/>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-dark border border-white/10 p-6 flex flex-col gap-4 group hover:border-primary/50 transition-colors duration-0">
+<div class="flex justify-between items-start">
+<span class="text-primary font-mono text-xs border border-primary/30 px-2 py-0.5 bg-primary/10">02</span>
+<span class="material-symbols-outlined text-white/40 group-hover:text-primary transition-colors">schema</span>
+</div>
+<h3 class="text-xl font-bold text-white mt-2">Data Architecture</h3>
+<p class="text-sm text-white/50">Structured data lakes forming coherent patterns. Retrieval speed: 12ms.</p>
+<div class="h-[150px] w-full bg-black/40 mt-2 relative overflow-hidden">
+<img alt="Server rack lights blinking in dark room" class="w-full h-full object-cover opacity-60 mix-blend-screen grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2HZbgzJ4pYHkj6lfd5nKOALmsCTUrkTySJKNtLMfTZD4q8bxZT0-IScXX5O1fTIopi8gkDeq3z04Io1eIUH4C39r0Ibw98qfjhsyEBt40if8cwVFgnrgpHvSNCMg1MGidag7VUaZlI4UK5-oh-NuINaalaUPTZ5wyhQ6sQMd6tSmMLE5-Zoiw6cFWIY33XRrp7iWOMQ2kmQ3sFIp_2cRJT_iYQMh6I-ZAJVDw2EFTlcCWzv_npg8OyVWtpMQERa0EimQTzrNsZ9Pd"/>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-dark border border-white/10 p-6 flex flex-col gap-4 group hover:border-primary/50 transition-colors duration-0">
+<div class="flex justify-between items-start">
+<span class="text-primary font-mono text-xs border border-primary/30 px-2 py-0.5 bg-primary/10">03</span>
+<span class="material-symbols-outlined text-white/40 group-hover:text-primary transition-colors">terminal</span>
+</div>
+<h3 class="text-xl font-bold text-white mt-2">Command Interface</h3>
+<p class="text-sm text-white/50">User input terminals ready. Awaiting instructions. Execute sequence alpha.</p>
+<div class="h-[150px] w-full bg-black/40 mt-2 relative overflow-hidden">
+<img alt="Computer code on screen close up" class="w-full h-full object-cover opacity-60 mix-blend-screen grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3ef8uCy3keJGpR96eOgLkZZ5b4smrilGKrSqoeIKa6PIv8QMRb-fgfkyHi83Ed-CAdazaz3zgfi6MyfFGdWHQa8pvky7VTJki79XEqPTQ_14FwJpFPTH2YTMzdH6x_v0S2gAL3PD6MEw0qjXxUleKSfvlmMmlxqGyH_ujb-5WJRi8iZiyF3FNgEI_L2AZ6li_3k3nnlPzuhRUKfyA7o3ubBSTYk2FFiC4OlFg5Ot7AwDXjYNA9WxLL-5bH2UiMJwBSCPmI7NhInqd"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Telemetry Strip -->
+<footer class="w-full border-t border-white/10 bg-[#0A0A0A] py-2 px-6 flex justify-between items-center text-[10px] text-white/30 uppercase font-mono">
+<div>
+<span>SECURE CONNECTION ESTABLISHED</span>
+</div>
+<div class="flex gap-4">
+<span class="animate-pulse">_</span>
+<span>END OF LINE</span>
+</div>
+</footer>
+</body></html>

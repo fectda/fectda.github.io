@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Obsidian Telemetry CV Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c72929",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0A0A0A", 
+                        "surface-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "monospace"],
+                        "mono": ["Courier New", "Courier", "monospace"], // Adding explicit mono for code-like elements
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px", // Enforcing brutalist sharp edges as requested
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for that technical feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c72929;
+        }
+        
+        .technical-border {
+            position: relative;
+        }
+        
+        /* Corner markers */
+        .corner-marker::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #c72929;
+            border-left: 2px solid #c72929;
+            z-index: 10;
+        }
+        .corner-marker::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #c72929;
+            border-right: 2px solid #c72929;
+            z-index: 10;
+        }
+
+        /* Glitch hover effect for cards */
+        .glitch-hover:hover {
+            border-color: #c72929;
+            background-color: rgba(199, 41, 41, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-black dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="w-full border-b border-[#333] bg-[#0A0A0A]/95 backdrop-blur z-50 sticky top-0">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary animate-pulse">terminal</span>
+<h1 class="text-white text-lg font-bold tracking-tight">PHYSICIST.CIO.MAKER</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-gray-400 hover:text-white text-sm tracking-wider transition-colors duration-200" href="#">[ HOME ]</a>
+<a class="text-gray-400 hover:text-white text-sm tracking-wider transition-colors duration-200" href="#">[ PROJECTS ]</a>
+<a class="text-primary font-bold text-sm tracking-wider border-b-2 border-primary pb-1" href="#">[ CV ]</a>
+<a class="text-gray-400 hover:text-white text-sm tracking-wider transition-colors duration-200" href="#">[ CONTACT ]</a>
+</nav>
+<button class="flex items-center gap-2 border border-primary px-4 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-widest">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Download_Log</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full px-6 py-12 max-w-7xl mx-auto">
+<!-- Page Header -->
+<section class="w-full mb-16 border-l-2 border-primary pl-6 py-2">
+<div class="flex flex-col gap-2">
+<p class="text-primary/80 text-sm font-mono tracking-widest">// SYSTEM LOG: CAREER EVENTS</p>
+<h2 class="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase glitch-text">
+                    CURRICULUM<br/>VITAE
+                </h2>
+<div class="flex items-center gap-4 mt-4 text-gray-500 font-mono text-xs">
+<span>ID: 8492-AX</span>
+<span>|</span>
+<span>STATUS: ONLINE</span>
+<span>|</span>
+<span>LAST_UPDATE: T-MINUS 24H</span>
+</div>
+</div>
+</section>
+<!-- Timeline Container -->
+<div class="relative w-full max-w-5xl">
+<!-- Central Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[#333] transform md:-translate-x-1/2"></div>
+<!-- WORK EXPERIENCE SECTION -->
+<div class="relative mb-20">
+<div class="flex items-center mb-12">
+<div class="bg-background-dark border border-primary text-primary px-4 py-1 text-sm font-bold tracking-wider z-10 mx-auto uppercase">
+                        &lt; Work_Experience_Module /&gt;
+                    </div>
+</div>
+<!-- Timeline Item 1 (Right) -->
+<div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
+<!-- Date/Node -->
+<div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
+<!-- Spacer for left side on desktop -->
+<div class="md:w-1/2"></div>
+<!-- Content Card -->
+<div class="md:w-1/2 pl-12 md:pl-12">
+<div class="corner-marker technical-border border border-[#333] bg-[#121212] p-6 glitch-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-4 border-b border-[#333] pb-2">
+<div>
+<h3 class="text-xl font-bold text-white">CHIEF INFORMATION OFFICER</h3>
+<span class="text-primary font-mono text-sm tracking-wider">NEURAL SYSTEMS INC.</span>
+</div>
+<span class="text-gray-500 font-mono text-xs border border-[#333] px-2 py-1">2021 - PRESENT</span>
+</div>
+<ul class="space-y-2 text-gray-400 font-mono text-sm leading-relaxed">
+<li class="flex gap-2"><span class="text-primary">&gt;</span> Spearheaded digital transformation strategy resulting in 40% efficiency gain.</li>
+<li class="flex gap-2"><span class="text-primary">&gt;</span> Architected cloud-native infrastructure for quantum computing simulations.</li>
+<li class="flex gap-2"><span class="text-primary">&gt;</span> Managed a cross-functional team of 50+ engineers and data scientists.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 (Left) -->
+<div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
+<!-- Date/Node -->
+<div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-[#555] group-hover:border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
+<!-- Content Card -->
+<div class="md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
+<div class="corner-marker technical-border border border-[#333] bg-[#121212] p-6 glitch-hover transition-all duration-300">
+<div class="flex flex-col md:flex-row-reverse justify-between items-start mb-4 border-b border-[#333] pb-2">
+<div class="text-left md:text-right">
+<h3 class="text-xl font-bold text-white">HEAD OF RESEARCH</h3>
+<span class="text-primary font-mono text-sm tracking-wider">OMEGA LABS</span>
+</div>
+<span class="text-gray-500 font-mono text-xs border border-[#333] px-2 py-1 mt-2 md:mt-0">2018 - 2021</span>
+</div>
+<ul class="space-y-2 text-gray-400 font-mono text-sm leading-relaxed text-left md:text-right">
+<li class="flex md:flex-row-reverse gap-2"><span class="text-primary">&gt;</span> Led R&amp;D initiatives for next-gen neural interface protocols.</li>
+<li class="flex md:flex-row-reverse gap-2"><span class="text-primary">&gt;</span> Published 12 peer-reviewed papers on computational physics.</li>
+<li class="flex md:flex-row-reverse gap-2"><span class="text-primary">&gt;</span> Secured $5M in series B funding through technical roadmap presentations.</li>
+</ul>
+</div>
+</div>
+<!-- Spacer for right side on desktop -->
+<div class="md:w-1/2"></div>
+</div>
+<!-- Timeline Item 3 (Right) -->
+<div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
+<!-- Date/Node -->
+<div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-[#555] group-hover:border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
+<!-- Spacer -->
+<div class="md:w-1/2"></div>
+<!-- Content Card -->
+<div class="md:w-1/2 pl-12 md:pl-12">
+<div class="corner-marker technical-border border border-[#333] bg-[#121212] p-6 glitch-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-4 border-b border-[#333] pb-2">
+<div>
+<h3 class="text-xl font-bold text-white">SENIOR DATA PHYSICIST</h3>
+<span class="text-primary font-mono text-sm tracking-wider">CERN</span>
+</div>
+<span class="text-gray-500 font-mono text-xs border border-[#333] px-2 py-1">2015 - 2018</span>
+</div>
+<ul class="space-y-2 text-gray-400 font-mono text-sm leading-relaxed">
+<li class="flex gap-2"><span class="text-primary">&gt;</span> Analyzed petabytes of collision data using custom Python algorithms.</li>
+<li class="flex gap-2"><span class="text-primary">&gt;</span> Optimized distributed computing clusters for real-time data processing.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- EDUCATION SECTION -->
+<div class="relative">
+<div class="flex items-center mb-12">
+<div class="bg-background-dark border border-primary text-primary px-4 py-1 text-sm font-bold tracking-wider z-10 mx-auto uppercase">
+                        &lt; Education_History /&gt;
+                    </div>
+</div>
+<!-- Timeline Item 4 (Left) -->
+<div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
+<!-- Date/Node -->
+<div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-[#555] group-hover:border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
+<!-- Content Card -->
+<div class="md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
+<div class="corner-marker technical-border border border-[#333] bg-[#121212] p-6 glitch-hover transition-all duration-300">
+<div class="flex flex-col md:flex-row-reverse justify-between items-start mb-4 border-b border-[#333] pb-2">
+<div class="text-left md:text-right">
+<h3 class="text-xl font-bold text-white">PHD THEORETICAL PHYSICS</h3>
+<span class="text-primary font-mono text-sm tracking-wider">MIT</span>
+</div>
+<span class="text-gray-500 font-mono text-xs border border-[#333] px-2 py-1 mt-2 md:mt-0">2012 - 2015</span>
+</div>
+<p class="text-gray-400 font-mono text-sm leading-relaxed text-left md:text-right">
+<span class="text-primary">&gt;</span> Thesis: "Non-Equilibrium Dynamics in Quantum Many-Body Systems"
+                            </p>
+</div>
+</div>
+<!-- Spacer -->
+<div class="md:w-1/2"></div>
+</div>
+<!-- Timeline Item 5 (Right) -->
+<div class="relative flex flex-col md:flex-row gap-8 mb-8 group">
+<!-- Date/Node -->
+<div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-[#555] group-hover:border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
+<!-- Spacer -->
+<div class="md:w-1/2"></div>
+<!-- Content Card -->
+<div class="md:w-1/2 pl-12 md:pl-12">
+<div class="corner-marker technical-border border border-[#333] bg-[#121212] p-6 glitch-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-4 border-b border-[#333] pb-2">
+<div>
+<h3 class="text-xl font-bold text-white">BS COMPUTER SCIENCE</h3>
+<span class="text-primary font-mono text-sm tracking-wider">STANFORD UNIVERSITY</span>
+</div>
+<span class="text-gray-500 font-mono text-xs border border-[#333] px-2 py-1">2008 - 2012</span>
+</div>
+<p class="text-gray-400 font-mono text-sm leading-relaxed">
+<span class="text-primary">&gt;</span> Summa Cum Laude
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- End Node -->
+<div class="absolute left-4 md:left-1/2 bottom-0 w-3 h-3 bg-primary transform -translate-x-1/2 translate-y-1/2"></div>
+</div>
+<!-- Skills Grid Section -->
+<section class="w-full mt-24 max-w-5xl">
+<div class="flex items-center gap-4 mb-8">
+<h3 class="text-2xl font-bold text-white uppercase tracking-tighter">Technical_Competencies</h3>
+<div class="h-px bg-[#333] flex-grow"></div>
+<span class="font-mono text-xs text-primary">[ GRID_VIEW_ACTIVE ]</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">code</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.99</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">PYTHON</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">memory</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.85</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">QUANTUM COMP.</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">dataset</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.90</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">DATA STRATEGY</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[90%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">deployed_code</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.80</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">REACT / NODE</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[80%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">neurology</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.75</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">NEURAL NETS</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">cloud</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.88</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">AWS / AZURE</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">security</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.92</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">CYBERSEC</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="border border-[#333] bg-[#0F0F0F] p-4 hover:border-primary hover:bg-[#150505] transition-colors group cursor-default">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">leaderboard</span>
+<span class="text-[10px] text-gray-600 font-mono">Lvl.95</span>
+</div>
+<h4 class="text-white font-bold tracking-wide">MANAGEMENT</h4>
+<div class="w-full bg-[#222] h-1 mt-3 overflow-hidden">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full border-t border-[#333] bg-[#050505] py-8 mt-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-600 text-xs font-mono">© 2024 PHYSICIST.CIO.MAKER // ALL SYSTEMS OPERATIONAL</p>
+<div class="flex gap-4">
+<a class="text-gray-600 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">mail</span></a>
+<a class="text-gray-600 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">code</span></a>
+<a class="text-gray-600 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">link</span></a>
+</div>
+</div>
+</footer>
+</body></html>

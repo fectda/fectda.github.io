@@ -1,0 +1,692 @@
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+
+Design a brutalist website header navigation component following "Obsidian Telemetry" aesthetic:
+
+VISUAL STYLE (MANDATORY):
+
+Deep black background (#0A0A0A or similar)
+MONOSPACE font ONLY (JetBrains Mono, Fira Code, or system monospace)
+ZERO curves - all rectangular, sharp edges
+High contrast with white text
+Red/Orange accent color (#C62828) for active states only
+STRUCTURE:
+
+Left side: Site name/logo as plain text "EDUARDO.GONZÁLEZ" in uppercase monospace
+Right side: Navigation links with technical/terminal style labels: [BITS] / [ATOMS] / [MIND] / [CV] / [ABOUT]
+Use "/" or "|" as separators between nav links
+Language toggle at the end: [ES] [EN]
+INTERACTION STATES:
+
+Default links: white/60% opacity
+Hover: full white
+Active/Current: Red accent (#C62828) with underline
+LAYOUT:
+
+Full width but content constrained in center container
+Minimal padding, industrial feel
+No shadows, no gradients, no decorative elements
+Border-bottom: 1px solid white/10% to separate from content
+Inspired by F1 telemetry dashboards and Linux terminal interfaces. Brutalist utility aesthetic.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+
+The design for the Obsidian Telemetry header navigation has been generated:
+
+Obsidian Telemetry Navigation Header: A high-contrast, brutalist desktop header featuring monospace typography, sharp industrial edges, and a technical terminal layout inspired by F1 telemetry.
+Would you like to see how this header looks integrated into a full landing page or should we refine the interaction states further?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+
+Design a brutalist HOMEPAGE DASHBOARD following "Obsidian Telemetry" aesthetic for a Physicist-CIO-Maker portfolio:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY (JetBrains Mono, Fira Code)
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828) for status indicators and active states
+No shadows, no gradients, no decorative elements
+PAGE STRUCTURE:
+
+Header Navigation Bar:
+
+Left: Site name "EDUARDO.GONZÁLEZ" uppercase monospace
+Right: [BITS] / [ATOMS] / [MIND] / [CV] / [ABOUT] with "/" separators
+Language toggle [ES] [EN] at far right
+Border-bottom: 1px white/10%
+Hero "System Status" Panel:
+
+Top-left: Red blinking dot + "SYSTEM_STATUS: ONLINE" in small monospace
+Two-column grid inside bordered panel:
+Left column: Name "Eduardo González" large + "ARCHITECT-EXECUTIVE" subtitle in red
+Right column: Metadata grid (ROLE: Physicist → CIO → Maker, LOCATION: Mexico City, FOCUS: Cloud, AI, Hardware)
+Description text below
+Content Grids (3 sections):
+
+Each section header: "[BITS]", "[ATOMS]", "[MIND]" with red brackets + description + "Ver todos →" link
+Cards below: rectangular bordered cards with title, description, arrow icon on hover
+No rounded corners anywhere
+Contact Section:
+
+Bordered panel with "COMMS_CHANNEL" indicator
+Terminal-style prompt "> Contacto_"
+Footer:
+
+Copyright with red © symbol
+Theme toggle icons (sun/moon/monitor)
+Inspired by F1 telemetry dashboards and Linux terminals. Industrial utility aesthetic.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The homepage dashboard for Eduardo González has been generated following the "Obsidian Telemetry" aesthetic:
+
+Obsidian Telemetry Homepage Dashboard: A brutalist, terminal-inspired interface featuring a "System Status" hero panel, categorized content grids for BITS, ATOMS, and MIND, and a high-contrast industrial layout with zero border-radius and monospace typography.
+Would you like to detail any of the specific project cards for [BITS] or [ATOMS], or perhaps design the [CV] technical layout?
+
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a brutalist HOMEPAGE DASHBOARD following "Obsidian Telemetry" aesthetic for a Physicist-CIO-Maker portfolio:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY (JetBrains Mono, Fira Code)
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828) for status indicators and active states
+No shadows, no gradients, no decorative elements
+PAGE STRUCTURE:
+
+Header Navigation Bar:
+
+Left: Site name "EDUARDO.GONZÁLEZ" uppercase monospace
+Right: [BITS] / [ATOMS] / [MIND] / [CV] / [ABOUT] with "/" separators
+Language toggle [ES] [EN] at far right
+Border-bottom: 1px white/10%
+Hero "System Status" Panel:
+
+Top-left: Red blinking dot + "SYSTEM_STATUS: ONLINE" in small monospace
+Two-column grid inside bordered panel:
+Left column: Name "Eduardo González" large + "ARCHITECT-EXECUTIVE" subtitle in red
+Right column: Metadata grid (ROLE: Physicist → CIO → Maker, LOCATION: Mexico City, FOCUS: Cloud, AI, Hardware)
+Description text below
+Content Grids (3 sections):
+
+Each section header: "[BITS]", "[ATOMS]", "[MIND]" with red brackets + description + "Ver todos →" link
+Cards below: rectangular bordered cards with title, description, arrow icon on hover
+Contact Section:
+
+Bordered panel with "COMMS_CHANNEL" indicator
+Terminal-style prompt "> Contacto_"
+Footer:
+
+Copyright with red © symbol
+Theme toggle icons
+Inspired by F1 telemetry dashboards and Linux terminals.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The homepage dashboard for Eduardo González has been generated:
+
+Obsidian Telemetry Homepage Dashboard: A brutalist, terminal-inspired desktop interface featuring a "System Status" hero panel, categorized content grids with red bracket accents, and a strictly monospace, sharp-edged industrial layout.
+Would you like to expand on one of the specific sections, such as designing the detail view for a [BITS] project or a technical [CV] layout?
+
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a BITS INDEX PAGE (Software Projects Grid) following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same as homepage - "EDUARDO.GONZÁLEZ" + [BITS] / [ATOMS] / [MIND] / [CV] / [ABOUT] + [ES][EN]
+
+[BITS] should be ACTIVE (red color, underlined)
+Page Title Section:
+
+Large monospace title: "BITS"
+Subtitle: "Proyectos de Software" in white/60%
+Optional: terminal-style prompt like "> ls -la /bits"
+Project Grid:
+
+Each project card is a bordered rectangle (border-white/10%)
+Card content:
+Project title (white, bold)
+Description (white/60%)
+Stack badges: small rectangular tags showing technologies (Python, Vue, etc)
+Status indicator: "POC" | "WIP" | "DONE" with appropriate colors
+Date in small monospace
+Cards have hover state: border changes to red/50%
+Arrow icon on the right side
+Footer: Same as homepage with copyright and theme toggles
+
+Group projects by year with year headers like "2026", "2025".
+
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The BITS index page has been generated for your portfolio:
+
+Bits Software Projects Index: A terminal-style project directory featuring yearly groupings, technical stack badges, and sharp-edged cards with hover interactions, all set within the high-contrast Obsidian Telemetry aesthetic.
+Would you like to move on to the [ATOMS] index for hardware projects, or should we design the [CV] page next?
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a PROJECT SPEC SHEET (Single Project Detail View) following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same navigation bar
+
+Back Link: "← Volver a BITS" with arrow
+
+Project Header:
+
+Project ID code in small red text: "PRJ-2024-001"
+Large project title
+Description paragraph
+Metadata Sidebar/Block:
+
+Technical specs in key:value format:
+STACK: [Python] [FastAPI] [Vue] (as rectangular tags)
+STATUS: WIP (with colored indicator)
+DATE: 2024-03-15
+REPOSITORY: GitHub link
+Content Area:
+
+Main markdown content with clear typography
+Code blocks with monospace and subtle background
+Headers with hierarchy (h2, h3)
+Lists with terminal-style bullets
+Footer: Same as other pages
+
+Layout can be two-column (sidebar + content) or stacked (metadata block at top, content below).
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+Se produjo un error inesperado y Stitch no pudo completar la generación. Vuelve a intentarlo en unos minutos.
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a CV TIMELINE PAGE following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same navigation with [CV] active
+
+Page Title:
+
+"CURRICULUM VITAE" or "TIMELINE" in large monospace
+Subtitle: "System Log: Career Events"
+Vertical Timeline:
+
+Center vertical line (1px white/20%)
+
+Timeline nodes alternating left/right:
+
+Each node has a small square marker (not circle!)
+Date range on one side: "2020 - Present"
+Content box on opposite side:
+Role title: "Chief Innovation Officer" (white, bold)
+Company: "Getin S.A.P.I. de C.V." in red
+List of achievements with terminal-style bullets (>)
+Two sections: "WORK EXPERIENCE" and "EDUCATION"
+
+Separate with horizontal divider
+
+Skills Section (optional):
+
+Grid of skill badges: [Python] [Kubernetes] [GCP] etc
+Footer: Same as other pages
+
+The timeline should feel like a system event log, industrial and precise.
+
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The CV Timeline page has been generated for your portfolio:
+
+Obsidian Telemetry CV Timeline: A structured, industrial career log featuring a vertical timeline with square markers, alternating experience blocks, and a technical skills grid, all maintaining the sharp brutalist aesthetic.
+Would you like to complete the set with the [ATOMS] index for hardware projects, or perhaps the [MIND] page for writing and thoughts?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design an ABOUT/MANIFESTO PAGE following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same navigation with [ABOUT] active
+
+Hero Section:
+
+Large title: "ABOUT" or "MANIFESTO"
+Subtitle: "System Identity: Eduardo González"
+Two-Column Layout:
+
+Left column (wider): Bio text in paragraphs
+
+Philosophy of engineering
+How I approach problems
+"I reject corporate polish in favor of industrial utility"
+Right column (narrower): Identity matrix
+
+Profile photo (optional, in bordered square)
+Quick facts in key:value format:
+ORIGIN: Physics
+EVOLUTION: CIO
+STATE: Maker
+Interests/DNA Section:
+
+Title: "INTERESTS.DNA"
+Grid of interest badges/cards:
+F1 (with small icon or description)
+Football
+Maker/DIY
+Each as a bordered rectangular block
+Footer: Same as other pages
+
+The page should feel like a personal specification sheet, not a typical bio.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The About/Manifesto page has been generated for your portfolio:
+
+Obsidian Telemetry About Manifesto: A personal specification sheet featuring a philosophy-driven bio, an "Identity Matrix" for quick facts, and an "INTERESTS.DNA" grid, all presented with industrial precision and sharp monospace typography.
+Would you like to finish the core site by designing the [ATOMS] hardware projects index or the [MIND] articles page?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design an ATOMS INDEX PAGE (Hardware/Maker Projects Grid) following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same as other pages - [ATOMS] should be ACTIVE (red, underlined)
+
+Page Title Section:
+
+Large monospace title: "ATOMS"
+Subtitle: "Proyectos Hardware/Maker" in white/60%
+Terminal prompt: "> ls -la /atoms"
+Project Grid: Same card style as BITS
+
+Each card: bordered rectangle with title, description, stack badges, status
+Status: "POC" | "WIP" | "DONE"
+Hover: border red/50%
+Group by year
+Footer: Same as other pages
+
+Projects include hardware/DIY/maker builds like sculptures, LED hacks, tools.
+
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The ATOMS index page for your hardware and maker projects has been generated:
+
+Atoms Hardware Projects Index: A terminal-style directory for physical builds, featuring yearly groupings, material/tool badges, and sharp-edged project cards that maintain the technical "Obsidian Telemetry" aesthetic.
+We have now designed the Homepage, BITS (Software), ATOMS (Hardware), CV (Timeline), and ABOUT (Manifesto) pages. Would you like to finish the core set with the [MIND] index for your articles and thoughts?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a MIND INDEX PAGE (Essays/Articles Grid) following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same as other pages - [MIND] should be ACTIVE (red, underlined)
+
+Page Title Section:
+
+Large monospace title: "MIND"
+Subtitle: "Ensayos y Reflexiones" in white/60%
+Terminal prompt: "> cat /mind/latest.log"
+Articles Grid:
+
+Each article card: bordered rectangle
+Card content:
+Title (white, bold)
+Short excerpt (white/60%)
+Date in small monospace
+Reading time estimate: "5 min read"
+Hover: border red/50%
+Group by year
+Footer: Same as other pages
+
+Essays about engineering philosophy, AI thoughts, maker projects.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The MIND index page for your essays and reflections has been generated:
+
+Mind Essays Index: A terminal-inspired archive for long-form writing, featuring yearly groupings, reading time indicators, and sharp-edged article cards that match the technical "Obsidian Telemetry" aesthetic.
+With this, your core portfolio structure is complete, covering the Homepage, BITS (Software), ATOMS (Hardware), MIND (Essays), CV (Timeline), and ABOUT (Manifesto). Would you like to design a Single Article View for the MIND section or a Project Detail View for BITS/ATOMS?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a PROJECT SPEC SHEET (Single Project Detail View) following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same navigation bar
+
+Back Link: "← Volver a BITS" with arrow icon
+
+Project Header:
+
+Project ID code in small red: "PRJ-2024-001"
+Large project title
+Description paragraph
+Metadata Block:
+
+Bordered panel with technical specs:
+STACK: [Python] [FastAPI] [Vue] as rectangular tags
+STATUS: WIP with colored indicator
+DATE: 2024-03-15
+REPO: GitHub link in red
+Content Area:
+
+Markdown content with monospace code blocks
+Clear header hierarchy (h2, h3)
+Terminal-style list bullets (>)
+Footer: Same as other pages
+
+Two-column layout preferred: narrow left sidebar for metadata, wide right for content.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The Project Spec Sheet has been generated for your portfolio:
+
+Project Spec Sheet Detail View: A technical project breakdown using a two-column layout. It features a narrow sidebar for system metadata (ID, Stack, Status) and a wide content area for detailed documentation, terminal-style bullets, and monospace code blocks.
+Would you like to see how an ATOMS project detail might differ—perhaps with an integrated image gallery or technical schematic—or should we design a Single Article View for the MIND section?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Design a SINGLE ESSAY/ARTICLE READER VIEW following "Obsidian Telemetry" aesthetic:
+
+DESIGN SYSTEM (MANDATORY):
+
+Background: Deep Black (#0A0A0A)
+Typography: MONOSPACE fonts ONLY
+Shapes: ZERO curves, all rectangular with sharp edges
+Accent Color: Red (#C62828)
+No shadows, no gradients
+PAGE STRUCTURE:
+
+Header: Same navigation bar
+
+Back Link: "← Volver a MIND" with arrow icon
+
+Article Header:
+
+Large article title
+Metadata line: Date + Reading time (e.g., "2024-03-15 | 7 min read")
+Content Area:
+
+Wide column for long-form reading
+Typography optimized for essay reading:
+Clear paragraph spacing
+Monospace code blocks
+Headers (h2, h3) with subtle red accent
+Blockquotes with left border red
+Lists with terminal-style bullets (>)
+Maximum width for comfortable reading (prose wrapper)
+Optional Sidebar:
+
+Table of contents with section links
+OR keep single column for minimal distraction
+Footer: Same as other pages
+
+Focus on readability while maintaining the brutalist monospace aesthetic.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+The Single Essay Reader View has been generated for your MIND section:
+
+Mind Single Essay Reader View: A focused long-form reading experience that balances brutalist aesthetics with readability. It features a centered prose column, terminal-style list markers, red-accented blockquotes, and a technical table of contents.
+Your core portfolio system is now fully defined. Would you like to add any final touches, such as a Contact Form page or perhaps a System Search interface?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Este no es un portafolio de programador. Es el centro de mando de un Arquitecto de Realidades (Físicas y Digitales).
+
+La Identidad (El Quién): El usuario es una contradicción viva: Un Físico de la UNAM que creció en el barrio. Un CIO que prefiere soldar cables. Un ecologista que ama la Fórmula 1. Su estética no es "Cyberpunk" ni "Hacker". Su estética es Ancestral-Industrial.
+
+Los Valores Visuales (El Cómo se Siente):
+
+Obsidiana, no Plástico: El sitio debe sentirse denso, pesado y cortante. Como un bloque de vidrio volcánico. Oscuro, profundo y con filos definidos.
+Ingeniería, no Juguete: Rechaza cualquier elemento que parezca un videojuego o una película de hackers de los 90s (terminales verdes, cursores parpadeantes). Eso es infantil. Buscamos la seriedad de un Códice Matemático.
+Telemetría, no Marketing: No nos vendas al candidato. Muéstranos sus datos. La interfaz debe priorizar la información cruda y la estructura lógica, como un tablero de control de F1 o un plano arquitectónico.
+Huitzilopochtli (La Voluntad): El diseño debe evocar la geometría sagrada mexica pero llevada al minimalismo moderno. Líneas rectas, repetición, orden cósmico. El Objetivo: Que quien entre al sitio sienta que está visitando el taller de un maestro artesano que usa láseres en lugar de cinceles.
+reaas todos lo disenos con esto nuevo en mente ademas agrega una vista nueva para el heather y el footer por separado
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+
+The entire system has been rebuilt to reflect the Ancestral-Industrial identity. This is no longer a "hacker" portfolio; it is an industrial codex—dense, heavy, and laser-precise.
+
+Ancestral-Industrial Nav System: A dedicated view of the header and footer, designed as structural anchors. The header is a thick, monolithic bar, while the footer acts as a technical status readout for the system core.
+Ancestral-Industrial Core Dashboard: The command center. It uses high-density typography and an "Identity Matrix" that feels engraved into volcanic glass.
+Bits: Industrial Directory: Software projects reimagined as a rigid inventory of logic, using heavy borders and technical directory paths.
+Career Codex: Industrial Timeline: A career log that feels like an archaeological site map, with thick architectural lines and technical block markers.
+Atoms: Raw Assembly Inventory: A hardware grid that feels like a storage locker of physical components, using high-contrast grayscale imagery and industrial status stamps.
+Manifesto: Volcanic Identity: A dense, grid-locked bio page that rejects "corporate polish" for the raw utility of a technical manual.
+Mind: Systemic Reflections Log: An essay index that treats thoughts as white papers, removing all decorative elements for pure typographic hierarchy.
+Spec Sheet: Blueprint View: Project documentation styled as a technical blueprint, featuring a heavy vertical split and industrial-nameplate-style metadata.
+Reader View: Technical Log: A long-form reading interface where blockquotes act as structural pillars and every character is aligned with industrial precision.
+The site now feels like it was cut from obsidian with a laser. How would you like to proceed with this master command center?
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+🛑 PROTOCOLO DE CORRECCIÓN VISUAL: ESTÉTICA "OBSIDIAN TELEMETRY"
+ESTADO ACTUAL: FALLIDO. El diseño actual es genérico ("Hacker/Dev").
+
+NUEVO OBJETIVO: Implementar la identidad "Ancestral-Industrial" definida en el Manifiesto del Usuario.
+
+INSTRUCCIONES PARA EL MOTOR DE STITCH (CRÍTICO):
+
+Vas a ignorar cualquier instrucción previa sobre "Portafolio de Programador". A partir de ahora, actúas como un Diseñador de Interfaces Industriales para maquinaria pesada o sistemas de telemetría científica.
+
+1. TRADUCCIÓN DEL MANIFIESTO A TOKENS DE DISEÑO (Para enhance-prompt)
+Cuando uses la skill enhance-prompt, DEBES inyectar explícitamente estos parámetros visuales. No dejes que Stitch "adivine":
+
+Paleta de Color (Obsidiana):
+
+Fondo: #050505 (Casi negro absoluto, no gris).
+
+Superficies: #0A0A0A (Mate, denso).
+
+Acento Primario: #FF2A2A o Rojo Industrial (Solo para alertas y estados activos).
+
+Texto: Blanco Técnico #EAEAEA y Gris Tenue #888888 para metadatos.
+
+PROHIBIDO: Verdes neón, azules "tech" brillantes, gradientes, sombras suaves (box-shadow).
+
+Geometría (Huitzilopochtli/Industrial):
+
+Bordes: border-radius: 0px (Absolutamente todo cuadrado/afilado).
+
+Estructura: Grid visible. Líneas de 1px separando secciones (border: 1px solid #222).
+
+Espaciado: Denso pero ordenado.
+
+Tipografía (Ingeniería):
+
+Títulos: Sans-serif pesada, condensada (estilo "Helvetica Impact" o "Druk").
+
+Datos: Monospace estricto (estilo terminal de datos, no de código).
+
+Vibe Check:
+
+Si parece un videojuego -> RECHAZAR.
+
+Si parece un manual de operación de un reactor nuclear -> APROBAR.
+
+2. EJECUCIÓN SECUENCIAL CON STITCH SKILLS
+Ejecuta las siguientes tareas de diseño usando generate_screen_from_text y refina con stitch-loop si el resultado es "suave" o "web 2.0".
+
+TAREA A: HEADER (Navegación de Sistema)
+Concepto: No es un menú, es un panel de estado.
+
+Elementos:
+
+Indicador de "SYSTEM STATUS: ONLINE" (punto rojo o verde pequeño).
+
+Links de navegación como pestañas de archivo físico o breadcrumbs.
+
+Datos de telemetría decorativa (ej: Latencia, Coordenadas, Versión).
+
+Acción: Genera la vista aislada del Header.
+
+TAREA B: FOOTER (Pie de Máquina)
+Concepto: Placa de especificaciones técnicas.
+
+Elementos:
+
+Copyright estilo "No. de Serie".
+
+Columnas de datos estructurados, no solo links.
+
+Bloque de texto legal pequeño, estilo contrato.
+
+Acción: Genera la vista aislada del Footer.
+
+TAREA C: LANDING / DASHBOARD (Re-diseño)
+Input: Usa el texto del Manifiesto ("Físico, CIO, Maker") pero maquetado como un Dashboard de Control.
+
+Layout: Grid bento (cajas rectangulares). Una caja para "Mapa/Ubicación", otra para "Stack", otra para "Bio".
+
+Estilo: Debe verse como la pantalla obsidian_telemetry_homepage.jpg.
+
+Acción: Genera la pantalla completa integrando el Header y Footer diseñados arriba.
+
+COMANDO DE INICIO:
+
+Confirma que has entendido la estética "Obsidiana" (Bordes 0px, Negro/Rojo, Grid).
+
+Empieza generando el HEADER usando generate_screen_from_text con estos nuevos parámetros agresivos.
+
+-----------------------------------
+--------stitch------------
+-----------------------------------
+
+
+Entendido. He procesado el Protocolo de Corrección Visual y el Manifiesto del Usuario. He eliminado cualquier rastro de estética "hacker" juvenil o diseño web genérico.
+
+Estamos trabajando bajo los parámetros de la Estética Obsidiana: Negro Volcánico (#050505), Bordes 0px (Cero curvas), Grids industriales de 1px y una jerarquía tipográfica que prioriza el dato crudo sobre el marketing.
+
+He generado los componentes maestros y el centro de mando:
+
+Ancestral-Industrial Master Header: No es un menú, es un panel de estado. Incluye telemetría de coordenadas, estado del sistema activo en rojo industrial y una navegación rígida tipo pestaña de archivo.
+Ancestral-Industrial Master Footer: Diseñado como una placa de especificaciones de maquinaria pesada. Dividido en cuadrantes técnicos con números de serie, latencia de red y versión de build.
+Ancestral-Industrial Command Center: El dashboard principal. Un grid bento de paneles cortantes que integran la matriz de identidad (Físico/CIO/Maker), telemetría de ubicación y el manifiesto de utilidad industrial. Todo bajo una tipografía sans-serif pesada y condensada para títulos y monospace estricto para datos.
+Este es ahora el estándar visual para todo el sistema. ¿Procedemos a aplicar esta severidad industrial a las vistas de BITS (Software) y ATOMS (Hardware)?
+
+
+-----------------------------------
+--------Eduardo---------------
+-----------------------------------
+
+Rediseñar el índice de BITS (Software) como un inventario de piezas lógicas
+
+
+Bits: Logic Parts Inventory: He eliminado el concepto de "tarjetas de proyecto" por una tabla técnica tipo libro mayor (ledger). Cada software se cataloga con un PART_ID, nomenclatura en tipografía pesada, stack lógico y estado de despliegue, todo encerrado en un grid rígido de 1px que refuerza la sensación de un registro industrial denso y cortante.
+
+¿Continuamos con el rediseño de ATOMS (Hardware) tratándolo como un catálogo de ensamblaje físico?

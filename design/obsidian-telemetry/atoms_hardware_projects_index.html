@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atoms Hardware Projects Index</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C62828", // Red requested
+                        "primary-dim": "#7f1d1d",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0A0A0A", // #0A0A0A requested
+                        "surface-dark": "#121212",
+                        "border-dim": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px", // Brutalist zero radius requested, overriding theme somewhat for specific aesthetic but keeping config structure
+                        "sm": "2px",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for that industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C62828;
+        }
+        
+        /* Utility to force borders to collapse visually */
+        .collapse-borders > * {
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+
+        .crt-flicker {
+            animation: textShadow 1.6s infinite;
+        }
+
+        @keyframes textShadow {
+            0% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+            5% { text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+            /* ... abbreviated for performance, simplified flicker */
+            100% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<!-- Global Navigation -->
+<header class="fixed top-0 z-50 w-full border-b border-white/10 bg-[#0A0A0A]/95 backdrop-blur-sm">
+<div class="flex h-16 items-center justify-between px-6 lg:px-12">
+<!-- Logo Area -->
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
+<h1 class="font-bold tracking-tight text-xl text-white">[ SYSTEM_OS ]</h1>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 font-mono text-sm">
+<a class="text-white/50 hover:text-white transition-colors" href="#">[ HOME ]</a>
+<a class="text-primary font-bold border-b border-primary pb-0.5" href="#">[ ATOMS ]</a> <!-- Active State -->
+<a class="text-white/50 hover:text-white transition-colors" href="#">[ BITS ]</a>
+<a class="text-white/50 hover:text-white transition-colors" href="#">[ TRANSMISSIONS ]</a>
+</nav>
+<!-- Action / Search -->
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 text-xs font-mono text-white/60">
+<span class="material-symbols-outlined text-[14px]">search</span>
+<span>SEARCH_DB</span>
+</div>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Wrapper -->
+<main class="flex-grow pt-24 pb-20 px-6 lg:px-12 max-w-[1400px] mx-auto w-full">
+<!-- Hero / Terminal Section -->
+<section class="mb-16 border-l-2 border-primary pl-6 py-2">
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-2 uppercase">Atoms</h1>
+<p class="text-white/60 text-lg md:text-xl font-mono mb-6 uppercase tracking-widest">// Proyectos Hardware/Maker</p>
+<div class="bg-surface-dark border border-white/10 p-4 font-mono text-sm md:text-base max-w-2xl shadow-2xl">
+<div class="flex gap-2 text-white/40 mb-1">
+<span>root@sys:~/projects$</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-primary">&gt;</span>
+<span class="text-white">ls -la /projects/atoms</span>
+</div>
+<div class="text-white/60 pl-4 mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+<span>drwx------ 4 root root 4096 Oct 24 10:00 .</span>
+<span>drwxr-xr-x 8 root root 4096 Oct 23 14:20 ..</span>
+<span class="text-primary">drwxr-xr-x 2 root root 4096 Nov 01 09:12 2024_REGISTRY</span>
+<span>drwxr-xr-x 2 root root 4096 Sep 15 16:40 2023_ARCHIVE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2024 Registry Group -->
+<div class="mb-16">
+<div class="flex items-center gap-4 mb-6">
+<h2 class="text-2xl font-bold font-mono text-white tracking-tight">// 2024_REGISTRY</h2>
+<div class="h-[1px] bg-white/10 flex-grow"></div>
+<span class="text-xs font-mono text-white/40">[ ACTIVE_CYCLE ]</span>
+</div>
+<!-- Grid Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/10 border border-white/10">
+<!-- Project Card 1: Completed -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[320px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-094</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-green-900/20 border border-green-500/30 text-[10px] font-bold text-green-500 uppercase tracking-wider">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                            DONE
+                        </div>
+</div>
+<div class="mb-4 overflow-hidden h-40 w-full bg-white/5 relative border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Close up of cybernetic circuitry and neon lights" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract cybernetic circuitry detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe8lcLR3Ful5GGUzKiSP_it2B2kc1xWXEEPJ2xX_TLIzzxWJUyIpOxMxqCimGpHJbSmClIxucSbz2q3x1_T0duJEF4JAVLjMeai2IwBtxGNyRRwfOzJ6UMf4--i2Kc1guX075_-p81NXdLyYZlSSur8w-CJOPEMKD9RkJ4CE6nWBh_wRpt1pJvVmOIauk_6RuJatLgVLglVpmGSHTs-SaXSKXsepBwMIgclpGtMaSHQX_PT6Zc_4Nc1jpg1jfQ7HVNNT1_hnxTtmu4"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">LED_SCULPTURE_01</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-2">Interactive light installation using addressable WS2812B strips and custom acrylic diffusion layers.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Arduino</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">C++</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Acrylic</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+<!-- Project Card 2: WIP -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[320px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-095</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-yellow-900/20 border border-yellow-500/30 text-[10px] font-bold text-yellow-500 uppercase tracking-wider">
+<div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                            WIP
+                        </div>
+</div>
+<div class="mb-4 overflow-hidden h-40 w-full bg-white/5 relative border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="3D printer nozzle extruding filament" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-transform duration-700" data-alt="3D printer extrusion process close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByPegmz5q-F1VkOFxVg5zLvSL2s7SjIE0iiwkFb1tfumDRt4I-nSEEHMr8tlg4Mt5iJ_Glna4BaZDD9k5b0oWHKbOxa5zs4KzP-2QI404vmRj3Puy-HtTNvCrwa2Qlt3rnf8_NPOXnbcwu547zQ86ygGO2OFbYCN65mjt58ddrVhNql_6T-FnByj2geWEeJqNx_f_a0QXQtSvNJ6Ul6kN5PtymXyisp4fbiUC8OgZihmK6fW7oB2R-Ap2_4iur9fNRdPvpv4PIpOdX"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">MACRO_PAD_V2</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-2">Custom mechanical keyboard macropad with rotary encoders and OLED display for productivity workflows.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">PCB Design</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">QMK</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">3D Print</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+<!-- Project Card 3: Research -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[320px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-096</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-blue-900/20 border border-blue-500/30 text-[10px] font-bold text-blue-500 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[10px]">science</span>
+                            R&amp;D
+                        </div>
+</div>
+<div class="mb-4 overflow-hidden h-40 w-full bg-white/5 relative border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Data visualization on a screen monitor" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-transform duration-700" data-alt="Digital data telemetry interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzQpP9KcxVZeBhRW1MEQltHONmLnijWgsaZmeaggeMWfhCMIHBw5MofPB5hpwM3QfMhzXcoreYsshBcUpvX3jdpwR2TCNf3jbhra_GupvRG7-RehaJRJM0yCkiGX6wxC8-00V7tNiL6Q8QtYZF03Jj27HLtLRDun3YAbj7vLG7JboAq6j_6mMyfYHBQMWEBemT__hPBWRCQ2qH6k49uP7oxbbYkiqmUyWiTL1hkKQI8Pvc8dMiPazNA9mtks3mr7EwR7_DCEVvV5VP"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">BIOMETRIC_LOCK</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-2">Research into capacitive fingerprint sensors interfacing with ESP32 for secure local authentication.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">ESP32</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">C++</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Security</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+</div>
+</div>
+<!-- 2023 Registry Group -->
+<div class="mb-16">
+<div class="flex items-center gap-4 mb-6">
+<h2 class="text-2xl font-bold font-mono text-white tracking-tight">// 2023_ARCHIVE</h2>
+<div class="h-[1px] bg-white/10 flex-grow"></div>
+<span class="text-xs font-mono text-white/40">[ READ_ONLY ]</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-white/10 border border-white/10">
+<!-- Project Card 4: POC -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[280px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-081</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-primary/20 border border-primary/30 text-[10px] font-bold text-primary uppercase tracking-wider">
+                            POC
+                        </div>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors truncate">AUTO_WATER_V1</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-3">Proof of concept for automated plant watering system using capacitive soil moisture sensors and peristaltic pumps.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Hydroponics</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">IoT</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+<!-- Project Card 5: Failed -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[280px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-072</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-white/5 border border-white/20 text-[10px] font-bold text-white/60 uppercase tracking-wider decoration-slice line-through">
+                            DEPRECATED
+                        </div>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors truncate">SOLAR_TRACKER</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-3">Failed prototype for dual-axis solar tracking. Structural integrity issues with PLA prints in high heat environments.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Servo</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Solar</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+<!-- Project Card 6: Done -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[280px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-065</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-green-900/20 border border-green-500/30 text-[10px] font-bold text-green-500 uppercase tracking-wider">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            DONE
+                        </div>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors truncate">SMART_MIRROR</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-3">MagicMirror² implementation on Raspberry Pi Zero W behind two-way acrylic glass. Custom wooden frame.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Rpi Zero</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">NodeJS</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+<!-- Project Card 7: Done -->
+<article class="group relative bg-[#0A0A0A] p-6 hover:bg-surface-dark transition-all duration-300 border border-transparent hover:border-primary cursor-pointer min-h-[280px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-white/40">#HW-060</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-green-900/20 border border-green-500/30 text-[10px] font-bold text-green-500 uppercase tracking-wider">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            DONE
+                        </div>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors truncate">RETRO_CONSOLE</h3>
+<p class="text-sm text-white/60 font-mono mb-6 line-clamp-3">Handheld retro gaming console based on RetroPie with custom 3D printed enclosure and LiPo power management.</p>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Emulation</span>
+<span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">Linux</span>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- Industrial Footer -->
+<footer class="border-t border-white/10 bg-[#0A0A0A] text-white/40 font-mono text-xs">
+<div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-10 flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary animate-pulse"></div>
+<span class="uppercase tracking-widest text-white font-bold">System Status: Online</span>
+</div>
+<p>LATENCY: 12ms // SERVER: US-EAST-1</p>
+<p class="max-w-xs">This registry serves as a permanent archive for all physical computing projects executed by the ATOMS initiative.</p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="flex flex-col gap-2">
+<span class="text-white font-bold mb-2">LINKS</span>
+<a class="hover:text-primary transition-colors" href="#">&gt;[ GITHUB ]</a>
+<a class="hover:text-primary transition-colors" href="#">&gt;[ TWITTER ]</a>
+<a class="hover:text-primary transition-colors" href="#">&gt;[ EMAIL ]</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-white font-bold mb-2">LEGAL</span>
+<a class="hover:text-primary transition-colors" href="#">TERMS_OF_USE</a>
+<a class="hover:text-primary transition-colors" href="#">PRIVACY_PROTOCOL</a>
+<a class="hover:text-primary transition-colors" href="#">LICENSING</a>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between">
+<div class="flex gap-4">
+<button class="flex items-center gap-2 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">dark_mode</span>
+                       THEME: DARK
+                   </button>
+<button class="flex items-center gap-2 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">language</span>
+                       LANG: EN
+                   </button>
+</div>
+<p class="mt-4 text-right">
+                   © 2024 ATOMS INC.<br/>
+<span class="text-primary">v.2.0.4.build_9302</span>
+</p>
+</div>
+</div>
+</footer>
+</body></html>

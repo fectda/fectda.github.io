@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Obsidian Telemetry // Manifesto</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cd2323",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0A0A0A", // Updated to user request
+                        "surface-dark": "#111111",
+                        "border-dark": "#333333",
+                        "text-dim": "#888888",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for the industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cd2323;
+        }
+
+        .glitch-text:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #cd2323;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        .scanline {
+            width: 100%;
+            height: 1px;
+            background: rgba(205, 35, 35, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes scanline {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-black dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="w-full border-b border-border-dark bg-[#0A0A0A] sticky top-0 z-40">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Logo / System Status -->
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-primary animate-pulse"></div>
+<span class="font-mono text-sm tracking-widest font-bold text-white">OBSIDIAN_TELEMETRY // V.4.1</span>
+</div>
+<!-- Nav Links -->
+<nav class="hidden md:flex gap-8">
+<a class="font-mono text-sm text-text-dim hover:text-white hover:line-through transition-colors" href="#">[ INDEX ]</a>
+<a class="font-mono text-sm text-text-dim hover:text-white hover:line-through transition-colors" href="#">[ WORK ]</a>
+<a class="font-mono text-sm text-primary underline underline-offset-4 decoration-2 font-bold" href="#">[ ABOUT ]</a>
+<a class="font-mono text-sm text-text-dim hover:text-white hover:line-through transition-colors" href="#">[ CONTACT ]</a>
+</nav>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Decorative loader bar -->
+<div class="h-[1px] w-full bg-border-dark relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/3 animate-[shimmer_2s_infinite]"></div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1400px] mx-auto px-6 py-12 relative">
+<div class="scanline"></div>
+<!-- Hero / Title Section -->
+<div class="mb-16 border-l-2 border-primary pl-6 py-2">
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-4 leading-[0.85]">
+                MANIFESTO
+            </h1>
+<div class="flex items-center gap-4 font-mono text-primary text-sm md:text-base tracking-widest">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>SYSTEM IDENTITY: EDUARDO GONZÁLEZ</span>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+<!-- Left Column: Manifesto Text -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="flex items-center justify-between border-b border-border-dark pb-2 mb-4">
+<span class="font-mono text-xs text-text-dim">/// SOURCE: USER_MINDSET</span>
+<span class="font-mono text-xs text-primary">READ_ONLY</span>
+</div>
+<div class="font-mono text-lg md:text-xl leading-relaxed text-gray-300 space-y-8">
+<p>
+<span class="text-primary font-bold">&gt;&gt;</span> ENGINEERING PHILOSOPHY: I prioritize industrial utility over corporate polish. In a world saturated with aesthetic veneer, raw functionality is the only currency that matters. My code is not poetry; it is machinery.
+                    </p>
+<p>
+<span class="text-primary font-bold">&gt;&gt;</span> Complexity is the enemy of execution. I dismantle systems to their core components, analyze the signal-to-noise ratio, and rebuild them with zero redundancy. If it doesn't serve a purpose, it is deleted.
+                    </p>
+<p>
+<span class="text-primary font-bold">&gt;&gt;</span> The digital landscape is hostile. We do not build to delight; we build to endure. My work stands at the intersection of brutalist architecture and high-frequency data processing.
+                    </p>
+</div>
+<div class="mt-8 p-4 border border-border-dark bg-surface-dark/50 flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary mt-1">warning</span>
+<div>
+<h4 class="font-bold text-white uppercase text-sm mb-1">SYSTEM ALERT</h4>
+<p class="font-mono text-xs text-text-dim">Deviating from established protocols to achieve higher efficiency. Standard UI patterns are rejected in favor of direct data manipulation.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Identity Matrix -->
+<div class="lg:col-span-4">
+<div class="sticky top-24">
+<div class="border border-border-dark bg-surface-dark p-1">
+<!-- Profile Image Container -->
+<div class="relative aspect-square w-full bg-neutral-900 mb-1 overflow-hidden group">
+<!-- Overlay Grid -->
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMzMzMzMiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMCAwaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20 z-10"></div>
+<img alt="Grayscale profile portrait of Eduardo González looking stoic" class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtomCRhm2ahZmUKjhTZSZ-qAjt4kKGNdvF7iGmhVf_hNY14jHLQ2K4vJDlk_edkO6ng2Os_lJb9AFz5wX5F9dog_mjkk5P5VBfQfGmQzU034nhJIpxUNJL6vG10tHCsvbfSdwHyhr--fJMz1nsJ6ZUT0lpSnn4NP2JN4-jkwXKJ00HJ7y5Ix6WViv0mai9IG9E40cDaaP1ZO-kyozg82da7Vn8_euQGI7PlHzRnh436Yaz7oN8pRLOi0VdEfUXEHmvTW4_SM_tFSBr"/>
+<!-- Corner Accents -->
+<div class="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary z-20"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary z-20"></div>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-1 gap-px bg-border-dark border border-border-dark">
+<div class="bg-background-dark p-3 flex justify-between items-center group hover:bg-white hover:text-black transition-colors">
+<span class="font-mono text-xs uppercase tracking-wider opacity-60">ORIGIN</span>
+<span class="font-bold text-sm">PHYSICS</span>
+</div>
+<div class="bg-background-dark p-3 flex justify-between items-center group hover:bg-white hover:text-black transition-colors">
+<span class="font-mono text-xs uppercase tracking-wider opacity-60">EVOLUTION</span>
+<span class="font-bold text-sm">CIO</span>
+</div>
+<div class="bg-background-dark p-3 flex justify-between items-center group hover:bg-white hover:text-black transition-colors">
+<span class="font-mono text-xs uppercase tracking-wider opacity-60">STATE</span>
+<span class="font-bold text-sm">MAKER</span>
+</div>
+<div class="bg-background-dark p-3 flex justify-between items-center group hover:bg-white hover:text-black transition-colors">
+<span class="font-mono text-xs uppercase tracking-wider opacity-60">LOC</span>
+<span class="font-bold text-sm" data-location="MADRID">MADRID_ES</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interests.DNA Section -->
+<div class="border-t border-border-dark pt-10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold uppercase tracking-tight flex items-center gap-2">
+<span class="w-2 h-2 bg-primary"></span>
+                    INTERESTS.DNA
+                </h2>
+<span class="font-mono text-xs text-text-dim hidden sm:block">DATA_PACKET_SIZE: 3KB</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: F1 -->
+<div class="group border border-border-dark bg-surface-dark hover:border-primary transition-colors duration-200 cursor-default relative overflow-hidden h-full flex flex-col">
+<div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-sm">sensors</span>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between h-48 sm:h-64">
+<div>
+<div class="font-mono text-xs text-primary mb-2">[01]</div>
+<h3 class="text-3xl font-black uppercase mb-1 group-hover:text-primary transition-colors">F1</h3>
+<div class="h-0.5 w-8 bg-white mb-4 group-hover:w-full group-hover:bg-primary transition-all duration-300"></div>
+</div>
+<p class="font-mono text-sm text-text-dim leading-tight">
+                            Telemetry analysis &amp; precision engineering. Optimizing for the millisecond.
+                        </p>
+</div>
+<div class="bg-black p-2 border-t border-border-dark flex justify-between items-center">
+<span class="text-[10px] font-mono text-gray-500">STATUS: ACTIVE</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">flag</span>
+</div>
+</div>
+<!-- Card 2: Football -->
+<div class="group border border-border-dark bg-surface-dark hover:border-primary transition-colors duration-200 cursor-default relative overflow-hidden h-full flex flex-col">
+<div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-sm">sports_soccer</span>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between h-48 sm:h-64">
+<div>
+<div class="font-mono text-xs text-primary mb-2">[02]</div>
+<h3 class="text-3xl font-black uppercase mb-1 group-hover:text-primary transition-colors">FOOTBALL</h3>
+<div class="h-0.5 w-8 bg-white mb-4 group-hover:w-full group-hover:bg-primary transition-all duration-300"></div>
+</div>
+<p class="font-mono text-sm text-text-dim leading-tight">
+                            Strategic formation &amp; tactical execution. The beautiful game as a system of nodes.
+                        </p>
+</div>
+<div class="bg-black p-2 border-t border-border-dark flex justify-between items-center">
+<span class="text-[10px] font-mono text-gray-500">STATUS: OBSERVING</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">timeline</span>
+</div>
+</div>
+<!-- Card 3: Maker -->
+<div class="group border border-border-dark bg-surface-dark hover:border-primary transition-colors duration-200 cursor-default relative overflow-hidden h-full flex flex-col">
+<div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-sm">precision_manufacturing</span>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between h-48 sm:h-64">
+<div>
+<div class="font-mono text-xs text-primary mb-2">[03]</div>
+<h3 class="text-3xl font-black uppercase mb-1 group-hover:text-primary transition-colors">MAKER / DIY</h3>
+<div class="h-0.5 w-8 bg-white mb-4 group-hover:w-full group-hover:bg-primary transition-all duration-300"></div>
+</div>
+<p class="font-mono text-sm text-text-dim leading-tight">
+                            Hardware hacking &amp; raw assembly. Building physical interfaces for digital realities.
+                        </p>
+</div>
+<div class="bg-black p-2 border-t border-border-dark flex justify-between items-center">
+<span class="text-[10px] font-mono text-gray-500">STATUS: BUILDING</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">memory</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-[#0A0A0A] mt-auto">
+<div class="max-w-[1400px] mx-auto px-6 py-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 font-mono text-xs text-text-dim">
+<span class="text-primary">©</span>
+<span>2024 SYSTEM_EG</span>
+<span class="mx-2 text-border-dark">|</span>
+<span>V.4.0.1</span>
+</div>
+<div class="font-mono text-[10px] text-[#444]">
+                        ALL RIGHTS RESERVED // UNAUTHORIZED ACCESS LOGGED
+                    </div>
+</div>
+<!-- System Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full md:w-auto">
+<div class="flex flex-col border-l border-border-dark pl-3">
+<span class="text-[10px] font-mono text-text-dim uppercase">LATENCY</span>
+<span class="text-xs font-bold font-mono text-primary">24ms</span>
+</div>
+<div class="flex flex-col border-l border-border-dark pl-3">
+<span class="text-[10px] font-mono text-text-dim uppercase">UPTIME</span>
+<span class="text-xs font-bold font-mono text-white">99.9%</span>
+</div>
+<div class="flex flex-col border-l border-border-dark pl-3">
+<span class="text-[10px] font-mono text-text-dim uppercase">THEME</span>
+<span class="text-xs font-bold font-mono text-white">DARK_MODE</span>
+</div>
+<div class="flex flex-col border-l border-border-dark pl-3">
+<span class="text-[10px] font-mono text-text-dim uppercase">SECURE</span>
+<span class="text-xs font-bold font-mono text-green-500">TRUE</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

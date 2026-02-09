@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eduardo González - Obsidian Telemetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f90606",
+              "background-light": "#f8f5f5",
+              "background-dark": "#0A0A0A", /* Deep black as requested */
+              "panel-dark": "#111111",
+              "border-dark": "#333333",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "monospace"],
+              "mono": ["Space Grotesk", "monospace"], /* Using Space Grotesk as mono-style */
+            },
+            borderRadius: {
+              "DEFAULT": "0px", /* Brutalist style requires sharp edges */
+              "sm": "0px",
+              "md": "0px",
+              "lg": "0px",
+              "xl": "0px",
+              "full": "9999px",
+            },
+            animation: {
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom Scanline Effect */
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f90606; 
+        }
+
+        .hover-invert:hover {
+            background-color: white;
+            color: black;
+        }
+        .hover-border-primary:hover {
+            border-color: #f90606;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-black dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Subtle Grid Background -->
+<div class="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-border-dark bg-[#0A0A0A]/90 backdrop-blur-sm">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">terminal</span>
+<h1 class="text-lg font-bold tracking-tight uppercase">EDUARDO.GONZÁLEZ</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+<a class="hover:text-primary transition-colors tracking-widest" href="#">[ BITS ]</a>
+<a class="hover:text-primary transition-colors tracking-widest" href="#">[ ATOMS ]</a>
+<a class="hover:text-primary transition-colors tracking-widest" href="#">[ MIND ]</a>
+<a class="hover:text-primary transition-colors tracking-widest text-gray-500" href="#">[ CV ]</a>
+<a class="hover:text-primary transition-colors tracking-widest text-gray-500" href="#">[ ABOUT ]</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-xs font-bold bg-primary text-white px-3 py-1 hover:bg-white hover:text-black transition-colors uppercase">
+                    [ ES ] / [ EN ]
+                </button>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16">
+<!-- Hero: System Status -->
+<section class="border border-border-dark bg-panel-dark relative overflow-hidden group">
+<!-- Decorative corner markers -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-primary"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-primary"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:divide-x divide-border-dark">
+<!-- Main Status Panel -->
+<div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-between min-h-[400px]">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse-fast shadow-[0_0_10px_#f90606]"></div>
+<span class="text-primary font-mono text-sm tracking-widest uppercase">System_Status: ONLINE</span>
+</div>
+<div class="space-y-6">
+<h2 class="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none">
+                            Physicist<span class="text-primary">.</span><br/>
+                            CIO<span class="text-primary">.</span><br/>
+                            Maker<span class="text-primary">.</span>
+</h2>
+<p class="text-gray-400 max-w-xl text-lg font-light leading-relaxed">
+                            // Building bridges between abstract theory and concrete reality. Deploying intelligence at the edge.
+                        </p>
+</div>
+<div class="mt-12 pt-6 border-t border-border-dark flex flex-wrap gap-4">
+<button class="flex items-center gap-2 bg-white text-black px-6 py-3 font-bold uppercase hover:bg-primary hover:text-white transition-colors group/btn">
+<span>Execute Protocol</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="flex items-center gap-2 border border-border-dark text-white px-6 py-3 font-bold uppercase hover:border-primary hover:text-primary transition-colors">
+<span>View Logs</span>
+</button>
+</div>
+</div>
+<!-- Metadata Sidebar -->
+<div class="lg:col-span-4 bg-[#0F0F0F] flex flex-col divide-y divide-border-dark">
+<div class="p-6 flex-1">
+<h3 class="text-xs text-gray-500 uppercase tracking-widest mb-4">// Current_Location</h3>
+<div class="relative h-48 w-full bg-border-dark mb-4 grayscale hover:grayscale-0 transition-all duration-500 overflow-hidden" data-alt="Satellite map view of Mexico City urban layout" data-location="Mexico City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDulYycDHg_VrzSBfCeOU13m5SebAQJEYaRpZablLUay_bjWLkDCvkRpAnvSScO6flWSNuUyo3ZKadPGlv3OnXdG1YXOa-Gt0wSOifpdeWhH7KeOIRdiGHJjzHIU__viHi4Q3R3Ux0BfLFqZIe6Njw8_XGLBgQn4xlHbMoCeHWPNt3zYaLvVq2n49OV-0yHKtNsWvsFHQRPIqi3_w_HRS9QD55AfmwpxSpxXn8s84ajWw7uR6KQMWHI4gHHw9EC4S34HY3gtv9QmM3W'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-30"></div>
+<div class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-[10px] text-primary font-mono">19.4326° N, 99.1332° W</div>
+</div>
+<p class="text-xl font-bold uppercase">Mexico City</p>
+<p class="text-sm text-gray-400 font-mono">Zone: CDT (UTC-5)</p>
+</div>
+<div class="p-6">
+<h3 class="text-xs text-gray-500 uppercase tracking-widest mb-4">// Core_Focus</h3>
+<ul class="space-y-3 font-mono text-sm">
+<li class="flex justify-between items-center">
+<span>[01] Cloud Arch</span>
+<div class="w-24 h-1 bg-gray-800"><div class="w-[85%] h-full bg-primary"></div></div>
+</li>
+<li class="flex justify-between items-center">
+<span>[02] AI / ML</span>
+<div class="w-24 h-1 bg-gray-800"><div class="w-[60%] h-full bg-white"></div></div>
+</li>
+<li class="flex justify-between items-center">
+<span>[03] Hardware</span>
+<div class="w-24 h-1 bg-gray-800"><div class="w-[40%] h-full bg-gray-500"></div></div>
+</li>
+</ul>
+</div>
+<div class="p-6">
+<h3 class="text-xs text-gray-500 uppercase tracking-widest mb-1">// Uptime</h3>
+<p class="text-3xl font-bold font-mono text-white">99.98<span class="text-primary text-sm">%</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid: BITS (Software) -->
+<section>
+<div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
+<h2 class="text-2xl font-bold uppercase flex items-center gap-2">
+<span class="text-primary">[</span> BITS <span class="text-primary">]</span>
+<span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// SOFTWARE_PROJECTS</span>
+</h2>
+<a class="text-xs uppercase font-bold text-primary hover:text-white transition-colors flex items-center gap-1" href="#">
+                    View All <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="group bg-panel-dark border border-border-dark hover:border-primary transition-colors p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-primary bg-primary/10 px-2 py-1">DEPLOYED</span>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors">deployed_code</span>
+</div>
+<h3 class="text-xl font-bold uppercase mb-2">Neural_Net_V1</h3>
+<p class="text-gray-400 text-sm mb-6 flex-grow">Python / PyTorch implementation of a custom vision model optimized for edge devices.</p>
+<div class="flex items-center justify-between pt-4 border-t border-dashed border-gray-800">
+<span class="text-xs text-gray-500 font-mono">v1.0.4</span>
+<a class="text-sm font-bold hover:text-primary flex items-center gap-1" href="#">
+                            REPO <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-panel-dark border border-border-dark hover:border-primary transition-colors p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-yellow-500 bg-yellow-500/10 px-2 py-1">IN_PROGRESS</span>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors">cloud</span>
+</div>
+<h3 class="text-xl font-bold uppercase mb-2">Obsidian_Cloud</h3>
+<p class="text-gray-400 text-sm mb-6 flex-grow">Self-hosted kubernetes cluster managing home automation and personal data telemetry.</p>
+<div class="flex items-center justify-between pt-4 border-t border-dashed border-gray-800">
+<span class="text-xs text-gray-500 font-mono">v0.8.2-beta</span>
+<a class="text-sm font-bold hover:text-primary flex items-center gap-1" href="#">
+                            DETAILS <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group bg-panel-dark border border-border-dark hover:border-primary transition-colors p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-primary bg-primary/10 px-2 py-1">ARCHIVED</span>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors">dataset</span>
+</div>
+<h3 class="text-xl font-bold uppercase mb-2">Data_Scraper_X</h3>
+<p class="text-gray-400 text-sm mb-6 flex-grow">High-performance web scraper built with Rust for aggregating financial market data.</p>
+<div class="flex items-center justify-between pt-4 border-t border-dashed border-gray-800">
+<span class="text-xs text-gray-500 font-mono">v2.1.0</span>
+<a class="text-sm font-bold hover:text-primary flex items-center gap-1" href="#">
+                            REPO <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Content Grid: ATOMS (Hardware) -->
+<section>
+<div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
+<h2 class="text-2xl font-bold uppercase flex items-center gap-2">
+<span class="text-primary">[</span> ATOMS <span class="text-primary">]</span>
+<span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// HARDWARE_BUILDS</span>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Large Card 1 -->
+<article class="relative group h-64 border border-border-dark overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close up of electronic circuit board with red LEDs" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCN0TgA7d83Osd1o4NxBYTz-RoF4Ax0VKJsAV3cZ3gmf8CmxVpyTrMwo9dX4xPOa7re_U8LEvkHRf4RzuCVF9a_cbeNWfYTH7uPJUsxF36io-o2xei9SYKxYim_RSJ1pBmoxJfCMddi_EU5rmPh8K4kPtU-ige5sTOnJ_B96my9NIIxyA84zFMuHFsrsC4EzwnkZkJZJWUApm5PGCjjXKl1802dKTQlWtnNc7ug_ZSFz7g7tZTmUrbvL4hDVGpjwQQluW4J2OxnfFZp');">
+<div class="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors"></div>
+</div>
+<div class="relative h-full p-6 flex flex-col justify-end items-start">
+<div class="bg-primary/90 text-white text-xs font-bold px-2 py-1 mb-2 uppercase">Prototype</div>
+<h3 class="text-2xl font-bold text-white uppercase mb-1">IoT_Enviro_Sensor</h3>
+<p class="text-gray-300 text-sm max-w-md">ESP32-based environmental monitoring station with custom PCB design.</p>
+<a class="mt-4 flex items-center gap-2 text-primary font-bold text-sm uppercase group-hover:text-white transition-colors" href="#">
+                            Initialize <span class="material-symbols-outlined text-sm">terminal</span>
+</a>
+</div>
+</article>
+<!-- Large Card 2 -->
+<article class="relative group h-64 border border-border-dark overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Robotic arm in an industrial setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3tkqLHq4v1hXATQLcQuEU0MZhtp3pQiP8f-LAIlCbsfBMWR2Kl-wBqTaNatKXhvDYrykWRHA4vItvLa4lOvlIrUAeWf7s1DZNXRKQI-uWUq9L84x9pM2Z_RBat6v9NgcwiDLlQ1s9RkDGnyxaS8Ad6KJCxh57708SPnsF-F1fto_3XkbXKnwQCWm0ZL2FNsDJ8P24v945nCCzXNf_0y-6NZ8U_eZexcBvSa2orVqzKacK60AN7AOKa-diHZu3lcNtKr3TGnAfT78F');">
+<div class="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors"></div>
+</div>
+<div class="relative h-full p-6 flex flex-col justify-end items-start">
+<div class="bg-gray-700/90 text-white text-xs font-bold px-2 py-1 mb-2 uppercase">Concept</div>
+<h3 class="text-2xl font-bold text-white uppercase mb-1">Auto_Botanist</h3>
+<p class="text-gray-300 text-sm max-w-md">Automated hydroponic system controlled via Raspberry Pi.</p>
+<a class="mt-4 flex items-center gap-2 text-primary font-bold text-sm uppercase group-hover:text-white transition-colors" href="#">
+                            Initialize <span class="material-symbols-outlined text-sm">terminal</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Content Grid: MIND (Writing/Philosophy) -->
+<section>
+<div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
+<h2 class="text-2xl font-bold uppercase flex items-center gap-2">
+<span class="text-primary">[</span> MIND <span class="text-primary">]</span>
+<span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// LOGS_AND_THOUGHTS</span>
+</h2>
+</div>
+<div class="border border-border-dark bg-panel-dark">
+<!-- List Item 1 -->
+<a class="block p-6 border-b border-border-dark hover:bg-white hover:text-black transition-colors group" href="#">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<span class="text-xs font-mono text-gray-500 group-hover:text-black mb-1 block">2023-10-24</span>
+<h3 class="text-xl font-bold uppercase">The Ethics of Open Source AI</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-mono opacity-60">[ READ_TIME: 5M ]</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</div>
+</div>
+</a>
+<!-- List Item 2 -->
+<a class="block p-6 border-b border-border-dark hover:bg-white hover:text-black transition-colors group" href="#">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<span class="text-xs font-mono text-gray-500 group-hover:text-black mb-1 block">2023-09-12</span>
+<h3 class="text-xl font-bold uppercase">Complexity Theory in Modern Org Charts</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-mono opacity-60">[ READ_TIME: 8M ]</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</div>
+</div>
+</a>
+<!-- List Item 3 -->
+<a class="block p-6 hover:bg-white hover:text-black transition-colors group" href="#">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<span class="text-xs font-mono text-gray-500 group-hover:text-black mb-1 block">2023-08-05</span>
+<h3 class="text-xl font-bold uppercase">Physics of Information: Entropy</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-mono opacity-60">[ READ_TIME: 12M ]</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</div>
+</div>
+</a>
+</div>
+</section>
+<!-- COMMS CHANNEL -->
+<section class="max-w-3xl mx-auto w-full pt-12">
+<div class="border border-border-dark bg-[#050505] p-2">
+<div class="flex items-center justify-between bg-border-dark px-4 py-2 mb-2">
+<span class="text-xs text-white font-mono uppercase">COMMS_CHANNEL</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+</div>
+</div>
+<div class="p-6 font-mono text-sm md:text-base">
+<p class="text-gray-400 mb-4"># Establish connection...</p>
+<form class="space-y-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1">
+<label class="block text-primary text-xs mb-1 uppercase">User_ID</label>
+<input class="w-full bg-transparent border-b border-gray-700 text-white focus:border-primary focus:outline-none py-2 px-1 placeholder-gray-600" placeholder="name@domain.com" type="text"/>
+</div>
+<div class="flex-1">
+<label class="block text-primary text-xs mb-1 uppercase">Subject_Line</label>
+<input class="w-full bg-transparent border-b border-gray-700 text-white focus:border-primary focus:outline-none py-2 px-1 placeholder-gray-600" placeholder="Project Inquiry" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-primary text-xs mb-1 uppercase">Data_Payload</label>
+<textarea class="w-full bg-transparent border-b border-gray-700 text-white focus:border-primary focus:outline-none py-2 px-1 placeholder-gray-600" placeholder="Enter message stream..." rows="4"></textarea>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="group flex items-center gap-2 text-white hover:text-primary transition-colors" type="button">
+<span class="text-primary">&gt;</span> Contacto<span class="animate-pulse">_</span>
+<span class="text-xs border border-white group-hover:border-primary px-2 py-1 uppercase">Send Packet</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-[#0A0A0A] mt-auto">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-primary text-lg font-bold">©</span>
+<span class="text-sm font-mono text-gray-500">2024 OBSIDIAN_TELEMETRY. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-gray-500">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-lg">code</span></a>
+</div>
+<div class="h-4 w-px bg-gray-800"></div>
+<div class="flex items-center gap-2">
+<button class="text-gray-500 hover:text-white transition-colors" title="Light Mode">
+<span class="material-symbols-outlined text-sm">light_mode</span>
+</button>
+<button class="text-primary hover:text-white transition-colors" title="Dark Mode">
+<span class="material-symbols-outlined text-sm">dark_mode</span>
+</button>
+<button class="text-gray-500 hover:text-white transition-colors" title="System Theme">
+<span class="material-symbols-outlined text-sm">monitor</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative bottom bar -->
+<div class="w-full h-1 bg-gradient-to-r from-[#0A0A0A] via-primary to-[#0A0A0A] opacity-50"></div>
+</footer>
+</body></html>
