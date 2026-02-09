@@ -1,0 +1,144 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+
+import { t, type Locale, getLocalizedPath } from "@lib/i18n";
+import { SECTION_INTROS } from "src/data/intros";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
+const { lang } = Astro.params as { lang: Locale };
+
+const data = (await getCollection("atoms"))
+  .filter(post => !post.data.draft && post.slug.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map(post => ({ ...post, slug: post.slug.replace(`${lang}/`, '') }));
+  
+type Acc = {
+  [year: string]: CollectionEntry<"atoms">[];
+}
+
+const posts = data.reduce((acc: Acc, post) => {
+    const year = post.data.date.getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {});
+
+const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
+
+const intro = SECTION_INTROS[lang].atoms;
+
+// Hardware images for visual match (Cycling through them)
+const hardwareImages = [
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuAe8lcLR3Ful5GGUzKiSP_it2B2kc1xWXEEPJ2xX_TLIzzxWJUyIpOxMxqCimGpHJbSmClIxucSbz2q3x1_T0duJEF4JAVLjMeai2IwBtxGNyRRwfOzJ6UMf4--i2Kc1guX075_-p81NXdLyYZlSSur8w-CJOPEMKD9RkJ4CE6nWBh_wRpt1pJvVmOIauk_6RuJatLgVLglVpmGSHTs-SaXSKXsepBwMIgclpGtMaSHQX_PT6Zc_4Nc1jpg1jfQ7HVNNT1_hnxTtmu4",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuByPegmz5q-F1VkOFxVg5zLvSL2s7SjIE0iiwkFb1tfumDRt4I-nSEEHMr8tlg4Mt5iJ_Glna4BaZDD9k5b0oWHKbOxa5zs4KzP-2QI404vmRj3Puy-HtTNvCrwa2Qlt3rnf8_NPOXnbcwu547zQ86ygGO2OFbYCN65mjt58ddrVhNql_6T-FnByj2geWEeJqNx_f_a0QXQtSvNJ6Ul6kN5PtymXyisp4fbiUC8OgZihmK6fW7oB2R-Ap2_4iur9fNRdPvpv4PIpOdX",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDzQpP9KcxVZeBhRW1MEQltHONmLnijWgsaZmeaggeMWfhCMIHBw5MofPB5hpwM3QfMhzXcoreYsshBcUpvX3jdpwR2TCNf3jbhra_GupvRG7-RehaJRJM0yCkiGX6wxC8-00V7tNiL6Q8QtYZF03Jj27HLtLRDun3YAbj7vLG7JboAq6j_6mMyfYHBQMWEBemT__hPBWRCQ2qH6k49uP7oxbbYkiqmUyWiTL1hkKQI8Pvc8dMiPazNA9mtks3mr7EwR7_DCEVvV5VP"
+];
+
+// Status Badge Helper
+const getStatusColor = (status: string) => {
+    switch (status?.toLowerCase()) {
+        case 'done': return 'text-green-500 border-green-500/30 bg-green-900/20';
+        case 'wip': return 'text-yellow-500 border-yellow-500/30 bg-yellow-900/20';
+        case 'poc': return 'text-blue-500 border-blue-500/30 bg-blue-900/20';
+        case 'deprecated': return 'text-white/60 border-white/20 bg-white/5 line-through';
+        default: return 'text-white/40 border-white/20 bg-white/5';
+    }
+};
+
+
+---
+
+<PageLayout title={t(lang, 'atoms.title')} description={t(lang, 'atoms.description')} lang={lang}>
+  
+  <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    
+    <!-- Hero / Terminal Section (Left Aligned as per Export) -->
+    <!-- Hero / Industrial Section -->
+    <section class="mb-16 border-l w-1 border-primary py-2 pl-0">
+        <div class="pl-6">
+             <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-2 uppercase text-white">Atoms</h1>
+             <p class="text-neutral-500 text-lg md:text-xl font-mono mb-8 uppercase tracking-widest">// HARDWARE_REGISTRY</p>
+        </div>
+        
+        <div class="ml-6 border border-neutral-800 bg-[#0A0A0A] p-6 max-w-2xl relative">
+            <!-- Decorative bolts -->
+            <div class="absolute top-1 left-1 w-1 h-1 bg-neutral-700 rounded-full"></div>
+            <div class="absolute top-1 right-1 w-1 h-1 bg-neutral-700 rounded-full"></div>
+            <div class="absolute bottom-1 left-1 w-1 h-1 bg-neutral-700 rounded-full"></div>
+            <div class="absolute bottom-1 right-1 w-1 h-1 bg-neutral-700 rounded-full"></div>
+            
+            <div class="font-mono text-sm md:text-base text-gray-400 uppercase leading-relaxed">
+                {intro}
+            </div>
+             <div class="mt-4 pt-4 border-t border-neutral-800 flex justify-between text-[10px] font-mono text-neutral-600">
+                <span>BATCH: 2024-Q3</span>
+                <span>CLEARANCE: LEVEL_1</span>
+             </div>
+        </div>
+    </section>
+
+    <div class="space-y-16">
+      {years.map(year => (
+        <section>
+          <div class="flex items-center gap-4 mb-6">
+            <h2 class="text-2xl font-bold font-mono text-white tracking-tight">// {year}_REGISTRY</h2>
+            <div class="h-[1px] bg-white/10 flex-grow"></div>
+            <span class="text-xs font-mono text-white/40">[ ACTIVE_CYCLE ]</span>
+          </div>
+
+          <!-- Industrial Grid: 1px gap -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/10 border border-white/10">
+            {posts[year].map((post, index) => (
+               <article class="group relative bg-[#0A0A0A] p-6 hover:bg-[#121212] transition-all duration-300 border border-border-dark hover:border-primary cursor-pointer min-h-[320px] flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-mono text-xs text-white/40">#HW-{Math.floor(Math.random() * 100).toString().padStart(3, '0')}</span>
+                        <div class={`flex items-center gap-1.5 px-2 py-0.5 border text-[10px] font-bold uppercase tracking-wider ${getStatusColor(post.data.status)}`}>
+                            {post.data.status?.toLowerCase() === 'done' && <div class="w-1.5 h-1.5 bg-green-500 rounded-none animate-pulse"></div>}
+                            {post.data.status?.toLowerCase() === 'wip' && <div class="w-1.5 h-1.5 bg-yellow-500 rounded-none"></div>}
+                            {post.data.status?.toLowerCase() === 'poc' && <span class="material-symbols-outlined text-[10px]">science</span>}
+                            {post.data.status || 'WIP'}
+                        </div>
+                    </div>
+
+                    <div class="mb-4 overflow-hidden h-40 w-full bg-white/5 relative border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <img 
+                            alt={post.data.title} 
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-transform duration-700" 
+                            src={hardwareImages[index % hardwareImages.length]}
+                        />
+                    </div>
+
+                    <a href={getLocalizedPath(`/atoms/${post.slug}`, lang)}>
+                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{post.data.title}</h3>
+                    </a>
+                    <p class="text-sm text-white/60 font-mono mb-6 line-clamp-2">
+                        {post.data.description}
+                    </p>
+
+                    <div class="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                        {post.data.stack && post.data.stack.slice(0, 3).map(tech => (
+                             <span class="px-2 py-1 text-[10px] uppercase border border-white/20 text-white/80 font-mono">{tech}</span>
+                        ))}
+                    </div>
+
+                    <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </div>
+               </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</PageLayout>

@@ -1,17 +1,26 @@
 ---
+import type { Locale } from "@lib/i18n";
+
 interface Props {
   date: Date;
+  lang?: Locale;
 }
 
-const { date } = Astro.props;
+const { date, lang = 'es' } = Astro.props;
+
+// Adjust date to avoid UTC offset issues (add 12 hours to ensure correct day)
+const adjustedDate = new Date(date.getTime() + 12 * 60 * 60 * 1000);
+
+// Format date in Mexico City timezone
+const locale = lang === 'es' ? 'es-MX' : 'en-US';
+const formattedDate = adjustedDate.toLocaleDateString(locale, {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "America/Mexico_City"
+});
 ---
 
 <time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString("en-us", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    })
-  }
+  {formattedDate}
 </time>

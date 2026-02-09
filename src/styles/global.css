@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   OBSIDIAN TELEMETRY - Design System
+   Brutalist | Monospace | High Contrast
+======================================== */
+
 html {
   overflow-y: scroll;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html.dark {
@@ -17,57 +26,92 @@ body {
 }
 
 body {
-  @apply font-sans antialiased;
+  font-family: 'JetBrains Mono', monospace;
+  -webkit-font-smoothing: antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply bg-background-dark text-gray-300;
+  @apply selection:bg-primary selection:text-white;
 }
 
-header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
-  @apply backdrop-blur-sm saturate-200;
+/* Grid Background Overlay - REDUCED OPACITY */
+.grid-overlay {
+  @apply fixed inset-0 pointer-events-none z-0;
+  opacity: 0.02;
+  background-size: 20px 20px;
+  background-image:
+    linear-gradient(to right, #222 1px, transparent 1px),
+    linear-gradient(to bottom, #222 1px, transparent 1px);
 }
 
-main {
-  @apply flex-1 py-32;
+/* Scanline Effect - KILLED (Pure Solid Colors requested) */
+/* .scanlines removed */
+
+/* Main Container */
+.main-container {
+  @apply relative z-10 flex flex-col min-h-screen w-full max-w-[1440px] mx-auto;
+  @apply border-x border-border-dark bg-background-dark/95 backdrop-blur-sm;
 }
 
-footer {
-  @apply py-5 text-sm;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #0A0A0A;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border: 1px solid #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c72929;
+}
+
+/* Status Indicators */
+.status-indicator {
+  @apply w-2 h-2 rounded-full;
+}
+
+.status-indicator.online {
+  @apply bg-green-500 shadow-[0_0_8px_#22c55e99];
+}
+
+.status-indicator.busy {
+  @apply bg-yellow-500;
+}
+
+.status-indicator.offline {
+  @apply bg-red-500;
+}
+
+.status-indicator.wip {
+  @apply bg-blue-500;
+}
+
+/* Brutalist Utilities */
+.brutal-border {
+  @apply border border-border-dark;
+}
+
+.brutal-card {
+  @apply bg-surface-dark border border-border-dark;
+  @apply hover:border-primary transition-colors duration-200;
+}
+
+.terminal-text {
+  @apply font-mono text-xs tracking-wider;
+}
+
+/* Article/Prose Styling */
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
-}
-
-@layer utilities {
-  article a {
-    @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
-  }
-  article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
-  }
-}
-
-.animate {
-  @apply opacity-0 translate-y-3;
-  @apply transition-all duration-700 ease-out;
-}
-
-.animate.show {
-  @apply opacity-100 translate-y-0;
-}
-
-html #back-to-top {
-  @apply opacity-0 pointer-events-none;
-}
-
-html.scrolled #back-to-top {
-  @apply opacity-100 pointer-events-auto;
+  @apply max-w-full prose dark:prose-invert;
+  @apply prose-headings:font-display prose-headings:font-bold prose-headings:uppercase;
+  @apply prose-headings:text-white prose-headings:tracking-tight;
+  @apply prose-p:font-sans prose-p:text-gray-400 prose-p:leading-relaxed;
+  @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
+  @apply prose-code:font-mono prose-code:bg-[#1a1a1a] prose-code:border prose-code:border-border-dark prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary;
+  @apply prose-pre:bg-[#111] prose-pre:border prose-pre:border-border-dark;
+  @apply prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-[#111] prose-blockquote:px-4 prose-blockquote:py-1;
+  @apply prose-strong:text-white;
+  @apply prose-img:mx-auto prose-img:my-auto prose-img:border prose-img:border-border-dark;
 }

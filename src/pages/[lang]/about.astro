@@ -1,0 +1,161 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import { t, type Locale } from "@lib/i18n";
+import { SOCIALS, SITE } from "@consts";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
+const { lang } = Astro.params as { lang: Locale };
+
+const aboutEntries = (await getCollection("about"))
+  .filter(entry => entry.slug.startsWith(`${lang}/`));
+const aboutEntry = aboutEntries[0];
+
+let Content;
+if (aboutEntry) {
+  const rendered = await aboutEntry.render();
+  Content = rendered.Content;
+}
+
+
+
+// Mocks or Data for Identity Matrix (Ideally from constants/config)
+const IDENTITY = {
+    ORIGIN: "PHYSICS",
+    EVOLUTION: "CIO",
+    STATE: "MAKER",
+    LOC: "MADRID_ES"
+};
+---
+
+<PageLayout title={t(lang, 'about.title')} description={t(lang, 'about.description')} lang={lang}>
+  
+  <div class="w-full max-w-[1440px] mx-auto px-6 py-12 relative">
+    
+    <!-- Hero / Title Section -->
+    <div class="mb-16 border-l-2 border-primary pl-6 py-2">
+        <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-4 leading-[0.85] text-white">
+            MANIFESTO
+        </h1>
+        <div class="flex items-center gap-4 font-mono text-primary text-sm md:text-base tracking-widest uppercase">
+            <span class="material-symbols-outlined text-sm">terminal</span>
+            <span>SYSTEM IDENTITY: EDUARDO GONZÁLEZ</span>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        
+        <!-- Left Column: Manifesto Text -->
+        <div class="lg:col-span-8 flex flex-col gap-8">
+            <div class="flex items-center justify-between border-b border-border-dark pb-2 mb-4">
+                <span class="font-mono text-xs text-gray-500">/// SOURCE: USER_MINDSET</span>
+                <span class="font-mono text-xs text-primary">READ_ONLY</span>
+            </div>
+            
+            {Content && (
+                <article class="prose prose-lg prose-invert max-w-none font-mono
+                    prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-8
+                    prose-headings:text-white prose-headings:font-display prose-headings:uppercase
+                    prose-strong:text-white prose-strong:font-bold
+                    prose-blockquote:border-primary prose-blockquote:bg-surface-dark prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:my-8
+                    prose-li:text-gray-300 prose-li:marker:text-primary">
+                    <Content />
+                </article>
+            )}
+        </div>
+
+        <!-- Right Column: Identity Matrix -->
+        <div class="lg:col-span-4">
+            <div class="sticky top-24">
+                <div class="border border-border-dark bg-[#111] p-1">
+                    <!-- Profile Image Container -->
+                    <div class="relative aspect-square w-full bg-neutral-900 mb-1 overflow-hidden group">
+                        <!-- Overlay Grid -->
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMzMzMzMiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMCAwaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20 z-10 pointer-events-none"></div>
+                        
+                        <!-- Placeholder/Real Image -->
+                        <!-- Using a solid color or specific placeholder if no image available. Export had a specific URL. -->
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-gray-700 font-mono">
+                           <span class="material-symbols-outlined text-6xl opacity-50">person</span>
+                        </div>
+                        
+                        <!-- Corner Accents -->
+                        <div class="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary z-20"></div>
+                        <div class="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary z-20"></div>
+                    </div>
+
+                    <!-- Metadata Grid -->
+                    <div class="grid grid-cols-1 gap-px bg-border-dark border border-border-dark">
+                        {Object.entries(IDENTITY).map(([key, value]) => (
+                             <div class="bg-background-dark p-3 flex justify-between items-center group hover:bg-white hover:text-black transition-colors cursor-default">
+                                <span class="font-mono text-xs uppercase tracking-wider opacity-60">{key}</span>
+                                <span class="font-bold text-sm text-white group-hover:text-black">{value}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interests.DNA Section -->
+    {aboutEntry?.data.interests && aboutEntry.data.interests.length > 0 && (
+        <div class="border-t border-border-dark pt-10 mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold uppercase tracking-tight flex items-center gap-2 text-white">
+                    <span class="w-2 h-2 bg-primary"></span>
+                    INTERESTS.DNA
+                </h2>
+                <span class="font-mono text-xs text-gray-500 hidden sm:block">DATA_PACKET_SIZE: 3KB</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {aboutEntry.data.interests.map((interest, index) => (
+                    <div class="group border border-border-dark bg-[#111] hover:border-primary transition-colors duration-200 cursor-default relative overflow-hidden h-full flex flex-col min-h-[16rem]">
+                        <div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-primary text-sm">sensors</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="font-mono text-xs text-primary mb-2">[{String(index + 1).padStart(2, '0')}]</div>
+                                <h3 class="text-3xl font-black uppercase mb-1 text-white group-hover:text-primary transition-colors">{interest}</h3>
+                                <div class="h-0.5 w-8 bg-white mb-4 group-hover:w-full group-hover:bg-primary transition-all duration-300"></div>
+                            </div>
+                            <p class="font-mono text-sm text-gray-500 leading-tight">
+                                // Status: ACTIVE_MONITORING
+                            </p>
+                        </div>
+                         <div class="bg-black p-2 border-t border-border-dark flex justify-between items-center">
+                            <span class="text-[10px] font-mono text-gray-500">STATUS: ACTIVE</span>
+                            <span class="material-symbols-outlined text-gray-500 text-sm">flag</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )}
+
+     <!-- Social Signals (Kept but integrated nicely) -->
+      <section>
+        <div class="flex items-center justify-between mb-8 border-b border-border-dark pb-2">
+            <span class="font-mono text-xs text-gray-500">/// SIGNALS: CONNECTIVITY</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {SOCIALS.map((social) => (
+                <a href={social.HREF} target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-6 border border-border-dark hover:border-primary bg-[#111] transition-colors">
+                    <span class="font-mono text-lg text-white group-hover:text-primary">{social.NAME}</span>
+                    <span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">arrow_outward</span>
+                </a>
+            ))}
+        </div>
+      </section>
+
+  </div>
+</PageLayout>

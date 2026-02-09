@@ -1,0 +1,39 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import EssayLayout from "@layouts/EssayLayout.astro";
+import { getLocalizedPath, type Locale } from "@lib/i18n";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("mind"))
+    .filter(post => !post.data.draft);
+  
+  const paths = [];
+  for (const post of posts) {
+    const [lang, ...slugParts] = post.slug.split('/');
+    const cleanSlug = slugParts.join('/');
+    paths.push({
+      params: { lang, slug: cleanSlug },
+      props: post,
+    });
+  }
+  return paths;
+}
+
+type Props = CollectionEntry<"mind">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<EssayLayout 
+  title={post.data.title} 
+  description={post.data.description} 
+  date={post.data.date}
+  lang={lang}
+  content={post.body}
+  backUrl={getLocalizedPath('/mind', lang)}
+  backLabel={lang === 'es' ? 'Volver a Logs' : 'Back to Logs'}
+>
+  <Content />
+</EssayLayout>

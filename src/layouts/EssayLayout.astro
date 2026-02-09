@@ -1,0 +1,53 @@
+---
+import PageLayout from "./PageLayout.astro";
+import { readingTime } from "@lib/utils";
+import { t, type Locale } from "@lib/i18n";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  lang: Locale;
+  backUrl: string;
+  backLabel: string;
+  content: string;
+}
+
+const { title, description, date, lang, backUrl, backLabel, content } = Astro.props;
+---
+
+<PageLayout title={title} description={description} lang={lang}>
+  <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 md:py-20 max-w-3xl mx-auto">
+      
+       <!-- Back Link -->
+      <a href={backUrl} class="inline-flex items-center gap-2 text-gray-500 hover:text-primary mb-12 transition-colors group">
+        <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+        <span class="font-mono text-sm uppercase">// {backLabel}</span>
+      </a>
+
+      <header class="mb-12 border-b border-border-dark pb-8">
+        <div class="flex items-center gap-4 text-xs font-mono text-gray-500 uppercase mb-4">
+            <span>{date.toISOString().split('T')[0]}</span>
+            <span>::</span>
+            <span>{readingTime(content)}</span>
+            <span>::</span>
+            <span class="text-primary">LOG_ENTRY</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold uppercase text-white leading-tight">{title}</h1>
+      </header>
+
+      <article class="prose prose-lg prose-invert max-w-none 
+            prose-p:text-gray-300 prose-p:leading-8 prose-p:font-serif prose-p:text-[1.1rem]
+            prose-headings:text-white prose-headings:font-display prose-headings:uppercase prose-headings:tracking-tight
+            prose-strong:text-white prose-strong:font-bold
+            prose-li:text-gray-400
+            prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:text-gray-400
+            prose-code:text-primary prose-code:font-mono prose-code:text-sm
+            prose-img:border prose-img:border-border-dark prose-img:bg-surface-dark prose-img:p-2">
+        <slot />
+      </article>
+
+    </div>
+  </div>
+</PageLayout>

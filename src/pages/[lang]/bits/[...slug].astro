@@ -1,0 +1,42 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import ProjectLayout from "@layouts/ProjectLayout.astro";
+import { getLocalizedPath, type Locale } from "@lib/i18n";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("bits"))
+    .filter(post => !post.data.draft);
+  
+  const paths = [];
+  for (const post of posts) {
+    const [lang, ...slugParts] = post.slug.split('/');
+    const cleanSlug = slugParts.join('/');
+    paths.push({
+      params: { lang, slug: cleanSlug },
+      props: post,
+    });
+  }
+  return paths;
+}
+
+type Props = CollectionEntry<"bits">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<ProjectLayout 
+  title={post.data.title} 
+  description={post.data.description} 
+  date={post.data.date}
+  repoUrl={post.data.repository_url}
+  demoUrl={post.data.demo_url}
+  stack={post.data.stack}
+  status={post.data.status}
+  lang={lang}
+  backUrl={getLocalizedPath('/bits', lang)}
+  backLabel={lang === 'es' ? 'Volver a Terminal' : 'Back to Terminal'}
+>
+  <Content />
+</ProjectLayout>
