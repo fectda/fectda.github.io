@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mind Log: Transmission History Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Fira+Code:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Teko:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25BCC0", // Turquesa
+                        "secondary": "#AB2A3E", // Rojo Hematita
+                        "accent": "#D4442F", // Bright Red
+                        "obsidian": "#1A1A1A",
+                        "plate": "#2D2D2D",
+                        "plate-dark": "#222222",
+                    },
+                    fontFamily: {
+                        "display": ["Teko", "Space Grotesk", "sans-serif"],
+                        "body": ["Montserrat", "sans-serif"],
+                        "mono": ["Fira Code", "Space Grotesk", "monospace"],
+                        "headline": ["Anton", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(37, 188, 192, 0.5)',
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            opacity: 0.15;
+        }
+        .transmission-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .transmission-divider::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #AB2A3E; 
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .transmission-label {
+            background-color: #1A1A1A;
+            color: #AB2A3E;
+            padding: 0 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+        .log-entry:hover .log-title {
+            color: #25BCC0;
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-white font-body overflow-x-hidden selection:bg-primary selection:text-obsidian">
+<div class="scanlines"></div>
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-sm border-b-2 border-[#293837]">
+<div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary animate-pulse">terminal</span>
+<h2 class="text-white text-xl font-mono font-bold tracking-widest uppercase">
+                        MIND_LOG <span class="text-primary">// COGNITIVE_OUTPUT</span>
+</h2>
+</div>
+<div class="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider">
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">BITS</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">ATOMS</a>
+<a class="text-primary font-bold flex items-center gap-2 relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[2px] after:bg-primary" href="#">MIND</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">CV</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">ABOUT</a>
+<div class="pl-8 border-l border-gray-700 h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
+<button class="font-bold text-white hover:text-primary transition-colors">EN</button>
+<span class="text-gray-600">/</span>
+<button class="text-gray-400 hover:text-primary transition-colors">ES</button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-[#293837] hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
+<span class="material-symbols-outlined text-sm">rss_feed</span>
+</button>
+</div>
+</div>
+</header>
+<div class="pt-32 pb-20 px-4 md:px-10 max-w-4xl mx-auto w-full flex flex-col">
+<div class="w-full text-center mb-16 relative">
+<h1 class="text-8xl md:text-[10rem] font-headline text-white mb-2 tracking-tighter leading-none uppercase select-none">
+                    MIND_LOG
+                </h1>
+<p class="text-primary font-mono text-lg md:text-xl tracking-widest font-bold uppercase mt-2">
+                    // COGNITIVE_OUTPUT_BUFFER
+                </p>
+</div>
+<div class="transmission-divider">
+<div class="transmission-label">[ :: TRANSMISSION_HISTORY :: ]</div>
+</div>
+<div class="flex flex-col w-full">
+<article class="log-entry group py-12 border-b border-dashed border-[#333] relative">
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
+<span class="text-secondary">2024.10.15</span>
+<span class="text-gray-600 hidden md:inline">|</span>
+<span class="text-gray-400">[ UI_THEORY ]</span>
+</div>
+<a class="block mb-6" href="#">
+<h2 class="log-title text-5xl md:text-6xl font-headline text-white uppercase leading-tight transition-all duration-300 ease-out">
+                            THE_MYTH_OF_CLEAN_CODE
+                        </h2>
+</a>
+<p class="text-gray-400 font-body text-lg leading-relaxed max-w-2xl mb-6">
+                        Exploring how chaos engineering applies to UI systems. Why the pursuit of perfectly sterile codebases often leads to brittle architectures in rapidly evolving frontend environments.
+                    </p>
+<div class="flex justify-end">
+<a class="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-widest hover:text-white transition-colors group-hover:underline decoration-primary underline-offset-4" href="#">
+                            READ_ENTRY <span class="text-lg leading-none">&gt;&gt;</span>
+</a>
+</div>
+</article>
+<article class="log-entry group py-12 border-b border-dashed border-[#333] relative">
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
+<span class="text-secondary">2024.09.22</span>
+<span class="text-gray-600 hidden md:inline">|</span>
+<span class="text-gray-400">[ SYSTEM_DESIGN ]</span>
+</div>
+<a class="block mb-6" href="#">
+<h2 class="log-title text-5xl md:text-6xl font-headline text-white uppercase leading-tight transition-all duration-300 ease-out">
+                            ENTROPY_AS_DESIGN
+                        </h2>
+</a>
+<p class="text-gray-400 font-body text-lg leading-relaxed max-w-2xl mb-6">
+                        Utilizing randomness in procedural generation to create organic digital textures. A deep dive into Perlin noise and cellular automata for web interfaces.
+                    </p>
+<div class="flex justify-end">
+<a class="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-widest hover:text-white transition-colors group-hover:underline decoration-primary underline-offset-4" href="#">
+                            READ_ENTRY <span class="text-lg leading-none">&gt;&gt;</span>
+</a>
+</div>
+</article>
+<article class="log-entry group py-12 border-b border-dashed border-[#333] relative">
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
+<span class="text-secondary">2024.08.10</span>
+<span class="text-gray-600 hidden md:inline">|</span>
+<span class="text-gray-400">[ PKM_WORKFLOW ]</span>
+</div>
+<a class="block mb-6" href="#">
+<h2 class="log-title text-5xl md:text-6xl font-headline text-white uppercase leading-tight transition-all duration-300 ease-out">
+                            DIGITAL_GARDENING_V2
+                        </h2>
+</a>
+<p class="text-gray-400 font-body text-lg leading-relaxed max-w-2xl mb-6">
+                        Refactoring my personal knowledge management system from a rigid hierarchy to a graph-based node network using Obsidian and custom dataview scripts.
+                    </p>
+<div class="flex justify-end">
+<a class="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-widest hover:text-white transition-colors group-hover:underline decoration-primary underline-offset-4" href="#">
+                            READ_ENTRY <span class="text-lg leading-none">&gt;&gt;</span>
+</a>
+</div>
+</article>
+<article class="log-entry group py-12 border-b border-dashed border-[#333] relative">
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
+<span class="text-secondary">2024.07.05</span>
+<span class="text-gray-600 hidden md:inline">|</span>
+<span class="text-gray-400">[ BIO_COMPUTING ]</span>
+</div>
+<a class="block mb-6" href="#">
+<h2 class="log-title text-5xl md:text-6xl font-headline text-white uppercase leading-tight transition-all duration-300 ease-out">
+                            SYNTHETIC_BIOLOGY_UI
+                        </h2>
+</a>
+<p class="text-gray-400 font-body text-lg leading-relaxed max-w-2xl mb-6">
+                        Designing the dashboard for a bioreactor. How to visualize enzymatic reaction rates in real-time without overwhelming the operator with data density.
+                    </p>
+<div class="flex justify-end">
+<a class="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-widest hover:text-white transition-colors group-hover:underline decoration-primary underline-offset-4" href="#">
+                            READ_ENTRY <span class="text-lg leading-none">&gt;&gt;</span>
+</a>
+</div>
+</article>
+</div>
+<div class="w-full flex justify-center mt-20">
+<button class="border border-[#333] hover:border-primary text-gray-500 hover:text-primary font-mono text-xs px-8 py-4 tracking-[0.2em] uppercase transition-all duration-300">
+                    Load_Archived_Data
+                </button>
+</div>
+</div>
+<footer class="w-full border-t border-[#293837] bg-obsidian py-10 mt-auto">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col items-center gap-6">
+<div class="flex gap-2 mb-4">
+<div class="w-2 h-2 bg-secondary animate-pulse"></div>
+<div class="w-2 h-2 bg-primary animate-pulse delay-75"></div>
+<div class="w-2 h-2 bg-white animate-pulse delay-150"></div>
+</div>
+<div class="flex gap-8 items-center justify-center">
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .41.26l2.45 7.55h8.64l2.45-7.55A.43.43 0 0 1 19.18 2a.42.42 0 0 1 .11.16l2.44 7.51 1.22 3.78a.84.84 0 0 1-.3.94z"></path></svg>
+</a>
+</div>
+<p class="text-gray-600 font-mono text-xs mt-4">
+                    © 2024 EDUARDO_GONZALEZ // END_OF_STREAM // TELEMETRY_OFFLINE
+                </p>
+</div>
+</footer>
+</div>
+
+</body></html>

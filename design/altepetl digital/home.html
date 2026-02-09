@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home: Neon Codex Warrior V3</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Fira+Code:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Teko:wght@300;400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25BCC0",
+                        "forge-hot": "#D4442F",
+                        "hematite": "#AB2A3E",
+                        "obsidian": "#1A1A1A",
+                        "card-dark": "#111111",
+                        "gold-glow": "#FFE082", 
+                    },
+                    fontFamily: {
+                        "display": ["Teko", "Space Grotesk", "sans-serif"],
+                        "body": ["Montserrat", "sans-serif"],
+                        "mono": ["Fira Code", "Space Grotesk", "monospace"],
+                        "headline": ["Anton", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            background-color: #1A1A1A;
+            background-image: linear-gradient(to top, rgba(171, 42, 62, 0.25) 0%, rgba(26, 26, 26, 1) 50%);
+            background-attachment: fixed;
+        }
+        .guardian-overlay {
+            position: fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110vh;
+            height: 110vh;
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+        @media (max-width: 768px) {
+            .guardian-overlay {
+                width: 100vw;
+                height: 100vw;
+                top: 40%;
+            }
+        }.quincunx-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }@media (min-width: 768px) {
+            .quincunx-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 0;aspect-ratio: 1/1;
+            }
+            .pos-center { grid-column: 2; grid-row: 2; z-index: 20; place-self: center; order: unset; margin: 0; }
+            .pos-north  { grid-column: 2; grid-row: 1; align-self: end; justify-self: center; margin-bottom: 2.5rem; order: unset; }
+            .pos-south  { grid-column: 2; grid-row: 3; align-self: start; justify-self: center; margin-top: 2.5rem; order: unset; }
+            .pos-west   { grid-column: 1; grid-row: 2; justify-self: end; align-self: center; margin-right: 2.5rem; order: unset; }
+            .pos-east   { grid-column: 3; grid-row: 2; justify-self: start; align-self: center; margin-left: 2.5rem; order: unset; }
+        }@media (max-width: 767px) {
+            .pos-north, .pos-south, .pos-west, .pos-east, .pos-center {
+                margin: 0;
+            }.pos-north { order: 1; }
+            .pos-west  { order: 2; }
+            .pos-center { order: 3; }
+            .pos-east  { order: 4; }
+            .pos-south { order: 5; }
+        }
+        .node-card {
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            width: 210px;
+            height: 210px;
+            position: relative;
+            backdrop-filter: blur(4px);
+        }
+        .node-card:hover {
+            border-color: rgba(37, 188, 192, 0.5);
+            background-color: rgba(13, 13, 13, 0.8);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+        .corner-cut {
+            clip-path: polygon(
+                20% 0, 100% 0, 
+                100% 80%, 80% 100%, 
+                0 100%, 0 20%
+            );
+        }
+        .center-portrait-container {
+            width: 260px;
+            height: 260px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .center-portrait {
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+        .ember-pulse {
+            position: absolute;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle, rgba(171, 42, 62, 0.25) 0%, rgba(171, 42, 62, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glyph-glow {
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+    </style>
+</head>
+<body class="text-white font-body overflow-x-hidden min-h-screen flex flex-col">
+<div class="guardian-overlay">
+<svg class="w-full h-full glyph-glow object-contain" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="whiteGlow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9"></stop>
+<stop offset="100%" style="stop-color:#E0E0E0;stop-opacity:0.5"></stop>
+</linearGradient>
+</defs>
+<g fill="none" stroke="url(#whiteGlow)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" transform="translate(100, 50) scale(0.9)">
+<path d="M450 180 L350 120 L440 220"></path>
+<path d="M350 120 L370 160"></path>
+<path d="M360 140 L460 210"></path>
+<path d="M440 220 C460 210, 490 200, 520 220 C540 235, 545 260, 530 280"></path>
+<circle cx="490" cy="240" r="8"></circle>
+<path d="M520 220 L550 180 M510 210 L530 170 M500 210 L510 160"></path>
+<path d="M530 280 L560 320 L540 380 L500 420 L450 400"></path>
+<path d="M560 320 L600 330 M540 380 L590 390"></path>
+<rect height="30" rx="2" transform="rotate(20 500 350)" width="60" x="470" y="335"></rect>
+<path d="M450 400 Q300 300 200 250 T100 200"></path>
+<path d="M200 250 L220 300 M150 225 L170 280 M100 200 L120 260"></path>
+<path d="M220 300 Q320 380 440 420"></path>
+<path d="M530 280 Q650 200 750 150"></path>
+<path d="M650 200 L670 240 M700 175 L720 220"></path>
+<path d="M750 150 L730 250 Q650 320 560 320"></path>
+<path d="M500 420 L480 550 L520 600 L560 550 L540 380"></path>
+<path d="M480 550 L500 500 M560 550 L540 500"></path>
+<g transform="translate(600, 400) rotate(-45)">
+<path d="M0 0 L40 -20 L80 0 L40 20 Z"></path>
+<circle cx="20" cy="0" r="3"></circle>
+<rect height="30" width="20" x="80" y="-15"></rect>
+<rect height="30" width="20" x="105" y="-15"></rect>
+<rect height="30" width="20" x="130" y="-15"></rect>
+<path d="M150 0 L250 0"></path>
+<path d="M250 0 L230 -20 M250 0 L230 20"></path>
+<path d="M90 -15 L100 -35 M115 -15 L125 -35 M140 -15 L150 -35"></path>
+</g>
+<line stroke-dasharray="4 4" x1="450" x2="600" y1="400" y2="400"></line>
+<circle cx="600" cy="400" r="5"></circle>
+<circle cx="350" cy="120" r="3"></circle>
+<circle cx="100" cy="200" r="3"></circle>
+<circle cx="750" cy="150" r="3"></circle>
+<circle cx="520" cy="600" r="3"></circle>
+</g>
+</svg>
+</div>
+<header class="relative z-20 w-full text-center pt-12 pb-6">
+<h1 class="text-5xl md:text-[10rem] font-headline tracking-tighter text-white mb-2 leading-[0.8] uppercase opacity-95">
+            Eduardo Gonzalez
+        </h1>
+<h2 class="text-primary font-mono text-[10px] md:text-sm tracking-[0.5em] font-bold uppercase mb-2 border-b border-white/10 inline-block pb-2 px-8 md:px-16">
+            Architect of Realities
+        </h2>
+<span class="text-white/20 font-body text-[10px] tracking-[0.6em] uppercase block mt-2">
+            Scientist — Maker
+        </span>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center relative z-10 py-4 w-full">
+<div class="quincunx-grid">
+<a class="pos-north corner-cut node-card group" href="#">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">terminal</span>
+<h3 class="font-headline text-3xl text-white tracking-[0.2em]">BITS</h3>
+<p class="font-mono text-[8px] text-white/30 uppercase tracking-[0.3em] mt-4 border-t border-white/5 pt-3 w-full group-hover:text-primary/60">Algorithms &amp; AI</p>
+</a>
+<a class="pos-west corner-cut node-card group" href="#">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">psychology</span>
+<h3 class="font-headline text-3xl text-white tracking-[0.2em]">MIND</h3>
+<p class="font-mono text-[8px] text-white/30 uppercase tracking-[0.3em] mt-4 border-t border-white/5 pt-3 w-full group-hover:text-primary/60">Philosophy &amp; Cognition</p>
+</a>
+<div class="pos-center center-portrait-container">
+<div class="ember-pulse"></div>
+<div class="center-portrait bg-black grayscale hover:grayscale-0 transition-all duration-1000 overflow-hidden corner-cut">
+<img alt="Eduardo Gonzalez" class="w-full h-full object-cover opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGXNOsqnkMSudhlM2UprSVTYThut0oAo350DEfyeEAUa0iZgKYXfhMgW2EBUNb2xzyXrd5BdMKswGH9xN66IX1xvyh7X11oakvSA8ZhiA_8VdTxXeD04wiWqm1KOB-39WmMv2saaJGf2DwmyDoRPuULKSV85G29oRuKJ4QCVSxmAue03KzxuwqbAhCtMOmJ8yMmKmm6d-A-xQEyT3BHy38ND8nc0TDHxp7DFwUQASbI8Tzw4vQ8mKjwT-F9EGdMNDIUMv-60pQIgU"/>
+</div>
+</div>
+<a class="pos-east corner-cut node-card group" href="#">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">precision_manufacturing</span>
+<h3 class="font-headline text-3xl text-white tracking-[0.2em]">ATOMS</h3>
+<p class="font-mono text-[8px] text-white/30 uppercase tracking-[0.3em] mt-4 border-t border-white/5 pt-3 w-full group-hover:text-primary/60">Hardware &amp; Physics</p>
+</a>
+<a class="pos-south corner-cut node-card group" href="#">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">description</span>
+<h3 class="font-headline text-3xl text-white tracking-[0.2em]">CV</h3>
+<p class="font-mono text-[8px] text-white/30 uppercase tracking-[0.3em] mt-4 border-t border-white/5 pt-3 w-full group-hover:text-primary/60">Lineage &amp; Path</p>
+</a>
+</div>
+</main>
+<footer class="w-full py-12 relative z-20">
+<div class="max-w-[800px] mx-auto flex flex-col items-center">
+<div class="flex gap-16 items-center justify-center mb-8">
+<a class="text-white/20 hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+<a class="text-white/20 hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="text-white/20 hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg>
+</a>
+</div>
+<p class="text-white/5 font-mono text-[9px] tracking-[0.5em] uppercase">Guardian Glyph Injection // Variant 03 // MMXXIV</p>
+</div>
+</footer>
+</body></html>

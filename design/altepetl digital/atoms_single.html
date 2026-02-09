@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atoms Spec: XMAS_LIGHTS_HACK Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Fira+Code:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Teko:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25BCC0", // Turquesa
+                        "secondary": "#AB2A3E", // Rojo Hematita
+                        "accent": "#D4442F", // Bright Red
+                        "obsidian": "#1A1A1A",
+                        "plate": "#2D2D2D",
+                        "plate-dark": "#222222",
+                        "spine-segment": "#2A2A2A",
+                        "text-body": "#D4D4D4",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Montserrat", "sans-serif"],
+                        "mono": ["Space Grotesk", "monospace"],
+                        "headline": ["Anton", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #25BCC0; 
+        }
+        .xiuhcoatl-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 4rem 0;
+            opacity: 0.3;
+        }
+        .xiuhcoatl-segment {
+            width: 1.5rem;height: 0.5rem;background: #2A2A2A;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-white font-body overflow-x-hidden selection:bg-primary selection:text-black">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-sm border-b border-[#293837]">
+<div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">memory</span>
+<h2 class="text-white text-xl font-mono font-bold tracking-widest uppercase hidden md:block">
+                    ATOMS <span class="text-primary">//</span> SINGLE_VIEW
+                </h2>
+</div>
+<div class="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider">
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">BITS</a>
+<a class="text-primary font-bold flex items-center gap-2" href="#">ATOMS</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">MIND</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">CV</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">ABOUT</a>
+<div class="pl-8 border-l border-gray-700 h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
+<button class="font-bold text-white hover:text-primary transition-colors">EN</button>
+<span class="text-gray-600">/</span>
+<button class="text-gray-400 hover:text-primary transition-colors">ES</button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-transparent hover:text-primary text-gray-400 p-2 transition-all" title="Save PDF">
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+<button class="bg-transparent hover:text-primary text-gray-400 p-2 transition-all" title="Share Node">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-20 px-4 md:px-10 max-w-4xl mx-auto w-full flex flex-col items-center">
+<div class="w-full mb-8 flex items-center gap-2 text-gray-500 font-mono text-xs tracking-widest uppercase">
+<span class="hover:text-primary cursor-pointer transition-colors">ATOMS</span>
+<span>/</span>
+<span class="hover:text-primary cursor-pointer transition-colors">MAKER</span>
+<span>/</span>
+<span class="text-gray-400">IOT</span>
+</div>
+<div class="w-full mb-12 border-b border-[#333] pb-12">
+<h1 class="text-6xl md:text-8xl font-headline text-white mb-6 leading-[0.9] tracking-tighter uppercase">
+                XMAS_<span class="text-primary">LIGHTS</span>_HACK
+            </h1>
+<h2 class="text-2xl md:text-3xl text-[#888] font-body font-light leading-tight">
+                Reverse Engineering LED Curtains with H-Bridge Drivers.
+            </h2>
+</div>
+<div class="w-full mb-16 font-mono text-sm text-primary tracking-wider flex flex-wrap gap-4 md:gap-8 border-y border-[#293837] py-4">
+<span>:: HARDWARE: ESP8266</span>
+<span class="text-gray-600">|</span>
+<span>:: PROTOCOL: ESPHOME</span>
+<span class="text-gray-600">|</span>
+<span>:: STATUS: PAUSED</span>
+</div>
+<article class="w-full space-y-12">
+<div class="w-full aspect-video bg-[#111] border border-[#333] relative flex items-center justify-center mb-12 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(37,188,192,0.05)_0%,_rgba(0,0,0,0)_70%)]"></div>
+<div class="relative w-3/4 h-3/4 opacity-90">
+<svg class="w-full h-full text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+<rect height="80" rx="2" stroke="#444" width="60" x="40" y="70"></rect>
+<text fill="#666" font-family="monospace" font-size="10" x="45" y="115">ESP8266</text>
+<rect height="60" rx="2" stroke="#444" width="50" x="160" y="80"></rect>
+<text fill="#666" font-family="monospace" font-size="10" x="165" y="115">L298N</text>
+<path d="M210 95 L260 95 L260 50" stroke="#25BCC0"></path>
+<path d="M210 125 L260 125 L260 170" stroke="#25BCC0"></path>
+<circle cx="260" cy="50" fill="#111" r="3" stroke="#25BCC0"></circle>
+<path d="M260 50 L320 50" stroke-dasharray="2 2"></path>
+<circle cx="320" cy="50" fill="#111" r="3" stroke="#25BCC0"></circle>
+<circle cx="260" cy="170" fill="#111" r="3" stroke="#25BCC0"></circle>
+<path d="M260 170 L320 170" stroke-dasharray="2 2"></path>
+<circle cx="320" cy="170" fill="#111" r="3" stroke="#25BCC0"></circle>
+<path d="M100 95 L160 95" stroke-dasharray="2 2"></path>
+<path d="M100 125 L160 125" stroke-dasharray="2 2"></path>
+<text fill="#25BCC0" font-family="monospace" font-size="8" x="110" y="90">PWM_A</text>
+<text fill="#25BCC0" font-family="monospace" font-size="8" x="110" y="135">PWM_B</text>
+</svg>
+</div>
+<div class="absolute bottom-4 right-4 text-[10px] font-mono text-primary tracking-widest uppercase opacity-60">
+                    // FIG.01: CIRCUIT_TOPOLOGY
+                </div>
+</div>
+<div class="w-full">
+<h3 class="text-xl text-primary font-mono tracking-widest mb-6 uppercase">01 // CONTEXT</h3>
+<div class="pl-6 border-l-2 border-gray-800">
+<h4 class="font-bold text-white mb-4 uppercase tracking-wide text-lg">MOTIVATION: BREAKING PROPRIETARY CONTROLLERS</h4>
+<p class="text-gray-400 font-body text-base leading-relaxed mb-6">
+                        Cheap LED curtains often come with generic, sealed controllers that offer limited modes and no smart home integration. The blinking patterns are preset, non-adjustable, and typically too frantic for ambient lighting. The goal was to bypass the original MCU and inject a WiFi-enabled brain to control the array via Home Assistant.
+                    </p>
+<p class="text-gray-400 font-body text-base leading-relaxed">
+                         By analyzing the circuit trace, I discovered the LEDs were driven by reversing polarity on two main lines—a technique used to save copper wire in manufacturing. This necessitated an H-Bridge driver rather than simple MOSFET switching to achieve full control over both "halves" of the LED string.
+                    </p>
+</div>
+</div>
+<div class="xiuhcoatl-divider">
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+</div>
+<div class="w-full">
+<h3 class="text-xl text-primary font-mono tracking-widest mb-8 uppercase">02 // REVERSE_ENGINEERING</h3>
+<div class="space-y-12">
+<div class="group">
+<div class="flex items-baseline gap-4 mb-2">
+<span class="text-primary font-mono text-sm">01.</span>
+<h4 class="text-white font-bold text-lg uppercase tracking-wide">Polarity Analysis</h4>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed pl-9 font-body">
+                            Using a multimeter, I determined that the string was divided into two interleaved circuits. Applying +V to Line A illuminated the odd LEDs, while applying -V (reversing polarity) illuminated the even LEDs. This AC-like behavior is typical of cheap 2-wire LED strings.
+                        </p>
+</div>
+<div class="group">
+<div class="flex items-baseline gap-4 mb-2">
+<span class="text-primary font-mono text-sm">02.</span>
+<h4 class="text-white font-bold text-lg uppercase tracking-wide">The Hack</h4>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed pl-9 font-body">
+                            I desoldered the original controller chip and tapped into the output lines. An L298N H-Bridge motor driver was introduced to handle the polarity switching. An ESP8266 (D1 Mini) sends PWM signals to the H-Bridge input pins to simulate the AC waveform needed to drive both sets of LEDs simultaneously (persistence of vision).
+                        </p>
+</div>
+<div class="group">
+<div class="flex items-baseline gap-4 mb-2">
+<span class="text-primary font-mono text-sm">03.</span>
+<h4 class="text-white font-bold text-lg uppercase tracking-wide">Integration</h4>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed pl-9 font-body">
+                            Flashed ESPHome onto the microcontroller. Configured a custom "Light" component in YAML that exposes brightness and effect controls to Home Assistant. The result is a flicker-free, fully dimmable curtain that responds to automations.
+                        </p>
+</div>
+</div>
+</div>
+<div class="xiuhcoatl-divider">
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+</div>
+<div class="w-full">
+<h3 class="text-xl text-primary font-mono tracking-widest mb-8 uppercase">03 // BILL_OF_MATERIALS</h3>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 border border-[#444] text-gray-300 text-xs font-mono tracking-wide">[ ESP8266 ]</span>
+<span class="px-3 py-1 border border-[#444] text-gray-300 text-xs font-mono tracking-wide">[ H-Bridge Driver ]</span>
+<span class="px-3 py-1 border border-[#444] text-gray-300 text-xs font-mono tracking-wide">[ LED Curtain ]</span>
+<span class="px-3 py-1 border border-[#444] text-gray-300 text-xs font-mono tracking-wide">[ ESPHome ]</span>
+<span class="px-3 py-1 border border-[#444] text-gray-300 text-xs font-mono tracking-wide">[ Soldering Iron ]</span>
+</div>
+</div>
+<div class="xiuhcoatl-divider">
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+<div class="xiuhcoatl-segment"></div>
+</div>
+<div class="w-full">
+<h3 class="text-xl text-primary font-mono tracking-widest mb-6 uppercase">04 // CURRENT_STATUS</h3>
+<p class="text-[#D4D4D4] font-body text-lg leading-relaxed mb-12">
+                    Project is currently paused pending safety upgrades. The prototype is functional but exposed on a breadboard. Before permanent installation, a custom 3D-printed enclosure is required to shield the high-voltage side of the power supply. Additionally, I plan to build a solder fume extractor before resuming heavy modification work on the remaining strings.
+                </p>
+</div>
+</article>
+</main>
+<footer class="w-full border-t border-[#293837] bg-obsidian py-12 mt-auto">
+<div class="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
+<div class="flex gap-8 items-center justify-center">
+<a class="text-gray-500 hover:text-white transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="text-gray-500 hover:text-white transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+<a class="text-gray-500 hover:text-white transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .41.26l2.45 7.55h8.64l2.45-7.55A.43.43 0 0 1 19.18 2a.42.42 0 0 1 .11.16l2.44 7.51 1.22 3.78a.84.84 0 0 1-.3.94z"></path></svg>
+</a>
+<a class="text-gray-500 hover:text-white transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg>
+</a>
+</div>
+<p class="text-gray-600 font-mono text-xs mt-4">
+                © 2024 EDUARDO_GONZALEZ // END_OF_STREAM
+            </p>
+</div>
+</footer>
+</div>
+</body></html>

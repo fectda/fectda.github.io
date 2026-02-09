@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atoms Lab: Hardware Fabrication Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Fira+Code:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Teko:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25BCC0", // Turquesa
+                        "secondary": "#AB2A3E", // Rojo Hematita
+                        "accent": "#D4442F", // Bright Red
+                        "obsidian": "#1A1A1A",
+                        "plate": "#2D2D2D",
+                        "plate-dark": "#222222",
+                        "spine-segment": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Teko", "Space Grotesk", "sans-serif"],
+                        "body": ["Montserrat", "sans-serif"],
+                        "mono": ["Fira Code", "Space Grotesk", "monospace"],
+                        "headline": ["Anton", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'hard': '6px 6px 0px 0px rgba(0, 0, 0, 1)',
+                        'glow': '0 0 15px rgba(37, 188, 192, 0.5)',
+                        'glow-secondary': '0 0 8px rgba(171, 42, 62, 0.4)',
+                        'glow-strong': '0 0 20px rgba(37, 188, 192, 0.6)',
+                    },
+                    backgroundImage: {
+                        'xiuhcoatl-pattern': "linear-gradient(180deg, #2D2D2D 0%, #1A1A1A 100%)",
+                        'blueprint-grid': "radial-gradient(circle, #333 1px, transparent 1px)",
+                    },
+                    backgroundSize: {
+                        'grid-sm': '20px 20px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            opacity: 0.15;
+        }.blueprint-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blueprint-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(37, 188, 192, 0.2), 6px 6px 0px 0px rgba(0, 0, 0, 1);
+            border-color: #25BCC0;
+        }
+        .blueprint-window {
+            background-color: #1a1a1a;
+            background-image: 
+                linear-gradient(rgba(37, 188, 192, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 188, 192, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+        }
+        .crosshair-tl, .crosshair-tr, .crosshair-bl, .crosshair-br {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-color: #555;
+            transition: all 0.3s ease;
+        }
+        .blueprint-card:hover .crosshair-tl, 
+        .blueprint-card:hover .crosshair-tr,
+        .blueprint-card:hover .crosshair-bl, 
+        .blueprint-card:hover .crosshair-br {
+            border-color: #25BCC0;
+        }
+        .crosshair-tl { top: 8px; left: 8px; border-top: 1px solid; border-left: 1px solid; }
+        .crosshair-tr { top: 8px; right: 8px; border-top: 1px solid; border-right: 1px solid; }
+        .crosshair-bl { bottom: 8px; left: 8px; border-bottom: 1px solid; border-left: 1px solid; }
+        .crosshair-br { bottom: 8px; right: 8px; border-bottom: 1px solid; border-right: 1px solid; }
+        .log-divider::before, .log-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: #AB2A3E;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-white font-body overflow-x-hidden selection:bg-secondary selection:text-white">
+<div class="scanlines"></div>
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-sm border-b-2 border-[#293837]">
+<div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary animate-pulse">precision_manufacturing</span>
+<h2 class="text-white text-xl font-mono font-bold tracking-widest uppercase">
+                        ATOMS_LAB <span class="text-primary">//</span> v2.1
+                    </h2>
+</div>
+<div class="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider">
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">BITS</a>
+<a class="text-white font-bold border-b border-primary flex items-center gap-2" href="#">ATOMS</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">MIND</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">CV</a>
+<a class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2" href="#">ABOUT</a>
+<div class="pl-8 border-l border-gray-700 h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
+<button class="font-bold text-white hover:text-primary transition-colors">EN</button>
+<span class="text-gray-600">/</span>
+<button class="text-gray-400 hover:text-primary transition-colors">ES</button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-[#293837] hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
+<span class="material-symbols-outlined text-sm">search</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center">
+<div class="w-full text-center mb-16 relative">
+<h1 class="text-7xl md:text-9xl font-headline text-white mb-2 tracking-tighter leading-none uppercase">
+                    ATOMS_LAB
+                </h1>
+<p class="text-primary font-mono text-lg md:text-xl tracking-widest font-bold uppercase mt-2">
+                    // MATTER_MANIPULATION
+                </p>
+</div>
+<div class="w-full flex items-center gap-4 mb-16 log-divider opacity-80">
+<span class="font-mono text-secondary tracking-widest text-sm whitespace-nowrap">[ :: FABRICATION_LOG :: ]</span>
+</div>
+<div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 bg-primary shadow-glow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">keyboard</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">MACRO_PAD_V2</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_01</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ PLA ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ GATERON ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ QMK ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            Custom 12-key macro pad with rotary encoder for timeline scrubbing. Hand-wired matrix.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-primary text-xs font-mono tracking-wider group-hover:animate-pulse">STATUS: FABRICATED</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 bg-primary shadow-glow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">desk</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">MONITOR_RISER</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_02</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ WALNUT ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ BRASS ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            Ergonomic lift for dual monitors. CNC milled black walnut with inlaid brass accents.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-primary text-xs font-mono tracking-wider group-hover:animate-pulse">STATUS: FABRICATED</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 border border-dashed border-yellow-500 rounded-none animate-spin-slow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">potted_plant</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">AUTO_GROW_SYS</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_03</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ PVC ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ ESP32 ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ IOT ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            Automated hydroponic tower. Sensors for pH, EC, and light levels reporting to Home Assistant.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-yellow-500 text-xs font-mono tracking-wider">STATUS: PROTOTYPING</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">construction</span>
+</div>
+</div>
+</article>
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 bg-primary shadow-glow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">dns</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">HOMELAB_RACK</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_04</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ PLYWOOD ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ FOAM ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            12U server rack cabinet with acoustic dampening foam and active temperature controlled ventilation.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-primary text-xs font-mono tracking-wider group-hover:animate-pulse">STATUS: FABRICATED</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 border border-dashed border-yellow-500 rounded-none animate-spin-slow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">flight</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">FPV_FRAME_X5</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_05</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ CARBON ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ TPU ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            Lightweight freestyle drone frame. CNC cut carbon fiber with 3D printed TPU protective bumpers.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-yellow-500 text-xs font-mono tracking-wider">STATUS: PROTOTYPING</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">construction</span>
+</div>
+</div>
+</article>
+<article class="blueprint-card bg-[#222] border border-[#333] flex flex-col h-full group cursor-pointer shadow-hard relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 z-20">
+<div class="w-3 h-3 bg-primary shadow-glow"></div>
+</div>
+<div class="aspect-video w-full blueprint-window flex items-center justify-center border-b border-[#333]">
+<div class="crosshair-tl"></div>
+<div class="crosshair-tr"></div>
+<div class="crosshair-bl"></div>
+<div class="crosshair-br"></div>
+<span class="material-symbols-outlined text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300">precision_manufacturing</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-baseline mb-2">
+<h3 class="font-display text-2xl font-bold text-white tracking-wide">6DOF_ARM_V1</h3>
+<span class="font-mono text-xs text-secondary font-bold">ATM_06</span>
+</div>
+<div class="mb-4 flex flex-wrap gap-2">
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ STEPPER ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ ALUMINUM ]</span>
+<span class="text-xs font-mono text-gray-400 bg-obsidian px-2 py-1">[ ROS2 ]</span>
+</div>
+<p class="text-gray-400 text-sm font-light leading-relaxed mb-4 flex-grow">
+                            6-axis robotic arm for pick and place tasks. Inverse kinematics solver running on Jetson Nano.
+                        </p>
+<div class="mt-auto pt-4 border-t border-[#333] flex justify-between items-center">
+<span class="text-primary text-xs font-mono tracking-wider group-hover:animate-pulse">STATUS: FABRICATED</span>
+<span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+</main>
+<footer class="w-full border-t border-[#293837] bg-obsidian py-10 mt-auto">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col items-center gap-6">
+<div class="flex gap-2 mb-4">
+<div class="w-2 h-2 bg-secondary animate-pulse"></div>
+<div class="w-2 h-2 bg-primary animate-pulse delay-75"></div>
+<div class="w-2 h-2 bg-white animate-pulse delay-150"></div>
+</div>
+<div class="flex gap-8 items-center justify-center">
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .41.26l2.45 7.55h8.64l2.45-7.55A.43.43 0 0 1 19.18 2a.42.42 0 0 1 .11.16l2.44 7.51 1.22 3.78a.84.84 0 0 1-.3.94z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg>
+</a>
+</div>
+<p class="text-gray-600 font-mono text-xs mt-4">
+                    © 2024 EDUARDO_GONZALEZ // END_OF_STREAM // TELEMETRY_OFFLINE
+                </p>
+</div>
+</footer>
+</div>
+
+</body></html>
