@@ -1,0 +1,35 @@
+---
+interface Obsession {
+  id: string;
+  title: string;
+  desc: string;
+  icon: string;
+}
+
+interface Props {
+  title: string;
+  items: Obsession[];
+}
+
+const { title, items } = Astro.props;
+---
+<section class="mt-8">
+    <div class="flex items-center gap-4 mb-8">
+        <span class="h-px bg-secondary w-12"></span>
+        <h3 class="text-xl font-mono text-primary tracking-widest uppercase">{title}</h3>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {items.map((item) => (
+            <div class="bg-[#202020] p-6 border border-[#333] transition-all duration-300 hover:bg-[#252525] group cursor-default">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors">{item.icon}</span>
+                    <span class="text-[10px] font-mono text-gray-600 border border-gray-700 px-1">{item.id}</span>
+                </div>
+                <h4 class="text-xl font-display font-bold text-gray-200 mb-2 uppercase transition-colors">{item.title}</h4>
+                <p class="text-xs text-gray-400 font-mono leading-relaxed border-t border-gray-700 pt-3 mt-3">
+                    {item.desc}
+                </p>
+            </div>
+        ))}
+    </div>
+</section>

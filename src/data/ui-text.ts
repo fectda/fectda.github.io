@@ -10,7 +10,7 @@ export const UI_TEXT = {
       mind: "Ikigai",
       cv: "El Camino"
     },
-    footer: "Construido con Obsidiana Digital // MMXXVI"
+    footer: "© 2026 Eduardo González // Diseñado y Construido en Obsidiana."
   },
   en: {
     hero: {
@@ -23,6 +23,6 @@ export const UI_TEXT = {
       mind: "Ikigai",
       cv: "The Path"
     },
-    footer: "Forged in Digital Obsidian // MMXXVI"
+    footer: "© 2026 Eduardo González // Designed and Built in Obsidian."
   }
 };
