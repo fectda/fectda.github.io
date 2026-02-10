@@ -2,6 +2,7 @@
 import { getLocalizedPath, type Locale } from "@lib/i18n";
 import { UI_TEXT } from "@data/ui-text";
 import HomeCard from "./HomeCard.astro";
+import { SITE_DATA } from "@data/constants";
 
 interface Props {
   lang: Locale;
@@ -40,7 +41,7 @@ const PORTRAIT_URL = "/photos/eduardo_1.webp";
         <div class="order-3 md:order-unset md:col-start-2 md:row-start-2 md:place-self-center relative w-[260px] h-[260px] flex items-center justify-center">
             <div class="ember-pulse"></div>
             <div class="w-full h-full border border-white/5 relative z-10 bg-black grayscale hover:grayscale-0 transition-all duration-1000 overflow-hidden corner-cut">
-                <img src={PORTRAIT_URL} alt="Eduardo González" class="w-full h-full object-cover opacity-70" />
+                <img src={PORTRAIT_URL} alt={SITE_DATA.NAME} class="w-full h-full object-cover opacity-70" />
             </div>
         </div>
 

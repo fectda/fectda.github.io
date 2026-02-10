@@ -1,3 +1,5 @@
+import { SITE_DATA } from "./constants";
+
 export const UI_TEXT = {
   es: {
     hero: {
@@ -10,7 +12,7 @@ export const UI_TEXT = {
       mind: "Ikigai",
       cv: "El Camino"
     },
-    footer: "© 2026 Eduardo González // Diseñado y Construido en Obsidiana."
+    footer: `© 2026 ${SITE_DATA.NAME} // Diseñado y Construido en Obsidiana.`
   },
   en: {
     hero: {
@@ -23,6 +25,6 @@ export const UI_TEXT = {
       mind: "Ikigai",
       cv: "The Path"
     },
-    footer: "© 2026 Eduardo González // Designed and Built in Obsidian."
+    footer: `© 2026 ${SITE_DATA.NAME} // Designed and Built in Obsidian.`
   }
 };

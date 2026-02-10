@@ -1,6 +1,7 @@
 ---
 import { getLocalizedPath } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
+import { SITE_DATA } from "@data/constants";
 
 interface Props {
   lang: Locale;
@@ -26,8 +27,8 @@ const breadcrumbs = langlessSegments.map((seg, i) => {
     <span class="material-symbols-outlined text-primary animate-pulse shrink-0 text-sm md:text-xl">terminal</span>
     <nav class="flex items-center gap-0 truncate text-sm md:text-xl">
         <a href={getLocalizedPath('/', lang)} class="hover:text-primary transition-colors">
-            <span class="md:hidden">EG </span>
-            <span class="hidden md:inline">EDUARDO GONZALEZ</span>
+            <span class="md:hidden">{SITE_DATA.INITIALS} </span>
+            <span class="hidden md:inline">{SITE_DATA.NAME}</span>
         </a>
         {breadcrumbs.map((crumb) => (
             <span class="hidden md:contents">

@@ -1,7 +1,9 @@
+import { SITE_DATA } from "./constants";
+
 export const CV_CONTENT = {
     es: {
         hero: {
-            name: "Eduardo González",
+            name: SITE_DATA.NAME,
             subtitle: "Físico. CIO. Maker. // OBSIDIAN TELEMETRY: ACTIVE"
         },
         sections: {
@@ -13,7 +15,7 @@ export const CV_CONTENT = {
     },
     en: {
         hero: {
-            name: "Eduardo González",
+            name: SITE_DATA.NAME,
             subtitle: "Physicist. CIO. Maker. // OBSIDIAN TELEMETRY: ACTIVE"
         },
         sections: {
