@@ -9,22 +9,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Obsidian Telemetry Homogenized Palette
-        "primary": "#c72929",      // Deep Red Accent
-        "background-dark": "#050505", // Obsidian Black (Strict)
-        "surface-dark": "#0A0A0A",    // Card Background (Strict)
-        "border-dark": "#262626",     // Neutral 800 approx
-        "grid-line": "#111111",
+        // Altepetl Digital Palette
+        "primary": "#25BCC0",      // Turquesa
+        "secondary": "#AB2A3E",    // Rojo Hematita
+        "accent": "#D4442F",       // Bright Red
+        "obsidian": "#1A1A1A",     // Background
+        "plate": "#2D2D2D",
+        "plate-dark": "#222222",
+        "spine-segment": "#2A2A2A",
+        // Legacy mappings (for backward compatibility if needed, or mapped to new)
+        "background-dark": "#1A1A1A",
+        "surface-dark": "#2D2D2D",
+        "border-dark": "#333333",
       },
       fontFamily: {
-        // Typography - FORCE MONO
-        "display": ["JetBrains Mono", "monospace"], // Kill Space Grotesk
-        "mono": ["JetBrains Mono", "monospace"],    // Strict
-        "sans": ["JetBrains Mono", "monospace"],    // Kill Sans -> JetBrains Mono
-        "serif": ["JetBrains Mono", "monospace"],   // Kill Serif -> JetBrains Mono
+        "display": ["Teko", "Space Grotesk", "sans-serif"],
+        "body": ["Montserrat", "sans-serif"],
+        "mono": ["Fira Code", "Space Grotesk", "monospace"],
+        "headline": ["Anton", "sans-serif"],
+        "sans": ["Montserrat", "sans-serif"], // Default sans
       },
       borderRadius: {
-        // Brutalist - ABSOLUTE ZERO
         DEFAULT: "0px",
         sm: "0px",
         md: "0px",
@@ -32,13 +37,16 @@ export default {
         xl: "0px",
         "2xl": "0px",
         "3xl": "0px",
-        full: "0px", // Even circles must die? User said "KILL ALL rounded-*". Let's keep full for status dots only if needed, but user said "KILL". I'll map full to 0px for now to be safe, or leave it for specific utilitarian dots. User said "Replace with rounded-none", effectively. I will map everything to 0px.
+        full: "0px",
       },
       backgroundImage: {
-        'grid-pattern': "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)",
+        'xiuhcoatl-pattern': "linear-gradient(180deg, #2D2D2D 0%, #1A1A1A 100%)",
       },
-      backgroundSize: {
-        'grid-pattern': '40px 40px',
+      boxShadow: {
+        'hard': '6px 6px 0px 0px rgba(0, 0, 0, 1)',
+        'glow': '0 0 15px rgba(37, 188, 192, 0.5)',
+        'glow-secondary': '0 0 8px rgba(171, 42, 62, 0.4)',
+        'glow-strong': '0 0 20px rgba(37, 188, 192, 0.6)',
       },
       animation: {
         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

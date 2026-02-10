@@ -1,0 +1,66 @@
+---
+import { getLocalizedPath, type Locale } from "@lib/i18n";
+import { UI_TEXT } from "@data/ui-text";
+import HomeCard from "./HomeCard.astro";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const text = UI_TEXT[lang];
+
+// Image for center portrait
+const PORTRAIT_URL = "/photos/eduardo_1.webp";
+---
+
+<main class="flex-grow flex flex-col items-center justify-center relative z-10  w-full">
+    <!-- Quincunx Grid -->
+    <div class="w-full max-w-[1000px] mx-auto relative z-10 flex flex-col items-center gap-4 md:grid md:grid-cols-3 md:grid-rows-3 md:gap-0 md:aspect-square">
+        
+        <!-- BITS (North) -->
+        <HomeCard 
+            href={getLocalizedPath('/bits', lang)}
+            icon="terminal"
+            title="BITS"
+            subtitle={text.cards.bits}
+            class="order-1 md:order-unset md:col-start-2 md:row-start-1 md:self-end md:justify-self-center md:mb-10"
+        />
+
+        <!-- MIND (West) -->
+        <HomeCard 
+            href={getLocalizedPath('/mind', lang)}
+            icon="psychology"
+            title="MIND"
+            subtitle={text.cards.mind}
+            class="order-2 md:order-unset md:col-start-1 md:row-start-2 md:justify-self-end md:self-center md:mr-10"
+        />
+
+        <!-- Center Portrait -->
+        <div class="order-3 md:order-unset md:col-start-2 md:row-start-2 md:place-self-center relative w-[260px] h-[260px] flex items-center justify-center">
+            <div class="ember-pulse"></div>
+            <div class="w-full h-full border border-white/5 relative z-10 bg-black grayscale hover:grayscale-0 transition-all duration-1000 overflow-hidden corner-cut">
+                <img src={PORTRAIT_URL} alt="Eduardo Gonzalez" class="w-full h-full object-cover opacity-70" />
+            </div>
+        </div>
+
+        <!-- ATOMS (East) -->
+        <HomeCard 
+            href={getLocalizedPath('/atoms', lang)}
+            icon="precision_manufacturing"
+            title="ATOMS"
+            subtitle={text.cards.atoms}
+            class="order-4 md:order-unset md:col-start-3 md:row-start-2 md:justify-self-start md:self-center md:ml-10"
+        />
+
+        <!-- CV (South) -->
+        <HomeCard 
+            href={getLocalizedPath('/cv', lang)}
+            icon="description"
+            title="CV"
+            subtitle={text.cards.cv}
+            class="order-5 md:order-unset md:col-start-2 md:row-start-3 md:self-start md:justify-self-center md:mt-10"
+        />
+
+    </div>
+</main>

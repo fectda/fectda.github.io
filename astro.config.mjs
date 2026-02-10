@@ -5,6 +5,9 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
+  devToolbar: {
+    enabled: false,
+  },
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],

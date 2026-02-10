@@ -1,0 +1,24 @@
+---
+import Head from "@components/Head.astro";
+import { SITE } from "@consts";
+import type { Locale } from "@lib/i18n";
+
+type Props = {
+  title: string;
+  description: string;
+  lang?: Locale;
+  bodyClass?: string;
+};
+
+const { title, description, lang = 'es', bodyClass = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <Head title={`${title} | ${SITE.NAME}`} description={description} />
+  </head>
+  <body class:list={["antialiased min-h-screen selection:bg-primary selection:text-white", bodyClass]}>
+    <slot />
+  </body>
+</html>

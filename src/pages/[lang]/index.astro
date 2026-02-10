@@ -1,10 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import PageLayout from "@layouts/PageLayout.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import { SITE } from "@consts";
-import { t, type Locale, getLocalizedPath } from "@lib/i18n";
-import { SECTION_INTROS } from "src/data/intros";
+import MinimalLayout from "@layouts/MinimalLayout.astro";
+import { type Locale } from "@lib/i18n";
+import { UI_TEXT } from "@data/ui-text";
+import GuardianOverlay from "@components/home/GuardianOverlay.astro";
+import HomeHeader from "@components/home/HomeHeader.astro";
+import HomeMain from "@components/home/HomeMain.astro";
+import HomeFooter from "@components/home/HomeFooter.astro";
 
 export async function getStaticPaths() {
   return [
@@ -14,245 +15,58 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Locale };
-
-// Get latest bits (software)
-const bits = (await getCollection("bits"))
-  .filter(post => !post.data.draft && post.slug.startsWith(`${lang}/`))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3)
-  .map(post => ({ ...post, slug: post.slug.replace(`${lang}/`, '') }));
-
-// Get latest atoms (hardware)
-const atoms = (await getCollection("atoms"))
-  .filter(post => !post.data.draft && post.slug.startsWith(`${lang}/`))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 2)
-  .map(post => ({ ...post, slug: post.slug.replace(`${lang}/`, '') }));
-
-// Get latest mind (essays)
-const mind = (await getCollection("mind"))
-  .filter(post => !post.data.draft && post.slug.startsWith(`${lang}/`))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3)
-  .map(post => ({ ...post, slug: post.slug.replace(`${lang}/`, '') }));
-
-// Hardware images for visual match (Fallbacks since we don't have real images for every atom yet)
-const hardwareImages = [
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCN0TgA7d83Osd1o4NxBYTz-RoF4Ax0VKJsAV3cZ3gmf8CmxVpyTrMwo9dX4xPOa7re_U8LEvkHRf4RzuCVF9a_cbeNWfYTH7uPJUsxF36io-o2xei9SYKxYim_RSJ1pBmoxJfCMddi_EU5rmPh8K4kPtU-ige5sTOnJ_B96my9NIIxyA84zFMuHFsrsC4EzwnkZkJZJWUApm5PGCjjXKl1802dKTQlWtnNc7ug_ZSFz7g7tZTmUrbvL4hDVGpjwQQluW4J2OxnfFZp",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuC3tkqLHq4v1hXATQLcQuEU0MZhtp3pQiP8f-LAIlCbsfBMWR2Kl-wBqTaNatKXhvDYrykWRHA4vItvLa4lOvlIrUAeWf7s1DZNXRKQI-uWUq9L84x9pM2Z_RBat6v9NgcwiDLlQ1s9RkDGnyxaS8Ad6KJCxh57708SPnsF-F1fto_3XkbXKnwQCWm0ZL2FNsDJ8P24v945nCCzXNf_0y-6NZ8U_eZexcBvSa2orVqzKacK60AN7AOKa-diHZu3lcNtKr3TGnAfT78F"
-];
+const text = UI_TEXT[lang];
 ---
 
-<PageLayout title={t(lang, 'home.title')} description={t(lang, 'home.description')} lang={lang}>
+<MinimalLayout title={text.hero.role} description={text.hero.sub} lang={lang} bodyClass="home-body text-white font-body overflow-x-hidden min-h-screen flex flex-col py-4 md:pt-6 md:pb-3 lg:pt-16 lg:pb-8 md:justify-center relative">
   
-  <!-- Main Wrapper -->
-  <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16">
+  <style is:global>
+      .home-body {
+          background-color: #1A1A1A;
+          background-image: linear-gradient(to top, rgba(171, 42, 62, 0.25) 0%, rgba(26, 26, 26, 1) 50%);
+          background-attachment: fixed;
+      }
+  </style>
 
-      <!-- Hero Section: System Status (Boxed Layout) -->
-      <section class="border border-border-dark bg-[#111111] relative overflow-hidden group">
-        <!-- Decorative corner markers -->
-        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-        <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-primary"></div>
-        <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-primary"></div>
-        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary"></div>
+  <style>
+    @media (max-width: 768px) {
+        /* Any page-level overrides if needed, though most styles are now in components */
+    }
+    
+    /* Global classes used by child components but defined here for context or moved */
+    /* .corner-cut is used by HomeCard and Portrait */
+    :global(.corner-cut) {
+        clip-path: polygon(
+            20% 0, 100% 0, 
+            100% 80%, 80% 100%, 
+            0 100%, 0 20%
+        );
+    }
+    
+    /* .ember-pulse is used by Portrait in HomeMain */
+    :global(.ember-pulse) {
+        position: absolute;
+        width: 160%;
+        height: 160%;
+        background: radial-gradient(circle, rgba(171, 42, 62, 0.25) 0%, rgba(171, 42, 62, 0) 70%);
+        z-index: -1;
+        pointer-events: none;
+        animation: pulse-ember 4s infinite ease-in-out;
+    }
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:divide-x divide-border-dark">
-            <!-- Main Status Panel -->
-            <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-between min-h-[400px]">
-                <div class="flex items-center gap-3 mb-8 border border-primary/20 bg-primary/5 px-4 py-1 self-start">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <span class="text-primary font-mono text-xs tracking-widest uppercase">System_Status: ONLINE</span>
-                </div>
-                <div class="space-y-6">
-                    <h1 class="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none text-white">
-                        Physicist<span class="text-primary">.</span><br/>
-                        CIO<span class="text-primary">.</span><br/>
-                        Maker<span class="text-primary">.</span>
-                    </h1>
-                    <p class="text-gray-400 max-w-xl text-lg font-light leading-relaxed font-mono">
-                        // {t(lang, 'home.description')}
-                    </p>
-                </div>
-                <div class="mt-12 pt-6 border-t border-border-dark flex flex-wrap gap-4">
-                    <a href={getLocalizedPath('/bits', lang)} class="flex items-center gap-2 bg-white text-black px-6 py-3 font-bold uppercase hover:bg-primary hover:text-white transition-colors group/btn">
-                        <span>{t(lang, 'home.view_all')}</span>
-                        <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
-                    </a>
-                    <a href={getLocalizedPath('/cv', lang)} class="flex items-center gap-2 border border-border-dark text-white px-6 py-3 font-bold uppercase hover:border-primary hover:text-primary transition-colors">
-                        <span>View Logs [CV]</span>
-                    </a>
-                </div>
-            </div>
+    @keyframes pulse-ember {
+        0% { transform: scale(0.95); opacity: 0.5; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+        100% { transform: scale(0.95); opacity: 0.5; }
+    }
+  </style>
 
-            <!-- Metadata Sidebar -->
-            <div class="lg:col-span-4 bg-[#0F0F0F] flex flex-col divide-y divide-border-dark">
-                <div class="p-6 flex-1">
-                    <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-4">// Current_Location</h3>
-                    <!-- Map placeholder with grid pattern -->
-                    <div class="relative h-48 w-full bg-[#111] mb-4 overflow-hidden border border-border-dark group-hover:border-primary/30 transition-colors">
-                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-10"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-4xl text-gray-700">share_location</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-[10px] text-primary font-mono border border-primary/30">19.4326° N, 99.1332° W</div>
-                    </div>
-                    <p class="text-xl font-bold uppercase text-white">Mexico City</p>
-                    <p class="text-sm text-gray-400 font-mono">Zone: CDT (UTC-5)</p>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-4">// Core_Focus</h3>
-                    <ul class="space-y-3 font-mono text-sm text-gray-400">
-                        <li class="flex justify-between items-center">
-                            <span>[01] Cloud Arch</span>
-                            <div class="w-24 h-1 bg-gray-800"><div class="w-[85%] h-full bg-primary"></div></div>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span>[02] AI / ML</span>
-                            <div class="w-24 h-1 bg-gray-800"><div class="w-[60%] h-full bg-white"></div></div>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span>[03] Hardware</span>
-                            <div class="w-24 h-1 bg-gray-800"><div class="w-[40%] h-full bg-gray-500"></div></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-1">// Uptime</h3>
-                    <p class="text-3xl font-bold font-mono text-white">99.98<span class="text-primary text-sm">%</span></p>
-                </div>
-            </div>
-        </div>
-      </section>
+    <GuardianOverlay />
+    
+    <HomeHeader lang={lang} />
+    
+    <HomeMain lang={lang} />
 
-      
-      <!-- BITS Section -->
-      {bits.length > 0 && (
-        <section>
-          <div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
-            <h2 class="text-2xl font-bold uppercase flex items-center gap-2 text-white">
-              <span class="text-primary">[</span> BITS <span class="text-primary">]</span>
-              <span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// SOFTWARE_PROJECTS</span>
-            </h2>
-            <a href={getLocalizedPath('/bits', lang)} class="text-xs uppercase font-bold text-primary hover:text-white transition-colors flex items-center gap-1">
-                 {t(lang, 'home.view_all')} <span class="material-symbols-outlined text-sm">chevron_right</span>
-            </a>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bits.map(project => (
-              <ProjectCard 
-                title={project.data.title}
-                description={project.data.description}
-                date={project.data.date.toISOString().split('T')[0]}
-                status="WIP" 
-                tags={[]}
-                href={getLocalizedPath(`/bits/${project.slug}`, lang)}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      <!-- ATOMS Section (Hardware Style) -->
-      {atoms.length > 0 && (
-        <section>
-          <div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
-            <h2 class="text-2xl font-bold uppercase flex items-center gap-2 text-white">
-              <span class="text-primary">[</span> ATOMS <span class="text-primary">]</span>
-              <span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// HARDWARE_BUILDS</span>
-            </h2>
-             <a href={getLocalizedPath('/atoms', lang)} class="text-xs uppercase font-bold text-primary hover:text-white transition-colors flex items-center gap-1">
-                 {t(lang, 'home.view_all')} <span class="material-symbols-outlined text-sm">chevron_right</span>
-            </a>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-             {atoms.map((project, index) => (
-               <article class="relative group h-64 border border-border-dark overflow-hidden">
-                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                     style={`background-image: url('${hardwareImages[index % hardwareImages.length]}');`}>
-                    <div class="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors"></div>
-                </div>
-                <div class="relative h-full p-6 flex flex-col justify-end items-start">
-                    <div class="bg-gray-700/90 text-white text-xs font-bold px-2 py-1 mb-2 uppercase">Concept</div>
-                    <h3 class="text-2xl font-bold text-white uppercase mb-1">{project.data.title}</h3>
-                    <p class="text-gray-300 text-sm max-w-md line-clamp-2">{project.data.description}</p>
-                    <a class="mt-4 flex items-center gap-2 text-primary font-bold text-sm uppercase group-hover:text-white transition-colors" href={getLocalizedPath(`/atoms/${project.slug}`, lang)}>
-                         Initialize <span class="material-symbols-outlined text-sm">terminal</span>
-                    </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <!-- MIND Section -->
-      {mind.length > 0 && (
-        <section>
-          <div class="flex items-center justify-between mb-6 border-b border-border-dark pb-2">
-            <h2 class="text-2xl font-bold uppercase flex items-center gap-2 text-white">
-              <span class="text-primary">[</span> MIND <span class="text-primary">]</span>
-              <span class="text-sm text-gray-500 font-normal ml-2 hidden sm:inline-block">// LOGS_AND_THOUGHTS</span>
-            </h2>
-          </div>
-          <div class="border border-border-dark bg-[#111111] divide-y divide-border-dark">
-             {mind.map(essay => (
-               <a href={getLocalizedPath(`/mind/${essay.slug}`, lang)} class="block p-6 hover:bg-white hover:text-black transition-colors group">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div>
-                            <span class="text-xs font-mono text-gray-500 group-hover:text-black mb-1 block">
-                                {essay.data.date.toISOString().split('T')[0]}
-                            </span>
-                            <h3 class="text-xl font-bold uppercase">{essay.data.title}</h3>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-sm font-mono opacity-60 group-hover:opacity-100">[ READ ]</span>
-                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-                        </div>
-                    </div>
-               </a>
-             ))}
-          </div>
-        </section>
-      )}
-
-      <!-- Contact Section -->
-      <section class="max-w-3xl mx-auto w-full pt-8">
-        <div class="border border-border-dark bg-[#050505] p-2">
-            <div class="flex items-center justify-between border-b border-neutral-800 bg-[#0A0A0A] px-6 py-3 mb-0">
-                <span class="text-xs text-white font-mono uppercase tracking-widest">COMMS_CHANNEL // OPEN</span>
-                <div class="flex gap-2 opacity-50">
-                    <div class="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-                    <div class="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-                </div>
-            </div>
-            <div class="p-6 font-mono text-sm md:text-base">
-                <p class="text-gray-400 mb-4"># Establish connection...</p>
-                <div class="space-y-4">
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex-1">
-                            <label class="block text-neutral-500 text-[10px] mb-1 uppercase tracking-widest">SENDER_ID</label>
-                             <div class="w-full bg-[#050505] border border-neutral-800 text-white py-2 px-3 font-mono text-sm uppercase">
-                                VISITOR_UNVERIFIED
-                             </div>
-                        </div>
-                        <div class="flex-1">
-                             <label class="block text-neutral-500 text-[10px] mb-1 uppercase tracking-widest">RECIPIENT_NODE</label>
-                             <a href={`mailto:${SITE.EMAIL}`} class="block w-full bg-[#050505] border border-neutral-800 text-white hover:border-primary hover:text-primary transition-colors py-2 px-3 font-mono text-sm uppercase">
-                                {SITE.EMAIL}
-                             </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-8 flex justify-end">
-                    <a href={`mailto:${SITE.EMAIL}`} class="group flex items-center gap-2 text-white hover:text-primary transition-colors">
-                        <span class="text-primary">&gt;</span> Initialize_Protocol<span class="animate-pulse">_</span>
-                        <span class="text-xs border border-white group-hover:border-primary px-2 py-1 uppercase">Send Packet</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-      </section>
-
-  </div>
+    <HomeFooter lang={lang} />
   
-</PageLayout>
+</MinimalLayout>

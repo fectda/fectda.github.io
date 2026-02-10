@@ -1,3 +1,11 @@
+---
+title: "Obsidian Telemetry"
+description: "Una identidad digital que refleja una contradicción viviente: Físico + Maker + Ejecutivo. Un sistema de diseño brutalista."
+date: "2024-05-01"
+stack: ["Astro", "Tailwind", "Vue.js", "AI Agents"]
+status: "done"
+---
+
 # 🌑 Obsidian Telemetry (Este Portafolio)
 
 **Categoría:** Software / Web / Meta
