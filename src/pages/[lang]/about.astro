@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import { type Locale } from "@lib/i18n";
-import Manifesto from "@components/about/Manifesto.astro";
+import PageH1 from "@components/PageH1.astro";
 import BioTerminal from "@components/about/BioTerminal.astro";
 import SangreAzul from "@components/about/SangreAzul.astro";
 import Incomodidad from "@components/about/Incomodidad.astro";
@@ -37,7 +37,7 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 
   <div class="pt-20 md:pt-32 pb-20 px-4 md:px-10 max-w-[1000px] mx-auto w-full flex flex-col gap-12 relative z-10">
 
-    <Manifesto 
+    <PageH1 
       title={content.manifesto.title} 
       subtitle={content.manifesto.subtitle} 
     />
