@@ -1,0 +1,15 @@
+---
+import { SITE } from "@consts";
+import { UI_TEXT } from "@data/ui-text";
+import type { Locale } from "@lib/i18n";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<p class="text-gray-600 font-mono text-xs mt-4 uppercase tracking-widest">
+    {UI_TEXT[lang].footer}
+</p>

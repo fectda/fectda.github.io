@@ -1,0 +1,43 @@
+---
+import { getLocalizedPath } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Build breadcrumbs from current path
+// e.g. /es/bits/some-project → [{label:"BITS", href:"/es/bits"}, {label:"SOME-PROJECT", href:null}]
+const pathSegments = currentPath.replace(/\/$/, '').split('/').filter(Boolean);
+const langlessSegments = pathSegments.slice(1); // remove lang prefix
+
+const breadcrumbs = langlessSegments.map((seg, i) => {
+  const label = decodeURIComponent(seg).toUpperCase();
+  const isLast = i === langlessSegments.length - 1;
+  const href = isLast ? null : getLocalizedPath('/' + langlessSegments.slice(0, i + 1).join('/'), lang);
+  return { label, href };
+});
+---
+
+<div class="flex items-center gap-3 md:gap-4 min-w-0 font-mono font-bold tracking-widest uppercase text-white">
+    <span class="material-symbols-outlined text-primary animate-pulse shrink-0 text-sm md:text-xl">terminal</span>
+    <nav class="flex items-center gap-0 truncate text-sm md:text-xl">
+        <a href={getLocalizedPath('/', lang)} class="hover:text-primary transition-colors">
+            <span class="md:hidden">EG </span>
+            <span class="hidden md:inline">EDUARDO GONZALEZ</span>
+        </a>
+        {breadcrumbs.map((crumb) => (
+            <span class="hidden md:contents">
+                <span class="text-primary mx-2">&nbsp;//&nbsp;</span>
+                {crumb.href ? (
+                    <a href={crumb.href} class="text-gray-400 font-normal hover:text-primary transition-colors">{crumb.label}</a>
+                ) : (
+                    <span class="text-gray-400 font-normal">{crumb.label}</span>
+                )}
+            </span>
+        ))}
+    </nav>
+</div>

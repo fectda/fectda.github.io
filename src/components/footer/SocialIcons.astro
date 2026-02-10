@@ -1,0 +1,27 @@
+---
+import { SOCIALS } from "@consts";
+---
+
+<div class="flex gap-8 items-center justify-center">
+    {SOCIALS.map((social) => (
+    <a
+        href={social.HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={social.NAME}
+        class="group"
+    >
+        <div 
+            class="w-6 h-6 bg-gray-400 group-hover:bg-white group-hover:scale-110 transition-all duration-300"
+            style={{
+                maskImage: `url(/icons/social/${social.NAME}.svg)`,
+                WebkitMaskImage: `url(/icons/social/${social.NAME}.svg)`,
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center'
+            }}
+        ></div>
+    </a>
+    ))}
+</div>

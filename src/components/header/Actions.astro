@@ -1,0 +1,31 @@
+---
+---
+
+<div class="flex gap-2">
+    <button id="share-button" class="bg-[#293837] hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow" title="Share">
+        <span class="material-symbols-outlined text-sm">share</span>
+    </button>
+</div>
+
+<script>
+const shareBtn = document.getElementById('share-button');
+shareBtn?.addEventListener('click', async () => {
+    const shareData = {
+    title: document.title,
+    url: window.location.href,
+    };
+    try {
+    if (navigator.share) {
+        await navigator.share(shareData);
+    } else {
+        await navigator.clipboard.writeText(window.location.href);
+        shareBtn.querySelector('span')!.textContent = 'check';
+        setTimeout(() => {
+        shareBtn.querySelector('span')!.textContent = 'share';
+        }, 2000);
+    }
+    } catch (e) {
+    // User cancelled share
+    }
+});
+</script>

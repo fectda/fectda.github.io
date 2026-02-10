@@ -1,0 +1,34 @@
+---
+import { getLocalizedPath } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Language switcher: strip current lang prefix, then re-localize
+const pathSegments = currentPath.replace(/\/$/, '').split('/').filter(Boolean);
+const langlessSegments = pathSegments.slice(1); // remove lang prefix
+const pathWithoutLang = '/' + langlessSegments.join('/');
+const altLang: Locale = lang === 'es' ? 'en' : 'es';
+const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
+---
+
+<div class="pl-8 border-l border-gray-700 h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
+        <a 
+        href={lang === 'en' ? currentPath : switchLangHref} 
+        class:list={["font-bold transition-colors", lang === 'en' ? "text-white" : "text-gray-400 hover:text-primary"]}
+    >
+        EN
+    </a>
+    <span class="text-gray-600">/</span>
+    <a 
+        href={lang === 'es' ? currentPath : switchLangHref} 
+        class:list={["font-bold transition-colors", lang === 'es' ? "text-white" : "text-gray-400 hover:text-primary"]}
+    >
+        ES
+    </a>
+</div>

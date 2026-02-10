@@ -48,8 +48,8 @@ body {
 
 /* Main Container */
 .main-container {
-  @apply relative z-10 flex flex-col min-h-screen w-full max-w-[1440px] mx-auto;
-  @apply border-x border-border-dark bg-background-dark/95 backdrop-blur-sm;
+  @apply relative z-10 flex flex-col flex-1 w-full max-w-[1440px] mx-auto;
+  @apply bg-background-dark/95 backdrop-blur-sm;
 }
 
 /* Scrollbar Styling */

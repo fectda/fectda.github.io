@@ -1,0 +1,127 @@
+---
+import { getLocalizedPath } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Build breadcrumbs for display (optional, small)
+const pathSegments = currentPath.replace(/\/$/, '').split('/').filter(Boolean);
+const langlessSegments = pathSegments.slice(1); 
+const breadcrumbs = langlessSegments.map((seg, i) => {
+  const label = decodeURIComponent(seg).toUpperCase();
+  const isLast = i === langlessSegments.length - 1;
+  const href = isLast ? null : getLocalizedPath('/' + langlessSegments.slice(0, i + 1).join('/'), lang);
+  return { label, href };
+});
+
+const isActive = (path: string) => {
+  const specializedPath = getLocalizedPath(path, lang);
+  return currentPath === specializedPath || (path !== '/' && currentPath.startsWith(specializedPath));
+};
+
+const pathWithoutLang = '/' + langlessSegments.join('/');
+const altLang: Locale = lang === 'es' ? 'en' : 'es';
+const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
+---
+
+<!-- Trigger Checkbox (Hidden) -->
+<input class="hidden peer" id="mobile-menu-checkbox" type="checkbox"/>
+
+<!-- Overlay (Fixed) -->
+<div class="lg:hidden fixed inset-0 z-[60] bg-[#1A1A1A]/95 backdrop-blur-md opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-300 flex flex-col items-center justify-center" id="mobile-menu-overlay">
+    
+    <!-- Close Button -->
+    <label class="absolute top-6 right-6 font-mono text-sm tracking-widest cursor-pointer hover:text-primary transition-colors py-2 px-4 border border-white/10" for="mobile-menu-checkbox">
+        [ CLOSE ]
+    </label>
+
+    <!-- Breadcrumbs (Small, Top) -->
+     <div class="absolute top-24 flex flex-col items-center gap-1 font-mono text-xs text-gray-500">
+         <a href={getLocalizedPath('/', lang)} class="tracking-widest font-bold text-gray-400 hover:text-primary transition-colors">EDUARDO GONZALEZ</a>
+        {breadcrumbs.map((crumb) => (
+             <div class="flex items-center gap-2">
+                <span class="text-primary">//</span>
+                {crumb.href ? (
+                    <a href={crumb.href} class="hover:text-primary transition-colors">{crumb.label}</a>
+                ) : (
+                    <span>{crumb.label}</span>
+                )}
+            </div>
+        ))}
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="flex flex-col items-center gap-6 md:gap-10">
+        {[
+            { path: '/bits', label: 'BITS' },
+            { path: '/atoms', label: 'ATOMS' },
+            { path: '/mind', label: 'MIND' },
+            { path: '/cv', label: 'CV' },
+            { path: '/about', label: 'ABOUT' }
+        ].map(item => (
+            <a 
+                href={getLocalizedPath(item.path, lang)}
+                class:list={[
+                    "font-headline text-5xl md:text-7xl tracking-tighter transition-colors",
+                     isActive(item.path) ? "text-primary" : "text-white hover:text-primary"
+                ]}
+            >
+                {item.label}
+            </a>
+        ))}
+    </nav>
+
+    <!-- Footer: Lang & Share -->
+    <div class="absolute bottom-12 flex flex-col items-center gap-6 w-full">
+        <!-- Lang -->
+        <div class="flex items-center gap-4 font-mono text-sm tracking-widest border-t border-white/10 pt-4 w-40 justify-center">
+            <a href={lang === 'en' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'en' ? "text-white" : "text-gray-500 hover:text-primary"]}>EN</a>
+            <span class="text-gray-600 font-light">/</span>
+            <a href={lang === 'es' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'es' ? "text-white" : "text-gray-500 hover:text-primary"]}>ES</a>
+        </div>
+
+        <!-- Share (User Requested) -->
+        <button id="mobile-share-btn" class="flex items-center gap-2 bg-[#293837] hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
+            <span class="material-symbols-outlined text-sm">share</span>
+            <span class="font-mono text-xs tracking-wider">SHARE</span>
+        </button>
+    </div>
+</div>
+
+<script>
+    // Share Logic
+    const mobileShareBtn = document.getElementById('mobile-share-btn');
+    mobileShareBtn?.addEventListener('click', async () => {
+        const shareData = {
+            title: document.title,
+            url: window.location.href,
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                const originalText = mobileShareBtn.innerHTML;
+                mobileShareBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span><span class="font-mono text-xs tracking-wider">COPIED</span>';
+                setTimeout(() => {
+                    mobileShareBtn.innerHTML = originalText;
+                }, 2000);
+            }
+        } catch (e) {}
+    });
+
+    // Close menu when clicking link
+    const checkbox = document.getElementById('mobile-menu-checkbox') as HTMLInputElement;
+    document.querySelectorAll('#mobile-menu-overlay a').forEach(link => {
+        link.addEventListener('click', () => {
+             // We can just set checked to false.
+             // Since the input is in this component, we can find it.
+             if (checkbox) checkbox.checked = false;
+        });
+    });
+</script>
