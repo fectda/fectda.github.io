@@ -1,0 +1,86 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import { getLocalizedPath, type Locale } from '@lib/i18n';
+
+interface Props {
+  entry: CollectionEntry<'mind'>;
+  lang: Locale;
+  readLabel?: string;
+}
+
+const { entry, lang, readLabel = 'READ_ENTRY' } = Astro.props;
+const { data, slug } = entry;
+const href = getLocalizedPath(`/mind/${slug.split('/').pop()}`, lang);
+
+const dateStr = data.date.toISOString().split('T')[0].replace(/-/g, '.');
+const tags = data.tags ?? [];
+const tagLabel = tags.length > 0 
+  ? tags.map((t: string) => t.toUpperCase().replace(/\s+/g, '_')).join(' | ') 
+  : 'LOG_ENTRY';
+---
+
+<article class="log-entry group py-12 border-b border-dashed border-[#333] relative">
+  <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
+    <span class="text-[#AB2A3E]">{dateStr}</span>
+    <span class="text-gray-600 hidden md:inline">|</span>
+    <span class="text-gray-400">[ {tagLabel} ]</span>
+  </div>
+  
+  <a class="title-link block mb-6" href={href}>
+    <h2 class="log-title text-5xl md:text-6xl uppercase leading-tight">
+      {data.title}
+    </h2>
+  </a>
+  
+  <p class="log-description text-gray-400 text-lg leading-relaxed max-w-2xl mb-6">
+    {data.description}
+  </p>
+  
+  <div class="flex justify-end">
+    <a class="read-link inline-flex items-center gap-2 font-mono text-xs tracking-widest" href={href}>
+      {readLabel} <span class="text-lg leading-none">&gt;&gt;</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .log-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    color: #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  .title-link {
+    text-decoration: none;
+  }
+
+  .title-link:hover {
+    text-decoration: none;
+  }
+
+  .log-description {
+    margin-top: 0;
+  }
+
+  .read-link {
+    color: #25BCC0;
+    transition: color 0.3s ease;
+  }
+
+  .read-link:hover {
+    color: #fff;
+  }
+
+  .log-entry:hover .log-title {
+    color: #25BCC0;
+    transform: translateX(10px);
+  }
+
+  .log-entry:hover .read-link {
+    text-decoration: underline;
+    text-decoration-color: #25BCC0;
+    text-underline-offset: 4px;
+  }
+</style>

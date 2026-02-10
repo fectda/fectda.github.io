@@ -1,140 +1,44 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import SectionHeader from "@components/SectionHeader.astro";
+import Scanlines from "@components/Scanlines.astro";
+import MindEntry from "@components/mind/Entry.astro"; // Correct path as per recent change
+import PageH1 from "@components/PageH1.astro";
+import LogDivider from "@components/LogDivider.astro";
+import type { Locale } from "@lib/i18n";
+import { MIND_CONTENT } from "src/data/mind-content";
 
-import { t, type Locale, getLocalizedPath } from "@lib/i18n";
-import { SECTION_INTROS } from "src/data/intros";
+import { getLangStaticPaths } from "@lib/static-paths";
 
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } }
-  ];
-}
+export const getStaticPaths = getLangStaticPaths;
 
 const { lang } = Astro.params as { lang: Locale };
+const content = MIND_CONTENT[lang];
 
-const data = (await getCollection("mind"))
-  .filter(post => !post.data.draft && post.slug.startsWith(`${lang}/`))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .map(post => ({ ...post, slug: post.slug.replace(`${lang}/`, '') }));
-  
-type Acc = {
-  [year: string]: CollectionEntry<"mind">[];
-}
-
-const posts = data.reduce((acc: Acc, post) => {
-    const year = post.data.date.getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  }, {});
-
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
-
-const intro = SECTION_INTROS[lang].mind;
+// Get mind entries filtered by current language
+const allMindEntries = await getCollection("mind");
+const sortedEntries = allMindEntries
+  .filter(entry => entry.slug.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<PageLayout title={t(lang, 'mind.title')} description={t(lang, 'mind.description')} lang={lang}>
-  
-  <div class="flex flex-1 max-w-[1440px] mx-auto w-full relative">
-    
-    <!-- Left Telemetry Sidebar (Hidden on mobile) -->
-    <aside class="hidden lg:flex w-24 flex-col border-r border-border-dark py-8 items-center justify-between sticky top-16 h-[calc(100vh-64px)]">
-        <div class="flex flex-col gap-8 text-[10px] font-mono text-gray-500 vertical-rl tracking-widest opacity-50" style="writing-mode: vertical-rl;">
-            <span>COORD: 34.0522° N, 118.2437° W</span>
-            <span>MEM: 64% ALLOCATED</span>
-        </div>
-        <div class="w-[1px] h-24 bg-border-dark"></div>
-        <div class="flex flex-col items-center gap-4">
-            <span class="material-symbols-outlined text-gray-500 text-lg">grid_4x4</span>
-            <span class="material-symbols-outlined text-gray-500 text-lg">memory</span>
-        </div>
-    </aside>
+<PageLayout title={content.meta.title} description={content.meta.description} lang={lang}>
+  <Scanlines />
 
-    <!-- Content Area -->
-    <main class="flex-1 px-6 md:px-12 py-12">
-        
-        <!-- Hero Section -->
-        <section class="mb-20">
-            <div class="flex flex-col gap-4">
-                <div class="flex items-baseline gap-4 flex-wrap">
-                    <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-white">MIND</h1>
-                    <span class="text-xl md:text-2xl text-gray-500 font-light">// {intro}</span>
-                </div>
-                <div class="mt-6 p-6 border border-neutral-800 bg-[#0A0A0A] max-w-2xl">
-                     <span class="block text-xs text-neutral-500 uppercase tracking-widest mb-2">// LATEST_ENTRY_POINTER</span>
-                    <div class="flex items-center gap-2 text-white font-mono text-sm md:text-base uppercase">
-                        <span class="material-symbols-outlined text-sm text-primary">article</span>
-                        <span class="tracking-wide">/mind/latest.log</span>
-                        <span class="text-neutral-600">[READ_ONLY]</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <main class="pt-32 pb-20 px-4 md:px-10 max-w-[900px] mx-auto w-full flex flex-col items-center relative z-10">
+    <PageH1 
+      title={content.hero.title} 
+      subtitle={content.hero.subtitle} 
+    />
 
-        <div class="space-y-24">
-            {years.map(year => (
-                <section>
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="text-primary font-mono font-bold text-lg">///</span>
-                        <h2 class="text-2xl font-bold tracking-tight text-white">{year}</h2>
-                        <div class="h-[1px] flex-1 bg-border-dark"></div>
-                    </div>
+    <LogDivider label={content.divider} />
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {posts[year].map((post) => (
-                             <a href={getLocalizedPath(`/mind/${post.slug}`, lang)} class="group border border-border-dark bg-[#0F0F0F] p-6 flex flex-col h-full transition-all duration-200 relative overflow-hidden hover:border-primary hover:bg-primary/5">
-                                
-                                <!-- Technical Header -->
-                                <div class="flex justify-between items-start mb-6 font-mono text-xs text-gray-500">
-                                    <span class="border border-border-dark px-2 py-1 group-hover:border-primary/50 transition-colors">
-                                        {post.data.date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' })}.log
-                                    </span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-[14px]">timer</span>
-                                        5 MIN READ
-                                    </div>
-                                </div>
-
-                                <!-- Content -->
-                                <div class="flex-1 flex flex-col gap-3">
-                                    <h3 class="text-2xl font-bold leading-tight text-white group-hover:text-primary transition-colors">{post.data.title}</h3>
-                                    <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
-                                        {post.data.description}
-                                    </p>
-                                </div>
-
-                                <!-- Footer/Action -->
-                                <div class="mt-8 pt-4 border-t border-border-dark flex justify-between items-center group-hover:border-primary/30 transition-colors">
-                                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Log / Theory</span>
-                                    <span class="material-symbols-outlined text-gray-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary">arrow_forward</span>
-                                </div>
-
-                                <!-- Corner Decorations -->
-                                <div class="absolute top-0 left-0 w-2 h-2 border-l border-t border-white opacity-20"></div>
-                                <div class="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white opacity-20 group-hover:border-primary group-hover:opacity-100 transition-all"></div>
-                             </a>
-                        ))}
-                    </div>
-                </section>
-            ))}
-        </div>
-
-    </main>
-
-    <!-- Right Decorative Gutter (Hidden on mobile) -->
-    <aside class="hidden xl:flex w-24 flex-col border-l border-border-dark py-8 items-center sticky top-16 h-[calc(100vh-64px)]">
-        <div class="flex flex-col gap-12 mt-20">
-            <div class="w-[1px] h-32 bg-gradient-to-b from-transparent via-primary to-transparent opacity-50"></div>
-            <div class="text-[10px] font-mono text-gray-500 vertical-rl tracking-widest uppercase" style="writing-mode: vertical-rl;">
-                Index // Vol. 4
-            </div>
-        </div>
-    </aside>
-
-  </div>
+    <div class="w-full flex flex-col gap-0">
+      {sortedEntries.map(entry => (
+        <MindEntry entry={entry} lang={lang} readLabel={content.readLabel} />
+      ))}
+    </div>
+  </main>
 </PageLayout>
+
+
