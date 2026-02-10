@@ -10,12 +10,9 @@ import LinajeMaker from "@components/about/LinajeMaker.astro";
 import Obsessions from "@components/about/Obsessions.astro";
 import { ABOUT_CONTENT } from "@data/about-content";
 
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } }
-  ];
-}
+import { getLangStaticPaths } from "@lib/static-paths";
+
+export const getStaticPaths = getLangStaticPaths;
 
 const { lang } = Astro.params as { lang: Locale };
 const content = ABOUT_CONTENT[lang];

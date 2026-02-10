@@ -7,12 +7,9 @@ import HomeHeader from "@components/home/HomeHeader.astro";
 import HomeMain from "@components/home/HomeMain.astro";
 import HomeFooter from "@components/home/HomeFooter.astro";
 
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } }
-  ];
-}
+import { getLangStaticPaths } from "@lib/static-paths";
+
+export const getStaticPaths = getLangStaticPaths;
 
 const { lang } = Astro.params as { lang: Locale };
 const text = UI_TEXT[lang];

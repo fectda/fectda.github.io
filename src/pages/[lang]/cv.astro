@@ -9,12 +9,9 @@ import AcademicOrigin from "@components/cv/AcademicOrigin.astro";
 import SkillMatrix from "@components/cv/SkillMatrix.astro";
 import { CV_CONTENT } from "@data/cv-content";
 
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } }
-  ];
-}
+import { getLangStaticPaths } from "@lib/static-paths";
+
+export const getStaticPaths = getLangStaticPaths;
 
 const { lang } = Astro.params as { lang: Locale };
 const content = CV_CONTENT[lang];
