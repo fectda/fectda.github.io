@@ -1,10 +1,12 @@
 ---
 title: "IoT Axolotl-Pumpkin (Halloween 2025)"
+shortTitle: "IOT_PUMPKIN"
 description: "Calabaza interactiva con ESP32 que cuenta historias de terror generadas por IA al detectar presencia humana"
 date: 2025-10-31
 draft: false
 stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "PCM5102A"]
 status: "done"
+icon: "sensors"
 ---
 
 # 🎃 IoT Axolotl-Pumpkin (Halloween 2025)

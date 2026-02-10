@@ -1,10 +1,12 @@
 ---
 title: "Adaptador de Sierra DeWalt para Riel Truper"
+shortTitle: "SAW_ADAPTER_V1"
 description: "Base personalizada impresa en 3D que permite usar una sierra circular DeWalt sobre un riel de guía Truper"
 date: 2025-11-20
 draft: false
 stack: ["FreeCAD", "Impresión 3D", "PETG", "Diseño Mecánico"]
 status: "done"
+icon: "carpenter"
 ---
 
 # 🪚 Adaptador de Sierra DeWalt para Riel Truper

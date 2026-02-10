@@ -1,9 +1,11 @@
-# 🌪️ Active Filtration PC Drawer (Stealth Build)
-
-**Category:** Maker / Hardware / Home Improvement
-**Status:** Functional POC (Carpentry Phase)
-**Hardware:** Open Case + AIO Liquid Cooler + MERV 13 Filters
-
+---
+title: "Active Filtration PC Drawer"
+shortTitle: "PC_DRAWER_V1"
+description: "A custom stealth build PC drawer with active air filtration using MERV 13 filters."
+date: 2024-06-15
+stack: ["Carpentry", "PC Hardware", "Thermodynamics", "3D Printing"]
+status: "poc"
+icon: "computer"
 ---
 
 ## 🎯 The Challenge

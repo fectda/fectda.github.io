@@ -1,9 +1,11 @@
-# 🎄 Christmas Lights Hack (ESP8266 + H-Bridge)
-
-**Category:** Maker / IoT / Reverse Engineering
-**Status:** Paused
-**Hardware:** Cheap LED curtains, ESP8266, Motor Driver
-
+---
+title: "Christmas Lights Hack"
+shortTitle: "XMAS_LIGHTS"
+description: "Reverse engineering cheap LED curtains to integrate them into Home Assistant via ESP8266 and H-Bridge."
+date: 2024-12-10
+stack: ["ESP8266", "Reverse Engineering", "Electronics", "ESPHome"]
+status: "wip"
+icon: "lightbulb"
 ---
 
 ## 🎯 The Challenge

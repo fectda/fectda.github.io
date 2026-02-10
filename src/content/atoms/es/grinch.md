@@ -1,10 +1,12 @@
 ---
 title: "The Grinch (Escultura a Gran Escala)"
+shortTitle: "GRINCH_SCULPT"
 description: "Figura del Grinch de 1.20m construida con técnica de perfiles cruzados en cartón y papel maché"
 date: 2025-12-20
 draft: false
 stack: ["Cartón", "Papel Maché", "Impresión 3D", "Escultura"]
 status: "wip"
+icon: "theater_comedy"
 ---
 
 # 🎄 The Grinch (Escultura a Gran Escala)

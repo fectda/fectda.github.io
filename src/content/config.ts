@@ -20,9 +20,11 @@ const atoms = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    shortTitle: z.string(), // Short name for card display, e.g. MACRO_PAD_V2
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    icon: z.string().default("memory"), // Material Symbols icon name
     stack: z.array(z.string()), // Componentes/herramientas: ["Arduino", "ESP32", "3D Printing"]
     status: z.enum(["poc", "wip", "done"]),
     repository_url: z.string().url().optional(),

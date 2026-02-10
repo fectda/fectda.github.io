@@ -1,9 +1,11 @@
-# 🎃 IoT Axolotl-Pumpkin (Halloween 2025)
-
-**Category:** Maker / IoT / Home Automation / AI
-**Status:** Deprecated (Decomposed by fungi 🍄)
-**Stack:** ESP32, ESPHome, Home Assistant, LD2410
-
+---
+title: "IoT Axolotl-Pumpkin"
+shortTitle: "IOT_PUMPKIN"
+description: "An interactive Halloween pumpkin that uses AI to tell horror stories and reacts to presence via mmWave radar."
+date: 2025-10-31
+stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "AI"]
+status: "done"
+icon: "sensors"
 ---
 
 ## 🎯 The Challenge

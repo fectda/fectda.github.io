@@ -1,9 +1,11 @@
-# 🎄 The Grinch (Large Scale Sculpture)
-
-**Category:** Maker / Craft / Sculpture
-**Status:** Paused (WIP - Structure 50%)
-**Materials:** Cardboard, Papier-mâché, 3D Reference Model
-
+---
+title: "The Grinch Sculpture"
+shortTitle: "GRINCH_SCULPT"
+description: "A 1.20-meter scale sculpture of The Grinch using cardboard engineering and papier-mâché techniques."
+date: 2024-12-01
+stack: ["Cardboard", "Papier-mâché", "Sculpture", "DIY"]
+status: "wip"
+icon: "theater_comedy"
 ---
 
 ## 🎯 The Challenge

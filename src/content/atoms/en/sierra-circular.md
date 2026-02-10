@@ -1,9 +1,11 @@
-# 🪚 DeWalt Circular Saw Adapter for Truper Guide Rail
-
-**Category:** Maker / 3D Printing / Tools
-**Status:** Functional (v1.0)
-**Stack:** FreeCAD, 3D Printing (PETG)
-
+---
+title: "DeWalt Circular Saw Adapter"
+shortTitle: "SAW_ADAPTER_V1"
+description: "A 3D printed adapter to mount a DeWalt circular saw onto a Truper guide rail."
+date: 2024-05-20
+stack: ["FreeCAD", "3D Printing", "Tools", "PETG"]
+status: "done"
+icon: "carpenter"
 ---
 
 ## 🎯 The Challenge

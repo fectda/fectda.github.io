@@ -1,9 +1,11 @@
-# 💨 Solder Fume Extractor (DIY)
-
-**Category:** Maker / Tools / Safety
-**Status:** In Progress (Mechanical Adaptation)
-**Hardware:** PC Fan, MT3608 (Step-up), 3D Printing
-
+---
+title: "Solder Fume Extractor"
+shortTitle: "FUME_EXTRACTOR"
+description: "A compact 3D printed extractor using a high-pressure PC fan to protect health from toxic soldering fumes."
+date: 2024-10-01
+stack: ["3D Printing", "Electronics", "PC Fan", "MT3608"]
+status: "wip"
+icon: "air"
 ---
 
 ## 🎯 The Challenge
