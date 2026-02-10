@@ -1,12 +1,13 @@
 ---
-company: "Indesol (Instituto Nacional de Desarrollo Social)"
-role: "Enlace de Monitoreo PAIMEF"
+company: "Indesol (National Institute for Social Development)"
+role: "PAIMEF Monitoring Liaison"
 dateStart: "2013-01-01"
 dateEnd: "2015-01-01"
+icon: "dataset"
 ---
 
-Digitalización de procesos gubernamentales.
+Digitalization of government processes.
 
-*   **El Problema:** Seguimiento de KPIs en hojas de cálculo anidadas ineficientes.
-*   **La Solución:** Desarrollo proactivo de dos sistemas web centralizados (PHP/MySQL) para captura y análisis de datos.
-*   **Resultado:** Mejora significativa en la fiabilidad del monitoreo de recursos federales.
+*   **The Problem:** Tracking KPIs via inefficient nested spreadsheets.
+*   **The Solution:** Proactive development of two centralized web systems (PHP/MySQL) for data capture and analysis.
+*   **Result:** Significant improvement in the reliability of federal resource monitoring.

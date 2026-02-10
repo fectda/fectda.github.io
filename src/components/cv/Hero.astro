@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+  subtitle: string;
+}
+
+const { name, subtitle } = Astro.props;
+---
+<div class="w-full text-center mb-16 md:mb-24 relative">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-primary/0 via-primary/50 to-primary/0 -z-10 hidden md:block"></div>
+    <h1 class="text-5xl md:text-7xl lg:text-9xl font-headline text-white mb-2 tracking-tighter leading-none uppercase">
+        {name}
+    </h1>
+    <p class="text-primary font-mono text-sm md:text-xl tracking-widest font-bold uppercase mt-2">
+        {subtitle}
+    </p>
+</div>

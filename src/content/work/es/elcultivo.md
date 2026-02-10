@@ -3,6 +3,7 @@ company: "elcultivo.mx"
 role: "Senior Developer"
 dateStart: "2015-02-01"
 dateEnd: "2018-06-01"
+icon: "terminal"
 ---
 
 Transformación de agencia de diseño a fábrica de software de alto rendimiento.

@@ -43,6 +43,7 @@ const mind = defineCollection({
 });
 
 // Mantener colecciones existentes de Astro Nano
+// Mantener colecciones existentes de Astro Nano
 const work = defineCollection({
   type: "content",
   schema: z.object({
@@ -50,6 +51,7 @@ const work = defineCollection({
     role: z.string(),
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
+    icon: z.string().optional(),
   }),
 });
 
@@ -73,6 +75,7 @@ const education = defineCollection({
     degree: z.string(),
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
+    icon: z.string().optional(),
   }),
 });
 

@@ -3,6 +3,7 @@ institution: "UNAM / SHCP"
 degree: "Diplomado en Presupuesto basado en Resultados (PbR)"
 dateStart: "2014-01-01"
 dateEnd: "2014-12-01"
+icon: "analytics"
 ---
 
 Formación en gestión pública y evaluación de impacto.

@@ -1,0 +1,51 @@
+---
+interface Props {
+  type: 'present' | 'past';
+  className?: string; // Allow passing external classes like 'scale-75'
+}
+
+const { type, className = '' } = Astro.props;
+---
+
+{type === 'present' ? (
+    <div class:list={["node-present rotate-45", className]}>
+        {/* User requested to remove the inner 'ocular' for present node, keeping only the frame */}
+    </div>
+) : (
+    <div class:list={["node-past-container rotate-45", className]}>
+        <div class="node-past-inner"></div>
+    </div>
+)}
+
+<style>
+    .node-present {
+        width: 32px;
+        height: 32px;
+        background-color: #1A1A1A;
+        border: 2px solid #25BCC0;
+        position: relative;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 15px rgba(37, 188, 192, 0.6);
+    }
+    /* node-present-inner removed */
+    .node-past-container {
+        width: 32px;
+        height: 32px;
+        border: 2px solid #25BCC0;
+        background-color: transparent;
+        position: relative;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .node-past-inner {
+        width: 16px;
+        height: 16px;
+        background-color: #AB2A3E;
+        box-shadow: none;
+    }
+</style>

@@ -3,6 +3,7 @@ company: "Indesol (Instituto Nacional de Desarrollo Social)"
 role: "Enlace de Monitoreo PAIMEF"
 dateStart: "2013-01-01"
 dateEnd: "2015-01-01"
+icon: "dataset"
 ---
 
 Digitalización de procesos gubernamentales.

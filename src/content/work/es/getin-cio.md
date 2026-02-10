@@ -3,6 +3,7 @@ company: "GET IN"
 role: "Chief Information Officer (CIO)"
 dateStart: "2018-06-01"
 dateEnd: "2024-01-01"
+icon: "dns"
 ---
 
 Gestión estratégica de tecnología y liderazgo de 5 equipos multidisciplinarios (Front, Back, Datos, Hardware, UX).

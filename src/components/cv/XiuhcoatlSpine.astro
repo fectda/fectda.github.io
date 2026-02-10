@@ -1,0 +1,30 @@
+---
+import XiuhcoatlNode from "./XiuhcoatlNode.astro";
+import XiuhcoatlSegment from "./XiuhcoatlSegment.astro";
+
+interface Props {
+  nodeType: 'present' | 'past';
+}
+
+const { nodeType } = Astro.props;
+const segments = Array(5).fill(null);
+---
+
+<div class="hidden md:flex order-2 h-full relative flex-col items-center justify-center">
+    {/* Top Segments */}
+    <div class="flex flex-col gap-1 mb-6 z-10">
+        {segments.map(() => (
+            <XiuhcoatlSegment />
+        ))}
+    </div>
+
+    {/* Node */}
+    <XiuhcoatlNode type={nodeType} />
+
+    {/* Bottom Segments */}
+    <div class="flex flex-col gap-1 mt-6 z-10">
+        {segments.map(() => (
+            <XiuhcoatlSegment />
+        ))}
+    </div>
+</div>

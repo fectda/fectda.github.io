@@ -1,10 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import Badge from "@components/Badge.astro";
 import { dateRange } from "@lib/utils";
-import { t, type Locale } from "@lib/i18n";
-
+import { type Locale } from "@lib/i18n";
+import Hero from "@components/cv/Hero.astro";
+import TimelineItem from "@components/cv/TimelineItem.astro";
+import AcademicOrigin from "@components/cv/AcademicOrigin.astro";
+import SkillMatrix from "@components/cv/SkillMatrix.astro";
+import { CV_CONTENT } from "@data/cv-content";
 
 export async function getStaticPaths() {
   return [
@@ -14,6 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Locale };
+const content = CV_CONTENT[lang];
 
 const allWork = (await getCollection("work"))
   .filter(item => item.slug.startsWith(`${lang}/`))
@@ -44,188 +48,81 @@ const allStacks = [...bits, ...atoms]
   .flatMap(item => item.data.stack || []);
 const uniqueSkills = [...new Set(allStacks)].sort();
 
-
 ---
 
-<PageLayout title={t(lang, 'cv.title')} description={t(lang, 'cv.title')} lang={lang}>
-  
-  <div class="w-full max-w-[1440px] mx-auto px-6 py-12 flex flex-col items-center">
-    
-    <!-- Hero Section: System Log Style -->
-    <section class="w-full mb-16 border-l-2 border-primary pl-6 py-2">
-        <div class="flex flex-col gap-2">
-            <p class="text-primary/80 text-sm font-mono tracking-widest uppercase">// SYSTEM LOG: CAREER EVENTS</p>
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase leading-none">
-                CURRICULUM<br/>VITAE
-            </h1>
-            <div class="flex items-center gap-4 mt-4 text-gray-500 font-mono text-xs uppercase">
-                <span>ID: 8492-AX</span>
-                <span>|</span>
-                <span>STATUS: ONLINE</span>
-                <span>|</span>
-                <span>LAST_UPDATE: SYNCED</span>
-            </div>
-        </div>
-    </section>
+<PageLayout title="CV" description="Curriculum Vitae" lang={lang}>
 
-    <!-- Timeline Container -->
-    <div class="relative w-full max-w-5xl">
-        <!-- Central Line -->
-        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border-dark transform md:-translate-x-1/2"></div>
-        
-        <!-- WORK EXPERIENCE MODULE -->
-        <div class="relative mb-20">
-            <div class="flex items-center mb-12">
-                <div class="bg-background-dark border border-primary text-primary px-4 py-1 text-sm font-bold tracking-wider z-10 mx-auto uppercase">
-                     &lt; Work_Experience_Module /&gt;
-                </div>
-            </div>
+  <!-- Scanlines overlay -->
+  <div class="scanlines"></div>
 
-            {work.map((entry, index) => (
-                <div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
-                    <!-- Date/Node Marker -->
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
-                    
-                    <!-- Alternating Logic -->
-                    {index % 2 === 0 ? (
-                        <>
-                            <!-- Right Side Content -->
-                            <div class="md:w-1/2 hidden md:block"></div>
-                            <div class="md:w-1/2 pl-12 md:pl-12">
-                                <div class="relative border border-border-dark bg-[#121212] p-6 hover:border-primary transition-all duration-300 group-hover:bg-primary/5">
-                                    {/* Corner Markers */}
-                                    <div class="absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-                                    <div class="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b-2 border-r-2 border-primary"></div>
+  <div class="pt-24 md:pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center">
 
-                                    <div class="flex justify-between items-start mb-4 border-b border-border-dark pb-2">
-                                        <div>
-                                            <h3 class="text-xl font-bold text-white uppercase">{entry.data.role}</h3>
-                                            <span class="text-primary font-mono text-sm tracking-wider uppercase">{entry.data.company}</span>
-                                        </div>
-                                        <span class="text-gray-500 font-mono text-xs border border-border-dark px-2 py-1">
-                                            {dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
-                                        </span>
-                                    </div>
-                                    <article class="prose prose-sm prose-invert max-w-none text-gray-400 font-mono">
-                                        <entry.Content />
-                                    </article>
-                                </div>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <!-- Left Side Content -->
-                             <div class="md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
-                                <div class="relative border border-border-dark bg-[#121212] p-6 hover:border-primary transition-all duration-300 group-hover:bg-primary/5">
-                                    {/* Corner Markers */}
-                                    <div class="absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-                                    <div class="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b-2 border-r-2 border-primary"></div>
+    <Hero name={content.hero.name} subtitle={content.hero.subtitle} />
 
-                                    <div class="flex flex-col md:flex-row-reverse justify-between items-start mb-4 border-b border-border-dark pb-2">
-                                        <div class="text-left md:text-right">
-                                            <h3 class="text-xl font-bold text-white uppercase">{entry.data.role}</h3>
-                                            <span class="text-primary font-mono text-sm tracking-wider uppercase">{entry.data.company}</span>
-                                        </div>
-                                        <span class="text-gray-500 font-mono text-xs border border-border-dark px-2 py-1 mt-2 md:mt-0">
-                                            {dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
-                                        </span>
-                                    </div>
-                                    <article class="prose prose-sm prose-invert max-w-none text-gray-400 font-mono text-left md:text-right">
-                                        <entry.Content />
-                                    </article>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 hidden md:block"></div>
-                        </>
-                    )}
-                </div>
-            ))}
-        </div>
+    <!-- Timeline Grid -->
+    <div class="w-full grid grid-cols-[50px_1fr] md:grid-cols-[1fr_80px_1fr] gap-x-0 relative">
 
-        <!-- EDUCATION HISTORY -->
-        <div class="relative">
-            <div class="flex items-center mb-12">
-                <div class="bg-background-dark border border-primary text-primary px-4 py-1 text-sm font-bold tracking-wider z-10 mx-auto uppercase">
-                        &lt; Education_History /&gt;
-                </div>
-            </div>
+      <!-- Central spine line -->
+      <div class="absolute top-0 bottom-0 left-[24px] md:left-1/2 md:-translate-x-1/2 w-[2px] bg-[#333333] z-0 h-full"></div>
 
-             {education.map((entry, index) => (
-                <div class="relative flex flex-col md:flex-row gap-8 mb-16 group">
-                     <!-- Date/Node Marker -->
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0A] border-2 border-gray-500 group-hover:border-primary transform -translate-x-1/2 translate-y-6 md:translate-y-6 z-10 group-hover:bg-primary transition-colors duration-300"></div>
 
-                    {index % 2 !== 0 ? (
-                        <>
-                             <!-- Right Side (Education starts reversed to mix it up or keep same? Let's keep alternating flow) -->
-                             <div class="md:w-1/2 hidden md:block"></div>
-                             <div class="md:w-1/2 pl-12 md:pl-12">
-                                <div class="relative border border-border-dark bg-[#121212] p-6 hover:border-primary transition-all duration-300 group-hover:bg-primary/5">
-                                    <div class="absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-                                    <div class="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b-2 border-r-2 border-primary"></div>
-                                     <div class="flex justify-between items-start mb-4 border-b border-border-dark pb-2">
-                                        <div>
-                                            <h3 class="text-xl font-bold text-white uppercase">{entry.data.degree}</h3>
-                                            <span class="text-primary font-mono text-sm tracking-wider uppercase">{entry.data.institution}</span>
-                                        </div>
-                                        <span class="text-gray-500 font-mono text-xs border border-border-dark px-2 py-1">
-                                            {dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
-                                        </span>
-                                    </div>
-                                     <article class="prose prose-sm prose-invert max-w-none text-gray-400 font-mono">
-                                        <entry.Content />
-                                    </article>
-                                </div>
-                             </div>
-                        </>
-                    ) : (
-                        <>
-                            <!-- Left Side -->
-                            <div class="md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
-                                <div class="relative border border-border-dark bg-[#121212] p-6 hover:border-primary transition-all duration-300 group-hover:bg-primary/5">
-                                    <div class="absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-                                    <div class="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b-2 border-r-2 border-primary"></div>
-                                    <div class="flex flex-col md:flex-row-reverse justify-between items-start mb-4 border-b border-border-dark pb-2">
-                                        <div class="text-left md:text-right">
-                                            <h3 class="text-xl font-bold text-white uppercase">{entry.data.degree}</h3>
-                                            <span class="text-primary font-mono text-sm tracking-wider uppercase">{entry.data.institution}</span>
-                                        </div>
-                                        <span class="text-gray-500 font-mono text-xs border border-border-dark px-2 py-1 mt-2 md:mt-0">
-                                            {dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
-                                        </span>
-                                    </div>
-                                    <article class="prose prose-sm prose-invert max-w-none text-gray-400 font-mono text-left md:text-right">
-                                        <entry.Content />
-                                    </article>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 hidden md:block"></div>
-                        </>
-                    )}
-                </div>
-             ))}
-        </div>
+      <!-- Work Entries -->
+      {work.map((entry, index) => (
+        <TimelineItem
+            year={index === 0 ? (lang === 'es' ? 'HOY' : 'NOW') : dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
+            role={entry.data.role}
+            company={entry.data.company}
+            icon={entry.data.icon || 'work'}
+            alignment={index % 2 === 0 ? 'left' : 'right'}
+            nodeType={index === 0 ? 'present' : 'past'}
+        >
+            <entry.Content />
+        </TimelineItem>
+      ))}
 
-        <!-- End Node -->
-        <div class="absolute left-4 md:left-1/2 bottom-0 w-3 h-3 bg-primary transform -translate-x-1/2 translate-y-1/2"></div>
+      <!-- ACADEMIC ORIGIN DIVIDER -->
+      <AcademicOrigin title={content.sections.academic} />
+
+      <!-- Education Entries -->
+      {education.map((entry, index) => (
+         <TimelineItem
+            year={dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
+            role={entry.data.degree}
+            company={entry.data.institution}
+            icon={entry.data.icon || 'school'}
+            alignment={index % 2 === 0 ? 'left' : 'right'}
+            nodeType="past"
+        >
+            <entry.Content />
+        </TimelineItem>
+      ))}
+
     </div>
 
     <!-- Skills Section -->
-    <section class="w-full mt-24 max-w-5xl">
-        <div class="flex items-center gap-4 mb-8">
-            <h3 class="text-2xl font-bold text-white uppercase tracking-tighter">Technical_Competencies</h3>
-            <div class="h-px bg-border-dark flex-grow"></div>
-            <span class="font-mono text-xs text-primary">[ GRID_VIEW_ACTIVE ]</span>
-        </div>
-        
-        <div class="bg-[#121212] border border-border-dark p-6">
-             <div class="flex flex-wrap gap-2">
-                {uniqueSkills.map((skill) => (
-                  <Badge text={skill} variant="default" class="hover:border-primary hover:text-primary transition-colors cursor-default" />
-                ))}
-            </div>
-        </div>
-    </section>
+    <SkillMatrix skills={uniqueSkills} title={content.sections.skills} />
 
   </div>
+
+  <style>
+    .scanlines {
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.1) 50%,
+        rgba(0,0,0,0.1)
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+      opacity: 0.15;
+    }
+  </style>
+
 </PageLayout>

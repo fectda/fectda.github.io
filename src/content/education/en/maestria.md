@@ -1,11 +1,12 @@
 ---
-institution: "UNAM (Universidad Nacional Autónoma de México)"
-degree: "Maestría en Ciencias (Física)"
+institution: "UNAM (National Autonomous University of Mexico)"
+degree: "Postgraduate Degree in Science (Physics)"
 dateStart: "2008-01-01"
 dateEnd: "2010-01-01"
+icon: "functions"
 ---
 
-Especialización en **Termodinámica Mesoscópica Fuera de Equilibrio**.
+Specialization in **Non-Equilibrium Mesoscopic Thermodynamics**.
 
-*   **Enfoque:** Estudio de sistemas complejos y fluctuaciones estadísticas.
-*   **Habilidades:** Modelado matemático, simulación computacional, rigor científico.
+*   **Focus:** Study of complex systems and statistical fluctuations.
+*   **Skills:** Mathematical modeling, computational simulation, scientific rigor.

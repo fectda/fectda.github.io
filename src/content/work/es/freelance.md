@@ -3,6 +3,7 @@ company: "Eduardo González (Consultoría Independiente)"
 role: "Solutions Architect & Maker"
 dateStart: "2026-01-01"
 dateEnd: "Present"
+icon: "precision_manufacturing"
 ---
 
 Desarrollo de soluciones a medida en infraestructura, IA local y automatización física.

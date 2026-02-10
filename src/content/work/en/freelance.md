@@ -1,12 +1,13 @@
 ---
-company: "Eduardo González (Consultoría Independiente)"
+company: "Eduardo González (Independent Consulting)"
 role: "Solutions Architect & Maker"
 dateStart: "2026-01-01"
 dateEnd: "Present"
+icon: "precision_manufacturing"
 ---
 
-Desarrollo de soluciones a medida en infraestructura, IA local y automatización física.
+Development of custom solutions in infrastructure, local AI, and physical automation.
 
-*   **Infraestructura:** Orquestación de servidores on-premise (Xen Orchestra, K8s, RabbitMQ).
-*   **IA Aplicada:** Implementación de LLMs locales (Ollama) para casos de uso educativos y creativos.
-*   **Maker:** Diseño y fabricación de hardware personalizado (Impresión 3D, IoT).
+*   **Infrastructure:** Orchestration of on-premise servers (Xen Orchestra, K8s, RabbitMQ).
+*   **Applied AI:** Implementation of local LLMs (Ollama) for educational and creative use cases.
+*   **Maker:** Design and fabrication of custom hardware (3D Printing, IoT).

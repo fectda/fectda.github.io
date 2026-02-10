@@ -1,10 +1,11 @@
 ---
 institution: "UNAM / SHCP"
-degree: "Diplomado en Presupuesto basado en Resultados (PbR)"
+degree: "Diploma in Results-Based Budgeting (PbR)"
 dateStart: "2014-01-01"
 dateEnd: "2014-12-01"
+icon: "analytics"
 ---
 
-Formación en gestión pública y evaluación de impacto.
+Training in public management and impact evaluation.
 
-*   **Aplicación:** Base teórica para el diseño de los sistemas de monitoreo en Indesol.
+*   **Application:** Theoretical basis for the design of monitoring systems at Indesol.

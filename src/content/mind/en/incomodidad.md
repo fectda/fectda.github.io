@@ -1,22 +1,22 @@
 ---
-title: "No te acostumbres a la incomodidad"
-description: "Un manifiesto sobre ingeniería, vida y la negativa a aceptar la fricción."
+title: "Don't Get Used to Discomfort"
+description: "A manifesto on engineering, life, and the refusal to accept friction."
 date: "2024-02-08"
-tags: ["filosofía", "maker", "vida"]
+tags: ["philosophy", "maker", "life"]
 draft: false
 ---
 
-La incomodidad no es una virtud. No es algo que debamos soportar estoicamente.
-La incomodidad es una señal de **ineficiencia**.
+Discomfort is not a virtue. It is not something to be endured stoically.
+Discomfort is a signal of **inefficiency**.
 
-Si una bomba de agua requiere que subas a la azotea a encenderla, el sistema está roto.
-Si un proceso de datos tarda 3 días y bloquea al equipo, el sistema está roto.
-Si tu casa no se adapta a cómo vives, sino que tú te adaptas a ella, la arquitectura falló.
+If a water pump requires you to climb to the roof, the system is broken.
+If a data process takes 3 days and blocks the team, the system is broken.
+If your house doesn't adapt to how you live, but you adapt to it, the architecture failed.
 
-## El Principio del Rediseño
-Este portafolio es la evidencia de una obsesión: **Detectar la fricción y eliminarla con ingeniería.**
+## The Principle of Redesign
+This portfolio is evidence of an obsession: **Detect friction and eliminate it with engineering.**
 
-Ya sea hackear unas luces de navidad porque el controlador original era tonto, o reescribir una arquitectura de nube completa porque era lenta, el principio es el mismo:
-**Si duele, arréglalo.**
+Whether hacking Christmas lights because the original controller was dumb, or rewriting a cloud architecture because it was slow, the principle is the same:
+**If it hurts, fix it.**
 
-No soy un maker porque me guste pegar cosas. Soy un maker porque me niego a aceptar que las cosas funcionen mal.
+I am not a maker because I like gluing things together. I am a maker because I refuse to accept that things work poorly.
