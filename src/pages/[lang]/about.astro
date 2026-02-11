@@ -7,9 +7,9 @@ import PageH1 from "@components/PageH1.astro";
 import XiuhcoatlDivider from "@components/XiuhcoatlDivider.astro";
 
 import BioTerminal from "@components/about/BioTerminal.astro";
-import SangreAzul from "@components/about/SangreAzul.astro";
-import Incomodidad from "@components/about/Incomodidad.astro";
-import LinajeMaker from "@components/about/LinajeMaker.astro";
+import BlueBlood from "@components/about/BlueBlood.astro";
+import Discomfort from "@components/about/Discomfort.astro";
+import MakerLineage from "@components/about/MakerLineage.astro";
 import Obsessions from "@components/about/Obsessions.astro";
 import SteppedFretSpacer from "@components/about/SteppedFretSpacer.astro";
 import { ABOUT_CONTENT } from "@data/about-content";
@@ -31,8 +31,9 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 
 <PageLayout title={pageTitle} description={pageDesc} lang={lang} gridOpacity={0.05}>
   <!-- Grid overlay in Layout -->
+  <!-- Renamed components trigger -->
 
-  <div class="pt-20 md:pt-32 pb-20 px-4 md:px-10 max-w-[1000px] mx-auto w-full flex flex-col gap-12 relative z-10">
+  <div class="pt-20 md:pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center gap-12 relative z-10">
 
     <PageH1 
       title={content.manifesto.title} 
@@ -45,14 +46,14 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 
     <XiuhcoatlDivider className="text-gray-600" />
 
-    <SangreAzul 
+    <BlueBlood 
       title={content.blueBlood.title}
       subtitle={content.blueBlood.subtitle}
       body={content.blueBlood.body}
       tags={content.blueBlood.tags}
     />
 
-    <Incomodidad 
+    <Discomfort 
       title={content.discomfort.title}
       warning={content.discomfort.warning}
       body={content.discomfort.body}
@@ -62,7 +63,7 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
     <!-- Spacer with SVG background -->
     <SteppedFretSpacer />
 
-    <LinajeMaker 
+    <MakerLineage 
       title={content.makerLineage.title}
       id={content.makerLineage.id}
       className={content.makerLineage.class}
@@ -76,13 +77,4 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
     />
 
   </div>
-
-  <style>
-
-
-
-
-
-  </style>
-
 </PageLayout>
