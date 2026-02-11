@@ -11,6 +11,8 @@ const bits = defineCollection({
     stack: z.array(z.string()), // Tecnologías: ["React", "TypeScript", "Node.js"]
     status: z.enum(["poc", "wip", "done"]), // poc = Proof of Concept, wip = Work in Progress, done = Completado
     progress: z.number().min(0).max(5).default(0), // Xiuhcoatl bar segments filled (1-5)
+    type: z.string().default("SOFTWARE"), // Project type: AI_AGENT, APP, etc.
+    images: z.array(z.string()).optional(), // Paths to images in public folder
     repository_url: z.string().url().optional(),
     demo_url: z.string().url().optional(),
   }),

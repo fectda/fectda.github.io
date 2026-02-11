@@ -5,6 +5,7 @@ date: 2026-01-15
 draft: false
 stack: ["Faster-Whisper", "Piper TTS", "Ollama", "Docker", "Python"]
 status: "wip"
+type: "PROJECT"
 progress: 2
 ---
 

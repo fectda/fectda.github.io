@@ -5,6 +5,7 @@ date: 2024-06-15
 draft: false
 stack: ["Python", "Estadística", "Data Science", "Automatización"]
 status: "done"
+type: "PROJECT"
 progress: 5
 ---
 

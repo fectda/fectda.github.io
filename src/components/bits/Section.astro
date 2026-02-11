@@ -1,0 +1,17 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+interface Props {
+  title: string;
+  index?: string;
+}
+
+const { title, index } = Astro.props;
+---
+
+<div class="w-full">
+  <SectionTitle title={title} index={index} />
+  <div class="pl-6 border-l-2 border-gray-800">
+    <slot />
+  </div>
+</div>

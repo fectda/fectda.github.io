@@ -5,6 +5,7 @@ date: 2025-09-10
 draft: false
 stack: ["Kubernetes", "RabbitMQ", "Docker", "Python", "Go"]
 status: "done"
+type: "PROJECT"
 progress: 5
 ---
 

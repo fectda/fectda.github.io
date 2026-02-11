@@ -1,0 +1,19 @@
+---
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props;
+---
+
+<div class="w-full">
+    <h2 class="section-title">{title}</h2>
+    <a href={url} target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-[#D4D4D4] hover:text-[#25BCC0] transition-colors mt-6 border border-[#333] p-4 bg-[#111] hover:border-[#25BCC0]/50">
+       <span class="icon-terminal text-2xl"></span>
+       <span class="font-mono text-sm tracking-widest uppercase truncate">{url}</span>
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto opacity-50 group-hover:opacity-100 transition-opacity"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+</div>
+
+

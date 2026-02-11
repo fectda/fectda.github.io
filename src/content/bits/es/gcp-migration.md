@@ -5,6 +5,7 @@ date: 2024-03-20
 draft: false
 stack: ["Google Cloud Platform", "Docker", "Go", "Python", "Microservicios"]
 status: "done"
+type: "PROJECT"
 progress: 5
 ---
 

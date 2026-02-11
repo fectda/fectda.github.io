@@ -4,6 +4,8 @@ description: "Meta / Identidad Digital / Arquitectura de Información. Sistema d
 date: "2026-02-10"
 stack: ["Astro", "TailwindCSS", "AI Agents"]
 status: "wip"
+type: "AI_AGENT"
+images: ["/collibri.svg"]
 progress: 3
 ---
 

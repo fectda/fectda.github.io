@@ -5,6 +5,8 @@ date: "2026-02-10"
 stack: ["Astro", "TailwindCSS", "AI Agents"]
 status: "wip"
 progress: 3
+type: "AI_AGENT"
+images: []
 ---
 
 ---
