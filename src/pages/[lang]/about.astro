@@ -29,11 +29,11 @@ const pageTitle = aboutEntry?.data.title || content.manifesto.title;
 const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 ---
 
-<PageLayout title={pageTitle} description={pageDesc} lang={lang} gridOpacity={0.05}>
+<PageLayout title={pageTitle} description={pageDesc} lang={lang} gridOpacity={0.05} className="gap-12">
   <!-- Grid overlay in Layout -->
   <!-- Renamed components trigger -->
 
-  <div class="pt-20 md:pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center gap-12 relative z-10">
+
 
     <PageH1 
       title={content.manifesto.title} 
@@ -59,8 +59,6 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
       body={content.discomfort.body}
     />
 
-    <!-- Spacer with SVG background -->
-    <!-- Spacer with SVG background -->
     <SteppedFretSpacer />
 
     <MakerLineage 
@@ -76,5 +74,5 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
       items={content.obsessions.items}
     />
 
-  </div>
+
 </PageLayout>

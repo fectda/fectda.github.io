@@ -23,7 +23,7 @@ const sortedEntries = allMindEntries
 ---
 
 <PageLayout title={content.meta.title} description={content.meta.description} lang={lang}>
-  <div class="pt-32 pb-20 px-4 md:px-10 max-w-[900px] mx-auto w-full flex flex-col items-center relative z-10">
+
     <PageH1 
       title={content.hero.title} 
       subtitle={content.hero.subtitle} 
@@ -36,7 +36,7 @@ const sortedEntries = allMindEntries
         <MindEntry entry={entry} lang={lang} readLabel={content.readLabel} />
       ))}
     </div>
-  </div>
+
 </PageLayout>
 
 
