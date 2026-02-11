@@ -2,6 +2,8 @@
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import MobileMenuOverlay from "@components/MobileMenuOverlay.astro";
+import Scanlines from "@components/Scanlines.astro";
+import GridOverlay from "@components/GridOverlay.astro";
 import Footer from "@components/Footer.astro";
 import { SITE } from "@consts";
 import type { Locale } from "@lib/i18n";
@@ -10,9 +12,9 @@ type Props = {
   title: string;
   description: string;
   lang?: Locale;
+  gridOpacity?: number;
 };
-
-const { title, description, lang = 'es' } = Astro.props;
+const { title, description, lang = 'es', gridOpacity = 0 } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +24,8 @@ const { title, description, lang = 'es' } = Astro.props;
   </head>
   <body class="bg-background-dark text-gray-300 font-display antialiased min-h-screen selection:bg-primary selection:text-white">
     <!-- Grid Background Overlay -->
-    <div class="grid-overlay"></div>
+    <GridOverlay opacity={gridOpacity} />
+    <Scanlines />
     
     <!-- Mobile Menu Overlay (Outside Main Container to avoid stacking contexts if possible, or just direct body child) -->
     <MobileMenuOverlay lang={lang} currentPath={Astro.url.pathname} />

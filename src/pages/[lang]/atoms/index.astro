@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import Scanlines from "@components/Scanlines.astro";
+
 import AtomsCard from "@components/atoms/Card.astro";
 import PageH1 from "@components/PageH1.astro";
 import LogDivider from "@components/LogDivider.astro";
@@ -22,9 +22,7 @@ const sortedAtoms = atoms
 ---
 
 <PageLayout title={content.meta.title} description={content.meta.description} lang={lang}>
-  <Scanlines />
-
-  <main class="pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center relative z-10">
+  <div class="pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center relative z-10">
     <PageH1 
       title={content.hero.title} 
       subtitle={content.hero.subtitle} 
@@ -37,5 +35,5 @@ const sortedAtoms = atoms
         <AtomsCard atom={atom} lang={lang} index={index + 1} />
       ))}
     </div>
-  </main>
+  </div>
 </PageLayout>

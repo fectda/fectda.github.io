@@ -4,6 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import { dateRange } from "@lib/utils";
 import { type Locale } from "@lib/i18n";
 import Hero from "@components/cv/Hero.astro";
+
 import TimelineItem from "@components/cv/TimelineItem.astro";
 import AcademicOrigin from "@components/cv/AcademicOrigin.astro";
 import SkillMatrix from "@components/cv/SkillMatrix.astro";
@@ -48,10 +49,6 @@ const uniqueSkills = [...new Set(allStacks)].sort();
 ---
 
 <PageLayout title="CV" description="Curriculum Vitae" lang={lang}>
-
-  <!-- Scanlines overlay -->
-  <div class="scanlines"></div>
-
   <div class="pt-24 md:pt-32 pb-20 px-4 md:px-10 max-w-[1200px] mx-auto w-full flex flex-col items-center">
 
     <Hero name={content.hero.name} subtitle={content.hero.subtitle} />
@@ -100,26 +97,4 @@ const uniqueSkills = [...new Set(allStacks)].sort();
     <SkillMatrix skills={uniqueSkills} title={content.sections.skills} />
 
   </div>
-
-  <style>
-    .scanlines {
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0),
-        rgba(255,255,255,0) 50%,
-        rgba(0,0,0,0.1) 50%,
-        rgba(0,0,0,0.1)
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 50;
-      opacity: 0.15;
-    }
-  </style>
-
 </PageLayout>

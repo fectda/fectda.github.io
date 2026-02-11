@@ -1,0 +1,18 @@
+---
+interface Props {
+  opacity?: number;
+}
+
+const { opacity = 0 } = Astro.props;
+---
+
+<div 
+  class="fixed inset-0 bg-[size:40px_40px] bg-grid-pattern pointer-events-none z-0 transition-opacity duration-300"
+  style={`opacity: ${opacity};`}
+></div>
+
+<style>
+  .bg-grid-pattern {
+      background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
+  }
+</style>

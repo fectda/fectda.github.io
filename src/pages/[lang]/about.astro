@@ -5,11 +5,13 @@ import { type Locale } from "@lib/i18n";
 import PageH1 from "@components/PageH1.astro";
 
 import XiuhcoatlDivider from "@components/XiuhcoatlDivider.astro";
+
 import BioTerminal from "@components/about/BioTerminal.astro";
 import SangreAzul from "@components/about/SangreAzul.astro";
 import Incomodidad from "@components/about/Incomodidad.astro";
 import LinajeMaker from "@components/about/LinajeMaker.astro";
 import Obsessions from "@components/about/Obsessions.astro";
+import SteppedFretSpacer from "@components/about/SteppedFretSpacer.astro";
 import { ABOUT_CONTENT } from "@data/about-content";
 
 import { getLangStaticPaths } from "@lib/static-paths";
@@ -27,12 +29,8 @@ const pageTitle = aboutEntry?.data.title || content.manifesto.title;
 const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 ---
 
-<PageLayout title={pageTitle} description={pageDesc} lang={lang}>
-
-  <!-- Scanlines overlay -->
-  <div class="scanlines"></div>
-  <!-- Grid overlay -->
-  <div class="fixed inset-0 bg-[size:40px_40px] bg-grid-pattern opacity-[0.05] pointer-events-none"></div>
+<PageLayout title={pageTitle} description={pageDesc} lang={lang} gridOpacity={0.05}>
+  <!-- Grid overlay in Layout -->
 
   <div class="pt-20 md:pt-32 pb-20 px-4 md:px-10 max-w-[1000px] mx-auto w-full flex flex-col gap-12 relative z-10">
 
@@ -61,7 +59,8 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
     />
 
     <!-- Spacer with SVG background -->
-    <div class="w-full h-10 bg-stepped-fret opacity-70 "></div>
+    <!-- Spacer with SVG background -->
+    <SteppedFretSpacer />
 
     <LinajeMaker 
       title={content.makerLineage.title}
@@ -79,32 +78,11 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
   </div>
 
   <style>
-    .scanlines {
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0),
-        rgba(255,255,255,0) 50%,
-        rgba(0,0,0,0.1) 50%,
-        rgba(0,0,0,0.1)
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 50;
-      opacity: 0.15;
-    }
 
-    .bg-grid-pattern {
-        background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
-    }
 
-    .bg-stepped-fret {
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PHBhdGggZD0iTTAgNDAgTDIwIDIwIEw0MCA0MCIvPjxwYXRoIGQ9Ik0wIDIwIEwyMCAwIEw0MCAyMCIvPjwvc3ZnPg==');
-    }
+
+
+
   </style>
 
 </PageLayout>
