@@ -1,0 +1,26 @@
+---
+import XiuhcoatlSegment from './XiuhcoatlSegment.astro';
+
+interface Props {
+  progress: number; // 1-5
+  total?: number;
+}
+
+const { progress, total = 5 } = Astro.props;
+const segments = Array.from({ length: total }, (_, i) => i < progress);
+---
+
+<div class="xiuhcoatl-bar">
+  {segments.map((filled) => (
+    <XiuhcoatlSegment filled={filled} />
+  ))}
+</div>
+
+<style>
+  .xiuhcoatl-bar {
+    display: flex;
+    gap: 4px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+</style>

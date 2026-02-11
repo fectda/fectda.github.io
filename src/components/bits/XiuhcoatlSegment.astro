@@ -1,0 +1,22 @@
+---
+interface Props {
+  filled?: boolean;
+}
+
+const { filled = false } = Astro.props;
+---
+
+<div class:list={["segment", { "segment--filled": filled }]}></div>
+
+<style>
+  .segment {
+    height: 6px;
+    flex-grow: 1;
+    background: #333;
+    transform: skewX(-20deg);
+    transition: background 0.3s ease;
+  }
+  .segment--filled {
+    background: #25BCC0;
+  }
+</style>

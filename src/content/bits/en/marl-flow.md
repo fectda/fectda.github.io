@@ -5,6 +5,7 @@ date: 2026-02-05
 draft: false
 stack: ["Vue.js", "Flask", "Docker", "Ollama", "Python"]
 status: "wip"
+progress: 3
 repository_url: "https://github.com/tu-usuario/marl-flow"
 ---
 

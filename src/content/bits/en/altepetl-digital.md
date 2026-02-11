@@ -4,6 +4,7 @@ description: "Meta / Digital Identity / Information Architecture. A system of vi
 date: "2026-02-10"
 stack: ["Astro", "TailwindCSS", "AI Agents"]
 status: "wip"
+progress: 3
 ---
 
 ---
