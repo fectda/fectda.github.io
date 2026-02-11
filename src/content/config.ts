@@ -46,6 +46,8 @@ const mind = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     tags: z.array(z.string()).optional(), // Temas: ["arquitectura", "performance", "devops"]
+    references: z.array(z.string()).optional(), // List of citations
+    status: z.enum(["draft", "peer_reviewed", "published"]).default("published"),
   }),
 });
 

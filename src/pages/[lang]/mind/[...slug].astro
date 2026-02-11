@@ -1,7 +1,12 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import EssayLayout from "@layouts/EssayLayout.astro";
-import { getLocalizedPath, type Locale } from "@lib/i18n";
+import PageLayout from "@layouts/PageLayout.astro";
+import MindHeader from "@components/mind/MindHeader.astro";
+import InfoBar from "@components/InfoBar.astro";
+import References from "@components/mind/References.astro";
+import XiuhcoatlDivider from "@components/XiuhcoatlDivider.astro";
+import type { Locale } from "@lib/i18n";
+import { readingTime } from "@lib/utils";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("mind"))
@@ -24,16 +29,231 @@ type Props = CollectionEntry<"mind">;
 const post = Astro.props;
 const { Content } = await post.render();
 const { lang } = Astro.params as { lang: Locale };
+
+const { title, description, date, references, status } = post.data;
+
+// Format status for display
+const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
 ---
 
-<EssayLayout 
-  title={post.data.title} 
-  description={post.data.description} 
-  date={post.data.date}
-  lang={lang}
-  content={post.body}
-  backUrl={getLocalizedPath('/mind', lang)}
-  backLabel={lang === 'es' ? 'Volver a Logs' : 'Back to Logs'}
->
-  <Content />
-</EssayLayout>
+<PageLayout title={title} description={description} lang={lang} className="flex-grow">
+
+  <!-- Mind Header Component -->
+  <MindHeader 
+    title={title} 
+    description={description} 
+  />
+
+  <!-- Meta Info (Inline) -->
+  <InfoBar 
+    items={[
+      { label: 'EST_TIME', value: readingTime(post.body) },
+      { label: 'WORD_COUNT', value: String(post.body.split(/\s+/g).length) },
+      { label: 'STATUS', value: statusLabel }
+    ]}
+    className="border-y border-[#293837] py-4 bg-[#111] mb-16"
+  />
+
+  <!-- Article Content -->
+  <article class="w-full  space-y-8 min-h-[50vh]">
+    <div class="prose prose-invert prose-lg max-w-none 
+      prose-p:text-[#D4D4D4] prose-p:font-body prose-p:text-lg prose-p:leading-relaxed
+      prose-strong:text-white
+      prose-code:text-primary prose-code:font-mono prose-code:text-sm
+      prose-br:content-none">
+      
+      <Content />
+    </div>
+
+    <XiuhcoatlDivider />
+
+    <!-- References Component -->
+    <References references={references} />
+
+  </article>
+
+</PageLayout>
+
+<style is:global>
+  /* 
+   * MIND READER VIEW STYLES
+   * Matches design/altepetl digital/maquetas/mind_single.html 
+   */
+
+  /* Alert Block - Blockquote Override */
+  .prose blockquote {
+    background-color: #111;
+    border-left: 4px solid #D4442F; /* Accent Red */
+    padding: 1.5rem;
+    margin: 2rem 0;
+    
+    /* Typography - Strict match to mind_single.html */
+    font-family: 'Fira Code', monospace;
+    color: #25BCC0; /* Primary */
+    font-size: 1rem; /* Inherit or standard size */
+    
+    position: relative;
+    quotes: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* For the stripes */
+  }
+
+  /* Remove backticks from inline code */
+  .prose :where(code)::before,
+  .prose :where(code)::after {
+    content: none !important;
+  }
+
+  /* Force Paragraph styling inside blockquote */
+  .prose blockquote p {
+    font-family: 'Fira Code', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #25BCC0; /* Force Teal */
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Diagonal Stripe Overlay */
+  .prose blockquote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(212, 68, 47, 0.05) 10px,
+      rgba(212, 68, 47, 0.05) 20px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Strong text inside alerts (The 'WARNING' label) */
+  /* This targets the '**[ ! ] WARNING:**' part */
+  .prose blockquote strong {
+    color: #D4442F;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 0; /* Fira Code usually doesn't need extra tracking */
+    margin-right: 0.5rem;
+  }
+
+
+  /* H2 Entropy Style: "01 // TITLE" */
+  .prose h2 {
+    /* User Specific Properties */
+    font-family: 'Teko', 'Space Grotesk', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 40px;
+    height: 40px; /* Strict height per user request */
+    letter-spacing: 0.9px;
+    
+    /* Layout */
+    display: flex;
+    align-items: center; /* Changed from baseline per request */
+    column-gap: 16px;
+    row-gap: 16px;
+    
+    /* Spacing / Box Model */
+    margin-top: 4rem; /* Keeping existing margins for vertical rhythm */
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    
+    counter-increment: section; 
+  }
+
+  /* Number Styles (User provided) */
+  .prose h2::before {
+    content: counter(section, decimal-leading-zero) " //";
+    
+    /* User Specific Properties */
+    font-family: 'Teko', 'Space Grotesk', sans-serif;
+    color: rgb(37, 188, 192);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    height: 32px;
+    letter-spacing: 0.9px;
+    
+    /* Layout */
+    display: block;
+    box-sizing: border-box;
+    
+    /* Fallback/Spacing */
+    margin-right: 0.5rem;
+    opacity: 1; /* Override previous opacity if set */
+  }
+  
+  /* Reset counter */
+  article {
+    counter-reset: section;
+  }
+  
+  /* H3 - Subheadings */
+  .prose h3 {
+      font-family: 'Teko', 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      font-size: 1.5rem;
+  }
+
+  /* H4 - Technical Subheadings */
+  .prose h4 {
+      font-family: 'Teko', 'Space Grotesk', sans-serif;
+      color: #D4D4D4;
+      font-weight: 600;
+      margin-top: 2rem;
+      letter-spacing: 0.02em;
+      font-size: 1.25rem;
+  }
+
+  /* H5, H6 */
+  .prose h5, .prose h6 {
+      font-family: 'Teko', 'Space Grotesk', sans-serif;
+      color: #D4D4D4;
+      font-weight: 600;
+      margin-top: 1.5rem;
+  }
+
+  /* Paragraphs */
+  .prose p {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+
+  /* Lists */
+  .prose ul, .prose ol {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  
+  .prose ul > li::marker {
+    color: #D4442F; /* Accent Red bullets */
+  }
+  
+  .prose ol > li::marker {
+    color: #25BCC0; /* Primary Teal numbers */
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+  }
+
+</style>

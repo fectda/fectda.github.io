@@ -3,11 +3,17 @@ title: "No te acostumbres a la incomodidad"
 description: "Un manifiesto sobre ingeniería, vida y la negativa a aceptar la fricción."
 date: "2024-02-08"
 tags: ["filosofía", "maker", "vida"]
+status: "peer_reviewed"
+references: 
+  - 'Gall, J. (1975). "Systemantics: How Systems Work and Especially How They Fail".'
+  - 'Taleb, N.N. (2012). "Antifragile: Things That Gain from Disorder". Random House.'
 draft: false
 ---
 
 La incomodidad no es una virtud. No es algo que debamos soportar estoicamente.
 La incomodidad es una señal de **ineficiencia**.
+
+> **[ ! ] ADVERTENCIA:** No confundas la resiliencia con el aguante. Un sistema que aguanta el estrés se está rompiendo lentamente. Un sistema resiliente se adapta.
 
 Si una bomba de agua requiere que subas a la azotea a encenderla, el sistema está roto.
 Si un proceso de datos tarda 3 días y bloquea al equipo, el sistema está roto.
