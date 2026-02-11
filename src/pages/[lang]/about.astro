@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import { type Locale } from "@lib/i18n";
 import PageH1 from "@components/PageH1.astro";
+
+import XiuhcoatlDivider from "@components/XiuhcoatlDivider.astro";
 import BioTerminal from "@components/about/BioTerminal.astro";
 import SangreAzul from "@components/about/SangreAzul.astro";
 import Incomodidad from "@components/about/Incomodidad.astro";
@@ -43,16 +45,7 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
       text={content.manifesto.bio} 
     />
 
-    <!-- Diamond Divider -->
-    <div class="w-full flex items-center gap-4 opacity-50">
-      <div class="h-[1px] bg-gray-700 flex-1"></div>
-      <div class="flex gap-1">
-        <div class="w-2 h-2 bg-gray-600 transform rotate-45"></div>
-        <div class="w-2 h-2 bg-gray-600 transform rotate-45"></div>
-        <div class="w-2 h-2 bg-gray-600 transform rotate-45"></div>
-      </div>
-      <div class="h-[1px] bg-gray-700 flex-1"></div>
-    </div>
+    <XiuhcoatlDivider className="text-gray-600" />
 
     <SangreAzul 
       title={content.blueBlood.title}
