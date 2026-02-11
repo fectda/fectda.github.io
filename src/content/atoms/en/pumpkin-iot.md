@@ -5,6 +5,8 @@ description: "An interactive Halloween pumpkin that uses AI to tell horror stori
 date: 2025-10-31
 stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "AI"]
 status: "done"
+type: "HARDWARE"
+images: []
 icon: "sensors"
 ---
 

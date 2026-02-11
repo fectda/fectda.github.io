@@ -5,6 +5,8 @@ description: "A 1.20-meter scale sculpture of The Grinch using cardboard enginee
 date: 2024-12-01
 stack: ["Cardboard", "Papier-mâché", "Sculpture", "DIY"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "theater_comedy"
 ---
 

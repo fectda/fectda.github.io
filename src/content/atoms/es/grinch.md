@@ -6,6 +6,8 @@ date: 2025-12-20
 draft: false
 stack: ["Cartón", "Papel Maché", "Impresión 3D", "Escultura"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "theater_comedy"
 ---
 

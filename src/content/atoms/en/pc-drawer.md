@@ -5,6 +5,8 @@ description: "A custom stealth build PC drawer with active air filtration using 
 date: 2024-06-15
 stack: ["Carpentry", "PC Hardware", "Thermodynamics", "3D Printing"]
 status: "poc"
+type: "HARDWARE"
+images: []
 icon: "computer"
 ---
 

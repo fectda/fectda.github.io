@@ -6,6 +6,8 @@ date: 2025-12-15
 draft: false
 stack: ["ESP8266", "Puente H", "ESPHome", "Home Assistant", "Soldadura"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "lightbulb"
 ---
 

@@ -5,6 +5,8 @@ description: "A 3D printed adapter to mount a DeWalt circular saw onto a Truper 
 date: 2024-05-20
 stack: ["FreeCAD", "3D Printing", "Tools", "PETG"]
 status: "done"
+type: "HARDWARE"
+images: []
 icon: "carpenter"
 ---
 

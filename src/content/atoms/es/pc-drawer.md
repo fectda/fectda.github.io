@@ -6,6 +6,8 @@ date: 2025-10-15
 draft: false
 stack: ["Open Case", "AIO Liquid Cooler", "Filtros MERV 13", "Carpintería"]
 status: "poc"
+type: "HARDWARE"
+images: []
 icon: "computer"
 ---
 

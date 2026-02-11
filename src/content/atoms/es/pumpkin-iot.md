@@ -6,6 +6,8 @@ date: 2025-10-31
 draft: false
 stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "PCM5102A"]
 status: "done"
+type: "HARDWARE"
+images: []
 icon: "sensors"
 ---
 

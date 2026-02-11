@@ -6,6 +6,8 @@ date: 2025-12-10
 draft: false
 stack: ["Ventilador PC", "MT3608", "Impresión 3D", "Electrónica"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "air"
 ---
 

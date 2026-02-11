@@ -5,6 +5,8 @@ description: "Reverse engineering cheap LED curtains to integrate them into Home
 date: 2024-12-10
 stack: ["ESP8266", "Reverse Engineering", "Electronics", "ESPHome"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "lightbulb"
 ---
 

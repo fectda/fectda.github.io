@@ -6,6 +6,8 @@ date: 2025-11-20
 draft: false
 stack: ["FreeCAD", "Impresión 3D", "PETG", "Diseño Mecánico"]
 status: "done"
+type: "HARDWARE"
+images: []
 icon: "carpenter"
 ---
 

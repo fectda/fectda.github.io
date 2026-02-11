@@ -5,6 +5,8 @@ description: "A compact 3D printed extractor using a high-pressure PC fan to pro
 date: 2024-10-01
 stack: ["3D Printing", "Electronics", "PC Fan", "MT3608"]
 status: "wip"
+type: "HARDWARE"
+images: []
 icon: "air"
 ---
 

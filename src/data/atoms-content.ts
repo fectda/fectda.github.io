@@ -8,7 +8,9 @@ export const ATOMS_CONTENT = {
             title: "ATOMS_LAB",
             subtitle: "// MANIPULACION_MATERIA"
         },
-        divider: "BITACO_FABRICACION"
+        divider: "BITACO_FABRICACION",
+        toolkit: "HERRAMIENTAS",
+        repository: "REPOSITORIO"
     },
     en: {
         meta: {
@@ -19,6 +21,8 @@ export const ATOMS_CONTENT = {
             title: "ATOMS_LAB",
             subtitle: "// MATTER_MANIPULATION"
         },
-        divider: "FABRICATION_LOG"
+        divider: "FABRICATION_LOG",
+        toolkit: "TOOLKIT",
+        repository: "REPOSITORY"
     }
 };

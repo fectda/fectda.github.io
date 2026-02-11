@@ -30,6 +30,8 @@ const atoms = defineCollection({
     icon: z.string().default("memory"), // Material Symbols icon name
     stack: z.array(z.string()), // Componentes/herramientas: ["Arduino", "ESP32", "3D Printing"]
     status: z.enum(["poc", "wip", "done"]),
+    type: z.string().default("HARDWARE"),
+    images: z.array(z.string()).optional(),
     repository_url: z.string().url().optional(),
     demo_url: z.string().url().optional(),
   }),
