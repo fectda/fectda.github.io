@@ -64,17 +64,7 @@ const work = defineCollection({
   }),
 });
 
-const projects = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional(),
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional()
-  }),
-});
+
 
 // Colección: education (Formación Académica)
 const education = defineCollection({
@@ -94,8 +84,40 @@ const about = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    interests: z.array(z.string()).optional(), // ADN/Intereses: ["F1", "Fútbol", "Maker"]
+    // interests: z.array(z.string()).optional(), // Deprecated in favor of structured sections
+    manifesto: z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      bio: z.string(),
+    }).optional(),
+    blueBlood: z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      body: z.string(),
+      tags: z.array(z.string()),
+    }).optional(),
+    discomfort: z.object({
+      title: z.string(),
+      warning: z.string(),
+      body: z.string(),
+    }).optional(),
+    makerLineage: z.object({
+      title: z.string(),
+      id: z.string(),
+      class: z.string(),
+      body: z.string(),
+      badges: z.array(z.string()),
+    }).optional(),
+    obsessions: z.object({
+      title: z.string(),
+      items: z.array(z.object({
+        id: z.string(),
+        icon: z.string(),
+        title: z.string(),
+        desc: z.string(),
+      })),
+    }).optional(),
   }),
 });
 
-export const collections = { bits, atoms, mind, work, projects, education, about };
+export const collections = { bits, atoms, mind, work, education, about };

@@ -1,11 +1,11 @@
 export const ATOMS_CONTENT = {
     es: {
         meta: {
-            title: "LABORATORIO_DE_ATOMOS",
+            title: "LAB_DE_ÁTOMOS",
             description: "Laboratorio de Proyectos de Hardware"
         },
         hero: {
-            title: "LABORATORIO_DE_ATOMOS",
+            title: "LAB_DE_ÁTOMOS",
             subtitle: "// MANIPULACION_MATERIA"
         },
         divider: "BITACO_FABRICACION",

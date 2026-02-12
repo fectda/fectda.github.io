@@ -1,11 +1,11 @@
 export const BITS_CONTENT = {
     es: {
         meta: {
-            title: "REPOSITORIO_DE_BITS",
+            title: "REPO_DE_BITS",
             description: "Repositorio de Proyectos Digitales"
         },
         hero: {
-            title: "REPOSITORIO_DE_BITS",
+            title: "REPO_DE_BITS",
             subtitle: "// LOGICA_ALGORITMICA"
         },
         divider: "REPOSITORIO_ONLINE",

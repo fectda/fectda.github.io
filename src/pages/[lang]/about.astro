@@ -12,21 +12,23 @@ import Discomfort from "@components/about/Discomfort.astro";
 import MakerLineage from "@components/about/MakerLineage.astro";
 import Obsessions from "@components/about/Obsessions.astro";
 import SteppedFretSpacer from "@components/about/SteppedFretSpacer.astro";
-import { ABOUT_CONTENT } from "@data/about-content";
-
 import { getLangStaticPaths } from "@lib/static-paths";
 
 export const getStaticPaths = getLangStaticPaths;
 
 const { lang } = Astro.params as { lang: Locale };
-const content = ABOUT_CONTENT[lang];
 
 const aboutEntries = (await getCollection("about"))
   .filter(entry => entry.slug.startsWith(`${lang}/`));
 const aboutEntry = aboutEntries[0];
 
-const pageTitle = aboutEntry?.data.title || content.manifesto.title;
-const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
+if (!aboutEntry) {
+  throw new Error(`No about entry found for lang: ${lang}`);
+}
+
+const content = aboutEntry.data;
+const pageTitle = content.title;
+const pageDesc = content.description;
 ---
 
 <PageLayout title={pageTitle} description={pageDesc} lang={lang} gridOpacity={0.05} className="gap-12">
@@ -36,42 +38,42 @@ const pageDesc = aboutEntry?.data.description || content.manifesto.subtitle;
 
 
     <PageH1 
-      title={content.manifesto.title} 
-      subtitle={content.manifesto.subtitle} 
+      title={content.manifesto!.title} 
+      subtitle={content.manifesto!.subtitle} 
     />
 
     <BioTerminal 
-      text={content.manifesto.bio} 
+      text={content.manifesto!.bio} 
     />
 
     <XiuhcoatlDivider className="text-separator" />
 
     <BlueBlood 
-      title={content.blueBlood.title}
-      subtitle={content.blueBlood.subtitle}
-      body={content.blueBlood.body}
-      tags={content.blueBlood.tags}
+      title={content.blueBlood!.title}
+      subtitle={content.blueBlood!.subtitle}
+      body={content.blueBlood!.body}
+      tags={content.blueBlood!.tags}
     />
 
     <Discomfort 
-      title={content.discomfort.title}
-      warning={content.discomfort.warning}
-      body={content.discomfort.body}
+      title={content.discomfort!.title}
+      warning={content.discomfort!.warning || ""}
+      body={content.discomfort!.body}
     />
 
     <SteppedFretSpacer />
 
     <MakerLineage 
-      title={content.makerLineage.title}
-      id={content.makerLineage.id}
-      className={content.makerLineage.class}
-      body={content.makerLineage.body}
-      badges={content.makerLineage.badges}
+      title={content.makerLineage!.title}
+      id={content.makerLineage!.id}
+      className={content.makerLineage!.class || ""}
+      body={content.makerLineage!.body}
+      badges={content.makerLineage!.badges}
     />
 
     <Obsessions 
-      title={content.obsessions.title}
-      items={content.obsessions.items}
+      title={content.obsessions!.title}
+      items={content.obsessions!.items as any}
     />
 
 
