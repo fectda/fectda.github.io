@@ -107,7 +107,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
     // Share Logic
     const mobileShareBtn = document.getElementById('mobile-share-btn');
     mobileShareBtn?.addEventListener('click', async () => {
-        const shareLabel = mobileShareBtn.getAttribute('data-share-label');
+
         const copiedLabel = mobileShareBtn.getAttribute('data-copied-label');
 
         const shareData = {
