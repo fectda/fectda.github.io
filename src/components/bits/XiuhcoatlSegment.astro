@@ -12,11 +12,11 @@ const { filled = false } = Astro.props;
   .segment {
     height: 6px;
     flex-grow: 1;
-    background: #333;
+    background: theme('colors.border-dark');
     transform: skewX(-20deg);
     transition: background 0.3s ease;
   }
   .segment--filled {
-    background: #25BCC0;
+    background: theme('colors.primary');
   }
 </style>

@@ -35,8 +35,11 @@ export default {
         "icon-bright": "rgba(255, 255, 255, 0.9)", // Bright icons
         "primary-dim": "rgba(37, 188, 192, 0.2)",  // Dim primary for shadows/accents
         "primary-faint": "rgba(37, 188, 192, 0.05)", // Very faint primary for backgrounds
+        "primary-medium": "rgba(37, 188, 192, 0.4)", // Medium opacity primary
+        "overlay-dim": "rgba(0, 0, 0, 0.3)",        // Dim overlay for tags
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
+        "border-mid": "#444444",    // Lighter border distinct from border-dark
       },
       fontFamily: {
         "display": ["Teko", "Space Grotesk", "sans-serif"],

@@ -1,0 +1,40 @@
+---
+import XiuhcoatlBar from "../XiuhcoatlBar.astro";
+
+interface Props {
+  progress: number;
+  stack: string[];
+}
+
+const { progress, stack } = Astro.props;
+---
+
+<div class="card-footer">
+  <XiuhcoatlBar progress={progress} />
+  
+  <div class="card-tags">
+    {stack.slice(0, 3).map((tech: string) => (
+      <span class="card-tag">[ {tech} ]</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .card-footer {
+    margin-top: auto;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .card-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: theme('colors.subtext');
+    background: theme('colors.overlay-dim');
+    padding: 0.125rem 0.375rem;
+    border: 1px solid theme('colors.border-dark');
+  }
+</style>

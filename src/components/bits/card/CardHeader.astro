@@ -1,0 +1,60 @@
+---
+interface Props {
+  prjCode: string;
+  status: 'idea' | 'wip' | 'done';
+}
+
+const { prjCode, status } = Astro.props;
+---
+
+<div class="card-header">
+  <span class="card-prj">{prjCode}</span>
+  <div class="card-status-group">
+    <span class:list={["card-status-dot", { "card-status-dot--pulse": status !== 'done' }]}></span>
+    <span class:list={["card-status-label", { "card-status-label--pulse": status !== 'done' }]}>
+      {status.toUpperCase()}
+    </span>
+  </div>
+</div>
+
+<style>
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+  }
+  .card-prj {
+    color: theme('colors.secondary');
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .card-status-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card-status-dot {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background: theme('colors.primary');
+  }
+  .card-status-dot--pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .card-status-label {
+    color: theme('colors.primary');
+    letter-spacing: 0.05em;
+  }
+  .card-status-label--pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+</style>
