@@ -23,7 +23,7 @@ const tagLabel = tags.length > 0
   <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4 font-mono text-sm tracking-widest">
     <span class="text-[#AB2A3E]">{dateStr}</span>
     <span class="text-separator hidden md:inline">|</span>
-    <span class="text-gray-400">[ {tagLabel} ]</span>
+    <span class="text-subtext">[ {tagLabel} ]</span>
   </div>
   
   <a class="title-link block mb-6" href={href}>
@@ -32,7 +32,7 @@ const tagLabel = tags.length > 0
     </h2>
   </a>
   
-  <p class="log-description text-gray-400 text-lg leading-relaxed max-w-2xl mb-6">
+  <p class="log-description text-subtext text-lg leading-relaxed max-w-2xl mb-6">
     {data.description}
   </p>
   

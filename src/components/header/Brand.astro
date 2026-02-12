@@ -34,9 +34,9 @@ const breadcrumbs = langlessSegments.map((seg, i) => {
             <span class="hidden md:contents">
                 <span class="text-primary mx-2">&nbsp;//&nbsp;</span>
                 {crumb.href ? (
-                    <a href={crumb.href} class="text-gray-400 font-normal hover:text-primary transition-colors">{crumb.label}</a>
+                    <a href={crumb.href} class="text-subtext font-normal hover:text-primary transition-colors">{crumb.label}</a>
                 ) : (
-                    <span class="text-gray-400 font-normal">{crumb.label}</span>
+                    <span class="text-subtext font-normal">{crumb.label}</span>
                 )}
             </span>
         ))}

@@ -25,7 +25,7 @@ const { title, id, className, body, badges } = Astro.props;
         <p class="text-content font-light leading-relaxed mb-4 font-body [&_b]:text-white [&_b]:font-medium" set:html={body}></p>
         <div class="flex flex-wrap gap-2 mt-2">
             {badges.map((badge) => (
-                <span class="px-3 py-1 bg-[#222] text-xs font-mono text-gray-400 border border-gray-800">{badge}</span>
+                <span class="px-3 py-1 bg-[#222] text-xs font-mono text-subtext border border-gray-800">{badge}</span>
             ))}
         </div>
     </div>

@@ -43,7 +43,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
 
     <!-- Breadcrumbs (Small, Top) -->
      <div class="absolute top-24 flex flex-col items-center gap-1 font-mono text-xs text-gray-500">
-         <a href={getLocalizedPath('/', lang)} class="tracking-widest font-bold text-gray-400 hover:text-primary transition-colors">{SITE_DATA.NAME}</a>
+         <a href={getLocalizedPath('/', lang)} class="tracking-widest font-bold text-subtext hover:text-primary transition-colors">{SITE_DATA.NAME}</a>
         {breadcrumbs.map((crumb) => (
              <div class="flex items-center gap-2">
                 <span class="text-primary">//</span>

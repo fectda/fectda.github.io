@@ -27,7 +27,7 @@ const isActive = (path: string) => {
             href={getLocalizedPath(item.path, lang)}
             class:list={[
                 "flex items-center gap-2 transition-colors",
-                    isActive(item.path) ? "text-primary font-bold" : "text-gray-400 hover:text-primary"
+                    isActive(item.path) ? "text-primary font-bold" : "text-subtext hover:text-primary"
             ]}
         >
             {item.label}

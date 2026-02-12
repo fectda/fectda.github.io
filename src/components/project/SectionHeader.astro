@@ -7,13 +7,13 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<div class="w-full mb-12 border-b border-[#333] pb-12 text-center md:text-left">
+<div class="w-full mb-12 border-b border-panel-border pb-12 text-center md:text-left">
   <h1 class="text-5xl md:text-8xl font-headline text-white mb-6 leading-[0.9] tracking-tighter uppercase">
     {title.split(' ').map((word: string, i: number) => (
-        i === 1 ? <span class="text-[#25BCC0]">{word} </span> : <span>{word} </span>
+        i === 1 ? <span class="text-primary">{word} </span> : <span>{word} </span>
     ))}
   </h1>
-  <h2 class="text-xl md:text-3xl text-[#888] font-body font-light leading-tight">
+  <h2 class="text-xl md:text-3xl text-subtext font-body font-light leading-tight">
     {subtitle}
   </h2>
 </div>
