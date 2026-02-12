@@ -1,48 +1,46 @@
 ---
-title: "Sobre Mí"
-description: "Physicist, CIO & Maker. Building at the intersection of software, hardware, and infrastructure."
-interests: ["F1", "Fútbol", "Maker"]
----
-
-## Mi Historia
-
+title: "The Maker from the Calpulli"
+description: "Physicist, Maker, and Systems Architect."
 manifesto:
   title: "MANIFESTO"
   subtitle: "// SOURCE: USER_MINDSET [READ_ONLY]"
-  bio: "I am a product of geography and contradiction. Born where a lake used to be, raised above hidden Aztec ruins, and forged on the <b>invisible border between the rough neighborhoods and the middle class</b>. I am the physicist who walks through the streets with the same ease as running a <b>gravitational wave simulation</b>."
+  bio: "I am a synthesis of geography and contradiction. Born where a lake used to be, raised above hidden Aztec ruins, and forged on the invisible border between <b>the neighborhood and the middle class</b>. I am the physicist who walks through Tlatilco with the same ease as running <b>computational statistical models</b>."
 blueBlood:
   title: "BLUE BLOOD"
   subtitle: "GOLDEN SKIN"
-  body: "Physicist by training (UNAM). My career didn't start in a corporate office, but solving thermodynamics equations. This scientific foundation defines everything I do: I don't see 'software' or 'hardware', I see <b>energy systems and entropy</b>."
+  body: "Physicist by training (UNAM). My career didn't start in a corporate office, but at CCH Azcapotzalco during the '99 strike, watching the CGH fight for my right to free education; <b>a lesson that marked me for life</b>. <br>Physics came from a coin toss that decided my fate over engineering, and I specialized in fluid mechanics chasing the dream of designing F1 wings. But the dream evolved. That foundation is my mental toolkit: I don't see <i>software</i> or <i>hardware</i>, I see systems seeking to <b>minimize energy and maximize entropy</b>."
   tags:
-    - "ENTROPY_MGMT"
-    - "PHYSICS_CORE"
-    - "THERMODYNAMICS"
+    - "COMPLEX_SYSTEMS"
+    - "FLUID_MECHANICS"
+    - "SCIENCE_FOR_ALL"
 discomfort:
-  title: "DON'T GET USED TO <br><b>DISCOMFORT</b>"
+  title: "DON'T GET USED TO <b>DISCOMFORT</b>"
   warning: "// WARNING: COMFORT IS A DEPRECATED MODULE."
-  body: "If a water pump requires you to climb to the roof, it's poorly designed. Discomfort is not a virtue; it is an engineering failure. <b>If it hurts, fix it.</b>"
+  body: "We were taught to normalize discomfort and romanticize poverty. We were sold the idea that 'enduring' is a virtue and living with lack builds character. We were fed empty aspirations and <b>paper meritocracy</b>.<br><br>But it doesn't have to be that way. Discomfort is not nobility, it is <b>systemic friction</b>.<br><br>If a water pump requires you to climb to the roof, it's poorly designed. If you have to commute four hours a day, the solution is not buying a car, it's changing the rules of the game.<br><br>If it hurts, don't endure it: attend to it, review it, fix it. In the streets nothing is wasted—everything is reused, adapted, hacked—but <b>nothing has to hurt</b>. Efficiency is not a luxury, it is dignity."
 makerLineage:
   title: "MAKER LINEAGE"
-  id: "ID: MKR-001"
-  class: "CLASS: BUILDER"
-  body: "Grandson of cabinetmakers, son of a mechanical engineer. I grew up in a workshop. I know that things aren't thrown away; they are fixed. My furniture is built from the demolition wood of my own house. <br><br><b>My hands think before my brain.</b>"
+  id: "IDEATOR"
+  class: "BUILDER"
+  body: "I grew up among toys, carpentry planes, and mechanical wrenches. I learned trades before algebra, and my curiosity always manifested in disassembling (and breaking) everything to understand how it worked. <br><br> <b>I know things aren't thrown away; they are fixed</b>. <br><br> My furniture isn't from a catalog; it's designed, prototyped, and tested at home. Reclaimed demolition wood becomes functional prototypes. <br><br> <b>In my hands, I carry the heritage of artisans and engineers</b>."
   badges:
-    - "WOODWORKING"
-    - "MECHANICAL_ENG"
-    - "RAPID_PROTOTYPING"
+    - "CRAFTSMAN"
+    - "ENGINEER"
+    - "DESIGNER"
+    - "SCIENTIST"
+    - "DEVELOPER"
 obsessions:
   title: "Obsessions_Module"
   items:
     - id: "DATA_01"
-      icon: "speed"
       title: "Formula 1"
-      desc: "I admire the engineering of Toto Wolff and Adrian Newey, not the glamour of the drivers."
+      desc: "I admire Toto Wolff's team management and Newey's engineering. But what draws me in is the total symbiosis between sport and high technology. It's the only place where a millisecond is gained both in the gym and the wind tunnel."
+      icon: "speed"
     - id: "DATA_02"
+      title: "Total Football"
+      desc: "I am a Culé and a Tuzo. The game is won on the chalkboard and in spatial occupation. I am passionate about total football and play construction. It's not just about winning or losing, but being faithful to the style. We make football, we don't just win matches."
       icon: "sports_soccer"
-      title: "Tactical Football"
-      desc: "Barça and Tuzos. The game is won on the chalkboard and in the spaces."
     - id: "DATA_03"
+      title: "Sustainable Living"
+      desc: "Cycling, recycling, and reuse are not trends, they are survival imperatives. Technological development doesn't have to be at odds with the environment. It's not just about reducing the footprint, but redesigning how we consume the world."
       icon: "forest"
-      title: "Radical Ecology"
-      desc: "The bicycle is not fashion, it's transport. The sun is energy."adges usando el campo `interests` del frontmatter.
+---
