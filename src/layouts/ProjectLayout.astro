@@ -38,7 +38,7 @@ const { post, lang, labels } = Astro.props;
 
       <div class="prose prose-invert prose-lg max-w-none 
         prose-headings:font-bold prose-headings:uppercase prose-headings:text-white prose-headings:font-mono
-        prose-p:text-gray-300 prose-p:font-body prose-p:text-base prose-p:leading-relaxed">
+        prose-p:text-content prose-p:font-body prose-p:text-base prose-p:leading-relaxed">
         
         <slot />
         <hr />
@@ -58,29 +58,6 @@ const { post, lang, labels } = Astro.props;
     </article>
 </PageLayout>
 
-<style is:global>
-  /* Global typography overrides for the prose content */
-  
-  /* 1. Ensure list items match body text size and font */
-  .prose ul > li, 
-  .prose ol > li {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1rem !important;
-    color: theme('colors.gray.300') !important;
-    line-height: 1.75 !important;
-    margin-top: 0.5em !important;
-    margin-bottom: 0.5em !important;
-  }
-  
-  /* Ensure paragraphs inside lists also inherit correct styles */
-  .prose li p {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1rem !important;
-    color: theme('colors.gray.300') !important;
-    margin: 0 !important;
-  }
-</style>
-
 <style>
   article {
     counter-reset: section;
@@ -88,19 +65,17 @@ const { post, lang, labels } = Astro.props;
   
   /* Target both markdown H2 and manual .section-title class globally */
   :global(.prose h2), :global(.section-title) {
-    @apply text-xl text-[#25BCC0] font-mono tracking-widest mb-6 mt-12 uppercase flex items-center gap-2;
+    @apply text-xl text-primary font-mono tracking-widest mb-6 mt-12 uppercase flex items-center gap-2;
   }
   
   :global(.prose h2::before), :global(.section-title::before) {
     counter-increment: section;
     content: "0" counter(section) " // ";
-    @apply text-[#25BCC0] opacity-100;
+    @apply text-primary opacity-100;
   }
 
   /* Target markdown H3 for subsections */
   :global(.prose h3) {
       @apply text-lg text-white font-bold tracking-wide uppercase mt-8 mb-4;
   }
-
-
 </style>

@@ -29,7 +29,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
   @apply flex flex-col;
-  @apply bg-obsidian text-gray-300;
+  @apply bg-obsidian text-content;
   @apply selection:bg-primary selection:text-white;
 }
 
@@ -111,7 +111,7 @@ article {
   @apply max-w-full prose dark:prose-invert;
   @apply prose-headings:font-display prose-headings:font-bold prose-headings:uppercase;
   @apply prose-headings:text-white prose-headings:tracking-tight;
-  @apply prose-p:font-sans prose-p:text-gray-400 prose-p:leading-relaxed;
+  @apply prose-p:font-sans prose-p:text-content prose-p:leading-relaxed;
   @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline hover:prose-a:opacity-80 transition-all duration-200;
   @apply prose-code:font-mono prose-code:bg-panel prose-code:border prose-code:border-border-dark prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary;
   @apply prose-pre:bg-panel prose-pre:border prose-pre:border-border-dark;

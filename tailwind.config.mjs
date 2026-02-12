@@ -20,6 +20,8 @@ export default {
         "text-muted": "#A3A3A3",    // Neutral 400 for secondary text
         "panel-border": "#293837",  // Dark Slate/Green for structural borders (Header, Footer, InfoBar)
         "panel": "#111111",         // Darker background for panels/cards
+        "content": "#D4D4D4",       // Main text color
+        "separator": "#4B5563",     // Structural separators (pipes, lines)
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
       },

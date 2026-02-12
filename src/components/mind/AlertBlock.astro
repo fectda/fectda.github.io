@@ -30,7 +30,7 @@ const style = styles[type as string] || styles.info;
 
 <div class={`flex gap-4 p-4 border-l-4 ${style.border} ${style.bg} my-8`}>
     <span class={`material-symbols-outlined ${style.text}`}>{style.icon}</span>
-    <div class="text-gray-300 font-body text-sm leading-relaxed">
+    <div class="text-content font-body text-sm leading-relaxed">
         <slot />
     </div>
 </div>

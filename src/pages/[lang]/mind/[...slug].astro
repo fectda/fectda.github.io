@@ -57,7 +57,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   <!-- Article Content -->
   <article class="w-full  space-y-8 min-h-[50vh]">
     <div class="prose prose-invert prose-lg max-w-none 
-      prose-p:text-gray-300 prose-p:font-body prose-p:text-lg prose-p:leading-relaxed">
+      prose-p:text-content prose-p:font-body prose-p:text-lg prose-p:leading-relaxed">
       
       <Content />
     </div>
@@ -91,7 +91,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
     
     position: relative;
     quotes: none;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px -1px color-mix(in srgb, theme('colors.black'), transparent 50%);
     overflow: hidden; /* For the stripes */
   }
 
@@ -119,8 +119,8 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
       45deg,
       transparent,
       transparent 10px,
-      rgba(212, 68, 47, 0.05) 10px,
-      rgba(212, 68, 47, 0.05) 20px
+      color-mix(in srgb, theme('colors.accent'), transparent 95%) 10px,
+      color-mix(in srgb, theme('colors.accent'), transparent 95%) 20px
     );
     pointer-events: none;
     z-index: 0;
@@ -141,7 +141,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   .prose h2 {
     /* User Specific Properties */
     font-family: 'Teko', 'Space Grotesk', sans-serif;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 36px;
     font-weight: 600;
     line-height: 40px;
@@ -205,7 +205,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   /* H4 - Technical Subheadings */
   .prose h4 {
       font-family: 'Teko', 'Space Grotesk', sans-serif;
-      color: #D4D4D4;
+      color: theme('colors.content');
       font-weight: 600;
       margin-top: 2rem;
       letter-spacing: 0.02em;
@@ -215,28 +215,11 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   /* H5, H6 */
   .prose h5, .prose h6 {
       font-family: 'Teko', 'Space Grotesk', sans-serif;
-      color: #D4D4D4;
+      color: theme('colors.content');
       font-weight: 600;
       margin-top: 1.5rem;
   }
 
-  /* Paragraphs */
-  .prose p {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 1.5rem;
-    line-height: 1.75;
-  }
-
-  /* Lists */
-  .prose ul, .prose ol {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-  }
-  
-  .prose li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.5rem;
-  }
-
 </style>
+
+
