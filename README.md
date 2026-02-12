@@ -1,64 +1,59 @@
-![Astro Nano](_astro_nano.png)
+# ⛰️ Altépetl Digital (Obsidian Telemetry)
 
-Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.
+> **"Architect-Executive // Maker"**
 
-Built with Astro, Tailwind and Typescript, an no frameworks.
+This repository contains the source code for my personal portfolio. It is designed not as a marketing showcase, but as a **Digital Lab Notebook**.
 
-It was designed as an even more minimal theme than my popular theme [Astro Sphere](https://github.com/markhorn-dev/astro-sphere)
+The visual identity (**Obsidian Telemetry**) fuses the precision of an F1 Dashboard with the lithic mass of Mexica Architecture.
 
-## 🚀 Deploy your own
+---
 
-[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)
+## 🏗️ Architecture
 
-## 📋 Features
+*   **Framework:** [Astro v5](https://astro.build) (Static Site Generation).
+*   **Styling:** [TailwindCSS v4](https://tailwindcss.com) (Custom "Obsidian" Theme).
+*   **Interactivity:** Vue.js (Islands Architecture) for dynamic components.
+*   **Content:** Markdown/MDX with [Zod](https://zod.dev) schema validation.
+*   **i18n:** Native support for English (`/en`) and Spanish (`/es`).
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
+## 📂 Project Structure
 
-## 💯 Lighthouse score
-![Astro Nano Lighthouse Score](_lighthouse.png)
+The content is organized by "Domain of Matter":
 
-## 🕊️ Lightweight
-No frameworks or added bulk
+*   **`src/content/bits/`**: Digital Projects (Software, Cloud, AI).
+*   **`src/content/atoms/`**: Physical Projects (Maker, Hardware, Civil Works).
+*   **`src/content/mind/`**: Essays and Philosophy.
+*   **`src/content/work/`**: CV and Professional Trajectory.
 
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
+## 🚀 Getting Started
 
-## 📄 Configuration
+### Prerequisites
+*   Node.js v20+
+*   pnpm (recommended) or npm
 
-The blog posts on the demo serve as the documentation and configuration.
+### Installation
+```bash
+npm install
+```
 
-## 💻 Commands
+### Development
+Start the local server:
+```bash
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+### Build & Deploy
+This project is configured to deploy automatically to **GitHub Pages** via GitHub Actions.
+```bash
+npm run build
+```
 
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
+## 🤖 Credits (The AI Swarm)
+This project was orchestrated by a human directing a swarm of specialized agents:
+*   **Poposin:** Content Architect & Structure.
+*   **Antigravity:** Code Implementation.
+*   **Stitch:** UI/UX Design Generation.
+*   **Meta-Gem:** Strategic Direction.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts local dev server on local network         |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Preview build on local network                   |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🏛️ License
-
-MIT
+---
+*© 2026 Eduardo González // In Ixtli In Yollotl*
