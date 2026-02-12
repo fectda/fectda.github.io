@@ -49,7 +49,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
         </label>
 
         <!-- Breadcrumbs (Small, Top) -->
-         <div class="absolute top-24 flex flex-col items-center gap-1 font-mono text-xs text-gray-500">
+         <div class="absolute top-24 flex flex-col items-center gap-1 font-mono text-xs text-subtext">
              <span class="tracking-widest font-bold text-subtext">{SITE_DATA.NAME}</span>
             {breadcrumbs.map((crumb) => (
                  <div class="flex items-center gap-2">
@@ -84,9 +84,9 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
         <div class="absolute bottom-12 flex flex-col items-center gap-6 w-full">
             <!-- Lang -->
             <div class="flex items-center gap-4 font-mono text-sm tracking-widest border-t border-white/10 pt-4 w-40 justify-center">
-                <a href={lang === 'en' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'en' ? "text-white" : "text-gray-500 hover:text-primary"]}>EN</a>
+                <a href={lang === 'en' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'en' ? "text-white" : "text-subtext hover:text-primary"]}>EN</a>
                 <span class="text-separator font-light">/</span>
-                <a href={lang === 'es' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'es' ? "text-white" : "text-gray-500 hover:text-primary"]}>ES</a>
+                <a href={lang === 'es' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'es' ? "text-white" : "text-subtext hover:text-primary"]}>ES</a>
             </div>
 
             <!-- Share (User Requested) -->

@@ -23,10 +23,10 @@ const { title, items } = Astro.props;
             <div class="bg-[#202020] p-6 border border-[#333] transition-all duration-300 hover:bg-[#252525] group cursor-default">
                 <div class="flex justify-between items-start mb-4">
                     <span class="material-symbols-outlined text-separator group-hover:text-primary transition-colors">{item.icon}</span>
-                    <span class="text-[10px] font-mono text-separator border border-gray-700 px-1">{item.id}</span>
+                    <span class="text-[10px] font-mono text-separator border border-plate-dark px-1">{item.id}</span>
                 </div>
-                <h4 class="text-xl font-display font-bold text-gray-200 mb-2 uppercase transition-colors">{item.title}</h4>
-                <p class="text-xs text-subtext font-mono leading-relaxed border-t border-gray-700 pt-3 mt-3">
+                <h4 class="text-xl font-display font-bold text-content-strong mb-2 uppercase transition-colors">{item.title}</h4>
+                <p class="text-xs text-subtext font-mono leading-relaxed border-t border-plate-dark pt-3 mt-3">
                     {item.desc}
                 </p>
             </div>

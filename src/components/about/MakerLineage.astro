@@ -12,11 +12,11 @@ const { title, id, className, body, badges } = Astro.props;
 <section class="flex flex-col md:flex-row gap-0 border border-[#333] w-full">
     <div class="bg-[#252525] p-8 md:w-1/3 border-b md:border-b-0 md:border-r border-[#333] flex flex-col justify-between">
         <div>
-            <span class="material-symbols-outlined text-4xl text-gray-500 mb-4">precision_manufacturing</span>
+            <span class="material-symbols-outlined text-4xl text-subtext mb-4">precision_manufacturing</span>
             <h3 class="text-3xl font-display font-bold text-white uppercase tracking-tighter">
                 {title}</h3>
         </div>
-        <div class="mt-8 font-mono text-xs text-gray-500">
+        <div class="mt-8 font-mono text-xs text-subtext">
             ID: {id}<br/>
             CLASS: {className}
         </div>
@@ -25,7 +25,7 @@ const { title, id, className, body, badges } = Astro.props;
         <p class="text-content font-light leading-relaxed mb-4 font-body [&_b]:text-white [&_b]:font-medium" set:html={body}></p>
         <div class="flex flex-wrap gap-2 mt-2">
             {badges.map((badge) => (
-                <span class="px-3 py-1 bg-[#222] text-xs font-mono text-subtext border border-gray-800">{badge}</span>
+                <span class="px-3 py-1 bg-[#222] text-xs font-mono text-subtext border border-plate-dark">{badge}</span>
             ))}
         </div>
     </div>

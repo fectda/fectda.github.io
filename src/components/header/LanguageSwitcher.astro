@@ -17,7 +17,7 @@ const altLang: Locale = lang === 'es' ? 'en' : 'es';
 const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
 ---
 
-<div class="pl-8 border-l border-gray-700 h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
+<div class="pl-8 border-l border-separator h-6 flex items-center gap-2 text-xs font-mono tracking-wide">
         <a 
         href={lang === 'en' ? currentPath : switchLangHref} 
         class:list={["font-bold transition-colors", lang === 'en' ? "text-white" : "text-subtext hover:text-primary"]}
