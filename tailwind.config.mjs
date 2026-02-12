@@ -37,9 +37,17 @@ export default {
         "primary-faint": "rgba(37, 188, 192, 0.05)", // Very faint primary for backgrounds
         "primary-medium": "rgba(37, 188, 192, 0.4)", // Medium opacity primary
         "overlay-dim": "rgba(0, 0, 0, 0.3)",        // Dim overlay for tags
+        "spine-segment-hover": "#383838",           // Lighter spine segment for hover
+        "primary-soft": "rgba(37, 188, 192, 0.3)",  // Soft primary for low intensity glow
+        "primary-strong": "rgba(37, 188, 192, 0.6)", // Strong primary for high intensity glow
+        "content-light": "#cccccc",                 // Lighter content for specific UI elements
+        "overlay-light": "#333333",                 // Lighter overlay for hover states
+        "connector": "#25BCC0",                     // Timeline connector lines
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
         "border-mid": "#444444",    // Lighter border distinct from border-dark
+        "warning": "#FFA500",       // Warning state
+        "error": "#FF0000",         // Error state
       },
       fontFamily: {
         "display": ["Teko", "Space Grotesk", "sans-serif"],

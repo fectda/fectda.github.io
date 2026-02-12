@@ -27,8 +27,8 @@ const isRight = alignment === 'right';
     {isLeft ? (
         <div class="order-2 md:order-1 flex justify-start md:justify-end pl-4 md:pl-0 md:pr-8 py-4 md:py-8 relative">
             {/* Connector Lines */}
-            <div class="hidden md:block absolute right-0 top-1/2 w-8 h-[2px] bg-[#25BCC0] z-0"></div>
-            <div class="md:hidden absolute left-0 top-6 w-4 h-[2px] bg-[#25BCC0] z-0"></div>
+            <div class="hidden md:block absolute right-0 top-1/2 w-8 h-[2px] bg-connector z-0"></div>
+            <div class="md:hidden absolute left-0 top-6 w-4 h-[2px] bg-connector z-0"></div>
 
             <CVCard year={year} role={role} company={company} icon={icon}>
                 <slot />

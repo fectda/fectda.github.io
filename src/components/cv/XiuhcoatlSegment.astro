@@ -6,16 +6,16 @@
     .xiuhcoatl-segment {
         width: 1.5rem;
         height: 1rem;
-        background: #2A2A2A;
+        background: theme('colors.spine-segment');
         clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-        border-top: 1px solid #333;
+        border-top: 1px solid theme('colors.border-dark');
         transition: all 0.3s ease;
         flex-shrink: 0;
         z-index: 10;
     }
     .xiuhcoatl-segment:hover {
-        background-color: #383838;
-        border-color: #25BCC0;
-        box-shadow: 0 0 10px rgba(37, 188, 192, 0.3);
+        background-color: theme('colors.spine-segment-hover');
+        border-color: theme('colors.primary');
+        box-shadow: 0 0 10px theme('colors.primary-soft');
     }
 </style>

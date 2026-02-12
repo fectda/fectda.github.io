@@ -15,8 +15,8 @@ const { skills, title } = Astro.props;
     </div>
     <div class="flex flex-wrap justify-center gap-4">
         {skills.map((skill) => (
-            <div class="bg-[#222] border border-[#444] text-[#ccc] px-4 py-2 font-mono text-sm transition-all duration-300 cursor-default relative overflow-hidden hover:border-primary hover:text-white hover:shadow-glow hover:text-shadow-glow group">
-                <div class="absolute top-0 left-0 w-1 h-full bg-[#333] transition-colors duration-300 group-hover:bg-primary"></div>
+            <div class="bg-plate-dark border border-border-mid text-content-light px-4 py-2 font-mono text-sm transition-all duration-300 cursor-default relative overflow-hidden hover:border-primary hover:text-content-bright hover:shadow-glow hover:text-shadow-glow group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-overlay-light transition-colors duration-300 group-hover:bg-primary"></div>
                 {skill}
             </div>
         ))}

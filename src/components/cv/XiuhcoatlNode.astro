@@ -21,20 +21,20 @@ const { type, className = '' } = Astro.props;
     .node-present {
         width: 32px;
         height: 32px;
-        background-color: #1A1A1A;
-        border: 2px solid #25BCC0;
+        background-color: theme('colors.obsidian');
+        border: 2px solid theme('colors.primary');
         position: relative;
         z-index: 20;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 15px rgba(37, 188, 192, 0.6);
+        box-shadow: 0 0 15px theme('colors.primary-strong');
     }
     /* node-present-inner removed */
     .node-past-container {
         width: 32px;
         height: 32px;
-        border: 2px solid #25BCC0;
+        border: 2px solid theme('colors.primary');
         background-color: transparent;
         position: relative;
         z-index: 20;
@@ -45,7 +45,7 @@ const { type, className = '' } = Astro.props;
     .node-past-inner {
         width: 16px;
         height: 16px;
-        background-color: #AB2A3E;
+        background-color: theme('colors.secondary');
         box-shadow: none;
     }
 </style>
