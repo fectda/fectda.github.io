@@ -18,7 +18,7 @@ const content = MIND_CONTENT[lang];
 // Get mind entries filtered by current language
 const allMindEntries = await getCollection("mind");
 const sortedEntries = allMindEntries
-  .filter(entry => entry.slug.startsWith(`${lang}/`))
+  .filter(entry => entry.slug.startsWith(`${lang}/`) && (!entry.data.draft || import.meta.env.DEV))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

@@ -17,7 +17,7 @@ const content = ATOMS_CONTENT[lang];
 
 const atoms = await getCollection("atoms");
 const sortedAtoms = atoms
-  .filter(entry => entry.slug.startsWith(`${lang}/`) && !entry.data.draft)
+  .filter(entry => entry.slug.startsWith(`${lang}/`) && (!entry.data.draft || import.meta.env.DEV))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

@@ -17,7 +17,7 @@ const content = BITS_CONTENT[lang];
 
 const bits = await getCollection("bits");
 const sortedBits = bits
-  .filter(entry => entry.slug.startsWith(`${lang}/`) && !entry.data.draft)
+  .filter(entry => entry.slug.startsWith(`${lang}/`) && (!entry.data.draft || import.meta.env.DEV))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

@@ -6,7 +6,7 @@ import { ATOMS_CONTENT } from "src/data/atoms-content";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("atoms"))
-    .filter(post => !post.data.draft);
+    .filter(post => !post.data.draft || import.meta.env.DEV);
   
   const paths = [];
   for (const post of posts) {
