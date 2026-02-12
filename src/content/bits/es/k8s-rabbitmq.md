@@ -2,19 +2,11 @@
 title: "Sistema Distribuido Escalable (K8s + RabbitMQ)"
 description: "Arquitectura orientada a eventos con autoescalado usando Kubernetes y RabbitMQ para procesamiento asíncrono"
 date: 2025-09-10
-draft: false
+draft: true
 stack: ["Kubernetes", "RabbitMQ", "Docker", "Python", "Go"]
 status: "done"
-type: "PROJECT"
 progress: 5
----
-
-# ☸️ Sistema Distribuido Escalable (K8s + RabbitMQ)
-
-**Categoría:** Backend / Sistemas Distribuidos / DevOps
-**Estado:** Activo (Freelance)
-**Stack:** Kubernetes (K8s), RabbitMQ, Docker, Python/Go
-
+type: "SOFTWARE"
 ---
 
 ## 🎯 El Desafío

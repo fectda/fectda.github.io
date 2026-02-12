@@ -2,19 +2,11 @@
 title: "Project Voice (AI Roleplay Conversacional)"
 description: "Simulador de conversaciones 100% en inglés con IA para practicar fluidez oral en escenarios inmersivos"
 date: 2026-01-15
-draft: false
+draft: true
 stack: ["Faster-Whisper", "Piper TTS", "Ollama", "Docker", "Python"]
 status: "wip"
-type: "PROJECT"
-progress: 2
----
-
-# 🗣️ Project Voice (AI Roleplay Conversacional)
-
-**Categoría:** Software / IA / Voz / Educación
-**Estado:** WIP (En Desarrollo Activo)
-**Stack:** Faster-Whisper, Piper TTS, Ollama, Docker
-
+progress: 3
+type: "AI_AGENT"
 ---
 
 ## 🎯 El Problema (The Gap)

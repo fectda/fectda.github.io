@@ -1,22 +1,13 @@
 ---
 title: "Extractor de Humo para Soldadura (DIY)"
-shortTitle: "FUME_EXTRACTOR"
-description: "Extractor compacto impreso en 3D con ventilador de PC para proteger la salud al soldar componentes electrónicos"
+shortTitle: "EXTRACTOR_DE_HU"
+description: "Extractor de Humo para Soldadura (DIY) - Proyecto Maker"
 date: 2025-12-10
-draft: false
+draft: true
+icon: "build"
 stack: ["Ventilador PC", "MT3608", "Impresión 3D", "Electrónica"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "air"
----
-
-# 💨 Extractor de Humo para Soldadura (DIY)
-
-**Categoría:** Maker / Herramientas / Seguridad
-**Estado:** En Proceso (Adaptación Mecánica)
-**Hardware:** Ventilador PC, MT3608 (Step-up), Impresión 3D
-
+type: "TOOL"
 ---
 
 ## 🎯 El Desafío

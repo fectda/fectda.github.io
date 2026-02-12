@@ -2,12 +2,10 @@
 title: "No te acostumbres a la incomodidad"
 description: "Un manifiesto sobre ingeniería, vida y la negativa a aceptar la fricción."
 date: "2024-02-08"
+draft: true
 tags: ["filosofía", "maker", "vida"]
-status: "peer_reviewed"
-references: 
-  - 'Gall, J. (1975). "Systemantics: How Systems Work and Especially How They Fail".'
-  - 'Taleb, N.N. (2012). "Antifragile: Things That Gain from Disorder". Random House.'
-draft: false
+references: []
+status: "published"
 ---
 
 La incomodidad no es una virtud. No es algo que debamos soportar estoicamente.

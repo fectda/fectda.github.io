@@ -1,13 +1,13 @@
 ---
 title: "The Grinch Sculpture"
-shortTitle: "GRINCH_SCULPT"
-description: "A 1.20-meter scale sculpture of The Grinch using cardboard engineering and papier-mâché techniques."
+shortTitle: "THE_GRINCH_SCUL"
+description: "The Grinch Sculpture - Proyecto Maker"
 date: 2024-12-01
+draft: true
+icon: "statue"
 stack: ["Cardboard", "Papier-mâché", "Sculpture", "DIY"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "theater_comedy"
+type: "ART"
 ---
 
 ## 🎯 The Challenge

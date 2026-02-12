@@ -2,21 +2,11 @@
 title: "Marl Flow (AI Language Trainer)"
 description: "Entrenador de fluidez interactivo impulsado por IA que simula contextos reales y se adapta al nivel del usuario"
 date: 2026-02-05
-draft: false
+draft: true
 stack: ["Vue.js", "Flask", "Docker", "Ollama", "Python"]
 status: "wip"
-type: "AI_TRAINER"
 progress: 3
-repository_url: "https://github.com/tu-usuario/marl-flow"
-images: ["/collibri.svg"]
----
-
-# 🗣️ Marl Flow (AI Language Trainer)
-
-**Categoría:** Software / IA / Educación
-**Estado:** En desarrollo (Dockerizado y funcional en local)
-**Stack:** Vue.js, Flask, Docker, Ollama (Local LLM)
-
+type: "AI_AGENT"
 ---
 
 ## 🎯 El Problema (Pain Point)

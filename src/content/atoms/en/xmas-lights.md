@@ -1,13 +1,13 @@
 ---
 title: "Christmas Lights Hack"
-shortTitle: "XMAS_LIGHTS"
-description: "Reverse engineering cheap LED curtains to integrate them into Home Assistant via ESP8266 and H-Bridge."
+shortTitle: "CHRISTMAS_LIGHT"
+description: "Christmas Lights Hack - Proyecto Maker"
 date: 2024-12-10
+draft: true
+icon: "hardware"
 stack: ["ESP8266", "Reverse Engineering", "Electronics", "ESPHome"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "lightbulb"
+type: "MAKER"
 ---
 
 ## 🎯 The Challenge

@@ -1,13 +1,13 @@
 ---
 title: "IoT Axolotl-Pumpkin"
-shortTitle: "IOT_PUMPKIN"
-description: "An interactive Halloween pumpkin that uses AI to tell horror stories and reacts to presence via mmWave radar."
+shortTitle: "IOT_AXOLOTL_PUM"
+description: "IoT Axolotl-Pumpkin - Proyecto Maker"
 date: 2025-10-31
+draft: true
+icon: "hardware"
 stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "AI"]
 status: "done"
-type: "HARDWARE"
-images: []
-icon: "sensors"
+type: "MAKER"
 ---
 
 ## 🎯 The Challenge

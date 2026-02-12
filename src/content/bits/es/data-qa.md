@@ -2,19 +2,11 @@
 title: "Automatización de QA de Datos con Modelo Estadístico"
 description: "Modelo estadístico que audita datos automáticamente, reduciendo tiempos de procesamiento manual en 90%"
 date: 2024-06-15
-draft: false
+draft: true
 stack: ["Python", "Estadística", "Data Science", "Automatización"]
 status: "done"
-type: "PROJECT"
 progress: 5
----
-
-# 📊 Automatización de QA de Datos con Modelo Estadístico
-
-**Categoría:** Data Science / Automatización / R&D
-**Estado:** Completado / En Producción
-**Stack:** Python, Estadística Aplicada
-
+type: "DATA_ENG"
 ---
 
 ## 🎯 El Desafío

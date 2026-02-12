@@ -2,13 +2,11 @@
 title: "Altépetl Digital"
 description: "Meta / Digital Identity / Information Architecture. A system of visual beliefs and identity engineering."
 date: "2026-02-10"
+draft: true
 stack: ["Astro", "TailwindCSS", "AI Agents"]
 status: "wip"
 progress: 3
 type: "AI_AGENT"
-images: []
----
-
 ---
 
 ## 🎯 The Challenge: Killing the "Tech Bro"

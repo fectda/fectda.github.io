@@ -1,22 +1,13 @@
 ---
 title: "Active Filtration PC Drawer (Purificador Integrado)"
-shortTitle: "PC_DRAWER_V1"
-description: "Sistema de cajón personalizado que integra una PC con filtración de aire MERV 13 para purificar el ambiente"
+shortTitle: "ACTIVE_FILTRATI"
+description: "Active Filtration PC Drawer (Purificador Integrado) - Proyecto Maker"
 date: 2025-10-15
-draft: false
+draft: true
+icon: "computer"
 stack: ["Open Case", "AIO Liquid Cooler", "Filtros MERV 13", "Carpintería"]
 status: "poc"
-type: "HARDWARE"
-images: []
-icon: "computer"
----
-
-# 🌪️ Active Filtration PC Drawer (Purificador Integrado)
-
-**Categoría:** Maker / Hardware / Home Improvement
-**Estado:** POC Funcional (Fase de Carpintería)
-**Hardware:** Open Case + AIO Liquid Cooler + Filtros MERV 13
-
+type: "MOD"
 ---
 
 ## 🎯 El Desafío (Dual Purpose)

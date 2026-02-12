@@ -1,13 +1,13 @@
 ---
 title: "DeWalt Circular Saw Adapter"
-shortTitle: "SAW_ADAPTER_V1"
-description: "A 3D printed adapter to mount a DeWalt circular saw onto a Truper guide rail."
+shortTitle: "DEWALT_CIRCULAR"
+description: "DeWalt Circular Saw Adapter - Proyecto Maker"
 date: 2024-05-20
+draft: true
+icon: "hardware"
 stack: ["FreeCAD", "3D Printing", "Tools", "PETG"]
 status: "done"
-type: "HARDWARE"
-images: []
-icon: "carpenter"
+type: "MAKER"
 ---
 
 ## 🎯 The Challenge

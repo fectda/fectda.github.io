@@ -2,12 +2,10 @@
 title: "Don't Get Used to Discomfort"
 description: "A manifesto on engineering, life, and the refusal to accept friction."
 date: "2024-02-08"
+draft: true
 tags: ["philosophy", "maker", "life"]
-status: "peer_reviewed"
-references: 
-  - 'Gall, J. (1975). "Systemantics: How Systems Work and Especially How They Fail".'
-  - 'Taleb, N.N. (2012). "Antifragile: Things That Gain from Disorder". Random House.'
-draft: false
+references: []
+status: "published"
 ---
 
 Discomfort is not a virtue. It is not something to be endured stoically.

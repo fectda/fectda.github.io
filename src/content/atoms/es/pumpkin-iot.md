@@ -1,22 +1,13 @@
 ---
 title: "IoT Axolotl-Pumpkin (Halloween 2025)"
-shortTitle: "IOT_PUMPKIN"
-description: "Calabaza interactiva con ESP32 que cuenta historias de terror generadas por IA al detectar presencia humana"
+shortTitle: "IOT_AXOLOTL_PUM"
+description: "IoT Axolotl-Pumpkin (Halloween 2025) - Proyecto Maker"
 date: 2025-10-31
-draft: false
+draft: true
+icon: "lightbulb"
 stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "PCM5102A"]
 status: "done"
-type: "HARDWARE"
-images: []
-icon: "sensors"
----
-
-# 🎃 IoT Axolotl-Pumpkin (Halloween 2025)
-
-**Categoría:** Maker / IoT / Domótica / IA
-**Estado:** Deprecado (Descompuesto por causas biológicas 🍄)
-**Stack:** ESP32, ESPHome, Home Assistant, LD2410 (mmWave)
-
+type: "IOT"
 ---
 
 ## 🎯 El Desafío

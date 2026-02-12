@@ -2,19 +2,12 @@
 title: "Migración a GCP y Arquitectura de Microservicios"
 description: "Reingeniería total migrando a arquitectura nativa en la nube, reduciendo costos y tiempos de procesamiento en 66%"
 date: 2024-03-20
-draft: false
+draft: true
+
 stack: ["Google Cloud Platform", "Docker", "Go", "Python", "Microservicios"]
 status: "done"
-type: "PROJECT"
 progress: 5
----
-
-# ☁️ Migración a GCP y Arquitectura de Microservicios
-
-**Categoría:** Cloud Architecture / DevOps / Liderazgo
-**Estado:** Completado (Caso de Éxito en GET IN)
-**Stack:** Google Cloud Platform (GCP), Docker, Go, Python
-
+type: "CLOUD_ARCH"
 ---
 
 ## 🎯 El Desafío (Contexto)

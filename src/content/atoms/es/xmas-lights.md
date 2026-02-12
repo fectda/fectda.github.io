@@ -1,22 +1,13 @@
 ---
 title: "Hackeo de Luces Navideñas (ESP8266 + Puente H)"
-shortTitle: "XMAS_LIGHTS"
-description: "Control inteligente de cortinas LED mediante ingeniería inversa usando ESP8266 y driver de motores"
+shortTitle: "HACKEO_DE_LUCES"
+description: "Hackeo de Luces Navideñas (ESP8266 + Puente H) - Proyecto Maker"
 date: 2025-12-15
-draft: false
+draft: true
+icon: "lightbulb"
 stack: ["ESP8266", "Puente H", "ESPHome", "Home Assistant", "Soldadura"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "lightbulb"
----
-
-# 🎄 Hackeo de Luces Navideñas (ESP8266 + Puente H)
-
-**Categoría:** Maker / IoT / Ingeniería Inversa
-**Estado:** Pausado (En espera del extractor de humo)
-**Hardware:** Cortinas LED chinas, ESP8266, Driver de Motores (Puente H)
-
+type: "IOT"
 ---
 
 ## 🎯 El Desafío

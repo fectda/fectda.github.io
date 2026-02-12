@@ -2,13 +2,11 @@
 title: "Altépetl Digital"
 description: "Meta / Identidad Digital / Arquitectura de Información. Sistema de creencias visuales e ingeniería de identidad."
 date: "2026-02-10"
+draft: true
 stack: ["Astro", "TailwindCSS", "AI Agents"]
 status: "wip"
-type: "AI_AGENT"
-images: ["/collibri.svg"]
 progress: 3
----
-
+type: "AI_AGENT"
 ---
 
 ## 🎯 El Desafío: Matar al "Tech Bro"

@@ -1,13 +1,13 @@
 ---
 title: "Solder Fume Extractor"
-shortTitle: "FUME_EXTRACTOR"
-description: "A compact 3D printed extractor using a high-pressure PC fan to protect health from toxic soldering fumes."
+shortTitle: "SOLDER_FUME_EXT"
+description: "Solder Fume Extractor - Proyecto Maker"
 date: 2024-10-01
+draft: true
+icon: "build"
 stack: ["3D Printing", "Electronics", "PC Fan", "MT3608"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "air"
+type: "TOOL"
 ---
 
 ## 🎯 The Challenge

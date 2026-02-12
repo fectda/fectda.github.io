@@ -1,24 +1,16 @@
 ---
 title: "The Grinch (Escultura a Gran Escala)"
-shortTitle: "GRINCH_SCULPT"
-description: "Figura del Grinch de 1.20m construida con técnica de perfiles cruzados en cartón y papel maché"
+shortTitle: "THE_GRINCH__ESC"
+description: "The Grinch (Escultura a Gran Escala) - Proyecto Maker"
 date: 2025-12-20
-draft: false
+draft: true
+icon: "statue"
 stack: ["Cartón", "Papel Maché", "Impresión 3D", "Escultura"]
 status: "wip"
-type: "HARDWARE"
-images: []
-icon: "theater_comedy"
+type: "ART"
 ---
 
-# 🎄 The Grinch (Escultura a Gran Escala)
-
-**Categoría:** Maker / Artesanía / Escultura
-**Estado:** Pausado (WIP - Estructura al 50%)
 **Materiales:** Cartón, Papel Maché, Modelo 3D de referencia
-
----
-
 ## 🎯 El Desafío
 Crear una figura del Grinch de **1.20 metros** de altura para decorar la cornisa de la casa en Navidad.
 El reto no era solo "hacer un muñeco", sino lograr que tuviera proporciones anatómicas correctas y volumen tridimensional para verse bien desde la calle.

@@ -1,13 +1,13 @@
 ---
 title: "Active Filtration PC Drawer"
-shortTitle: "PC_DRAWER_V1"
-description: "A custom stealth build PC drawer with active air filtration using MERV 13 filters."
+shortTitle: "ACTIVE_FILTRATI"
+description: "Active Filtration PC Drawer - Proyecto Maker"
 date: 2024-06-15
+draft: true
+icon: "computer"
 stack: ["Carpentry", "PC Hardware", "Thermodynamics", "3D Printing"]
 status: "poc"
-type: "HARDWARE"
-images: []
-icon: "computer"
+type: "MOD"
 ---
 
 ## 🎯 The Challenge
