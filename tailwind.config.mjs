@@ -15,7 +15,10 @@ export default {
         "accent": "#D4442F",       // Bright Red
         "obsidian": "#1A1A1A",     // Background
         "plate": "#2D2D2D",
+        "plate-mid": "#252525",    // Between plate and plate-dark
         "plate-dark": "#222222",
+        "plate-deep": "#202020",   // Darker plate for cards
+        "terminal": "#1e1e1e",     // Specific terminal background
         "spine-segment": "#2A2A2A",
         "text-muted": "#A3A3A3",    // Neutral 400 for secondary text
         "panel-border": "#293837",  // Dark Slate/Green for structural borders (Header, Footer, InfoBar)
@@ -24,6 +27,14 @@ export default {
         "content-strong": "#E5E7EB", // Headings and highlights
         "subtext": "#888888",       // Subtitles and secondary text
         "separator": "#4B5563",     // Structural separators (pipes, lines)
+        "marker": "#555555",        // Crosshairs and specific markers
+        "content-bright": "#ffffff", // Brightest content color
+        "content-dim": "#9CA3AF",   // Dimmed content (tags, descriptions)
+        "icon-muted": "#6B7280",    // Muted icons
+        "wip": "#EAB308",           // Work in progress status
+        "icon-bright": "rgba(255, 255, 255, 0.9)", // Bright icons
+        "primary-dim": "rgba(37, 188, 192, 0.2)",  // Dim primary for shadows/accents
+        "primary-faint": "rgba(37, 188, 192, 0.05)", // Very faint primary for backgrounds
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
       },

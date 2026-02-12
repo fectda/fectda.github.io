@@ -9,8 +9,8 @@ interface Props {
 
 const { title, id, className, body, badges } = Astro.props;
 ---
-<section class="flex flex-col md:flex-row gap-0 border border-[#333] w-full">
-    <div class="bg-[#252525] p-8 md:w-1/3 border-b md:border-b-0 md:border-r border-[#333] flex flex-col justify-between">
+<section class="flex flex-col md:flex-row gap-0 border border-border-dark w-full">
+    <div class="bg-plate-mid p-8 md:w-1/3 border-b md:border-b-0 md:border-r border-border-dark flex flex-col justify-between">
         <div>
             <span class="material-symbols-outlined text-4xl text-subtext mb-4">precision_manufacturing</span>
             <h3 class="text-3xl font-display font-bold text-white uppercase tracking-tighter">
@@ -21,11 +21,11 @@ const { title, id, className, body, badges } = Astro.props;
             CLASS: {className}
         </div>
     </div>
-    <div class="bg-[#1A1A1A] p-8 md:w-2/3 flex flex-col justify-center">
+    <div class="bg-obsidian p-8 md:w-2/3 flex flex-col justify-center">
         <p class="text-content font-light leading-relaxed mb-4 font-body [&_b]:text-white [&_b]:font-medium" set:html={body}></p>
         <div class="flex flex-wrap gap-2 mt-2">
             {badges.map((badge) => (
-                <span class="px-3 py-1 bg-[#222] text-xs font-mono text-subtext border border-plate-dark">{badge}</span>
+                <span class="px-3 py-1 bg-plate-dark text-xs font-mono text-subtext border border-border-dark">{badge}</span>
             ))}
         </div>
     </div>
