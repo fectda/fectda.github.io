@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  atmCode: string;
+}
+
+const { title, atmCode } = Astro.props;
+---
+
+<div class="card-header">
+  <h3 class="card-title">{title}</h3>
+  <span class="card-atm">{atmCode}</span>
+</div>
+
+<style>
+  /* Title row */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  .card-title {
+    font-family: 'Teko', 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: theme('colors.content-bright');
+    letter-spacing: 0.6px;
+    line-height: 2rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .card-atm {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: theme('colors.secondary');
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+  }
+</style>

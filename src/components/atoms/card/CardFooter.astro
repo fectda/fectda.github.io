@@ -1,0 +1,58 @@
+---
+interface Props {
+  status: 'idea' | 'wip' | 'done';
+}
+
+const { status } = Astro.props;
+const statusLabel = status === 'done' ? 'FABRICATED' : status === 'wip' ? 'PROTOTYPING' : 'CONCEPT';
+---
+
+<div class="card-footer">
+  <span class={`card-status ${status === 'done' ? 'card-status--done' : 'card-status--wip'}`}>
+    STATUS: {statusLabel}
+  </span>
+  <span class="material-symbols-outlined card-footer-icon">
+    {status === 'done' ? 'arrow_forward' : 'construction'}
+  </span>
+</div>
+
+<style>
+  /* Footer */
+  .card-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid theme('colors.border-dark');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-status {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .card-status--done {
+    color: theme('colors.primary');
+  }
+  
+  :global(.blueprint-card:hover) .card-status--done {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .card-status--wip {
+    color: theme('colors.wip');
+  }
+  .card-footer-icon {
+    font-size: 0.875rem;
+    color: theme('colors.icon-muted');
+    font-family: 'Material Symbols Outlined';
+  }
+  :global(.blueprint-card:hover) .card-footer-icon {
+    color: theme('colors.primary');
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+</style>
