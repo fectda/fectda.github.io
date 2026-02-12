@@ -24,13 +24,13 @@ export async function getStaticPaths() {
   return paths;
 }
 
-type Props = CollectionEntry<"mind">;
+
 
 const post = Astro.props;
 const { Content } = await post.render();
 const { lang } = Astro.params as { lang: Locale };
 
-const { title, description, date, references, status } = post.data;
+const { title, description, references, status } = post.data;
 
 // Format status for display
 const statusLabel = status ? status.toUpperCase() : "PUBLISHED";

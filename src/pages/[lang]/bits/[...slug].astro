@@ -20,7 +20,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-type Props = CollectionEntry<"bits">;
+
 
 const post = Astro.props;
 const { Content } = await post.render();
