@@ -51,16 +51,13 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
       { label: 'WORD_COUNT', value: String(post.body.split(/\s+/g).length) },
       { label: 'STATUS', value: statusLabel }
     ]}
-    className="border-y border-[#293837] py-4 bg-[#111] mb-16"
+    className="border-y border-panel-border py-4 bg-panel mb-16"
   />
 
   <!-- Article Content -->
   <article class="w-full  space-y-8 min-h-[50vh]">
     <div class="prose prose-invert prose-lg max-w-none 
-      prose-p:text-[#D4D4D4] prose-p:font-body prose-p:text-lg prose-p:leading-relaxed
-      prose-strong:text-white
-      prose-code:text-primary prose-code:font-mono prose-code:text-sm
-      prose-br:content-none">
+      prose-p:text-gray-300 prose-p:font-body prose-p:text-lg prose-p:leading-relaxed">
       
       <Content />
     </div>
@@ -82,14 +79,14 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
 
   /* Alert Block - Blockquote Override */
   .prose blockquote {
-    background-color: #111;
-    border-left: 4px solid #D4442F; /* Accent Red */
+    background-color: theme('colors.panel');
+    border-left: 4px solid theme('colors.accent'); /* Accent Red */
     padding: 1.5rem;
     margin: 2rem 0;
     
     /* Typography - Strict match to mind_single.html */
     font-family: 'Fira Code', monospace;
-    color: #25BCC0; /* Primary */
+    color: theme('colors.primary'); /* Primary */
     font-size: 1rem; /* Inherit or standard size */
     
     position: relative;
@@ -98,11 +95,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
     overflow: hidden; /* For the stripes */
   }
 
-  /* Remove backticks from inline code */
-  .prose :where(code)::before,
-  .prose :where(code)::after {
-    content: none !important;
-  }
+
 
   /* Force Paragraph styling inside blockquote */
   .prose blockquote p {
@@ -110,7 +103,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
-    color: #25BCC0; /* Force Teal */
+    color: theme('colors.primary'); /* Force Teal */
     line-height: 1.5;
     margin: 0;
     position: relative;
@@ -136,7 +129,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   /* Strong text inside alerts (The 'WARNING' label) */
   /* This targets the '**[ ! ] WARNING:**' part */
   .prose blockquote strong {
-    color: #D4442F;
+    color: theme('colors.accent');
     font-weight: 700;
     font-family: 'Fira Code', monospace;
     letter-spacing: 0; /* Fira Code usually doesn't need extra tracking */
@@ -176,7 +169,7 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
     
     /* User Specific Properties */
     font-family: 'Teko', 'Space Grotesk', sans-serif;
-    color: rgb(37, 188, 192);
+    color: theme('colors.primary');
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
@@ -244,16 +237,6 @@ const statusLabel = status ? status.toUpperCase() : "PUBLISHED";
   .prose li {
     margin-bottom: 0.5rem;
     padding-left: 0.5rem;
-  }
-  
-  .prose ul > li::marker {
-    color: #D4442F; /* Accent Red bullets */
-  }
-  
-  .prose ol > li::marker {
-    color: #25BCC0; /* Primary Teal numbers */
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: bold;
   }
 
 </style>

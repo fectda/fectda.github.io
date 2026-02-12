@@ -53,18 +53,22 @@ body {
 }
 
 /* Scrollbar Styling */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
-  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.obsidian');
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border: 1px solid #0A0A0A;
+  background: theme('colors.border-dark');
+  border: 1px solid theme('colors.obsidian');
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c72929;
+  background: theme('colors.primary');
 }
 
 /* Status Indicators */
@@ -108,10 +112,57 @@ article {
   @apply prose-headings:font-display prose-headings:font-bold prose-headings:uppercase;
   @apply prose-headings:text-white prose-headings:tracking-tight;
   @apply prose-p:font-sans prose-p:text-gray-400 prose-p:leading-relaxed;
-  @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
-  @apply prose-code:font-mono prose-code:bg-[#1a1a1a] prose-code:border prose-code:border-border-dark prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary;
-  @apply prose-pre:bg-[#111] prose-pre:border prose-pre:border-border-dark;
-  @apply prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-[#111] prose-blockquote:px-4 prose-blockquote:py-1;
-  @apply prose-strong:text-white;
+  @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline hover:prose-a:opacity-80 transition-all duration-200;
+  @apply prose-code:font-mono prose-code:bg-panel prose-code:border prose-code:border-border-dark prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary;
+  @apply prose-pre:bg-panel prose-pre:border prose-pre:border-border-dark;
+  @apply prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-panel prose-blockquote:px-4 prose-blockquote:py-1;
+  @apply prose-strong:text-white prose-strong:font-bold;
   @apply prose-img:mx-auto prose-img:my-auto prose-img:border prose-img:border-border-dark;
+  /* List Styling */
+}
+
+/* Explicit List Marker Styling for robustness */
+.prose ul,
+article ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.prose ol,
+article ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.prose ul>li::marker,
+article ul>li::marker {
+  color: theme('colors.accent');
+}
+
+.prose ol>li::marker,
+article ol>li::marker {
+  color: theme('colors.primary');
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+/* Explicit Link Styling */
+.prose a,
+article a {
+  color: theme('colors.primary');
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.prose a:hover,
+article a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* Remove backticks from inline code */
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none !important;
+  display: none !important;
 }

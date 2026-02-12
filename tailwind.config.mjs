@@ -19,6 +19,7 @@ export default {
         "spine-segment": "#2A2A2A",
         "text-muted": "#A3A3A3",    // Neutral 400 for secondary text
         "panel-border": "#293837",  // Dark Slate/Green for structural borders (Header, Footer, InfoBar)
+        "panel": "#111111",         // Darker background for panels/cards
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
       },

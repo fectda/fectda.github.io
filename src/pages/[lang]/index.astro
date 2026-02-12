@@ -19,8 +19,8 @@ const text = UI_TEXT[lang];
   
   <style is:global>
       .home-body {
-          background-color: #1A1A1A;
-          background-image: linear-gradient(to top, rgba(171, 42, 62, 0.25) 0%, rgba(26, 26, 26, 1) 50%);
+          background-color: theme('colors.obsidian');
+          background-image: linear-gradient(to top, color-mix(in srgb, theme('colors.secondary'), transparent 75%) 0%, theme('colors.obsidian') 50%);
           background-attachment: fixed;
       }
   </style>
@@ -45,7 +45,7 @@ const text = UI_TEXT[lang];
         position: absolute;
         width: 160%;
         height: 160%;
-        background: radial-gradient(circle, rgba(171, 42, 62, 0.25) 0%, rgba(171, 42, 62, 0) 70%);
+        background: radial-gradient(circle, color-mix(in srgb, theme('colors.secondary'), transparent 75%) 0%, color-mix(in srgb, theme('colors.secondary'), transparent 100%) 70%);
         z-index: -1;
         pointer-events: none;
         animation: pulse-ember 4s infinite ease-in-out;

@@ -38,11 +38,7 @@ const { post, lang, labels } = Astro.props;
 
       <div class="prose prose-invert prose-lg max-w-none 
         prose-headings:font-bold prose-headings:uppercase prose-headings:text-white prose-headings:font-mono
-        prose-p:text-[#D4D4D4] prose-p:font-body prose-p:text-base prose-p:leading-relaxed
-        prose-a:text-[#25BCC0] prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-white
-        prose-code:text-[#25BCC0] prose-code:font-mono prose-code:text-sm
-        prose-li:text-[#D4D4D4] prose-li:font-body marker:prose-li:text-[#25BCC0]">
+        prose-p:text-gray-300 prose-p:font-body prose-p:text-base prose-p:leading-relaxed">
         
         <slot />
         <hr />
@@ -65,19 +61,12 @@ const { post, lang, labels } = Astro.props;
 <style is:global>
   /* Global typography overrides for the prose content */
   
-  /* 1. Remove backticks from inline code - Forceful override */
-  .prose code::before,
-  .prose code::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  /* 2. Ensure list items match body text size and font */
+  /* 1. Ensure list items match body text size and font */
   .prose ul > li, 
   .prose ol > li {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 1rem !important;
-    color: #D4D4D4 !important;
+    color: theme('colors.gray.300') !important;
     line-height: 1.75 !important;
     margin-top: 0.5em !important;
     margin-bottom: 0.5em !important;
@@ -87,26 +76,8 @@ const { post, lang, labels } = Astro.props;
   .prose li p {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 1rem !important;
-    color: #D4D4D4 !important;
+    color: theme('colors.gray.300') !important;
     margin: 0 !important;
-  }
-
-  /* 3. Enforce link styling: Turquoise, no underline default, solid technical underline hover */
-  .prose a {
-    color: #25BCC0 !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease-in-out;
-  }
-  .prose a:hover {
-    text-decoration: none !important;
-    opacity: 0.8;
-  }
-
-  /* 4. Ensure strong tags are white */
-  .prose strong {
-    color: white !important;
-    font-weight: 700 !important;
-    display: inline;
   }
 </style>
 
@@ -131,8 +102,5 @@ const { post, lang, labels } = Astro.props;
       @apply text-lg text-white font-bold tracking-wide uppercase mt-8 mb-4;
   }
 
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #1a1a1a; }
-  ::-webkit-scrollbar-thumb { background: #333; }
-  ::-webkit-scrollbar-thumb:hover { background: #25BCC0; }
+
 </style>
