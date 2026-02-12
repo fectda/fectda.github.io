@@ -8,6 +8,7 @@ export const SITE: Site = {
   NUM_MIND_ON_HOMEPAGE: 1,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
+  JOB_TITLE: "Creative Technologist",
 };
 
 export const HOME: Metadata = {

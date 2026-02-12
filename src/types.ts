@@ -6,6 +6,7 @@ export type Site = {
   NUM_MIND_ON_HOMEPAGE: number;
   NUM_WORKS_ON_HOMEPAGE: number;
   NUM_PROJECTS_ON_HOMEPAGE: number;
+  JOB_TITLE: string;
 };
 
 export type Metadata = {

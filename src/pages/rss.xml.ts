@@ -27,7 +27,7 @@ export async function GET(context: Context) {
       title: item.data.title,
       description: item.data.description,
       pubDate: item.data.date,
-      link: `/${item.collection.split('/')[0]}/${item.slug}/`, // Handle localized slugs if needed, usually collection is just 'bits'
+      link: `/${item.slug.split('/')[0]}/${item.collection}/${item.slug.split('/').slice(1).join('/')}/`,
     })),
   });
 }
