@@ -17,9 +17,8 @@ export default {
         "plate": "#2D2D2D",
         "plate-dark": "#222222",
         "spine-segment": "#2A2A2A",
+        "text-muted": "#A3A3A3",    // Neutral 400 for secondary text
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
-        "background-dark": "#1A1A1A",
-        "surface-dark": "#2D2D2D",
         "border-dark": "#333333",
       },
       fontFamily: {
