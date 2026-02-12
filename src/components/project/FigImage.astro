@@ -11,7 +11,7 @@ const hasImages = imageList.length > 0;
 ---
 {hasImages && (
 <div class="fig-image-component w-full aspect-video bg-panel border border-panel-border relative flex items-center justify-center mb-12 overflow-hidden group">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(37,188,192,0.05)_0%,_rgba(0,0,0,0)_70%)] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_theme('colors.primary-faint')_0%,_transparent_70%)] pointer-events-none"></div>
     
     <div class="carousel-container w-full h-full overflow-x-auto flex snap-x snap-mandatory scrollbar-hide scroll-smooth">
         {imageList.map((imgSrc, index) => (
@@ -22,7 +22,7 @@ const hasImages = imageList.length > 0;
                     class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" 
                 />
                 {imageList.length > 1 && (
-                    <div class="absolute bottom-4 left-4 text-[10px] font-mono text-primary bg-black/50 px-2 py-1 backdrop-blur-sm border border-primary/30 pointer-events-none select-none">
+                    <div class="absolute bottom-4 left-4 text-[10px] font-mono text-primary bg-overlay-medium px-2 py-1 backdrop-blur-sm border border-primary/30 pointer-events-none select-none">
                         IMG_{String(index + 1).padStart(2, '0')} // {String(imageList.length).padStart(2, '0')}
                     </div>
                 )}
@@ -32,10 +32,10 @@ const hasImages = imageList.length > 0;
 
     {imageList.length > 1 && (
         <>
-            <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-primary border border-primary/30 p-2 hover:bg-primary hover:text-black transition-colors backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Previous image">
+            <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 bg-overlay-medium text-primary border border-primary/30 p-2 hover:bg-primary hover:text-black transition-colors backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Previous image">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
             </button>
-            <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-primary border border-primary/30 p-2 hover:bg-primary hover:text-black transition-colors backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Next image">
+            <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 bg-overlay-medium text-primary border border-primary/30 p-2 hover:bg-primary hover:text-black transition-colors backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Next image">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg>
             </button>
         </>

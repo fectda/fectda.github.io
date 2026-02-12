@@ -43,6 +43,20 @@ export default {
         "content-light": "#cccccc",                 // Lighter content for specific UI elements
         "overlay-light": "#333333",                 // Lighter overlay for hover states
         "connector": "#25BCC0",                     // Timeline connector lines
+        "background-main": "#0a0a0a",               // Main app background
+        "info-bar-bg": "#111111",                   // Info bar background
+        "footer-bg": "#111111",                     // Footer background
+        "header-bg": "#111111",                     // Header background
+        "grid-line": "#333333",                     // Grid lines
+        "text-footer": "#666666",                   // Footer text color
+        "grid-line-dark": "#222222",                // Darker grid lines
+        "status-green-glow": "rgba(34, 197, 94, 0.6)", // Status indicator glow
+        "scanline-start": "rgba(255, 255, 255, 0)", // Scanline gradient start
+        "scanline-end": "rgba(0, 0, 0, 0.1)",       // Scanline gradient end
+        "guardian-glow": "rgba(255, 255, 255, 0.3)", // Guardian overlay glow
+        "shadow-strong": "rgba(0, 0, 0, 0.8)",      // Strong shadow
+        "overlay-medium": "rgba(0, 0, 0, 0.5)",     // Medium overlay
+        "overlay-dark": "rgba(0, 0, 0, 0.8)",       // Dark overlay
         // Legacy mappings (for backward compatibility if needed, or mapped to new)
         "border-dark": "#333333",
         "border-mid": "#444444",    // Lighter border distinct from border-dark

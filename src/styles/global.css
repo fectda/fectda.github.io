@@ -39,8 +39,8 @@ body {
   opacity: 0.02;
   background-size: 20px 20px;
   background-image:
-    linear-gradient(to right, #222 1px, transparent 1px),
-    linear-gradient(to bottom, #222 1px, transparent 1px);
+    linear-gradient(to right, theme('colors.grid-line-dark') 1px, transparent 1px),
+    linear-gradient(to bottom, theme('colors.grid-line-dark') 1px, transparent 1px);
 }
 
 /* Scanline Effect - KILLED (Pure Solid Colors requested) */
@@ -77,7 +77,7 @@ body {
 }
 
 .status-indicator.online {
-  @apply bg-green-500 shadow-[0_0_8px_#22c55e99];
+  @apply bg-green-500 shadow-[0_0_8px_theme('colors.status-green-glow')];
 }
 
 .status-indicator.busy {
