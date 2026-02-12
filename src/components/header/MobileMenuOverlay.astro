@@ -34,7 +34,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
 <input class="hidden peer" id="mobile-menu-checkbox" type="checkbox"/>
 
 <!-- Overlay (Fixed) -->
-<div class="lg:hidden fixed inset-0 z-[60] bg-[#1A1A1A]/95 backdrop-blur-md opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-300 flex flex-col items-center justify-center" id="mobile-menu-overlay">
+<div class="lg:hidden fixed inset-0 z-[60] bg-obsidian/95 backdrop-blur-md opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-300 flex flex-col items-center justify-center" id="mobile-menu-overlay">
     
     <!-- Close Button -->
     <label class="absolute top-6 right-6 font-mono text-sm tracking-widest cursor-pointer hover:text-primary transition-colors py-2 px-4 border border-white/10" for="mobile-menu-checkbox">
@@ -87,7 +87,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
         </div>
 
         <!-- Share (User Requested) -->
-        <button id="mobile-share-btn" class="flex items-center gap-2 bg-[#293837] hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
+        <button id="mobile-share-btn" class="flex items-center gap-2 bg-panel-border hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
             <span class="material-symbols-outlined text-sm">share</span>
             <span class="font-mono text-xs tracking-wider">SHARE</span>
         </button>
