@@ -1,4 +1,7 @@
 ---
+import { CV_URLS } from "@data/constants";
+import type { Locale } from "@lib/i18n";
+
 interface Props {
   name: string;
   subtitle: string;
@@ -14,4 +17,5 @@ const { name, subtitle } = Astro.props;
     <p class="text-primary font-mono text-sm md:text-xl tracking-widest font-bold uppercase mt-2">
         {subtitle}
     </p>
+
 </div>

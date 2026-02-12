@@ -1,12 +1,12 @@
 export const MIND_CONTENT = {
     es: {
         meta: {
-            title: "MIND_LOG",
+            title: "FLUJO",
             description: "Pensamientos y Teoría"
         },
         hero: {
-            title: "MIND_LOG",
-            subtitle: "// FLUJO_PENSAMIENTO_V1"
+            title: "FLUJO",
+            subtitle: "// FLUJO_PENSAMIENTO"
         },
         divider: "HISTORIAL_TRANSMISION",
         readLabel: "LEER_ENTRADA"

@@ -27,7 +27,7 @@ const { lang, currentPath } = Astro.props;
                 <Navigation lang={lang} currentPath={currentPath} />
                 <LanguageSwitcher lang={lang} currentPath={currentPath} />
             </div>
-            <Actions />
+            <Actions lang={lang} />
         </div>
 
         <!-- Mobile: Menu Toggle (Right) -->

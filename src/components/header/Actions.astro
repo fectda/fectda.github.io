@@ -1,8 +1,22 @@
 ---
+import { CV_URLS } from "@data/constants";
+import type { Locale } from "@lib/i18n";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <div class="flex gap-2">
-    <button id="share-button" class="bg-panel-border hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow" title="Share">
+    <!-- Download CV -->
+    <a href={CV_URLS[lang]} target="_blank" class="bg-panel-border hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow flex items-center justify-center" title="Download CV">
+        <span class="material-symbols-outlined text-sm">download</span>
+    </a>
+
+    <!-- Share -->
+    <button id="share-button" class="bg-panel-border hover:bg-primary/20 text-white p-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow flex items-center justify-center" title="Share">
         <span class="material-symbols-outlined text-sm">share</span>
     </button>
 </div>

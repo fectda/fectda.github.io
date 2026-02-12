@@ -1,7 +1,7 @@
 ---
 import { getLocalizedPath } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
-import { SITE_DATA } from "@data/constants";
+import { SITE_DATA, NAV_LABELS, CV_URLS } from "@data/constants";
 
 interface Props {
   lang: Locale;
@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { lang, currentPath } = Astro.props;
+const labels = NAV_LABELS[lang];
 
 // Build breadcrumbs for display (optional, small)
 const pathSegments = currentPath.replace(/\/$/, '').split('/').filter(Boolean);
@@ -59,16 +60,16 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
     <!-- Navigation Links -->
     <nav class="flex flex-col items-center gap-6 md:gap-10">
         {[
-            { path: '/bits', label: 'BITS' },
-            { path: '/atoms', label: 'ATOMS' },
-            { path: '/mind', label: 'MIND' },
-            { path: '/cv', label: 'CV' },
-            { path: '/about', label: 'ABOUT' }
+            { path: '/bits', label: labels.BITS },
+            { path: '/atoms', label: labels.ATOMS },
+            { path: '/mind', label: labels.MIND },
+            { path: '/cv', label: labels.CV },
+            { path: '/about', label: labels.ABOUT }
         ].map(item => (
             <a 
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                    "font-headline text-5xl md:text-7xl tracking-tighter transition-colors",
+                    "font-headline text-5xl md:text-7xl tracking-tighter transition-colors flex items-center gap-2",
                      isActive(item.path) ? "text-primary" : "text-white hover:text-primary"
                 ]}
             >
@@ -77,7 +78,7 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
         ))}
     </nav>
 
-    <!-- Footer: Lang & Share -->
+    <!-- Footer: Lang & Share & Download -->
     <div class="absolute bottom-12 flex flex-col items-center gap-6 w-full">
         <!-- Lang -->
         <div class="flex items-center gap-4 font-mono text-sm tracking-widest border-t border-white/10 pt-4 w-40 justify-center">
@@ -86,11 +87,19 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
             <a href={lang === 'es' ? currentPath : switchLangHref} class:list={["font-bold transition-colors", lang === 'es' ? "text-white" : "text-subtext hover:text-primary"]}>ES</a>
         </div>
 
-        <!-- Share (User Requested) -->
-        <button id="mobile-share-btn" class="flex items-center gap-2 bg-panel-border hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
-            <span class="material-symbols-outlined text-sm">share</span>
-            <span class="font-mono text-xs tracking-wider">SHARE</span>
-        </button>
+        <div class="flex items-center gap-4">
+            <!-- Download CV (Left) -->
+            <a href={CV_URLS[lang]} target="_blank" class="flex items-center gap-2 bg-panel-border hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow">
+                <span class="material-symbols-outlined text-sm">download</span>
+                <span class="font-mono text-xs tracking-wider">CV</span>
+            </a>
+
+            <!-- Share (Right) -->
+            <button id="mobile-share-btn" class="flex items-center gap-2 bg-panel-border hover:bg-primary/20 text-white px-6 py-2 rounded-sm border border-primary/30 transition-all hover:shadow-glow" data-share-label={labels.SHARE} data-copied-label={labels.COPIED}>
+                <span class="material-symbols-outlined text-sm">share</span>
+                <span class="font-mono text-xs tracking-wider">{labels.SHARE}</span>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -98,6 +107,9 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
     // Share Logic
     const mobileShareBtn = document.getElementById('mobile-share-btn');
     mobileShareBtn?.addEventListener('click', async () => {
+        const shareLabel = mobileShareBtn.getAttribute('data-share-label');
+        const copiedLabel = mobileShareBtn.getAttribute('data-copied-label');
+
         const shareData = {
             title: document.title,
             url: window.location.href,
@@ -107,10 +119,10 @@ const switchLangHref = getLocalizedPath(pathWithoutLang || '/', altLang);
                 await navigator.share(shareData);
             } else {
                 await navigator.clipboard.writeText(window.location.href);
-                const originalText = mobileShareBtn.innerHTML;
-                mobileShareBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span><span class="font-mono text-xs tracking-wider">COPIED</span>';
+                const originalContent = mobileShareBtn.innerHTML;
+                mobileShareBtn.innerHTML = `<span class="material-symbols-outlined text-sm">check</span><span class="font-mono text-xs tracking-wider">${copiedLabel}</span>`;
                 setTimeout(() => {
-                    mobileShareBtn.innerHTML = originalText;
+                    mobileShareBtn.innerHTML = originalContent;
                 }, 2000);
             }
         } catch (e) {}

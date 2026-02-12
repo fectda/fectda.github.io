@@ -4,7 +4,7 @@ export const CV_CONTENT = {
     es: {
         hero: {
             name: SITE_DATA.NAME,
-            subtitle: "Físico. CIO. Maker. // OBSIDIAN TELEMETRY: ACTIVE"
+            subtitle: "Físico. CIO. Maker. // TELEMETRÍA DE OBSIDIANA: ACTIVA"
         },
         sections: {
             experience: "Experiencia Profesional",
