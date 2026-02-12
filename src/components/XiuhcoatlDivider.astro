@@ -3,15 +3,15 @@ interface Props {
   className?: string;
 }
 
-const { className = "text-[#AB2A3E]" } = Astro.props;
+const { className = "text-secondary" } = Astro.props;
 ---
 
 <div class="w-full flex items-center gap-2 py-8 opacity-50 select-none" aria-hidden="true">
-    <div class="h-px bg-[#333] flex-grow"></div>
+    <div class="h-px bg-border-dark flex-grow"></div>
     <div class:list={["flex gap-1", className]}>
         <span class="block w-2 h-2 bg-current transform rotate-45"></span>
         <span class="block w-2 h-2 bg-current transform rotate-45"></span>
         <span class="block w-2 h-2 bg-current transform rotate-45"></span>
     </div>
-    <div class="h-px bg-[#333] flex-grow"></div>
+    <div class="h-px bg-border-dark flex-grow"></div>
 </div>

@@ -24,13 +24,15 @@ const { items, className = "" } = Astro.props;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     font-family: 'Fira Code', 'Space Grotesk', monospace;
     font-size: 0.875rem;
-    color: #25BCC0;
+    color: theme('colors.primary');
     letter-spacing: 0.05em;
-    border-top: 1px solid #293837;
-    border-bottom: 1px solid #293837;
+    border-top: 1px solid theme('colors.panel-border');
+    border-bottom: 1px solid theme('colors.panel-border');
     padding: 1rem 0;
     margin-bottom: 4rem;
   }
@@ -42,7 +44,7 @@ const { items, className = "" } = Astro.props;
   }
 
   .info-bar__pipe {
-    color: #4B5563;
+    color: theme('colors.gray.600');
   }
 
   .info-bar__item {
