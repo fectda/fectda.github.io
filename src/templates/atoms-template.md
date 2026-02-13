@@ -4,19 +4,13 @@ shortTitle: "Short Title"
 description: "Short one-line description for the card"
 date: 2024-01-01
 draft: true
-stack: ["3D Printing", "ESP32", "Wood"]
-status: "wip"
+stack: ["3D Printing", "ESP32", "Wood"] // Materials too
+status: "wip" # poc, wip, done
 type: "HARDWARE"
+icon: "memory" # Material Symbol
 images: []
 repository_url: ""
-icon: ""
----
-
-# ⚛️ Project Name
-
-**Category:** Maker / Hardware / Construction
-**Materials:** Material 1, Material 2
-
+demo_url: ""
 ---
 
 ## 🎯 The Challenge
