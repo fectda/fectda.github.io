@@ -5,6 +5,7 @@ draft: false
 tags: ["philosophy", "social-engineering", "resilience"]
 references: 
   - "González, E. (2026). Dialectics of Friction."
+date: 2009-01-01
 ---
 
 ## The Thesis of Resistance
