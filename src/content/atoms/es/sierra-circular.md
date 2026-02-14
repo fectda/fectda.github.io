@@ -1,39 +1,42 @@
 ---
 title: "Adaptador de Sierra DeWalt para Riel Truper"
-shortTitle: "ADAPTADOR_DE_SI"
-description: "Adaptador de Sierra DeWalt para Riel Truper - Proyecto Maker"
-date: 2025-11-20
-draft: true
-icon: "build"
-stack: ["FreeCAD", "Impresión 3D", "PETG", "Diseño Mecánico"]
+shortTitle: "ADAPTADOR_DCS570"
+description: "Resolviendo la incompatibilidad de ecosistemas: Diseño y manufactura de una interfaz de deslizamiento paramétrica para la DCS570 sobre rieles Truper MAX."
+date: 2025-11-01
+stack: ["FreeCAD", "3D Printing", "PETG", "Mechanical Design"]
 status: "done"
-type: "TOOL"
+type: "HARDWARE"
+icon: "handyman"
+images: []
+draft: false
 ---
 
-## 🎯 El Desafío (The Problem)
-Tenía una sierra circular **DeWalt DCS570** (elegida estratégicamente por compatibilidad de discos con mi inglete) y conseguí un **riel de guía Truper MAX-SC-G** en oferta.
-**El problema:** Son marcas incompatibles. La DeWalt DCS570 no está diseñada para rieles, y cortar recto a mano alzada es impreciso.
-**El objetivo:** Crear un adaptador que permita usar la sierra sobre el riel sin modificar la herramienta permanentemente.
+## El Desafío
+En la carpintería de obra, la precisión suele ser directamente proporcional a la inversión en el ecosistema. Mi inventario se basa en la **DeWalt DCS570**, una herramienta elegida por la estandarización de consumibles (discos de 7 1/4") y la infraestructura de baterías 20V Max que ya poseo. Sin embargo, el mercado de rieles de guía es un campo minado de exclusividad.
 
-## 💡 La Solución (Engineering)
-Diseñé en **FreeCAD** una base personalizada que se acopla a la zapata de la sierra y tiene el perfil negativo del riel Truper.
+Los rieles propietarios de DeWalt, Makita, Festool son difíciles de conseguir en Ciudad de México y tienen un sobreprecio absurdo. Por otro lado, el riel **Truper MAX-SC-G** es accesible y estructuralmente rígido, pero su geometría es diametralmente opuesta a la zapata de la DCS570. Cortar a mano alzada (o con guias improvisadas) paneles de formato grande no era una opción aceptable para una remodelación integral; necesitaba una solución que forzara a estas dos marcas a trabajar juntas sin modificar permanentemente la sierra.
 
-### 🔧 Retos Técnicos & Iteraciones
-1.  **Fijación Magnética Fallida:** La idea original era usar imanes para "pegar" el adaptador a la base, pero descubrí (a la mala) que la zapata de la sierra es de **aluminio**.
-    *   *Solución:* Diseño por ajuste a presión (Press-fit). El adaptador entra justo y se mantiene en su lugar, permitiendo usar la sierra con o sin el riel.
-2.  **Volumen de Impresión:** La pieza completa era más grande que la cama de mi impresora.
-    *   *Solución:* Diseño modular. Corté el modelo en partes y diseñé un sistema de ensamble para unirlas después de imprimir.
-3.  **Protector del Disco:** El protector de seguridad plástico choca levemente con el riel al iniciar el corte.
-    *   *Workaround:* Requiere levantarlo manualmente al inicio (fricción operativa aceptable).
+## La Solución
+La respuesta fue diseñar una "interfaz de sacrificio" que traduce el lenguaje del riel Truper al chasis de la DeWalt. No se trató solo de una base, sino de un sistema de transporte mecánico.
 
-## 🛠️ Especificaciones
-*   **Material:** PETG (Por resistencia mecánica y térmica).
-*   **Diseño:** FreeCAD (Paramétrico).
-*   **Archivos:** [Pendiente: Link a MakerWorld/Printables].
+### El Proceso de Construcción
+1.  **Ingeniería Inversa del Riel:** Inicié con el mapeo del perfil del riel usando un calibrador vernier. En `FreeCAD`, diseñé un boceto del "negativo" del riel, aplicando un *offset* calculado para compensar la contracción térmica del PETG.
+2.  **Iteración de Secciones:** No imprimí la pieza completa de inicio. Generé "rebanadas" de control para probar el deslizamiento. Fueron necesarias múltiples iteraciones para encontrar el punto exacto donde el juego lateral desaparece sin que la fricción bloquee el avance.
+3.  **El Enigma de la Zapata:** El diseño del cuerpo superior tuvo que calcar la forma irregular de la zapata de aluminio. Cada nervadura y refuerzo de la herramienta original fue medido para asegurar que el adaptador la "abrazara" con precisión micrométrica.
+4.  **Logística de Impresión:** Mi **Bambu Lab A1** no cuenta con el volumen necesario para una pieza de este largo. La solución fue una división estratégica en el laminador, uniendo ambas partes mediante un sistema de **guías hexagonales**. Estas guías no solo alinean; proporcionan la superficie de contacto necesaria para que la unión química sea estructural.
+5.  **Manufactura y Química:** Se utilizó **PETG** por su resistencia al impacto y estabilidad térmica (la sierra genera calor que deformaría el PLA). La unión se realizó con metacrilato, seguida de un proceso de lijado manual intensivo para asegurar que la junta no presentara resaltos que arruinaran la precisión del corte.
 
-## 🧪 Resultados (Review)
-*   **Precisión:** Excelente. Los cortes son rectos gracias al riel.
-*   **Deslizamiento:** Funcional. No es "mantequilla" (tiene fricción), pero no se atora. Cumple el propósito.
+> **[ ! ] NOTA DE CAMPO:** El perfil de impresión se configuró con un aumento en las paredes sólidas y en el relleno. En herramientas de potencia, la vibración y el torque lateral pueden fracturar piezas con rellenos estándar. Aquí no se ahorró material.
 
-## 📸 Galería
-*(Fotos del adaptador impreso, el ensamble y la sierra montada en el riel).*
+## Desafíos y Correcciones
+* **El Error del Magnetismo:** Mi hipótesis inicial era elegante: usar imanes de neodimio para fijar el adaptador a la sierra. El golpe de realidad llegó al descubrir que la zapata de la DCS570 es de **aluminio de fundición**, no de acero. Los imanes terminaron en un cajón.
+* **La Solución Press-fit:** Ante la falta de magnetismo, modifiqué el diseño para un ajuste por interferencia (press-fit). El adaptador entra con tal precisión que se convierte en un "pantalón" para la sierra; se queda puesto incluso cuando no uso el riel, funcionando como una protección extra para la base original.
+* **Interferencia de Seguridad:** Al presentar el sistema, noté que la guarda retráctil del disco chocaba con el borde del riel al iniciar el corte.
+* **Compensación Operativa:** En lugar de debilitar el adaptador recortándolo, decidí que la solución es un *workaround* manual: retraer la guarda con la palanca al inicio del corte. Es un costo de fricción operativa que acepto a cambio de la rigidez del ensamble.
+
+## Veredicto
+El sistema es un éxito de interoperabilidad. Los cortes son perfectamente rectos y repetibles. 
+**Resultados post-operativos:**
+* **Ergonomía:** El adaptador es tan discreto que no lo quito. Se ha vuelto parte de la herramienta.
+* **Penalización:** El grosor del PETG reduce la profundidad máxima de corte en aproximadamente 10mm. Para paneles estándar, esto es irrelevante.
+* **Fricción:** No es "mantequilla", se siente el contacto del plástico con el metal, pero es un deslizamiento predecible que ayuda a mantener el control de la máquina.
