@@ -7,7 +7,6 @@ stack: ["FreeCAD", "3D Printing", "PETG", "Mechanical Design"]
 status: "done"
 type: "HARDWARE"
 icon: "handyman"
-images: []
 draft: false
 ---
 

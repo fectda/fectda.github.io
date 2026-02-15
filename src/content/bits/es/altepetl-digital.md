@@ -7,7 +7,6 @@ stack: ["Astro", "TailwindCSS", "GitHub Actions","TypeScript", "AI Swarm", "Syst
 status: "done"
 progress: 5
 type: "SOFTWARE"
-images: []
 repository_url: "https://github.com/fectda/fectda.github.io"
 demo_url: "https://fectda.github.io"
 ---

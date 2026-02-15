@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import ProjectLayout from "@layouts/ProjectLayout.astro";
 import type { Locale } from "@lib/i18n";
 import { BITS_CONTENT } from "src/data/bits-content";
+import { getImagesForContent } from "@lib/image-discovery";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("bits"))
@@ -12,6 +13,13 @@ export async function getStaticPaths() {
   for (const post of posts) {
     const [lang, ...slugParts] = post.slug.split('/');
     const cleanSlug = slugParts.join('/');
+
+    // Auto-discover images from public/bits/{slug}/
+    const discoveredImages = getImagesForContent("bits", post.id);
+    if (discoveredImages.length > 0) {
+      post.data.images = discoveredImages;
+    }
+
     paths.push({
       params: { lang, slug: cleanSlug },
       props: post,

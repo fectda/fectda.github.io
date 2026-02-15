@@ -7,7 +7,6 @@ stack: ["Tech 1", "Tech 2", "Tech 3"]
 status: "wip" # poc, wip, done
 progress: 1 # 0-5
 type: "SOFTWARE" # SOFTWARE, AI_AGENT, APP, SYSTEM
-images: ["/images/project_1.jpg", "/images/project_2.jpg"]
 repository_url: "https://github.com/fectda/repo"
 demo_url: "https://demo.com"
 ---
