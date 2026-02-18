@@ -4,7 +4,7 @@ shortTitle: "Short Title"
 description: "Short one-line description for the card"
 date: 2024-01-01
 draft: true
-stack: ["3D Printing", "ESP32", "Wood"] // Materials too
+stack: ["3D Printing", "ESP32", "Wood"] # Materials too
 status: "wip" # poc, wip, done
 type: "HARDWARE"
 icon: "memory" # Material Symbol
