@@ -13,7 +13,7 @@ repository_url: "https://github.com/fectda/portafolio"
 # Heading 1: The Main Title (Should trigger H2 logic mostly)
 The above is an H1, but since the page title handles the main H1, this might be redundant. Let's look at the standard sections.
 
-## 🎯 Heading 2: Section Title (Standard Challenge/Solution)
+## Heading 2: Section Title (Standard Challenge/Solution)
 This is the standard `H2` used for main sections like **Challenge**, **Solution**, etc. It should have the counter prefix (e.g., `01 //`).
 
 ### Heading 3: Subsection (The "Clean" header)
@@ -24,7 +24,7 @@ Sometimes we need to go deeper. This should still look good, likely smaller but 
 
 ---
 
-## 📝 Typography & Emphasis
+## Typography & Emphasis
 We use a specific font stack. This paragraph demonstrates standard body text. It should use `font-body` and a light gray color (`#D4D4D4`).
 *   **Bold Text:** This should be white (`text-white`) and stand out.
 *   *Italic Text:* A subtle emphasis for internal thoughts or terminology.
@@ -36,7 +36,7 @@ We use a specific font stack. This paragraph demonstrates standard body text. It
 
 ---
 
-## 📋 Lists & Data
+## Lists & Data
 
 ### Unordered List (The Standard)
 *   Item One: Basic feature.
@@ -52,7 +52,7 @@ We use a specific font stack. This paragraph demonstrates standard body text. It
 
 ---
 
-## 💻 Code Blocks
+## Code Blocks
 
 Here is a standard code block (Rust/TypeScript style):
 
@@ -72,7 +72,7 @@ core.activate();
 
 ---
 
-## 📊 Tables (If supported)
+## Tables (If supported)
 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -82,7 +82,7 @@ core.activate();
 
 ---
 
-## 🖼️ Media (Legacy Context)
+## Media (Legacy Context)
 We already test images in the carousel, but here is an inline image if Markdown supports it directly:
 
 ![Inline Diagram](/collibri.svg)
