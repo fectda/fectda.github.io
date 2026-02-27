@@ -9,11 +9,14 @@ references:
   - "Author, A. (Year). Title. Publisher."
 ---
 
-## 💭 The Core Idea
+## The Core Idea
 What is the hypothesis or observation?
 
-## 📝 Argument
+## Argument
 Paragraphs expanding on the idea.
 
-## 🏁 Conclusion
+## Application
+How can this idea be applied to real-world problems?
+
+## Conclusion
 Final takeaway.

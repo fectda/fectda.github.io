@@ -11,21 +11,21 @@ repository_url: "https://github.com/fectda/repo"
 demo_url: "https://demo.com"
 ---
 
-## 🎯 The Challenge
+## The Challenge
 What was the problem? Why did we build this?
 
-## 💡 The Solution
+## The Solution
 Engineering approach and architecture.
 
-### ⚙️ Mechanics
+### Mechanics
 1.  **Step 1:** ...
 2.  **Step 2:** ...
 
-## 🛠️ Architecture & Specs
+## Architecture & Specs
 *   **Frontend:** ...
 *   **Backend:** ...
 *   **Infrastructure:** ...
 
-## 🧪 Results
+## Results
 *   **Metric:** 90% faster / 50% cheaper.
 *   **Impact:** Business or technical outcome.

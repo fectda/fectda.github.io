@@ -12,20 +12,20 @@ repository_url: ""
 demo_url: ""
 ---
 
-## 🎯 The Challenge
+## The Challenge
 What physical problem were you solving? What was the constraint (space, budget, toxicity)?
 
-## 💡 The Solution
+## The Solution
 Design approach and fabrication method.
 
-### 🔧 The Build Process
+### The Build Process
 1.  **Design:** CAD / SketchUp.
 2.  **Fabrication:** Print / Cut / Solder.
 3.  **Assembly:** Integration.
 
-## 🚧 Challenges & Fixes
+## Challenges & Fixes
 *   **Fail 1:** ...
 *   **Fix 1:** ...
 
-## 🧪 Verdict
+## Verdict
 Does it work? Is it sturdy?
