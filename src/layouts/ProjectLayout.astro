@@ -34,7 +34,7 @@ const { post, lang, labels } = Astro.props;
 
     <article class="w-full space-y-12">
       
-      <FigImage images={post.data.images} alt={post.data.title} />
+      <FigImage images={post.data.images} alt={post.data.title} lang={lang} />
 
       <div class="prose prose-invert prose-lg max-w-none 
         prose-headings:font-bold prose-headings:uppercase prose-headings:text-white prose-headings:font-mono
