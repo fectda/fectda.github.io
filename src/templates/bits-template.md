@@ -7,25 +7,27 @@ stack: ["Tech 1", "Tech 2", "Tech 3"]
 status: "wip" # poc, wip, done
 progress: 1 # 0-5
 type: "SOFTWARE" # SOFTWARE, AI_AGENT, APP, SYSTEM
-repository_url: "https://github.com/fectda/repo"
-demo_url: "https://demo.com"
+repository_url: ""
+demo_url: ""
 ---
 
 ## The Challenge
-What was the problem? Why did we build this?
+Describe the problem in 2–3 sentences. What was broken, slow, or missing? What made the existing solution unacceptable?
 
 ## The Solution
-Engineering approach and architecture.
+Explain the engineering approach in a paragraph. What architecture was chosen and why? What trade-offs were made? Describe the system at a high level before going into the mechanics.
 
 ### Mechanics
-1.  **Step 1:** ...
-2.  **Step 2:** ...
+1.  **Step 1:** Describe the first stage of the process or pipeline.
+2.  **Step 2:** Describe the second stage.
+3.  **Step 3:** Describe the third stage.
 
 ## Architecture & Specs
-*   **Frontend:** ...
-*   **Backend:** ...
-*   **Infrastructure:** ...
+Describe the technical stack and infrastructure in prose. What runs where and why? Mention the key technologies and how they connect. A brief list of components is fine here if it helps clarity.
+
+- **Frontend:** Framework, rendering approach, key trade-offs.
+- **Backend:** Language, framework, what it exposes.
+- **Infrastructure:** Hosting, orchestration, deployment strategy.
 
 ## Results
-*   **Metric:** 90% faster / 50% cheaper.
-*   **Impact:** Business or technical outcome.
+Describe the outcome honestly. Did it work? What improved, and by how much? What didn't go as planned? End with the real-world impact or the lesson learned.
