@@ -1,16 +1,22 @@
 ---
-title: "Adaptador de Sierra DeWalt para Riel Truper"
-shortTitle: "ADAPTADOR_DCS570"
-description: "Resolviendo la incompatibilidad de ecosistemas: Diseño y manufactura de una interfaz de deslizamiento paramétrica para la DCS570 sobre rieles Truper MAX."
 date: 2025-11-01
-stack: ["FreeCAD", "3D Printing", "PETG", "Mechanical Design"]
-status: "done"
-type: "HARDWARE"
-icon: "handyman"
+description: 'Resolviendo la incompatibilidad de ecosistemas: Diseño y manufactura
+  de una interfaz de deslizamiento paramétrica para la DCS570 sobre rieles Truper
+  MAX.'
 draft: false
+icon: handyman
+shortTitle: ADAPTADOR_DCS570
+stack:
+- FreeCAD
+- 3D Printing
+- PETG
+- Mechanical Design
+status: done
+title: Adaptador de Sierra DeWalt para Riel Truper
+type: HARDWARE
 ---
 
-## El Desafío
+## El Desafío 
 En la carpintería de obra, la precisión suele ser directamente proporcional a la inversión en el ecosistema. Mi inventario se basa en la **DeWalt DCS570**, una herramienta elegida por la estandarización de consumibles (discos de 7 1/4") y la infraestructura de baterías 20V Max que ya poseo. Sin embargo, el mercado de rieles de guía es un campo minado de exclusividad.
 
 Los rieles propietarios de DeWalt, Makita, Festool son difíciles de conseguir en Ciudad de México y tienen un sobreprecio absurdo. Por otro lado, el riel **Truper MAX-SC-G** es accesible y estructuralmente rígido, pero su geometría es diametralmente opuesta a la zapata de la DCS570. Cortar a mano alzada (o con guias improvisadas) paneles de formato grande no era una opción aceptable para una remodelación integral; necesitaba una solución que forzara a estas dos marcas a trabajar juntas sin modificar permanentemente la sierra.
