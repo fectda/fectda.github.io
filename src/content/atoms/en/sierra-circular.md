@@ -15,7 +15,7 @@ title: DeWalt DCS570 Adapter for Truper Rail
 type: HARDWARE
 ---
 
-## The Challenge 
+## The Challenge
 In construction carpentry, precision is usually directly proportional to the investment in the ecosystem. My inventory is based on the **DeWalt DCS570**, a tool chosen for consumable standardization (7 1/4" blades) and the 20V Max battery infrastructure I already own. However, the guide rail market is a minefield of exclusivity.
 
 Proprietary rails from DeWalt, Makita, or Festool are hard to find in Mexico City and come with an absurd markup. On the other hand, the **Truper MAX-SC-G** rail is accessible and structurally rigid, but its geometry is diametrically opposed to the DCS570's shoe. Freehand cutting (or using improvised guides) on large-format panels was not an acceptable option for a full remodel; I needed a solution that would force these two brands to work together without permanently modifying the saw.
