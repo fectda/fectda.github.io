@@ -1,6 +1,5 @@
 ---
 date: 2026-02-12
-demo_url: ''
 description: Proyecto de orquestación de contenidos para portafolio
 draft: false
 progress: 5

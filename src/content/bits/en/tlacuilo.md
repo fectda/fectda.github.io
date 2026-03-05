@@ -1,6 +1,5 @@
 ---
 date: 2026-02-12
-demo_url: ''
 description: Content orchestration project for portfolio
 draft: false
 progress: 5
