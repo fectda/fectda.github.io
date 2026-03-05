@@ -14,14 +14,15 @@ type Props = {
   lang?: Locale;
   gridOpacity?: number;
   className?: string;
+  image?: string;
 };
-const { title, description, lang = 'es', gridOpacity = 0, className = '' } = Astro.props;
+const { title, description, lang = 'es', gridOpacity = 0, className = '', image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} class="dark">
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} lang={lang} />
+    <Head title={`${title} | ${SITE.NAME}`} description={description} lang={lang} image={image} />
   </head>
   <body class="bg-obsidian text-content font-display antialiased min-h-screen selection:bg-primary selection:text-white">
     <!-- Grid Background Overlay -->

@@ -18,9 +18,10 @@ interface Props {
 }
 
 const { post, lang, labels } = Astro.props;
+const socialImage = post.data.images && post.data.images.length > 0 ? post.data.images[0] : undefined;
 ---
 
-<PageLayout title={post.data.title} description={post.data.description} lang={lang} className="flex-grow">
+<PageLayout title={post.data.title} description={post.data.description} lang={lang} image={socialImage} className="flex-grow">
 
     <SectionHeader title={post.data.title} subtitle={post.data.description} />
 
