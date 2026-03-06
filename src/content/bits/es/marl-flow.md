@@ -34,7 +34,7 @@ Aun así, la lógica de negocio funcionaba, así que decidí usar la arquitectur
 
 ## Arquitectura y Especificaciones  
 - **Frontend:** Vue.js + Vite, renderizado SPA, control de estado con Vuex, conexión a la API Flask.  
-- **Backend:** Flask que expone endpoints `/traduce`, `/progreso`, `/nivel`. Gestiona la lógica de estado y llama al modelo Ollama.  
+- **Backend:** Flask que expone endpoints y gestiona la lógica de estado y llama al modelo Ollama.  
 - **Infraestructura:** Docker Compose con contenedores separados para Front y Back.  
 - **Hardware:** Raspberry Pi 4 (modelo que elegí por su bajo consumo) ejecuta el front‑end y la API; la IA local (Ollama) corre en una máquina de escritorio, ya que el modelo no se ajusta a la capacidad de la Pi.  
 - **Motor de IA:** Ollama, modelo de traducción local (ej. `gpt-oss:20b`).

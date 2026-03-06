@@ -33,7 +33,7 @@ To close that gap, I built a fluency trainer that combines AI and iterative desi
 
 ## Architecture and Specifications  
 - **Frontend:** Vue.js + Vite, SPA rendering, state management with Vuex, connection to the Flask API.  
-- **Backend:** Flask exposing endpoints `/traduce`, `/progreso`, `/nivel`. Manages state logic and calls the Ollama model.  
+- **Backend:** Flask exposing endpoints and manages state logic and calls the Ollama model.  
 - **Infrastructure:** Docker Compose with separate containers for Front and Back.  
 - **Hardware:** Raspberry Pi 4 (chosen for low power) runs the front‑end and the API; the local IA (Ollama) runs on a desktop because the model does not fit the Pi.  
 - **AI Engine:** Ollama, local translation model (e.g., `gpt-oss:20b`).  
