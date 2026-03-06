@@ -1,45 +1,55 @@
 ---
-title: "Marl Flow (AI Language Trainer)"
-description: "Entrenador de fluidez interactivo impulsado por IA que simula contextos reales y se adapta al nivel del usuario"
 date: 2026-02-05
-draft: true
-stack: ["Vue.js", "Flask", "Docker", "Ollama", "Python"]
-status: "wip"
+description: Interactive fluency trainer powered by AI that simulates real contexts
+  and adapts to the user's level.
+draft: false
 progress: 3
-type: "AI_AGENT"
+repository_url: https://gitlab.com/eduardo-dev/text-practice
+stack:
+- Vue.js
+- Flask
+- Docker
+- Ollama
+- Python
+status: wip
+title: Marl Flow (AI Language Trainer)
+type: AI_AGENT
 ---
 
-## 🎯 El Problema (Pain Point)
-A pesar de mantener rachas constantes en apps como Duolingo y tomar clases tradicionales, persiste la dificultad para **articular ideas complejas** en inglés. Existe una brecha entre "saber inglés" y sentirse cómodo traduciendo pensamientos abstractos o técnicos del español al inglés en tiempo real.
+## The Problem  
+Although I maintain consistent streaks on apps like Duolingo and have taken traditional classes, it is still very difficult for me to articulate complex ideas in English. There is a gap between knowing English and feeling comfortable translating abstract or technical thoughts from Spanish to English in real time.
 
-## 💡 La Solución
-Un entrenador de fluidez interactivo impulsado por IA que simula contextos reales y se adapta al nivel del usuario.
+## The Solution  
+To close that gap, I built a fluency trainer that combines AI and iterative design. The process began with a Python/Gradio prototype that showed me how I could integrate the local model, but the UI turned out *horribly* rigid: a Gradio grid that didn't adapt to the styles I wanted and ended up with a visually unpleasing experience. Still, the business logic worked, so I decided to use the original architecture of Python + Flask + Docker, but moved to a Vue.js frontend because I was already familiar with that framework and wanted a more flexible UI. I used Google Stitch to generate a base design and, after Antigrafity attempted to adjust the layout unsuccessfully, I ended up rewriting the front‑end in Vue, keeping the same backend logic and the Ollama model that is not part of this project.
 
-### ⚙️ Mecánica (Core Loop)
-1.  **Selección de Contexto:** El sistema ofrece 3 escenarios distintos (ej. Profesional, Casual, Técnico) generados al vuelo por IA.
-2.  **Desafío:** Se presenta una frase o idea en español ajustada al nivel actual.
-3.  **Input:** El usuario escribe la traducción o interpretación en inglés.
-4.  **Feedback Inmediato:** El sistema analiza la respuesta, corrige errores y asigna una calificación.
-5.  **Progresión Dinámica:**
-    *   Sesiones de 10 rondas.
-    *   **Ajuste de Nivel:** Al final de la sesión, si el desempeño es alto, la dificultad aumenta. Si es bajo, se reduce.
+## Mechanics (Core Loop)  
+1. **Context Selection:** The system offers 3 scenarios (Professional, Casual, Technical) generated on the fly by AI.  
+2. **Challenge:** A phrase or idea in Spanish adapted to the current level is presented.  
+3. **Input:** The user writes the translation or interpretation in English.  
+4. **Immediate Feedback:** The system analyzes the response, corrects errors, and assigns a score.  
+5. **Dynamic Progression:**  
+   - 10‑round sessions.  
+   - At the end of the session, if performance is high, difficulty increases; if low, it decreases.
 
-## 🛠️ Arquitectura y "Fanfarronería Técnica"
-Este proyecto es una demostración de arquitectura moderna y soberanía de datos.
+## Architecture and Specifications  
+- **Frontend:** Vue.js + Vite, SPA rendering, state management with Vuex, connection to the Flask API.  
+- **Backend:** Flask exposing endpoints `/traduce`, `/progreso`, `/nivel`. Manages state logic and calls the Ollama model.  
+- **Infrastructure:** Docker Compose with separate containers for Front and Back.  
+- **Hardware:** Raspberry Pi 4 (chosen for low power) runs the front‑end and the API; the local IA (Ollama) runs on a desktop because the model does not fit the Pi.  
+- **AI Engine:** Ollama, local translation model (e.g., `gpt-oss:20b`).  
+- **Meta‑Prompting:** Specific prompts were designed for contexts, difficulty, and evaluation; these prompts were created with a Gem in Gemini acting as the “Product Director”.
 
-*   **Frontend:** **Vue.js + Vite**. Interfaz reactiva y ligera.
-*   **Backend:** **Python (Flask)**. Gestiona la lógica de estado (sesión, puntaje, nivel actual) y sirve como API Gateway para el modelo.
-*   **Infraestructura:** **Docker Compose**. El sistema completo (Front + Back + DB) vive en contenedores aislados.
-*   **Hardware:** Optimizado para correr *on-premise* en una **Raspberry Pi**.
-*   **Motor de IA:** **Ollama**. Todo el procesamiento de lenguaje ocurre localmente, garantizando privacidad y cero latencia de red externa.
+## Results  
+The project is still **wip** and is not intended for public release; it operates in a private environment where only trusted users test the rounds. The main achievements are:
 
-### 💍 Meta-Prompting ("Un Prompt para gobernarlos a todos")
-El desarrollo de este proyecto fue asistido por una **Meta-Gem** (Gema personalizada en Gemini) diseñada específicamente para actuar como "Director de Producto".
-Esta Gema no escribió código ciegamente, sino que **diseñó los prompts** que controlan cada aspecto del sistema:
-*   **Branding:** Iteración de nombres y prompts para generación de Logo.
-*   **UI/UX:** Creación de instrucciones precisas para que herramientas como Google Stitch generaran la interfaz.
-*   **Lógica de Negocio:** Redacción y ajuste fino de los prompts del sistema (Contexto, Dificultad, Juez) para asegurar consistencia en el LLM local.
+- A fluid and customizable user interface that replaced the rigid Gradio grid.  
+- An immediate feedback system that allows difficulty adjustment after each round.  
+- A complete development flow that demonstrated that the product vision can be orchestrated using local LLMs without relying on external APIs.
 
-## 🧠 Aprendizajes
-*   Desplegar LLMs en hardware limitado (RPi) requiere optimización extrema.
-*   La IA no solo sirve para escribir código, sino para orquestar la visión del producto completo.
+The limitations are clear:
+
+- Ollama does not run on the Raspberry Pi, so the IA requires an external server.  
+- The prompt‑generation process still depends on the Gem and is not automated.  
+- No quantitative metrics; validation is based on feedback from test users.
+
+In conclusion, *Marl Flow* is a proof of concept that shows real‑time translation can be practical with local IA, but it requires a more robust hardware team and a stronger prompt flow to move from a private prototype to a public tool.
