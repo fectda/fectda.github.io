@@ -1,37 +1,57 @@
 ---
-title: "IoT Axolotl-Pumpkin (Halloween 2025)"
-shortTitle: "IOT_AXOLOTL_PUM"
-description: "IoT Axolotl-Pumpkin (Halloween 2025) - Proyecto Maker"
 date: 2025-10-31
-draft: true
-icon: "lightbulb"
-stack: ["ESP32", "ESPHome", "Home Assistant", "LD2410", "PCM5102A"]
-status: "done"
-type: "IOT"
+description: Una calabaza tallada en forma de ajolote que, gracias a un ESP32 y Home
+  Assistant, detecta personas, apaga las luces, genera historias de terror en tiempo
+  real y las reproduce con audio y luces sincronizadas.
+draft: false
+icon: lightbulb
+shortTitle: Calabaza Ajolote
+stack:
+- ESP32
+- ESPHome
+- Home Assistant
+- LD2410
+- PCM5102A
+status: done
+title: Calabaza Ajolote Interactiva
+type: IOT
 ---
 
-## 🎯 El Desafío
-Crear una decoración de Halloween interactiva que fuera más allá de "prender luces". El objetivo era integrar una calabaza tallada (con diseño de Ajolote y branquias) al ecosistema de **Home Assistant** para que reaccionara a la presencia humana y contara historias generadas por IA en tiempo real.
+## El Reto  
+La idea nació de una costumbre familiar: algunos años tallamos una calabaza para Halloween. Este año quería que la calabaza fuera más que una pieza decorativa. El objetivo era integrarla al ecosistema de **Home Assistant** para que detectara la presencia de personas, contara historias de terror generadas por IA y responder con audio y luces. La limitación era el tiempo: teníamos solo una semana antes de la fiesta, y el material era una calabaza bruja recién tallada, con branquias de plastilina, no un molde prefabricado.
 
-## 💡 La Solución (The Spooky Setup)
-Un cerebro **ESP32** escondido dentro de la calabaza orquestando todos los periféricos mediante **ESPHome**:
-*   **Detección:** Sensor de presencia **LD2410** (tecnología de radar mmWave para precisión).
-*   **Atmósfera:** 3 LEDs controlados para simular "vida".
-*   **Voz:** Módulo DAC I2S (PCM5102A) + Amplificador (HW-104) + Bocinas recicladas.
+## La Solución  
+El cerebro del proyecto quedó en un **ESP32** programado con **ESPHome**. Este módulo orquestaba todo el ecosistema:  
+- **Detección**: sensor **LD2410** de radar mmWave.  
+- **Iluminación**: tres LEDs que simulaban “vida” de ajolote.  
+- **Audio**: módulo DAC I2S **PCM5102A**, un amplificador **HW‑104** y bocinas recicladas.  
 
-### ⚙️ El Flujo de Automatización
-1.  **Trigger:** Alguien entra a la habitación (LD2410 detecta).
-2.  **Ambiente:** Home Assistant apaga las luces principales del cuarto.
-3.  **Generación:** Se envía un prompt a la IA: *"Eres un Ajolote maldito, cuenta una historia breve de terror"*.
-4.  **Síntesis:** El texto se convierte a audio (TTS).
-5.  **Acción:** La calabaza reproduce el audio y sincroniza sus luces.
+El flujo de automatización, manejado por Home Assistant, era:  
+1. El LD2410 detecta movimiento y envía un evento.  
+2. HA apaga las luces de la habitación.  
+3. HA manda un prompt a la IA: “Eres un Ajolote maldito, cuenta una historia breve de terror”.  
+4. La respuesta se convierte a audio (TTS).  
+5. El ESP32 reproduce el audio y enciende las luces en un ritmo predefinido.
 
-## 🔧 Retos y Obstáculos (Post-Mortem)
-1.  **Latencia del Miedo:** El ciclo *Generar Historia -> TTS -> Streaming* era demasiado lento. La víctima esperaba en la oscuridad incómoda antes de que pasara algo.
-    *   *Intento de Solución:* Usar audios pre-grabados. Fue rápido, pero se volvió repetitivo y aburrido.
-2.  **Audio Entre-cortado:** El ESP32 luchaba para manejar la pila WiFi, los sensores y el buffer de audio I2S simultáneamente, causando "glitches" sonoros (que daban miedo, pero no del tipo intencional).
-3.  **El Factor Biológico:** Al ser una calabaza real tallada, la humedad y el calor de la electrónica aceleraron su descomposición. El proyecto murió por hongos en 1.5 semanas.
+### Proceso de Construcción  
+1. **Diseño**: no hubo CAD; se diseñó la ubicación de los componentes sobre la calabaza con cinta y marcadores.  
+2. **Fabricación**: se soldaron los leds, el LD2410, y la PCM5102 a cables Dupont y se conectaron a pines ESP32. El HW‑104 se le contacron la bocinas y se le conecto la entrada a un jack 3.5mm para poder conectarlo a la PCM5102.
+3. **Ensamble**: se escondió todo dentro de la calabaza y se fijaron los LEDs con cinta aislante. Se taparon por dentro los ojos y boca de la calabaza tela blanca para que no se vieran su interior electrónico pero la luz de los leds pudiera pasar.
 
-## 🧪 Aprendizajes
-*   Integrar audio de alta calidad en ESP32 junto con sensores pesados requiere optimización de núcleos (multithreading en ESPHome).
-*   La latencia mata la inmersión. Para interacciones en tiempo real, el pipeline debe ser <1 segundo.
+## Retos y Obstáculos  
+- **Audio intermitente**: el ESP32 tenia problemas ya que en algunas ocasiones el audio se paraba como si estuviera cargando un bufferr.  
+- **Potencia insuficiente de las bocinas**: las bocinas pequeñas no respondían al PCM5102A. Con el HW‑104 se logró volumen audíble, pero con ruido asi que se tuvo que conectar por medio de un jack 3.5mm que elimino la interferencia pero la solución es poco elegante.  
+- **Duración de la calabaza**: la humedad y el calor de los componentes aceleraron la descomposición, y la calabaza quedó inutilizable tras 1 .5 semanas.  
+- **Latencia del ciclo TTS**: el tiempo de generar, convertir y reproducir la historia era demasiado lento, haciendo que la experiencia fuera frustrante. Se intentó usar audios pre‑grabado, pero el resultado no era lo que se esperaba.
+
+## Aprendizajes  
+- Integrar audio de alta calidad en un ESP32 con sensores que usan Wi‑Fi exige optimización de núcleos y manejo cuidadoso del buffer I2S.  
+- La latencia del pipeline debe mantenerse baja para que la interacción sea inmersiva.  
+- Los materiales orgánicos (calabaza) no son ideales para proyectos que requieren electrónica; pero lo hacen maravilloso debido a su  efimeridad.  
+- El proceso de debugging rápido se vio limitado por el tiempo; se debe dejar margen para pruebas de audio y memoria antes de la exposición.
+
+## Veredicto  
+El proyecto funcionó en su forma más básica: la calabaza detectó movimiento, apagó las luces, genero las historias, reproducía audio, aunque con interrupciones y mucho retraso. La experiencia fue divertida pero muy frágil.  
+Limitaciones: duración de la calabaza, latencia en audio, falta de sincronización de la luz y la historia.  
+
+En definitiva, la idea tenía potencial; los obstáculos técnicos mostraron la necesidad de planear más a fondo la parte de audio y la integración de componentes de alto consumo dentro de un ESP32 limitado.
