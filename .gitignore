@@ -27,3 +27,7 @@ cv/generated/*.log
 cv/generated/*.out
 cv/generated/*.pdf
 cv/generated/*.tex
+
+# CV generated PDFs (rebuilt on deploy)
+public/cv-eduardo-gonzalez-es.pdf
+public/cv-eduardo-gonzalez-en.pdf
