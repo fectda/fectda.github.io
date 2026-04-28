@@ -452,10 +452,15 @@ async function main() {
 
   if (!texOnly && outputFiles.length > 0) {
     console.log(`\n🎉 CV generation complete: ${outputFiles.join(", ")}`);
+    if (outputFiles.length !== locales.length) {
+      console.warn(`\n⚠️  Expected ${locales.length} PDFs, but only generated ${outputFiles.length}.`);
+      process.exit(1);
+    }
   } else if (texOnly) {
     console.log(`\n✅ .tex files generated in ${TEX_OUT_DIR}/`);
   } else {
-    console.log(`\n⚠️  .tex files generated but PDF compilation failed. Install pdflatex to compile.`);
+    console.error(`\n❌ .tex files generated but PDF compilation failed. Ensure pdflatex and required packages are installed.`);
+    process.exit(1);
   }
 }
 
