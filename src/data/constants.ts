@@ -24,6 +24,6 @@ export const NAV_LABELS = {
 };
 
 export const CV_URLS = {
-    en: "https://drive.google.com/file/d/11uoW1c0u7fYiMJ9F1eODUx55O5X7lwcB/view?usp=drive_link",
-    es: "https://drive.google.com/file/d/1ku4osYeJi03b-lMtS9BrqI6C8HUdXLlc/view?usp=drive_link",
+    en: "/cv-eduardo-gonzalez-en.pdf",
+    es: "/cv-eduardo-gonzalez-es.pdf",
 };
