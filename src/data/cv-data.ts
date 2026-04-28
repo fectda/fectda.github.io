@@ -7,7 +7,7 @@
  * Lo que cambia RÁPIDO (skills de proyectos) → se extrae de bits/atoms dinámicamente.
  */
 
-import { SITE, SOCIALS } from "@consts";
+import { SITE } from "@consts";
 
 export type Locale = "es" | "en";
 

@@ -48,14 +48,14 @@ const allStacks = [...bits, ...atoms]
   .flatMap(item => item.data.stack || []);
 
 // Identify which project skills are NOT already in base skills
-const baseSkillSet = new Set(BASE_SKILLS.flatMap(s => s.items));
+const baseSkillSet = new Set(BASE_SKILLS.flatMap(s => s.items.map(item => typeof item === "string" ? item : item[lang as "es" | "en"])));
 const projectOnlySkills = [...new Set(allStacks)].filter(s => !baseSkillSet.has(s)).sort();
 
 // Build final categorized list: base skills + project-only skills as a category
 const categorizedSkills = [
   ...BASE_SKILLS,
   ...(projectOnlySkills.length > 0
-    ? [{ category: { es: "Proyectos", en: "Projects" }, items: projectOnlySkills }]
+    ? [{ category: { es: "Proyectos", en: "Projects" }, items: projectOnlySkills.map(s => ({ es: s, en: s })) }]
     : [])
 ];
 ---

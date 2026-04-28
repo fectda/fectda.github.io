@@ -116,7 +116,7 @@ function loadProjects(locale: string): ProjectEntry[] {
     const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
     for (const f of files) {
       const raw = fs.readFileSync(path.join(dir, f), "utf-8");
-      const { data, content } = matter(raw);
+      const { data } = matter(raw);
       if (data.draft) continue;
       if (data.status === "poc") continue; // Skip proof of concepts in CV
       projects.push({
@@ -150,13 +150,6 @@ function loadTeaching(locale: string): TeachingEntry[] {
       cvBullets: f.data.cvBullets,
     };})
     .sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
-}
-
-/** Extraer skills únicas de proyectos publicados */
-function extractProjectSkills(locale: string): string[] {
-  const projects = loadProjects(locale);
-  const allStacks = projects.flatMap((p) => p.stack || []);
-  return [...new Set(allStacks)].sort();
 }
 
 /** Formatear fecha para LaTeX */
@@ -418,10 +411,8 @@ async function main() {
   const texOnly = process.argv.includes("--tex-only");
 
   // Import CV data dynamically
-  const { CV_DATA, BASE_SKILLS, getCvContact } = await import("../src/data/cv-data");
+  const { CV_DATA, BASE_SKILLS, getCvContact, CV_PROJECTS } = await import("../src/data/cv-data");
   const { CV_PUBLICATIONS } = await import("../src/data/cv-publications");
-  const { CV_PROJECTS } = await import("../src/data/cv-data");
-  const { SITE, SOCIALS } = await import("../src/consts");
   const locales: Array<"es" | "en"> = ["es", "en"];
 
   const outputFiles: string[] = [];
@@ -432,8 +423,6 @@ async function main() {
     const work = loadWork(locale);
     const education = loadEducation(locale);
     const teaching = loadTeaching(locale);
-    const projects = loadProjects(locale);
-    const projectSkills = extractProjectSkills(locale);
     const publications = CV_PUBLICATIONS[locale];
 
     // Skills only from BASE_SKILLS (no project skills row — projects have their own section)
