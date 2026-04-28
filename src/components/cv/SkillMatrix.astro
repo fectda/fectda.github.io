@@ -1,10 +1,16 @@
 ---
+import type { SkillCategory } from "@data/cv-data";
+
 interface Props {
-  skills: string[];
+  /** Categorized skills — renders grouped by category */
+  categorizedSkills?: SkillCategory[];
+  /** Legacy flat list — renders as plain tags (backward compat) */
+  skills?: string[];
   title: string;
+  lang?: "es" | "en";
 }
 
-const { skills, title } = Astro.props;
+const { categorizedSkills, skills, title, lang = "es" } = Astro.props;
 ---
 
 <div class="w-full max-w-[900px] mt-16 md:mt-32 mb-16 md:mb-0">
@@ -13,12 +19,36 @@ const { skills, title } = Astro.props;
         <h3 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest text-primary">{title}</h3>
         <div class="h-px bg-secondary flex-1"></div>
     </div>
-    <div class="flex flex-wrap justify-center gap-4">
-        {skills.map((skill) => (
-            <div class="bg-plate-dark border border-border-mid text-content-light px-4 py-2 font-mono text-sm transition-all duration-300 cursor-default relative overflow-hidden hover:border-primary hover:text-content-bright hover:shadow-glow hover:text-shadow-glow group">
-                <div class="absolute top-0 left-0 w-1 h-full bg-overlay-light transition-colors duration-300 group-hover:bg-primary"></div>
-                {skill}
+
+    {categorizedSkills ? (
+      <!-- Categorized skills -->
+      <div class="flex flex-col gap-6">
+        {categorizedSkills.map((cat) => (
+          <div class="flex flex-col gap-2">
+            <h4 class="text-sm font-mono text-primary uppercase tracking-widest">{cat.category[lang]}</h4>
+            <div class="flex flex-wrap gap-3">
+              {cat.items.map((skill) => {
+                const text = typeof skill === "string" ? skill : skill[lang];
+                return (
+                  <div class="bg-plate-dark border border-border-mid text-content-light px-4 py-2 font-mono text-sm transition-all duration-300 cursor-default relative overflow-hidden hover:border-primary hover:text-content-bright hover:shadow-glow group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-overlay-light transition-colors duration-300 group-hover:bg-primary"></div>
+                    {text}
+                  </div>
+                );
+              })}
             </div>
+          </div>
         ))}
-    </div>
+      </div>
+    ) : skills ? (
+      <!-- Legacy flat skills -->
+      <div class="flex flex-wrap justify-center gap-4">
+        {skills.map((skill) => (
+          <div class="bg-plate-dark border border-border-mid text-content-light px-4 py-2 font-mono text-sm transition-all duration-300 cursor-default relative overflow-hidden hover:border-primary hover:text-content-bright hover:shadow-glow group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-overlay-light transition-colors duration-300 group-hover:bg-primary"></div>
+            {skill}
+          </div>
+        ))}
+      </div>
+    ) : null}
 </div>
