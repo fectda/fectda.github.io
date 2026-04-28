@@ -40,8 +40,29 @@ const education = await Promise.all(
   })
 );
 
-// Only show curated base skills — project tags belong on individual project pages
-const categorizedSkills = BASE_SKILLS;
+// Build skill list: BASE_SKILLS + project-only skills (deduplicated from bits/atoms)
+const bits = (await getCollection("bits")).filter(item => item.slug.startsWith(`${lang}/`));
+const atoms = (await getCollection("atoms")).filter(item => item.slug.startsWith(`${lang}/`));
+const allStacks = [...bits, ...atoms]
+  .filter(item => !item.data.draft)
+  .flatMap(item => item.data.stack || []);
+
+const baseSkillSet = new Set(
+  BASE_SKILLS.flatMap(s =>
+    s.items.map(item => (typeof item === "string" ? item : item[lang]))
+  )
+);
+const projectOnlySkills = [...new Set(allStacks)]
+  .filter(s => !baseSkillSet.has(s))
+  .sort()
+  .map(s => ({ es: s, en: s }));
+
+const categorizedSkills = [
+  ...BASE_SKILLS,
+  ...(projectOnlySkills.length > 0
+    ? [{ category: { es: "Proyectos", en: "Projects" }, items: projectOnlySkills }]
+    : [])
+];
 ---
 
 <PageLayout title="CV" description="Curriculum Vitae" lang={lang}>
@@ -59,12 +80,12 @@ const categorizedSkills = BASE_SKILLS;
       <!-- Work Entries -->
       {work.map((entry, index) => (
         <TimelineItem
-            year={index === 0 ? (lang === 'es' ? 'HOY' : 'NOW') : dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
+            year={index === 0 ? (lang === "es" ? "HOY" : "NOW") : dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
             role={entry.data.role}
             company={entry.data.company}
-            icon={entry.data.icon || 'work'}
-            alignment={index % 2 === 0 ? 'left' : 'right'}
-            nodeType={index === 0 ? 'present' : 'past'}
+            icon={entry.data.icon || "work"}
+            alignment={index % 2 === 0 ? "left" : "right"}
+            nodeType={index === 0 ? "present" : "past"}
         >
             <entry.Content />
         </TimelineItem>
@@ -79,8 +100,8 @@ const categorizedSkills = BASE_SKILLS;
             year={dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
             role={entry.data.degree}
             company={entry.data.institution}
-            icon={entry.data.icon || 'school'}
-            alignment={index % 2 === 0 ? 'left' : 'right'}
+            icon={entry.data.icon || "school"}
+            alignment={index % 2 === 0 ? "left" : "right"}
             nodeType="past"
         >
             <entry.Content />
