@@ -20,3 +20,10 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# LaTeX build artifacts
+cv/generated/*.aux
+cv/generated/*.log
+cv/generated/*.out
+cv/generated/*.pdf
+cv/generated/*.tex
