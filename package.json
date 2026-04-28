@@ -12,7 +12,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "generate:cv": "tsx scripts/generate-cv.ts",
-    "generate:cv:tex": "tsx scripts/generate-cv.ts --tex-only"
+    "generate:cv:tex": "tsx scripts/generate-cv.ts --tex-only",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -33,7 +36,17 @@
     "gray-matter": "^4.0.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.2",
-    "tsx": "^4.7.0"
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "vitest": "^4.1.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,astro}": [
+      "eslint --fix"
+    ]
   }
 }
