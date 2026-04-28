@@ -197,19 +197,19 @@ function texEscape(str: string): string {
   let i = 0;
 
   while (i < str.length) {
-    // Detectar inicio de comando LaTeX (\command{arg})
+    // Detect start of LaTeX command (\command{arg})
     if (str[i] === "\\" && i + 1 < str.length && str[i + 1] !== "\\") {
-      // Intentar match de un comando LaTeX completo
+      // Try to match a complete LaTeX command
       const match = str.slice(i).match(/^\\[a-zA-Z]+(\{[^}]*\})*/);
       if (match) {
-        // Preservar el comando LaTeX sin escapar
+        // Preserve the LaTeX command without escaping
         result += match[0];
         i += match[0].length;
         continue;
       }
     }
 
-    // Escapar caracteres especiales en texto plano
+    // Escape special characters in plain text
     if (str[i] === "\\") {
       result += "\\textbackslash{}";
     } else if (str[i] === "&") {
@@ -248,16 +248,16 @@ function texEscape(str: string): string {
  * Si cvBullets es proporcionado, usa esos strings directamente como items.
  */
 function mdToItems(md: string, cvBullets?: string[]): string {
-  // Si cvBullets está presente, úsalo directamente; si no, parsea el body markdown
+  // If cvBullets is present, use it directly; otherwise parse the body markdown
   const lines = cvBullets 
-    ? cvBullets // cvBullets ya es un array de strings
+    ? cvBullets // cvBullets is already an array of strings
     : md.split("\n").map((l) => l.trim()).filter((l) => l.startsWith("*") || l.startsWith("-"));
 
   return lines
     .map((l) => {
       const text = l.replace(/^[\*\-]\s+/, "");
-      const latex = mdToLatex(text);        // Primera pasada: markdown → LaTeX
-      const escaped = texEscape(latex);     // Segunda pasada: escapar texto plano
+      const latex = mdToLatex(text);        // First pass: markdown → LaTeX
+      const escaped = texEscape(latex);     // Second pass: escape plain text
       return `    \\item ${escaped}`;
     })
     .join("\n");

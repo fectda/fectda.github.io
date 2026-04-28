@@ -33,9 +33,9 @@ export interface CvData {
   languages: string;
 }
 
-// ─── Datos de contacto: ÚNICA FUENTE ──────────────────────────────────────────
-// Teléfono, ubicación, nombre completo y título solo se definen AQUÍ.
-// Ni en CV_DATA por locale, ni en getCvContact. Todo sale de aquí.
+// ─── Contact data: SINGLE SOURCE OF TRUTH ──────────────────────────────────────
+// Phone, location, full name and title are defined ONLY here.
+// Not in CV_DATA per locale, not in getCvContact. Everything comes from here.
 
 const CV_PERSONAL = {
   fullName: "Luis Eduardo González González",
@@ -44,10 +44,10 @@ const CV_PERSONAL = {
   location: { es: "Ciudad de México", en: "Mexico City" },
 } as const;
 
-/** CONTACTO CV: Solo la URL del portafolio (como en los PDFs originales). */
+/** CV CONTACT: Portfolio URL only (matching original PDFs). */
 const CV_PORTFOLIO_URL = "https://fectda.github.io/es";
 
-/** Devuelve TODOS los datos de contacto para el CV, desde una sola fuente */
+/** Returns ALL contact data for the CV from a single source. */
 export function getCvContact(lang: Locale) {
   return {
     name: CV_PERSONAL.fullName,
@@ -64,8 +64,8 @@ export function getCvContact(lang: Locale) {
   };
 }
 
-// ─── Skills categorizadas (ES/EN) ─────────────────────────────────────────────
-// Skills BASE. Las de proyectos se añaden dinámicamente.
+// ─── Categorized skills (ES/EN) ─────────────────────────────────────────────
+// BASE skills. Project skills are added dynamically.
 
 export const BASE_SKILLS: SkillCategory[] = [
   {
@@ -180,8 +180,8 @@ export const BASE_SKILLS: SkillCategory[] = [
   },
 ];
 
-// ─── Proyectos independientes (narrativa del CV original) ────────────────────
-// Sub-categorías con descripción, no lista plana de bits/atoms.
+// ─── Independent projects (narrative from original CV) ─────────────────────
+// Sub-categories with descriptions, not a flat list from bits/atoms.
 
 export interface ProjectSubcategory {
   title: { es: string; en: string };
@@ -257,7 +257,7 @@ export const CV_PROJECTS: Record<string, ProjectSubcategory[]> = {
   ],
 };
 
-// ─── Datos por locale (solo lo que cambia entre idiomas) ──────────────────────
+// ─── Locale-specific data (only what changes between languages) ───────────────
 
 export const CV_DATA: Record<Locale, CvData> = {
   es: {
