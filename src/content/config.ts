@@ -61,6 +61,7 @@ const work = defineCollection({
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
     icon: z.string().optional(),
+    cvBullets: z.array(z.string()).optional(), // CV-specific extended bullets
   }),
 });
 
@@ -75,6 +76,22 @@ const education = defineCollection({
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
     icon: z.string().optional(),
+    cvBullets: z.array(z.string()).optional(), // CV-specific extended bullets
+  }),
+});
+
+// Colección: teaching (Experiencia Docente)
+const teaching = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    institution: z.string(),
+    role: z.string(),
+    dateStart: z.coerce.date(),
+    dateEnd: z.union([z.coerce.date(), z.string()]).optional(),
+    level: z.enum(["high_school", "undergraduate", "graduate", "professional"]),
+    icon: z.string().optional(),
+    cvBullets: z.array(z.string()).optional(),
   }),
 });
 
@@ -120,4 +137,4 @@ const about = defineCollection({
   }),
 });
 
-export const collections = { bits, atoms, mind, work, education, about };
+export const collections = { bits, atoms, mind, work, education, teaching, about };
