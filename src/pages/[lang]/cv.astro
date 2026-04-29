@@ -9,6 +9,7 @@ import TimelineItem from "@components/cv/TimelineItem.astro";
 import AcademicOrigin from "@components/cv/AcademicOrigin.astro";
 import SkillMatrix from "@components/cv/SkillMatrix.astro";
 import { CV_CONTENT } from "@data/cv-content";
+import { categorizeSkills } from "@data/skill-categories";
 
 import { getLangStaticPaths } from "@lib/static-paths";
 
@@ -39,12 +40,14 @@ const education = await Promise.all(
   })
 );
 
+// Build categorized skills from project stacks — no duplicates, no manual work
 const bits = (await getCollection("bits")).filter(item => item.slug.startsWith(`${lang}/`));
 const atoms = (await getCollection("atoms")).filter(item => item.slug.startsWith(`${lang}/`));
 const allStacks = [...bits, ...atoms]
   .filter(item => !item.data.draft)
   .flatMap(item => item.data.stack || []);
 const uniqueSkills = [...new Set(allStacks)].sort();
+const categorizedSkills = categorizeSkills(uniqueSkills);
 ---
 
 <PageLayout title="CV" description="Curriculum Vitae" lang={lang}>
@@ -93,7 +96,7 @@ const uniqueSkills = [...new Set(allStacks)].sort();
     </div>
 
     <!-- Skills Section -->
-    <SkillMatrix skills={uniqueSkills} title={content.sections.skills} lang={lang} />
+    <SkillMatrix categorizedSkills={categorizedSkills} title={content.sections.skills} lang={lang} />
 
 
 </PageLayout>
