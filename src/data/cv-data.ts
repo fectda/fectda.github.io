@@ -101,7 +101,7 @@ export const BASE_SKILLS: SkillCategory[] = [
     ],
   },
   {
-    category: { es: "IA y Automatización", en: "AI & Automation" },
+    category: { es: "IA y Automatización (Nuevas Adiciones)", en: "AI & Automation (New Additions)" },
     items: [
       { es: "Prompt Engineering (Creación de Expertos)", en: "Prompt Engineering (Expert Systems)" },
       { es: "AI Agents (OpenCode, Gemini-CLI)", en: "AI Agents (OpenCode, Gemini-CLI)" },

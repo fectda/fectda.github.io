@@ -9,7 +9,6 @@ import TimelineItem from "@components/cv/TimelineItem.astro";
 import AcademicOrigin from "@components/cv/AcademicOrigin.astro";
 import SkillMatrix from "@components/cv/SkillMatrix.astro";
 import { CV_CONTENT } from "@data/cv-content";
-import { BASE_SKILLS } from "@data/cv-data";
 
 import { getLangStaticPaths } from "@lib/static-paths";
 
@@ -40,29 +39,12 @@ const education = await Promise.all(
   })
 );
 
-// Build skill list: BASE_SKILLS + project-only skills (deduplicated from bits/atoms)
 const bits = (await getCollection("bits")).filter(item => item.slug.startsWith(`${lang}/`));
 const atoms = (await getCollection("atoms")).filter(item => item.slug.startsWith(`${lang}/`));
 const allStacks = [...bits, ...atoms]
   .filter(item => !item.data.draft)
   .flatMap(item => item.data.stack || []);
-
-const baseSkillSet = new Set(
-  BASE_SKILLS.flatMap(s =>
-    s.items.map(item => (typeof item === "string" ? item : item[lang]))
-  )
-);
-const projectOnlySkills = [...new Set(allStacks)]
-  .filter(s => !baseSkillSet.has(s))
-  .sort()
-  .map(s => ({ es: s, en: s }));
-
-const categorizedSkills = [
-  ...BASE_SKILLS,
-  ...(projectOnlySkills.length > 0
-    ? [{ category: { es: "Proyectos", en: "Projects" }, items: projectOnlySkills }]
-    : [])
-];
+const uniqueSkills = [...new Set(allStacks)].sort();
 ---
 
 <PageLayout title="CV" description="Curriculum Vitae" lang={lang}>
@@ -111,7 +93,7 @@ const categorizedSkills = [
     </div>
 
     <!-- Skills Section -->
-    <SkillMatrix categorizedSkills={categorizedSkills} title={content.sections.skills} lang={lang} />
+    <SkillMatrix skills={uniqueSkills} title={content.sections.skills} lang={lang} />
 
 
 </PageLayout>
