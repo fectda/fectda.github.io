@@ -56,7 +56,7 @@ export const SOCIALS: Socials = [
   },
   {
     NAME: "instagram",
-    HREF: "https://www.instagram.com/superjudio/"
+    HREF: "https://www.instagram.com/altepetl.digital/"
   },
   {
     NAME: "facebook",
