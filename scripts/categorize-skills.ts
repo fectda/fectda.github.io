@@ -29,7 +29,7 @@ async function collectAllStacks(): Promise<string[]> {
   const stacks: string[] = [];
 
   for (const pattern of patterns) {
-    const files = await fg(pattern, { nodir: true });
+    const files = await fg(pattern, { onlyFiles: true });
     for (const file of files) {
       const raw = await readFile(file, "utf-8");
       const { data } = matter(raw);

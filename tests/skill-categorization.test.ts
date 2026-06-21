@@ -6,23 +6,23 @@ describe("categorizeSkills", () => {
     const result = categorizeSkills(["Python"]);
     const cat = result.find((c) => c.category.en === "Programming Languages");
     expect(cat).toBeDefined();
-    expect(cat.items).toContain("Python");
+    expect(cat!.items).toContain("Python");
   });
 
   it("categorizes ESPHome as IoT & Home Automation", () => {
     const result = categorizeSkills(["ESPHome", "Home Assistant"]);
     const cat = result.find((c) => c.category.en === "IoT & Home Automation");
     expect(cat).toBeDefined();
-    expect(cat.items).toContain("ESPHome");
-    expect(cat.items).toContain("Home Assistant");
+    expect(cat!.items).toContain("ESPHome");
+    expect(cat!.items).toContain("Home Assistant");
   });
 
   it("categorizes FreeCAD as 3D Design & Prototyping", () => {
     const result = categorizeSkills(["FreeCAD", "SketchUp"]);
     const cat = result.find((c) => c.category.en === "3D Design & Prototyping");
     expect(cat).toBeDefined();
-    expect(cat.items).toContain("FreeCAD");
-    expect(cat.items).toContain("SketchUp");
+    expect(cat!.items).toContain("FreeCAD");
+    expect(cat!.items).toContain("SketchUp");
   });
 
   it("categorizes Ollama as AI Engineering", () => {
@@ -47,7 +47,7 @@ describe("categorizeSkills", () => {
     const result = categorizeSkills(["some-unknown-tool-xyz"]);
     const others = result.find((c) => c.category.en === "Others");
     expect(others).toBeDefined();
-    expect(others.items).toContain("some-unknown-tool-xyz");
+    expect(others!.items).toContain("some-unknown-tool-xyz");
   });
 
   it("sorts items within each category alphabetically", () => {
@@ -58,9 +58,9 @@ describe("categorizeSkills", () => {
     const devops = result.find((c) => c.category.en === "DevOps & Cloud");
     const iot = result.find((c) => c.category.en === "IoT & Home Automation");
 
-    expect(progLang.items).toEqual(["a-Python"]);
-    expect(devops.items).toEqual(["z-Docker"]);
-    expect(iot.items).toEqual(["m-ESPHome"]);
+    expect(progLang!.items).toEqual(["a-Python"]);
+    expect(devops!.items).toEqual(["z-Docker"]);
+    expect(iot!.items).toEqual(["m-ESPHome"]);
   });
 
   it("handles mixed known and unknown skills", () => {
@@ -69,9 +69,9 @@ describe("categorizeSkills", () => {
     const iot = result.find((c) => c.category.en === "IoT & Home Automation");
     const others = result.find((c) => c.category.en === "Others");
 
-    expect(progLang.items).toContain("Python");
-    expect(iot.items).toContain("ESPHome");
-    expect(others.items).toContain("unknown-skill-123");
+    expect(progLang!.items).toContain("Python");
+    expect(iot!.items).toContain("ESPHome");
+    expect(others!.items).toContain("unknown-skill-123");
   });
 
   it("places C as Programming Languages (not as substring of FreeCAD)", () => {
@@ -80,9 +80,9 @@ describe("categorizeSkills", () => {
     const design3d = result.find((c) => c.category.en === "3D Design & Prototyping");
     const others = result.find((c) => c.category.en === "Others");
 
-    expect(progLang.items).toContain("C");
-    expect(progLang.items).toContain("C++");
-    expect(design3d.items).toContain("FreeCAD");
+    expect(progLang!.items).toContain("C");
+    expect(progLang!.items).toContain("C++");
+    expect(design3d!.items).toContain("FreeCAD");
     expect(others).toBeUndefined();
   });
 
@@ -92,7 +92,7 @@ describe("categorizeSkills", () => {
     const result = categorizeSkills(["golang"]);
     const others = result.find((c) => c.category.en === "Others");
     expect(others).toBeDefined();
-    expect(others.items).toContain("golang");
+    expect(others!.items).toContain("golang");
   });
 
   it("handles empty array", () => {
