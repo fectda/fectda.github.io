@@ -273,7 +273,7 @@ export const CV_DATA: Record<Locale, CvData> = {
     summary:
       "Profesional de TI con experiencia en full-stack, arquitectura en nube y gestión de proyectos. Especializado en Python, JavaScript y GCP. Enfocado en proyectos independientes: orquestación de IA local, observabilidad y sistemas distribuidos. Base analítica sólida en Ciencias Físicas.",
     longSummary:
-      "Profesional de Tecnologías de la Información con sólida experiencia en full-stack, arquitectura de software en la nube, y gestión de proyectos tecnológicos. Especializado en Python, JavaScript y soluciones en Google Cloud, con una reciente expansión hacia la orquestación de IA generativa local y observabilidad avanzada. Apasionado por la creación de soluciones eficientes y de alta calidad, con una sólida base analítica proveniente de una formación en Ciencias Físicas. Busco contribuir con mis habilidades técnicas y de liderazgo en roles desafiantes que impulsen la innovación.",
+      "He visto el mismo patrón demasiadas veces: empresas que gastan muchísimo dinero desarrollando sistemas que no solucionan el problema para el que fueron creados. Soluciones con sobreingeniería o herramientas demasiado básicas que viven lejos de la realidad operativa y terminan peleándose con los procesos del negocio. No uso la tecnología como un parche. Encuentro la raíz de la ineficiencia y diseño la solución exacta para reducir drásticamente tiempos y costos, ya sea automatizando la operación o rediseñando los procesos humanos. Construyo sistemas con la medida exacta de lo que se necesita: ni sobrados, ni cortos. Mi objetivo es lograr que la tecnología y tu equipo de trabajo vayan de la mano y crezcan juntos, sin fricción.",
     baseSkills: BASE_SKILLS,
     languages: "Español: Nativo | Inglés: Nivel B2 (Competencia profesional funcional)",
   },
@@ -291,7 +291,7 @@ export const CV_DATA: Record<Locale, CvData> = {
     summary:
       "IT professional with experience in full-stack, cloud architecture, and project management. Specialized in Python, JavaScript, and GCP. Focused on independent projects: local AI orchestration, observability, and distributed systems. Solid analytical foundation in Physical Sciences.",
     longSummary:
-      "IT Professional with extensive experience in full-stack development, cloud software architecture, and technology project management. Specialized in Python, JavaScript, and Google Cloud solutions. Recently focused on high-level independent projects involving local generative AI orchestration, advanced observability, and distributed systems. Passionate about building efficient, high-quality solutions, backed by a strong analytical foundation from a background in Physical Sciences.",
+      "I have seen the same pattern too many times: companies spending massive amounts of money developing systems that fail to solve the actual problem they were created for. Over-engineered solutions or overly basic tools that live disconnected from operational reality and end up clashing with business processes. I don't use technology as a band-aid. I find the root of the inefficiency and design the exact solution to drastically reduce time and costs, whether by automating operations or redesigning human processes. I build systems with the exact scope of what is needed: neither oversized nor falling short. My goal is to ensure that technology and your team go hand in hand and grow together, without friction.",
     baseSkills: BASE_SKILLS,
     languages: "Spanish: Native | English: B2 Level (Professional Working Proficiency)",
   },

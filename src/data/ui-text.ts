@@ -4,7 +4,7 @@ export const UI_TEXT = {
   es: {
     hero: {
       role: "Arquitecto de Soluciones Reales",
-      sub: "Del Diseño al Código. Del Código a la Materia."
+      sub: "Sistemas con la medida exacta. Tecnología y equipos que crecen juntos, sin fricción."
     },
     cards: {
       bits: "Información Pura",
@@ -24,7 +24,7 @@ export const UI_TEXT = {
   en: {
     hero: {
       role: "Architect of Real Solutions",
-      sub: "From Design to Code. From Code to Matter."
+      sub: "Exact-fit systems. Technology and teams growing together, without friction."
     },
     cards: {
       bits: "Pure Information",
